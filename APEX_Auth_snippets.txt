@@ -1,0 +1,90 @@
+
+-- Sec 2: 認証ファンクションの例
+
+function my_sentry 
+return boolean
+is
+begin
+ if apex_authentication.is_authenticated then
+   return true;
+ end if;
+ /*
+ if apex_custom_auth.is_session_valid then
+   return true;
+ end if;
+ */
+ return false;
+end;
+
+procedure my_invalid_session 
+is
+begin
+  apex_util.redirect_url('f?p=' || :APP_ID || ':LOGIN_DESKTOP:' || :SESSION);
+  apex_application.stop_apex_engine;
+end;
+
+function my_authentication (
+    p_username in varchar2,
+    p_password in varchar2 )
+    return boolean
+is
+    l_user my_users.user_name%type := upper(p_username);
+    l_pwd  my_users.password%type;
+    l_id   my_users.id%type;
+    l_hash my_users.password%type;
+begin
+    select id  , password
+      into l_id, l_pwd
+      from my_users
+     where user_name = l_user;
+
+     select rawtohex(standard_hash(p_password||l_id||l_user, 'SHA512'))
+     into l_hash 
+     from dual;
+     
+     return l_pwd = l_hash;
+exception
+    when NO_DATA_FOUND then return false;
+end;
+
+-- Sec 3: Googleを使った認証の実装 - 認証後プロシージャーの例
+
+procedure post_auth is
+  k varchar2(32767);
+  v apex_json.t_value;
+  t apex_json.t_kind;
+begin
+  -- Set APP_NAME for unique id and G_DISPLAY_NAME for display
+  :G_AUTH_SCHEME := 'GOOGLE';
+  apex_custom_auth.set_user(:G_AUTH_SCHEME || '+' || :APP_USER);
+  :G_DISPLAY_NAME := apex_json.get_varchar2('name');
+  -- Inspect User Info data
+  k := apex_json.g_values.FIRST;
+  while k is not null loop
+    :G_USER_INFO := :G_USER_INFO || '<p>' || k || ':';
+    v := apex_json.get_value(k);
+    if v.kind = 1 then
+      :G_USER_INFO := :G_USER_INFO || 'NULL';
+    elsif v.kind = 2 then
+      :G_USER_INFO := :G_USER_INFO || 'TRUE';
+    elsif v.kind = 3 then
+      :G_USER_INFO := :G_USER_INFO || 'FALSE';
+    elsif v.kind = 4 then
+      :G_USER_INFO := :G_USER_INFO || v.number_value;
+    elsif v.kind = 5 then
+      :G_USER_INFO := :G_USER_INFO || v.varchar2_value;
+    elsif v.kind = 6 then
+      :G_USER_INFO := :G_USER_INFO || 'Object';
+    elsif v.kind = 7 then
+      :G_USER_INFO := :G_USER_INFO || 'Array';
+    else      
+      :G_USER_INFO := :G_USER_INFO || 'Other';    
+    end if;
+    :G_USER_INFO := :G_USER_INFO || '</p>' || chr(10);
+    k := apex_json.g_values.NEXT(k);
+  end loop;
+end post_auth;
+
+--  
+
+
