@@ -28,7 +28,7 @@ prompt APPLICATION 1163 - CSVのパース
 -- Application Export:
 --   Application:     1163
 --   Name:            CSVのパース
---   Date and Time:   03:18 火曜日 2月 2, 2021
+--   Date and Time:   03:21 火曜日 2月 2, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -81,7 +81,7 @@ wwv_flow_api.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'DBCLOUD_TEST')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,unistr('CSV\306E\30D1\30FC\30B9'))
-,p_alias=>nvl(wwv_flow_application_install.get_application_alias,unistr('CSV\306E\30D1\30FC\30B9'))
+,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'CSV-REGEXP-PARSE')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'4411D8D4D6E5875F4711BB0BB82C2B61E5C4BBCF65B8466F70880D15D0526531'
@@ -106,6 +106,7 @@ wwv_flow_api.create_flow(
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
 ,p_flow_version=>unistr('\30EA\30EA\30FC\30B91.0')
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
+,p_flow_unavailable_text=>unistr('\3053\306E\30A2\30D7\30EA\30B1\30FC\30B7\30E7\30F3\306F\3001\73FE\6642\70B9\3067\306F\4F7F\7528\3067\304D\307E\305B\3093\3002')
 ,p_exact_substitutions_only=>'Y'
 ,p_browser_cache=>'N'
 ,p_browser_frame=>'D'
@@ -115,7 +116,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('CSV\306E\30D1\30FC\30B9')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210202031836'
+,p_last_upd_yyyymmddhh24miss=>'20210202032110'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
