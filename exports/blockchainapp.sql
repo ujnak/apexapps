@@ -28,16 +28,16 @@ prompt APPLICATION 100 - Browser Transaction
 -- Application Export:
 --   Application:     100
 --   Name:            Browser Transaction
---   Date and Time:   11:37 土曜日 2月 6, 2021
+--   Date and Time:   14:38 土曜日 2月 6, 2021
 --   Exported By:     APEXDEV
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      7
---       Items:                   15
+--       Items:                   13
 --       Processes:                9
 --       Regions:                 13
---       Buttons:                 11
---       Dynamic Actions:          4
+--       Buttons:                 12
+--       Dynamic Actions:          5
 --     Shared Components:
 --       Logic:
 --       Navigation:
@@ -114,7 +114,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Browser Transaction'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20210206113642'
+,p_last_upd_yyyymmddhh24miss=>'20210206143621'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -10896,9 +10896,41 @@ wwv_flow_api.create_page(
 ,p_alias=>'HOME'
 ,p_step_title=>'Browser Transaction'
 ,p_autocomplete_on_off=>'OFF'
+,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+unistr('// \53C2\7167'),
+'// https://qiita.com/kerupani129/items/99fd7a768538fcd33420',
+'const showOpenFileDialog = () => {',
+'    return new Promise(resolve => {',
+'        const input = document.createElement(''input'');',
+'        input.type = ''file'';',
+'        input.accept = ''.txt, text/plain'';',
+'        input.onchange = event => { resolve(event.target.files[0]); };',
+'        input.click();',
+'    });',
+'};',
+'',
+'const readAsText = file => {',
+'    return new Promise(resolve => {',
+'        const reader = new FileReader();',
+'        reader.readAsText(file);',
+'        reader.onload = () => { resolve(reader.result); };',
+'    });',
+'};'))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20210202072036'
+,p_last_upd_yyyymmddhh24miss=>'20210206143421'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(10444818662979821)
+,p_plug_name=>unistr('\9375\306E\8A2D\5B9A')
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(10932369843671429)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(11028359987671751)
@@ -10913,6 +10945,41 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 ,p_attribute_03=>'Y'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(10444930301979822)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(10444818662979821)
+,p_button_name=>'B_IMPORT'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(10994848261671575)
+,p_button_image_alt=>unistr('\9375\306E\30A4\30F3\30DD\30FC\30C8')
+,p_button_position=>'BELOW_BOX'
+,p_warn_on_unsaved_changes=>null
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(10445028763979823)
+,p_name=>unistr('\30A4\30F3\30DD\30FC\30C8')
+,p_event_sequence=>10
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(10444930301979822)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(10445125321979824)
+,p_event_id=>wwv_flow_api.id(10445028763979823)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'(async () => {',
+'    const file = await showOpenFileDialog();',
+'    const content = await readAsText(file);',
+'    localStorage[''mykey''] = content;',
+'})();'))
 );
 end;
 /
@@ -11074,19 +11141,7 @@ unistr('// \53C2\7167\5148: https://stackoverflow.com/questions/40031688/javascr
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20210206110558'
-);
-wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(10444378814979816)
-,p_plug_name=>unistr('\79D8\5BC6\9375')
-,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
-,p_plug_template=>wwv_flow_api.id(10932369843671429)
-,p_plug_display_sequence=>20
-,p_include_in_reg_disp_sel_yn=>'Y'
-,p_plug_display_point=>'BODY'
-,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
-,p_attribute_01=>'N'
-,p_attribute_02=>'HTML'
+,p_last_upd_yyyymmddhh24miss=>'20210206143621'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(11030801598812977)
@@ -11180,30 +11235,6 @@ wwv_flow_api.create_page_branch(
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_sequence=>1
-);
-wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(10444487109979817)
-,p_name=>'P3_FILE'
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_api.id(10444378814979816)
-,p_prompt=>unistr('\79D8\5BC6\9375\30D5\30A1\30A4\30EB(16\9032\6570\8868\8A18 - 1\884C)')
-,p_display_as=>'NATIVE_FILE'
-,p_cSize=>30
-,p_field_template=>wwv_flow_api.id(10993788883671569)
-,p_item_template_options=>'#DEFAULT#'
-,p_attribute_01=>'APEX_APPLICATION_TEMP_FILES'
-,p_attribute_09=>'SESSION'
-,p_attribute_10=>'N'
-,p_attribute_12=>'INLINE'
-);
-wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(10444580605979818)
-,p_name=>'P3_CONTENT'
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_api.id(10444378814979816)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'Y'
-,p_attribute_01=>'N'
 );
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(11031156418812978)
@@ -11364,7 +11395,7 @@ wwv_flow_api.create_page_da_action(
 unistr('// \7F72\540D\3092\3064\3051\308B'),
 unistr('// \53C2\7167\5148: http://blog.livedoor.jp/k_urushima/archives/1759093.html'),
 'window.crypto.subtle.importKey(',
-'    "pkcs8", fromHexString($v(''P3_CONTENT'')), ',
+'    "pkcs8", fromHexString(localStorage[''mykey'']), ',
 '    { name: "RSASSA-PKCS1-v1_5", hash: {name: "SHA-512"} },',
 '    true, ["sign"]',
 ').then(',
