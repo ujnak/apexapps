@@ -28,7 +28,7 @@ prompt APPLICATION 129333 - Key Value編集
 -- Application Export:
 --   Application:     129333
 --   Name:            Key Value編集
---   Date and Time:   03:40 金曜日 2月 12, 2021
+--   Date and Time:   03:42 金曜日 2月 12, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -81,7 +81,7 @@ wwv_flow_api.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'DBCLOUD_TEST')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,unistr('Key Value\7DE8\96C6'))
-,p_alias=>nvl(wwv_flow_application_install.get_application_alias,unistr('KEY-VALUE\7DE8\96C6'))
+,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'INLINEDIALOGEDIT')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'174AE30EAC0AA1CAC4192FFAA3477FF4DD42CB9E914F5A26B9159F3929D1165E'
@@ -106,6 +106,7 @@ wwv_flow_api.create_flow(
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
 ,p_flow_version=>unistr('\30EA\30EA\30FC\30B91.0')
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
+,p_flow_unavailable_text=>unistr('\3053\306E\30A2\30D7\30EA\30B1\30FC\30B7\30E7\30F3\306F\3001\73FE\6642\70B9\3067\306F\4F7F\7528\3067\304D\307E\305B\3093\3002')
 ,p_exact_substitutions_only=>'Y'
 ,p_browser_cache=>'N'
 ,p_browser_frame=>'D'
@@ -115,7 +116,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('Key Value\7DE8\96C6')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210212034043'
+,p_last_upd_yyyymmddhh24miss=>'20210212034232'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
