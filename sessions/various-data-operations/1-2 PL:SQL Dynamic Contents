@@ -1,0 +1,19 @@
+APEXで空のアプリケーションを作成する。
+
+PL/SQL動的コンテンツのリージョンを作成する。
+
+名前は、従業員一覧、とする。
+
+---
+htp.prn('<table>');
+htp.prn('<tr><th>従業員番号</th><th>従業員名</th></tr>');
+for c in (select empno, ename from emp)
+loop
+    htp.prn('<tr><td>');
+    htp.prn(c.empno);
+    htp.prn('</td><td>');
+    htp.prn(c.ename);
+    htp.prn('</td></tr>');
+end loop;
+htp.prn('</table>');
+----

@@ -1,0 +1,68 @@
+1. 動作確認は Autonomous Database のAlways Freeを使って確認する。
+
+2. 最初にAPEXにサインインし、サンプル・データセットよりEMP/DEPTをインストールする。
+
+3. SQLコマンドで、スキーマAPEXDEVに、プロシージャ PRCEMP を作成する。
+
+----
+create or replace procedure prcemp
+as
+begin
+    owa_util.mime_header('text/html',true,'utf-8');
+    htp.prn('<html><body><table>');
+    htp.prn('<tr><th>従業員番号</th><th>従業員名</th></tr>');
+    for c in (select empno, ename from emp)
+    loop
+        htp.prn('<tr><td>');
+        htp.prn(c.empno);
+        htp.prn('</td><td>');
+        htp.prn(c.ename);
+        htp.prn('</td></tr>');
+    end loop;
+    htp.prn('</table></body></html>');
+end prcemp;
+----
+
+4. 実行権限をORDS_PUBLIC_USERに与える。
+
+----
+grant execute on prcemp to ords_public_user;
+----
+
+5. SQL Developer WebでADMINにサインインする。
+
+6. SQLワークシートより、Webエントリポイントを追加する。
+
+----
+begin 
+	apex_instance_admin.add_web_entry_point(
+		p_name => 'APEXDEV.PRCEMP',
+		p_methods => 'GET');
+    commit;
+end;
+----
+
+7. ADBを再起動する。
+
+8. 作成されたプロシージャにアクセスする。
+
+https://e0nmgqkznwmui4k-apexdev19.adb.ap-tokyo-1.oraclecloudapps.com/ords/apexdev.prcemp
+
+以下、表示される。
+
+---
+従業員番号	従業員名
+7839	中島 亜希子
+7698	伊藤 明子
+7782	坂本 明
+7566	関口 晃
+7788	新井 敦子
+7902	石橋 敦
+7369	村田 淳
+7499	村上 綾子
+7521	斉藤 大介
+7654	高橋 大輔
+7844	金子 恵美
+7876	増田 秀樹
+7900	佐野 英樹
+7934	石原 裕美

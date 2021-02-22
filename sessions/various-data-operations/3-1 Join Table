@@ -1,0 +1,171 @@
+以下のSQLでの結果を操作する画面を作ります。
+
+---
+select
+    e.empno,
+    e.ename,
+    e.job,
+    e.mgr,
+    e.hiredate,
+    e.sal,
+    e.comm,
+    d.dname,
+    d.loc
+from emp e join dept d
+    on e.deptno = d.deptno
+---
+
+片側の表であれば、エラーにならない。
+---
+update
+(
+    select
+        e.empno,
+        e.ename,
+        e.job,
+        e.mgr,
+        e.hiredate,
+        e.sal,
+        e.comm,
+        d.dname,
+        d.loc
+    from emp e join dept d
+        on e.deptno = d.deptno
+) j
+set j.sal = 4000
+where j.empno = 7698;
+----
+
+実行するとエラーになる。
+---
+update
+(
+    select
+        e.empno,
+        e.ename,
+        e.job,
+        e.mgr,
+        e.hiredate,
+        e.sal,
+        e.comm,
+        d.dname,
+        d.loc
+    from emp e join dept d
+        on e.deptno = d.deptno
+) j
+set j.sal = 4000, j.dname = 'セールス'
+where j.empno = 7698;
+----
+
+アップデートのコードをPL/SQLで記述する。
+----
+declare
+    l_deptno dept.deptno%type;
+begin
+    -- 部門の番号を取得する。未登録であれば表DEPTに登録する。
+    begin
+        select deptno into l_deptno from dept where dname = :DNAME and loc = :LOC;
+    exception
+        when no_data_found then
+            insert into dept(dname, loc) values(:DNAME, :LOC) returning deptno into l_deptno;
+    end;
+    -- 表EMPを操作します。
+    case :APEX$ROW_STATUS
+    when 'C' then
+        -- 主キーの値を対話グリッドに返すことは必須です。
+        insert into emp(ename, job, mgr, hiredate, sal, comm, deptno)
+        values(:ENAME, :JOB, :MGR, :HIREDATE, :SAL, :COMM, l_deptno)
+        returning empno into :EMPNO;
+    when 'U' then
+        -- 更新するのは従業員の情報のみです。
+        update emp set ename = :ENAME, job = :JOB, mgr = :MGR, hiredate = :HIREDATE,
+            sal = :SAL, comm = :COMM, deptno = l_deptno
+        where empno = :EMPNO;
+    when 'D' then
+        -- 削除するのも従業員の情報のみです。
+        delete from emp where empno = :EMPNO;
+    end case;
+end;
+----
+
+チェックサムの計算について。
+----
+select
+    e.empno,
+    e.ename,
+    e.job,
+    e.mgr,
+    e.hiredate,
+    e.sal,
+    e.comm,
+    d.dname,
+    d.loc,
+    apex_item.md5_checksum(e.empno,e.ename,e.job,
+    e.mgr,e.hiredate,e.sal,e.comm,d.dname,d.loc) cs
+from emp e join dept d
+    on e.deptno = d.deptno
+----
+
+チェックサムの直前の取り出し。
+----
+select
+    e.empno,
+    e.ename,
+    e.job,
+    e.mgr,
+    e.hiredate,
+    e.sal,
+    e.comm,
+    d.dname,
+    d.loc,
+    apex_item.md5_checksum(e.empno,e.ename,e.job,
+    e.mgr,e.hiredate,e.sal,e.comm,d.dname,d.loc) cs
+from emp e join dept d
+    on e.deptno = d.deptno
+where e.empno = 7698
+for update
+----
+
+動的アクションによる更新。
+----
+declare
+    l_deptno dept.deptno%type;
+begin
+    -- 部門の番号を取得する。未登録であれば表DEPTに登録する。
+    begin
+        select deptno into l_deptno from dept where dname = :P5_DNAME and loc = :P5_LOC;
+    exception
+    when no_data_found then
+        insert into dept(dname, loc) values(:P5_DNAME, :P5_LOC) returning deptno into l_deptno;
+    end;
+    -- 更新するのは従業員の情報のみです。
+    update emp set ename = :P5_ENAME, job = :P5_JOB, mgr = :P5_MGR, hiredate = :P5_HIREDATE,
+    sal = :P5_SAL, comm = :P5_COMM, deptno = l_deptno
+    where empno = :P5_EMPNO;
+end;
+
+
+許可された行操作列
+----
+select
+    e.empno,
+    e.ename,
+    e.job,
+    e.mgr,
+    e.hiredate,
+    e.sal,
+    e.comm,
+    d.dname,
+    d.loc,
+    case d.dname
+    when 'セールス' then
+        'UD'
+    when '研究開発' then
+        'U'
+    when '会計' then
+        'D'
+    else
+        null
+    end op
+from emp e join dept d
+on e.deptno = d.deptno

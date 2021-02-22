@@ -1,0 +1,75 @@
+SQL Developer Webで以下のプロシージャを登録する。
+
+----
+create or replace procedure prcemp2
+as
+    l_html_template constant varchar2(4000) := '<html>#HTML#</html>';
+    l_body_template constant varchar2(4000) := '<body>#BODY#</body>';
+    l_table_template constant varchar2(4000) := '<table>#TABLE#</table>';
+    l_row_template constant varchar2(4000) := '<tr>#ROW#</tr>';
+    l_header_template constant varchar2(4000) := '<th>従業員番号</th><th>従業員名</th>';
+    l_data_template constant varchar2(4000) := '<td>#EMPNO#</td><td>#ENAME#</th>';
+    l_buffer varchar2(32000);
+    l_content varchar2(32000);
+    c sys_refcursor;
+    r emp%rowtype;
+    l_sql varchar2(80) := 'select * from emp';
+begin
+    owa_util.mime_header('text/html',true,'utf-8');
+    -- TABLEを作る
+    -- ヘッダーの挿入
+    l_buffer := replace(l_row_template, '#ROW#', l_header_template); -- 行テンプレートをヘッダー・テンプレートで置き換える
+    l_content := l_content || l_buffer; -- 出力バッファに追加する
+    open c for l_sql; -- SQLを実行する
+    loop
+        -- データ行を追加する。
+        fetch c into r;
+        exit when c%notfound;
+        l_buffer := l_data_template; -- データ行のテンプレートを選択する
+        l_buffer := replace(l_buffer, '#EMPNO#', r.empno); -- 従業員番号を置き換える
+        l_buffer := replace(l_buffer, '#ENAME#', r.ename); -- 従業員名を置き換える
+        l_buffer := replace(l_row_template, '#ROW#', l_buffer); -- 行テンプレートをデータ行で置き換える
+        l_content := l_content || l_buffer; -- 出力バッファに追加する
+    end loop;
+    close c;
+    l_buffer := l_content;
+    l_content := replace(l_table_template, '#TABLE#', l_buffer); -- 表テンプレートをヘッダーとデータで置き換える
+    l_buffer := l_content;
+    l_content := replace(l_body_template, '#BODY#', l_buffer); -- 本文テンプレートを表で置き換える
+    l_buffer := l_content;
+    l_content := replace(l_html_template, '#HTML#', l_buffer); -- HTMLテンプレートを本文で置き換える
+    htp.prn(l_content);
+end prcemp2;
+----
+
+実行権限を与える。
+----
+grant execute on prcemp2 to ords_public_user;
+----
+
+SQL Developer Webにもどって、エントリポイントを追加する。
+---
+begin 
+	apex_instance_admin.add_web_entry_point(
+		p_name => 'APEXDEV.PRCEMP2',
+		p_methods => 'GET');
+    commit;
+end;
+
+結果は同じ。
+----
+従業員番号	従業員名
+7839	中島 亜希子
+7698	伊藤 明子
+7782	坂本 明
+7566	関口 晃
+7788	新井 敦子
+7902	石橋 敦
+7369	村田 淳
+7499	村上 綾子
+7521	斉藤 大介
+7654	高橋 大輔
+7844	金子 恵美
+7876	増田 秀樹
+7900	佐野 英樹
+7934	石原 裕美
