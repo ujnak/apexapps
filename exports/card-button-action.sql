@@ -28,7 +28,7 @@ prompt APPLICATION 27108 - カードアクション
 -- Application Export:
 --   Application:     27108
 --   Name:            カードアクション
---   Date and Time:   03:49 土曜日 3月 13, 2021
+--   Date and Time:   04:08 土曜日 3月 13, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30AB\30FC\30C9\30A2\30AF\30B7\30E7\30F3')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210313034923'
+,p_last_upd_yyyymmddhh24miss=>'20210313035905'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -10860,7 +10860,7 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210313034208'
+,p_last_upd_yyyymmddhh24miss=>'20210313035905'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41373978053023785436)
@@ -10930,7 +10930,8 @@ wwv_flow_api.create_page_da_event(
 ,p_event_sequence=>10
 ,p_triggering_element_type=>'JQUERY_SELECTOR'
 ,p_triggering_element=>'.js-editCard'
-,p_bind_type=>'bind'
+,p_bind_type=>'live'
+,p_bind_delegate_to_selector=>'#empcards'
 ,p_bind_event_type=>'click'
 );
 wwv_flow_api.create_page_da_action(
