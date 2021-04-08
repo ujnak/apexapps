@@ -28,14 +28,14 @@ prompt APPLICATION 10928 - ページネーション確認
 -- Application Export:
 --   Application:     10928
 --   Name:            ページネーション確認
---   Date and Time:   07:37 水曜日 4月 7, 2021
+--   Date and Time:   09:59 木曜日 4月 8, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                      6
+--     Pages:                      9
 --       Items:                    3
 --       Processes:                4
---       Regions:                  6
+--       Regions:                  9
 --       Buttons:                  1
 --     Shared Components:
 --       Logic:
@@ -80,7 +80,7 @@ wwv_flow_api.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'DBCLOUD_TEST')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,unistr('\30DA\30FC\30B8\30CD\30FC\30B7\30E7\30F3\78BA\8A8D'))
-,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'PESUDO-SELECT-HINT')
+,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'PSEUDO-SELECT-HINT')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'1422955C00B56784007D641BC4B798424D9DE52C769378D9210D585C9879F451'
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30DA\30FC\30B8\30CD\30FC\30B7\30E7\30F3\78BA\8A8D')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210407073730'
+,p_last_upd_yyyymmddhh24miss=>'20210408090451'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -161,6 +161,30 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:::'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'4'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(48569125657616001053)
+,p_list_item_display_sequence=>50
+,p_list_item_link_text=>'Pagination Type None'
+,p_list_item_link_target=>'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'5'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(48580667599685739595)
+,p_list_item_display_sequence=>60
+,p_list_item_link_text=>'Pagination Type Z'
+,p_list_item_link_target=>'f?p=&APP_ID.:6:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'6'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(48581952030785460706)
+,p_list_item_display_sequence=>70
+,p_list_item_link_text=>'Maximum Rows'
+,p_list_item_link_target=>'f?p=&APP_ID.:7:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'7'
 );
 end;
 /
@@ -11153,6 +11177,263 @@ wwv_flow_api.create_worksheet_rpt(
 ,p_application_user=>'APXWS_DEFAULT'
 ,p_report_seq=>10
 ,p_report_alias=>'483484291'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'ID:NAME:STATUS'
+);
+end;
+/
+prompt --application/pages/page_00005
+begin
+wwv_flow_api.create_page(
+ p_id=>5
+,p_user_interface_id=>wwv_flow_api.id(48311562898399760779)
+,p_name=>'Pagination Type None'
+,p_alias=>'PAGINATION-TYPE-NONE'
+,p_step_title=>'Pagination Type None'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_last_upd_yyyymmddhh24miss=>'20210408084941'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(145244482121477560539)
+,p_plug_name=>'Pagination Type None'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(48311475773920760678)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'BODY'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select ID, ',
+'       NAME, ',
+'       STATUS',
+'from PGN_TEST_DATA'))
+,p_optimizer_hint=>'APEX$USE_NO_PAGINATION'
+,p_plug_source_type=>'NATIVE_IR'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_prn_page_header=>unistr('\30D2\30F3\30C8\306A\3057')
+);
+wwv_flow_api.create_worksheet(
+ p_id=>wwv_flow_api.id(145244482225038560539)
+,p_name=>unistr('\30D2\30F3\30C8\306A\3057')
+,p_max_row_count_message=>unistr('\3053\306E\30EC\30DD\30FC\30C8\306E\6700\5927\884C\6570\306F#MAX_ROW_COUNT#\884C\3067\3059\3002\30D5\30A3\30EB\30BF\3092\9069\7528\3057\3066\3001\554F\5408\305B\306E\30EC\30B3\30FC\30C9\6570\3092\524A\6E1B\3057\3066\304F\3060\3055\3044\3002')
+,p_no_data_found_message=>unistr('\30C7\30FC\30BF\304C\898B\3064\304B\308A\307E\305B\3093\3002')
+,p_report_list_mode=>'TABS'
+,p_show_detail_link=>'N'
+,p_download_formats=>'CSV:HTML:EMAIL:XLSX:PDF:RTF'
+,p_owner=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_internal_uid=>145244482225038560539
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48569126345694001054)
+,p_db_column_name=>'ID'
+,p_display_order=>1
+,p_column_identifier=>'A'
+,p_column_label=>'Id'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48569126758890001055)
+,p_db_column_name=>'NAME'
+,p_display_order=>2
+,p_column_identifier=>'B'
+,p_column_label=>'Name'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48569127114658001055)
+,p_db_column_name=>'STATUS'
+,p_display_order=>3
+,p_column_identifier=>'C'
+,p_column_label=>'Status'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_rpt(
+ p_id=>wwv_flow_api.id(145247081108750521601)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'485691275'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'ID:NAME:STATUS'
+);
+end;
+/
+prompt --application/pages/page_00006
+begin
+wwv_flow_api.create_page(
+ p_id=>6
+,p_user_interface_id=>wwv_flow_api.id(48311562898399760779)
+,p_name=>'Pagination Type Z'
+,p_alias=>'PAGINATION-TYPE-Z'
+,p_step_title=>'Pagination Type Z'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_last_upd_yyyymmddhh24miss=>'20210408085150'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(145256024092324299081)
+,p_plug_name=>'Pagination Type Z'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(48311475773920760678)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'BODY'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select ID, ',
+'       NAME, ',
+'       STATUS',
+'from PGN_TEST_DATA'))
+,p_optimizer_hint=>'APEX$USE_NO_PAGINATION'
+,p_plug_source_type=>'NATIVE_IR'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_prn_page_header=>unistr('\30D2\30F3\30C8\306A\3057')
+);
+wwv_flow_api.create_worksheet(
+ p_id=>wwv_flow_api.id(145256024195885299081)
+,p_name=>unistr('\30D2\30F3\30C8\306A\3057')
+,p_max_row_count_message=>unistr('\3053\306E\30EC\30DD\30FC\30C8\306E\6700\5927\884C\6570\306F#MAX_ROW_COUNT#\884C\3067\3059\3002\30D5\30A3\30EB\30BF\3092\9069\7528\3057\3066\3001\554F\5408\305B\306E\30EC\30B3\30FC\30C9\6570\3092\524A\6E1B\3057\3066\304F\3060\3055\3044\3002')
+,p_no_data_found_message=>unistr('\30C7\30FC\30BF\304C\898B\3064\304B\308A\307E\305B\3093\3002')
+,p_pagination_type=>'ROWS_X_TO_Y_OF_Z'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_show_detail_link=>'N'
+,p_download_formats=>'CSV:HTML:EMAIL:XLSX:PDF:RTF'
+,p_owner=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_internal_uid=>145256024195885299081
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48580668272856739597)
+,p_db_column_name=>'ID'
+,p_display_order=>1
+,p_column_identifier=>'A'
+,p_column_label=>'Id'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48580668629049739598)
+,p_db_column_name=>'NAME'
+,p_display_order=>2
+,p_column_identifier=>'B'
+,p_column_label=>'Name'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48580669090821739599)
+,p_db_column_name=>'STATUS'
+,p_display_order=>3
+,p_column_identifier=>'C'
+,p_column_label=>'Status'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_rpt(
+ p_id=>wwv_flow_api.id(145258623079597260143)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'485806694'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'ID:NAME:STATUS'
+);
+end;
+/
+prompt --application/pages/page_00007
+begin
+wwv_flow_api.create_page(
+ p_id=>7
+,p_user_interface_id=>wwv_flow_api.id(48311562898399760779)
+,p_name=>'Maximum Rows'
+,p_alias=>'MAXIMUM-ROWS'
+,p_step_title=>'Maximum Rows'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_last_upd_yyyymmddhh24miss=>'20210408090451'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(193837975856949759785)
+,p_plug_name=>'Maximum Rows'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(48311475773920760678)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'BODY'
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select ID, ',
+'       NAME, ',
+'       STATUS',
+'from PGN_TEST_DATA'))
+,p_optimizer_hint=>'APEX$USE_NO_PAGINATION'
+,p_plug_source_type=>'NATIVE_IR'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_prn_page_header=>unistr('\30D2\30F3\30C8\306A\3057')
+);
+wwv_flow_api.create_worksheet(
+ p_id=>wwv_flow_api.id(193837975960510759785)
+,p_name=>unistr('\30D2\30F3\30C8\306A\3057')
+,p_max_row_count=>'10000'
+,p_max_row_count_message=>unistr('\3053\306E\30EC\30DD\30FC\30C8\306E\6700\5927\884C\6570\306F#MAX_ROW_COUNT#\884C\3067\3059\3002\30D5\30A3\30EB\30BF\3092\9069\7528\3057\3066\3001\554F\5408\305B\306E\30EC\30B3\30FC\30C9\6570\3092\524A\6E1B\3057\3066\304F\3060\3055\3044\3002')
+,p_no_data_found_message=>unistr('\30C7\30FC\30BF\304C\898B\3064\304B\308A\307E\305B\3093\3002')
+,p_pagination_type=>'ROWS_X_TO_Y_OF_Z'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_show_detail_link=>'N'
+,p_download_formats=>'CSV:HTML:EMAIL:XLSX:PDF:RTF'
+,p_owner=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_internal_uid=>193837975960510759785
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48581952757296460708)
+,p_db_column_name=>'ID'
+,p_display_order=>1
+,p_column_identifier=>'A'
+,p_column_label=>'Id'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48581953199703460709)
+,p_db_column_name=>'NAME'
+,p_display_order=>2
+,p_column_identifier=>'B'
+,p_column_label=>'Name'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_column(
+ p_id=>wwv_flow_api.id(48581953571939460709)
+,p_db_column_name=>'STATUS'
+,p_display_order=>3
+,p_column_identifier=>'C'
+,p_column_label=>'Status'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+);
+wwv_flow_api.create_worksheet_rpt(
+ p_id=>wwv_flow_api.id(193840574844222720847)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'485819539'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
 ,p_report_columns=>'ID:NAME:STATUS'
