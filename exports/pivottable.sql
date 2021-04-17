@@ -12536,7 +12536,7 @@ wwv_flow_api.create_page_process(
 '    rs pvt_employee_skills_t;',
 'begin',
 '    select * bulk collect into rs from pvt_employee_skills where employee_name = :P8_EMPLOYEE_NAME',
-'    for update;',
+'    for update nowait;',
 'end;'))
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
@@ -12998,7 +12998,7 @@ wwv_flow_api.create_page_process(
 '    rs pvt_employee_skills_t;',
 'begin',
 '    select * bulk collect into rs from pvt_employee_skills where employee_name = :EMPLOYEE_NAME',
-'    for update;',
+'    for update nowait;',
 'end;'))
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );

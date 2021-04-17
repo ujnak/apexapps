@@ -14158,7 +14158,7 @@ wwv_flow_api.create_page_da_action(
 '  select t1.row_version + t2.row_version into l_row_version',
 '  from tst_concjoin1 t1 join tst_concjoin2 t2 ',
 '      on t1.id = t2.id where t1.id = :P15_ID',
-'  for update;',
+'  for update nowait;',
 '  if l_row_version = :P15_ROW_VERSION then',
 '      update tst_concjoin1 set value1 = :P15_VALUE1, value11 = :P15_VALUE11 where id = :P15_ID;',
 '      update tst_concjoin2 set value2 = :P15_VALUE2, value22 = :P15_VALUE22 where id = :P15_ID;',

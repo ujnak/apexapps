@@ -11251,6 +11251,7 @@ unistr('        -- \66F4\65B0\5BFE\8C61\306B\542B\307E\308C\306A\3044\65E2\5B58\
 '    where 1=1',
 '      and prefecture = :P3_PREFECTURE',
 '      and city = :P3_CITY',
+'      for update nowait',
 '    ;',
 'end;'))
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'

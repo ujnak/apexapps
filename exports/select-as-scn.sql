@@ -11097,7 +11097,7 @@ wwv_flow_api.create_page_process(
 'declare',
 '    r grd_paging_data%rowtype;',
 'begin',
-'    select * into r from grd_paging_data where id = :ID for update;',
+'    select * into r from grd_paging_data where id = :ID for update nowait;',
 'end;'))
 ,p_attribute_08=>'Y'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'

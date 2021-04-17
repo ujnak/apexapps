@@ -11188,7 +11188,7 @@ wwv_flow_api.create_page_process(
 'declare',
 '  rec ttl_sums%rowtype;',
 'begin',
-'  select * into rec from ttl_sums where id = :ID for update;',
+'  select * into rec from ttl_sums where id = :ID for update nowait;',
 'end;'))
 ,p_attribute_08=>'Y'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
