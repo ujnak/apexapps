@@ -28,17 +28,17 @@ prompt APPLICATION 98698 - ファイルのアップロード
 -- Application Export:
 --   Application:     98698
 --   Name:            ファイルのアップロード
---   Date and Time:   02:43 木曜日 4月 22, 2021
+--   Date and Time:   04:40 木曜日 4月 22, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                      5
---       Items:                   11
+--     Pages:                      6
+--       Items:                   12
 --       Computations:             1
---       Processes:               10
---       Regions:                  9
---       Buttons:                  9
---       Dynamic Actions:          2
+--       Processes:               12
+--       Regions:                 12
+--       Buttons:                 11
+--       Dynamic Actions:          3
 --     Shared Components:
 --       Logic:
 --       Navigation:
@@ -117,7 +117,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30D5\30A1\30A4\30EB\306E\30A2\30C3\30D7\30ED\30FC\30C9')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210422024249'
+,p_last_upd_yyyymmddhh24miss=>'20210422043919'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -155,6 +155,14 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'3'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(51671936143849724455)
+,p_list_item_display_sequence=>40
+,p_list_item_link_text=>unistr('\30C6\30AD\30B9\30C8\9818\57DF')
+,p_list_item_link_target=>'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'4'
 );
 end;
 /
@@ -11655,6 +11663,261 @@ wwv_flow_api.create_page_process(
 ,p_region_id=>wwv_flow_api.id(51501205948671656546)
 ,p_process_type=>'NATIVE_FORM_INIT'
 ,p_process_name=>unistr('\521D\671F\5316\30D5\30A9\30FC\30E0\30E6\30FC\30B6\30FC\8868')
+);
+end;
+/
+prompt --application/pages/page_00004
+begin
+wwv_flow_api.create_page(
+ p_id=>4
+,p_user_interface_id=>wwv_flow_api.id(51375206228028803437)
+,p_name=>unistr('\30C6\30AD\30B9\30C8\9818\57DF')
+,p_alias=>unistr('\30C6\30AD\30B9\30C8\9818\57DF')
+,p_step_title=>unistr('\30C6\30AD\30B9\30C8\9818\57DF')
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_last_upd_yyyymmddhh24miss=>'20210422043919'
+);
+wwv_flow_api.create_report_region(
+ p_id=>wwv_flow_api.id(51421022724106050325)
+,p_name=>unistr('\30D7\30EC\30D3\30E5\30FC')
+,p_template=>wwv_flow_api.id(51375121092404803360)
+,p_display_sequence=>20
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_component_template_options=>'#DEFAULT#:t-Report--altRowsDefault:t-Report--rowHighlight'
+,p_display_point=>'BODY'
+,p_source_type=>'NATIVE_SQL_REPORT'
+,p_query_type=>'SQL'
+,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select',
+'    col001 "PREFECTURE",',
+'    col002 "CITY",',
+'    col003 "COUNT"',
+'from',
+'    apex_data_parser.parse(',
+'        p_content => utl_raw.cast_to_raw(:P4_DATA),',
+'        p_file_name => ''dummy.csv'',',
+'        p_skip_rows => 1,',
+'        p_file_charset => ''AL32UTF8'',',
+'        p_max_rows => 10',
+'    )'))
+,p_ajax_enabled=>'Y'
+,p_query_row_template=>wwv_flow_api.id(51375149941695803384)
+,p_query_num_rows=>15
+,p_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_query_num_rows_type=>'NEXT_PREVIOUS_LINKS'
+,p_pagination_display_position=>'BOTTOM_RIGHT'
+,p_csv_output=>'N'
+,p_prn_output=>'N'
+,p_sort_null=>'L'
+,p_plug_query_strip_html=>'N'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(51421022818430050326)
+,p_query_column_id=>1
+,p_column_alias=>'PREFECTURE'
+,p_column_display_sequence=>10
+,p_column_heading=>'Prefecture'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(51421022960796050327)
+,p_query_column_id=>2
+,p_column_alias=>'CITY'
+,p_column_display_sequence=>20
+,p_column_heading=>'City'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(51421023004269050328)
+,p_query_column_id=>3
+,p_column_alias=>'COUNT'
+,p_column_display_sequence=>30
+,p_column_heading=>'Count'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_region(
+ p_id=>wwv_flow_api.id(51421023671764050334)
+,p_name=>unistr('\30A2\30C3\30D7\30ED\30FC\30C9\7D50\679C')
+,p_template=>wwv_flow_api.id(51375121092404803360)
+,p_display_sequence=>30
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_component_template_options=>'#DEFAULT#:t-Report--altRowsDefault:t-Report--rowHighlight'
+,p_new_grid_row=>false
+,p_display_point=>'BODY'
+,p_source_type=>'NATIVE_SQL_REPORT'
+,p_query_type=>'TABLE'
+,p_query_table=>'FUP_CITYLIST'
+,p_include_rowid_column=>false
+,p_ajax_enabled=>'Y'
+,p_query_row_template=>wwv_flow_api.id(51375149941695803384)
+,p_query_num_rows=>15
+,p_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_query_num_rows_type=>'NEXT_PREVIOUS_LINKS'
+,p_pagination_display_position=>'BOTTOM_RIGHT'
+,p_csv_output=>'N'
+,p_prn_output=>'N'
+,p_sort_null=>'L'
+,p_plug_query_strip_html=>'N'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(51421023748980050335)
+,p_query_column_id=>1
+,p_column_alias=>'ID'
+,p_column_display_sequence=>10
+,p_column_heading=>'Id'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(51421023843259050336)
+,p_query_column_id=>2
+,p_column_alias=>'PREFECTURE'
+,p_column_display_sequence=>20
+,p_column_heading=>'Prefecture'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(51421023912132050337)
+,p_query_column_id=>3
+,p_column_alias=>'CITY'
+,p_column_display_sequence=>30
+,p_column_heading=>'City'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(51421024088654050338)
+,p_query_column_id=>4
+,p_column_alias=>'COUNT'
+,p_column_display_sequence=>40
+,p_column_heading=>'Count'
+,p_use_as_row_header=>'N'
+,p_disable_sort_column=>'N'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(51671936585827724457)
+,p_plug_name=>unistr('\30C6\30AD\30B9\30C8\9818\57DF')
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(51375121092404803360)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'BODY'
+,p_attribute_01=>'N'
+,p_attribute_02=>'TEXT'
+,p_attribute_03=>'N'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(51421023153837050329)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(51671936585827724457)
+,p_button_name=>'B_SUBMIT'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(51375183526804803415)
+,p_button_image_alt=>unistr('\9001\4FE1')
+,p_button_position=>'BELOW_BOX'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(51421023272898050330)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_api.id(51671936585827724457)
+,p_button_name=>'B_CLEAR'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(51375183526804803415)
+,p_button_image_alt=>unistr('\30AF\30EA\30A2')
+,p_button_position=>'BELOW_BOX'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(51421022480165050322)
+,p_name=>'P4_DATA'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_api.id(51671936585827724457)
+,p_prompt=>unistr('\30A2\30C3\30D7\30ED\30FC\30C9\3059\308B\30C7\30FC\30BF')
+,p_display_as=>'NATIVE_TEXTAREA'
+,p_cSize=>30
+,p_cHeight=>5
+,p_field_template=>wwv_flow_api.id(51375182431560803414)
+,p_item_template_options=>'#DEFAULT#'
+,p_attribute_01=>'Y'
+,p_attribute_02=>'N'
+,p_attribute_03=>'N'
+,p_attribute_04=>'BOTH'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(51421022588095050323)
+,p_name=>unistr('\30DA\30FC\30B8\306E\9001\4FE1')
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P4_DATA'
+,p_bind_type=>'bind'
+,p_bind_event_type=>'change'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(51421022657085050324)
+,p_event_id=>wwv_flow_api.id(51421022588095050323)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_SUBMIT_PAGE'
+,p_attribute_02=>'Y'
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(51421023375061050331)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>unistr('\8868\3078\30ED\30FC\30C9')
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'    delete from fup_citylist;',
+'    insert into fup_citylist(prefecture, city, count)',
+'    select',
+'        col001 "PREFECTURE",',
+'        col002 "CITY",',
+'        col003 "COUNT"',
+'    from',
+'        apex_data_parser.parse(',
+'            p_content => utl_raw.cast_to_raw(:P4_DATA),',
+'            p_file_name => ''dummy.csv'',',
+'            p_skip_rows => 1,',
+'            p_file_charset => ''AL32UTF8''',
+'        );',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_api.id(51421023153837050329)
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(51421023439353050332)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_SESSION_STATE'
+,p_process_name=>unistr('\30DA\30FC\30B8\306E\521D\671F\5316')
+,p_attribute_01=>'CLEAR_CACHE_CURRENT_PAGE'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_api.id(51421023272898050330)
 );
 end;
 /
