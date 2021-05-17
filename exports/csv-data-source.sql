@@ -28,7 +28,7 @@ prompt APPLICATION 102 - CSVデータ・ソース
 -- Application Export:
 --   Application:     102
 --   Name:            CSVデータ・ソース
---   Date and Time:   18:24 月曜日 5月 17, 2021
+--   Date and Time:   18:33 月曜日 5月 17, 2021
 --   Exported By:     ADMIN
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('CSV\30C7\30FC\30BF\30FB\30BD\30FC\30B9')
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20210517182407'
+,p_last_upd_yyyymmddhh24miss=>'20210517183247'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -206,6 +206,10 @@ wwv_flow_api.create_web_source_module(
 ,p_data_profile_id=>wwv_flow_api.id(5665880843397403)
 ,p_remote_server_id=>wwv_flow_api.id(5467151174101606)
 ,p_url_path_prefix=>'master/exports/citylist.csv'
+,p_sync_is_active=>true
+,p_sync_table_name=>'FDL_CITYLIST'
+,p_sync_type=>'MERGE'
+,p_sync_interval=>'FREQ=MINUTELY;INTERVAL=5;BYSECOND=0'
 ,p_sync_max_http_requests=>1000
 );
 wwv_flow_api.create_web_source_operation(
@@ -11404,7 +11408,7 @@ wwv_flow_api.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20210517182053'
+,p_last_upd_yyyymmddhh24miss=>'20210517183247'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(5663457763209728)
@@ -11431,6 +11435,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_display_point=>'BODY'
 ,p_location=>'WEB_SOURCE'
 ,p_web_src_module_id=>wwv_flow_api.id(5667269956397407)
+,p_use_local_sync_table=>false
 ,p_plug_source_type=>'NATIVE_IR'
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_prn_content_disposition=>'ATTACHMENT'
