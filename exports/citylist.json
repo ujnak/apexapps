@@ -1,41 +1,49 @@
 ﻿{
     "items":[
         {
+            "id":1,
             "prefecture":"北海道",
             "city":"札幌",
             "count":100
         },
         {
+            "id":2,
             "prefecture":"宮城県",
             "city":"仙台市",
             "count":200
         },
         {
+            "id":3,
             "prefecture":"東京都",
             "city":"中央区",
             "count":1000
         },
         {
+            "id":4,
             "prefecture":"新潟県",
             "city":"新潟市",
             "count":400
         },
         {
+            "id":5,
             "prefecture":"大阪府",
             "city":"大阪市",
             "count":100
         },
         {
+            "id":6,
             "prefecture":"広島県",
             "city":"広島市",
             "count":300
         },
         {
+            "id":7,
             "prefecture":"高知県",
             "city":"高知市",
             "count":90
         },
         {
+            "id":8,
             "prefecture":"福岡県",
             "city":"福岡市",
             "count":800
