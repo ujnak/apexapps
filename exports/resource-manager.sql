@@ -28,7 +28,7 @@ prompt APPLICATION 101 - リソースマネージャ確認
 -- Application Export:
 --   Application:     101
 --   Name:            リソースマネージャ確認
---   Date and Time:   16:10 月曜日 5月 31, 2021
+--   Date and Time:   18:40 月曜日 5月 31, 2021
 --   Exported By:     ADMIN
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -64,6 +64,7 @@ prompt APPLICATION 101 - リソースマネージャ確認
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
+--       Install scripts:          3
 --   Version:         21.1.0
 --   Instance ID:     697944354032121
 --
@@ -120,7 +121,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30EA\30BD\30FC\30B9\30DE\30CD\30FC\30B8\30E3\78BA\8A8D')
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20210531155638'
+,p_last_upd_yyyymmddhh24miss=>'20210531184029'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11545,7 +11546,78 @@ end;
 /
 prompt --application/deployment/definition
 begin
-null;
+wwv_flow_api.create_install(
+ p_id=>wwv_flow_api.id(5189445689090460)
+);
+end;
+/
+prompt --application/deployment/install/install_context
+begin
+wwv_flow_api.create_install_script(
+ p_id=>wwv_flow_api.id(5189806868095316)
+,p_install_id=>wwv_flow_api.id(5189445689090460)
+,p_name=>'context'
+,p_sequence=>10
+,p_script_type=>'INSTALL'
+,p_script_clob=>'create context ctx_consumer_group using ctx_consumer_group_pkg;'
+);
+end;
+/
+prompt --application/deployment/install/install_package
+begin
+wwv_flow_api.create_install_script(
+ p_id=>wwv_flow_api.id(5189932250098178)
+,p_install_id=>wwv_flow_api.id(5189445689090460)
+,p_name=>'package'
+,p_sequence=>20
+,p_script_type=>'INSTALL'
+,p_script_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'create or replace package ctx_consumer_group_pkg is',
+'procedure set',
+'(',
+'   p_group in varchar2',
+');',
+'procedure clear;',
+'end;',
+'/'))
+);
+end;
+/
+prompt --application/deployment/install/install_packagegody
+begin
+wwv_flow_api.create_install_script(
+ p_id=>wwv_flow_api.id(5190098350101150)
+,p_install_id=>wwv_flow_api.id(5189445689090460)
+,p_name=>'packagegody'
+,p_sequence=>30
+,p_script_type=>'INSTALL'
+,p_script_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'create or replace package body ctx_consumer_group_pkg is',
+'procedure set(',
+'  p_group in varchar2',
+')',
+'is',
+'  l_old_group varchar2(30);',
+'begin',
+'apex_debug.info(''consumer group is set to '' || p_group);',
+'dbms_session.switch_current_consumer_group(p_group, l_old_group, FALSE);',
+'apex_debug.info(''preserve old consumer group '' || l_old_group);',
+'dbms_session.set_context(''ctx_consumer_group'',''name'',l_old_group);',
+'end set;',
+'procedure clear',
+'is',
+'    l_group varchar2(30);',
+'    l_old_group varchar2(30);',
+'begin',
+'l_group := sys_context(''ctx_consumer_group'',''name'');',
+'apex_debug.info(''recover old consumer group '' || l_group);',
+'dbms_session.switch_current_consumer_group(l_group, l_old_group, FALSE);',
+'apex_debug.info(''previous consumer group '' || l_old_group);',
+'dbms_session.clear_context(''ctx_consumer_group'');',
+'end clear;',
+'end ctx_consumer_group_pkg;',
+'/'))
+);
 end;
 /
 prompt --application/deployment/checks
