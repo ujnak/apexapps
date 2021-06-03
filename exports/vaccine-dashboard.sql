@@ -28,7 +28,7 @@ prompt APPLICATION 116030 - ワクチン接種状況ダッシュボード
 -- Application Export:
 --   Application:     116030
 --   Name:            ワクチン接種状況ダッシュボード
---   Date and Time:   04:15 木曜日 6月 3, 2021
+--   Date and Time:   05:59 木曜日 6月 3, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30EF\30AF\30C1\30F3\63A5\7A2E\72B6\6CC1\30C0\30C3\30B7\30E5\30DC\30FC\30C9')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210603041426'
+,p_last_upd_yyyymmddhh24miss=>'20210603055842'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11348,7 +11348,7 @@ wwv_flow_api.create_page(
 ''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210603041426'
+,p_last_upd_yyyymmddhh24miss=>'20210603055842'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(10176525844999518432)
@@ -12624,20 +12624,6 @@ wwv_flow_api.create_page_da_action(
 ,p_affected_elements=>'P1_PREFECTURE'
 ,p_attribute_01=>'STATIC_ASSIGNMENT'
 ,p_attribute_02=>'1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20:21:22:23:24:25:26:27:28:29:30:31:32:33:34:35:36:37:38:39:40:41:42:43:44:45:46:47'
-,p_attribute_09=>'N'
-,p_wait_for_result=>'Y'
-);
-wwv_flow_api.create_page_da_action(
- p_id=>wwv_flow_api.id(10176523955612518413)
-,p_event_id=>wwv_flow_api.id(20467929968218448359)
-,p_event_result=>'TRUE'
-,p_action_sequence=>20
-,p_execute_on_page_init=>'Y'
-,p_action=>'NATIVE_SET_VALUE'
-,p_affected_elements_type=>'ITEM'
-,p_affected_elements=>'P1_PREFECTURE_NAME'
-,p_attribute_01=>'STATIC_ASSIGNMENT'
-,p_attribute_02=>unistr('\5168\56FD')
 ,p_attribute_09=>'N'
 ,p_wait_for_result=>'Y'
 );
