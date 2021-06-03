@@ -28,7 +28,7 @@ prompt APPLICATION 116030 - ワクチン接種状況ダッシュボード
 -- Application Export:
 --   Application:     116030
 --   Name:            ワクチン接種状況ダッシュボード
---   Date and Time:   03:15 木曜日 6月 3, 2021
+--   Date and Time:   04:15 木曜日 6月 3, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30EF\30AF\30C1\30F3\63A5\7A2E\72B6\6CC1\30C0\30C3\30B7\30E5\30DC\30FC\30C9')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210603031502'
+,p_last_upd_yyyymmddhh24miss=>'20210603041426'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11348,7 +11348,7 @@ wwv_flow_api.create_page(
 ''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210603031502'
+,p_last_upd_yyyymmddhh24miss=>'20210603041426'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(10176525844999518432)
@@ -11792,6 +11792,7 @@ wwv_flow_api.create_jet_chart_series(
 '        and prefecture in (select column_value from apex_string.split(:P1_PREFECTURE, '':''))',
 '    group by count_date',
 ')'))
+,p_ajax_items_to_submit=>'P1_GENDER,P1_AGE,P1_PREFECTURE'
 ,p_series_type=>'line'
 ,p_items_value_column_name=>'COUNT'
 ,p_items_label_column_name=>'COUNT_DATE'
@@ -11826,6 +11827,7 @@ wwv_flow_api.create_jet_chart_series(
 '        and prefecture in (select column_value from apex_string.split(:P1_PREFECTURE, '':''))',
 '    group by count_date',
 ')'))
+,p_ajax_items_to_submit=>'P1_GENDER,P1_AGE,P1_PREFECTURE'
 ,p_series_type=>'line'
 ,p_items_value_column_name=>'COUNT'
 ,p_items_label_column_name=>'COUNT_DATE'
