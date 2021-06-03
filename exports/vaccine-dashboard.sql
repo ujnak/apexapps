@@ -28,7 +28,7 @@ prompt APPLICATION 116030 - ワクチン接種状況ダッシュボード
 -- Application Export:
 --   Application:     116030
 --   Name:            ワクチン接種状況ダッシュボード
---   Date and Time:   02:12 木曜日 6月 3, 2021
+--   Date and Time:   03:15 木曜日 6月 3, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30EF\30AF\30C1\30F3\63A5\7A2E\72B6\6CC1\30C0\30C3\30B7\30E5\30DC\30FC\30C9')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210603021137'
+,p_last_upd_yyyymmddhh24miss=>'20210603031502'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11310,10 +11310,45 @@ wwv_flow_api.create_page(
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '.appendPercentSign::after {',
 '    content: "%";',
-'}'))
+'}',
+'',
+'.bgdolor-level-100 {',
+'    background-color: rgb(0,255,255);',
+'}',
+'.bgcolor-level-90 {',
+'    background-color: rgb(25,255,255);',
+'}',
+'.bgcolor-level-80 {',
+'    background-color: rgb(50,255,255);',
+'}',
+'.bgcolor-level-70 {',
+'    background-color: rgb(75,255,255);',
+'}',
+'.bgcolor-level-60 {',
+'    background-color: rgb(100,255,255);',
+'}',
+'.bgcolor-level-50 {',
+'    background-color: rgb(125, 185, 185);',
+'}',
+'.bgcolor-level-40 {',
+'    background-color: rgb(150,255,255);',
+'}',
+'.bgcolor-level-30 {',
+'    background-color: rgb(175,255,255);',
+'}',
+'.bgcolor-level-20 {',
+'    background-color: rgb(200,255,255);',
+'}',
+'.bgcolor-level-10 {',
+'    background-color: rgb(225,255,255);',
+'}',
+'.bgcolor-level-00 {',
+'    background-color: rgb(255,255,255);',
+'}',
+''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210603021137'
+,p_last_upd_yyyymmddhh24miss=>'20210603031502'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(10176525844999518432)
@@ -12103,7 +12138,31 @@ wwv_flow_api.create_page_plug(
 '    f.count count_first,',
 '    (f.count / t.total) * 100 rate_first,',
 '    s.count count_second,',
-'    (s.count / t.total) * 100 rate_second',
+'    (s.count / t.total) * 100 rate_second,',
+'    case ',
+'    when (f.count / t.total) * 100 >= 100 then',
+'        ''bgcolor-level-100''',
+'    when (f.count / t.total) * 100 >= 90 then',
+'        ''bgcolor-level-90''',
+'    when (f.count / t.total) * 100 >= 80 then',
+'        ''bgcolor-level-80''',
+'    when (f.count / t.total) * 100 >= 70 then',
+'        ''bgcolor-level-70''',
+'    when (f.count / t.total) * 100 >= 60 then',
+'        ''bgcolor-level-60''',
+'    when (f.count / t.total) * 100 >= 50 then',
+'        ''bgcolor-level-50''',
+'    when (f.count / t.total) * 100 >= 40 then',
+'        ''bgcolor-level-40''',
+'    when (f.count / t.total) * 100 >= 30 then',
+'        ''bgcolor-level-30''',
+'    when (f.count / t.total) * 100 >= 20 then',
+'        ''bgcolor-level-20''',
+'    when (f.count / t.total) * 100 >= 10 then',
+'        ''bgcolor-level-10''',
+'    else',
+'        ''bgcolor-level-00''',
+'    end color',
 'from v_first f ',
 '    join v_second s on f.prefecture = s.prefecture',
 '    join v_total t  on f.prefecture = t.prefecture'))
@@ -12138,6 +12197,23 @@ wwv_flow_api.create_page_plug(
 ,p_prn_page_header_alignment=>'CENTER'
 ,p_prn_page_footer_alignment=>'CENTER'
 ,p_prn_border_color=>'#666666'
+);
+wwv_flow_api.create_region_column(
+ p_id=>wwv_flow_api.id(10176526369395518437)
+,p_name=>'COLOR'
+,p_source_type=>'DB_COLUMN'
+,p_source_expression=>'COLOR'
+,p_data_type=>'VARCHAR2'
+,p_is_query_only=>false
+,p_item_type=>'NATIVE_HIDDEN'
+,p_display_sequence=>90
+,p_attribute_01=>'Y'
+,p_use_as_row_header=>false
+,p_enable_sort_group=>true
+,p_enable_control_break=>true
+,p_is_primary_key=>false
+,p_duplicate_value=>true
+,p_include_in_export=>false
 );
 wwv_flow_api.create_region_column(
  p_id=>wwv_flow_api.id(20467932663779448386)
@@ -12219,6 +12295,9 @@ wwv_flow_api.create_region_column(
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
 );
+end;
+/
+begin
 wwv_flow_api.create_region_column(
  p_id=>wwv_flow_api.id(20467932956997448389)
 ,p_name=>'COUNT_TOTAL'
@@ -12291,6 +12370,13 @@ wwv_flow_api.create_region_column(
 ,p_filter_is_required=>false
 ,p_filter_lov_type=>'NONE'
 ,p_use_as_row_header=>false
+,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'function(options){',
+'    options.defaultGridColumnOptions = {',
+'        cellCssClassesColumn: ''COLOR''',
+'    };',
+'    return options;',
+'}'))
 ,p_enable_sort_group=>true
 ,p_enable_control_break=>true
 ,p_enable_hide=>true
@@ -12298,9 +12384,6 @@ wwv_flow_api.create_region_column(
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
 );
-end;
-/
-begin
 wwv_flow_api.create_region_column(
  p_id=>wwv_flow_api.id(20467933322377448392)
 ,p_name=>'COUNT_SECOND'
@@ -12392,6 +12475,14 @@ wwv_flow_api.create_ig_report_view(
 ,p_srv_exclude_null_values=>false
 ,p_srv_only_display_columns=>true
 ,p_edit_mode=>false
+);
+wwv_flow_api.create_ig_report_column(
+ p_id=>wwv_flow_api.id(10346737212086313916)
+,p_view_id=>wwv_flow_api.id(20497177903649820560)
+,p_display_seq=>9
+,p_column_id=>wwv_flow_api.id(10176526369395518437)
+,p_is_visible=>true
+,p_is_frozen=>false
 );
 wwv_flow_api.create_ig_report_column(
  p_id=>wwv_flow_api.id(20497178372271820564)
@@ -12600,9 +12691,9 @@ wwv_flow_api.create_page_da_action(
 'let model = this.data.model;',
 'let record = this.data.selectedRecords[0];',
 'let prefecture = model.getValue(record, "PREFECTURE");',
-'let prefecture_name = model.getValue(record, "PREFECTURE_NAME");',
 '$s("P1_PREFECTURE", prefecture);',
-'document.getElementById("pref_specific_heading").textContent = prefecture_name;'))
+'document.getElementById("pref_specific_heading").textContent',
+'    = model.getValue(record, "PREFECTURE_NAME");'))
 );
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(10176525903431518433)
