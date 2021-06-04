@@ -28,7 +28,7 @@ prompt APPLICATION 112525 - ワクチン接種状況ダッシュボード
 -- Application Export:
 --   Application:     112525
 --   Name:            ワクチン接種状況ダッシュボード
---   Date and Time:   00:37 金曜日 6月 4, 2021
+--   Date and Time:   00:53 金曜日 6月 4, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30EF\30AF\30C1\30F3\63A5\7A2E\72B6\6CC1\30C0\30C3\30B7\30E5\30DC\30FC\30C9')
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210604003428'
+,p_last_upd_yyyymmddhh24miss=>'20210604005257'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11351,7 +11351,7 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_page_is_public_y_n=>'Y'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210604003428'
+,p_last_upd_yyyymmddhh24miss=>'20210604005257'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41608891873187119575)
@@ -13015,10 +13015,6 @@ wwv_flow_api.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_api.id(51900298491078049527)
-,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
-,p_client_condition_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'document.getElementById("pref_grid").style.display != "none"',
-''))
 );
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(41608891509174119571)
@@ -13029,10 +13025,16 @@ wwv_flow_api.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_api.id(41608890037339119557)
-,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
-,p_client_condition_expression=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'document.getElementById("pref_specific").style.display != "none"',
-''))
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(10573351546831205702)
+,p_event_id=>wwv_flow_api.id(51944093617460732498)
+,p_event_result=>'TRUE'
+,p_action_sequence=>60
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(51644411552756336239)
 );
 wwv_flow_api.create_page_da_event(
  p_id=>wwv_flow_api.id(31393268581945098062)
