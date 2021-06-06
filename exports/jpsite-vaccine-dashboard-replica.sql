@@ -28,12 +28,12 @@ prompt APPLICATION 23267 - ワクチンダッシュボード  -  自動化あり
 -- Application Export:
 --   Application:     23267
 --   Name:            ワクチンダッシュボード  -  自動化あり
---   Date and Time:   03:22 日曜日 6月 6, 2021
+--   Date and Time:   04:02 日曜日 6月 6, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      9
---       Items:                    8
+--       Items:                    9
 --       Processes:                8
 --       Regions:                 25
 --       Buttons:                  3
@@ -120,7 +120,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_03=>'IRYO_RESULT_URL'
 ,p_substitution_value_03=>'https://www.kantei.go.jp/jp/content/IRYO-vaccination_data2.xlsx'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606032158'
+,p_last_upd_yyyymmddhh24miss=>'20210606040159'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11680,7 +11680,7 @@ wwv_flow_api.create_page(
 ,p_deep_linking=>'Y'
 ,p_rejoin_existing_sessions=>'P'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606031458'
+,p_last_upd_yyyymmddhh24miss=>'20210606040159'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(9821005720945470202)
@@ -13454,7 +13454,7 @@ wwv_flow_api.create_page_button(
 );
 wwv_flow_api.create_page_button(
  p_id=>wwv_flow_api.id(9846140343021325420)
-,p_button_sequence=>50
+,p_button_sequence=>60
 ,p_button_plug_id=>wwv_flow_api.id(9821009119598470236)
 ,p_button_name=>'B_ALL'
 ,p_button_action=>'DEFINED_BY_DA'
@@ -13500,7 +13500,7 @@ wwv_flow_api.create_page_item(
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(9821010394985470248)
 ,p_name=>'P1_PREFECTURE'
-,p_item_sequence=>60
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_api.id(9821009119598470236)
 ,p_item_default=>'select listagg(prefcode, '':'') from resas_prefectures'
 ,p_item_default_type=>'SQL_QUERY'
@@ -13527,7 +13527,7 @@ wwv_flow_api.create_page_item(
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(10363812745540286924)
 ,p_name=>'P1_PREF_SEL'
-,p_item_sequence=>40
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_api.id(9821009119598470236)
 ,p_prompt=>unistr('\90FD\9053\5E9C\770C')
 ,p_display_as=>'NATIVE_SELECT_LIST'
@@ -13541,6 +13541,23 @@ wwv_flow_api.create_page_item(
 ,p_lov_display_extra=>'NO'
 ,p_attribute_01=>'NONE'
 ,p_attribute_02=>'N'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(11073420966771138816)
+,p_name=>'P1_LAST_UPDATE_IRYO'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_api.id(9821009119598470236)
+,p_prompt=>unistr('\533B\7642\5F93\4E8B\8005\6700\7D42\66F4\65B0\65E5')
+,p_source=>'select to_char(max(count_date), ''DS'') from covid19_iryo_results'
+,p_source_type=>'QUERY'
+,p_display_as=>'NATIVE_DISPLAY_ONLY'
+,p_begin_on_new_line=>'N'
+,p_field_template=>wwv_flow_api.id(9818557705347375851)
+,p_item_template_options=>'#DEFAULT#:t-Form-fieldContainer--stretchInputs'
+,p_attribute_01=>'N'
+,p_attribute_02=>'VALUE'
+,p_attribute_04=>'N'
+,p_attribute_05=>'PLAIN'
 );
 wwv_flow_api.create_page_da_event(
  p_id=>wwv_flow_api.id(9821009477765470239)
@@ -13619,6 +13636,9 @@ wwv_flow_api.create_page_da_action(
 ,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
 ,p_client_condition_expression=>'document.getElementById("pref_all").style.display != "none"'
 );
+end;
+/
+begin
 wwv_flow_api.create_page_da_event(
  p_id=>wwv_flow_api.id(9821010064497470245)
 ,p_name=>unistr('\5E74\9F62\5909\66F4')
@@ -13640,9 +13660,6 @@ wwv_flow_api.create_page_da_action(
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
 );
-end;
-/
-begin
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(9821010117824470246)
 ,p_event_id=>wwv_flow_api.id(9821010064497470245)
