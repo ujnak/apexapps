@@ -28,7 +28,7 @@ prompt APPLICATION 23267 - ワクチンダッシュボード  -  自動化あり
 -- Application Export:
 --   Application:     23267
 --   Name:            ワクチンダッシュボード  -  自動化あり
---   Date and Time:   05:22 日曜日 6月 6, 2021
+--   Date and Time:   05:47 日曜日 6月 6, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -120,7 +120,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_03=>'IRYO_RESULT_URL'
 ,p_substitution_value_03=>'https://www.kantei.go.jp/jp/content/IRYO-vaccination_data2.xlsx'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606052227'
+,p_last_upd_yyyymmddhh24miss=>'20210606054708'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11680,12 +11680,12 @@ wwv_flow_api.create_page(
 ,p_deep_linking=>'Y'
 ,p_rejoin_existing_sessions=>'P'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606052227'
+,p_last_upd_yyyymmddhh24miss=>'20210606054708'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(9821005720945470202)
-,p_plug_name=>unistr('\63A5\7A2E\6570\65E5\6B21\63A8\79FB')
-,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_name=>unistr('\65E5\6B21\63A8\79FB')
+,p_region_template_options=>'#DEFAULT#:js-showMaximizeButton:t-Region--scrollBody'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(9818194988159375817)
 ,p_plug_display_sequence=>50
