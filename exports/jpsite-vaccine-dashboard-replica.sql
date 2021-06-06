@@ -28,14 +28,14 @@ prompt APPLICATION 23267 - ワクチンダッシュボード  -  自動化あり
 -- Application Export:
 --   Application:     23267
 --   Name:            ワクチンダッシュボード  -  自動化あり
---   Date and Time:   04:02 日曜日 6月 6, 2021
+--   Date and Time:   05:05 日曜日 6月 6, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      9
 --       Items:                    9
 --       Processes:                8
---       Regions:                 25
+--       Regions:                 24
 --       Buttons:                  3
 --       Dynamic Actions:          6
 --     Shared Components:
@@ -120,7 +120,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_03=>'IRYO_RESULT_URL'
 ,p_substitution_value_03=>'https://www.kantei.go.jp/jp/content/IRYO-vaccination_data2.xlsx'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606040159'
+,p_last_upd_yyyymmddhh24miss=>'20210606050502'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11680,7 +11680,7 @@ wwv_flow_api.create_page(
 ,p_deep_linking=>'Y'
 ,p_rejoin_existing_sessions=>'P'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606040159'
+,p_last_upd_yyyymmddhh24miss=>'20210606050502'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(9821005720945470202)
@@ -11885,77 +11885,59 @@ wwv_flow_api.create_jet_chart_series(
 ,p_stack_category=>unistr('\79FB\52D5\5E73\57471')
 ,p_items_label_rendered=>false
 );
-wwv_flow_api.create_jet_chart_axis(
- p_id=>wwv_flow_api.id(9821006067986470205)
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(11073421076690138817)
 ,p_chart_id=>wwv_flow_api.id(9821005827384470203)
-,p_axis=>'x'
-,p_is_rendered=>'on'
-,p_format_type=>'date-short'
-,p_format_scaling=>'auto'
-,p_scaling=>'linear'
-,p_baseline_scaling=>'zero'
-,p_major_tick_rendered=>'on'
-,p_minor_tick_rendered=>'off'
-,p_tick_label_rendered=>'on'
-,p_tick_label_rotation=>'auto'
-,p_tick_label_position=>'outside'
-);
-wwv_flow_api.create_jet_chart_axis(
- p_id=>wwv_flow_api.id(9821006170736470206)
-,p_chart_id=>wwv_flow_api.id(9821005827384470203)
-,p_axis=>'y'
-,p_is_rendered=>'on'
-,p_format_scaling=>'none'
-,p_scaling=>'linear'
-,p_baseline_scaling=>'zero'
-,p_position=>'auto'
-,p_major_tick_rendered=>'on'
-,p_minor_tick_rendered=>'off'
-,p_tick_label_rendered=>'on'
-);
-wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(9821008367981470228)
-,p_plug_name=>unistr('\63A5\7A2E\7387\65E5\6B21\63A8\79FB')
-,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
-,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_api.id(9818194988159375817)
-,p_plug_display_sequence=>60
-,p_include_in_reg_disp_sel_yn=>'Y'
-,p_plug_display_point=>'BODY'
-,p_plug_source_type=>'NATIVE_JET_CHART'
-,p_plug_query_num_rows=>15
-,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
-);
-wwv_flow_api.create_jet_chart(
- p_id=>wwv_flow_api.id(9821008471365470229)
-,p_region_id=>wwv_flow_api.id(9821008367981470228)
-,p_chart_type=>'line'
-,p_height=>'400'
-,p_animation_on_display=>'auto'
-,p_animation_on_data_change=>'auto'
-,p_orientation=>'vertical'
-,p_data_cursor=>'auto'
-,p_data_cursor_behavior=>'auto'
-,p_hide_and_show_behavior=>'withRescale'
-,p_hover_behavior=>'dim'
-,p_stack=>'off'
-,p_connect_nulls=>'N'
-,p_sorting=>'label-asc'
-,p_fill_multi_series_gaps=>true
-,p_zoom_and_scroll=>'off'
-,p_tooltip_rendered=>'Y'
-,p_show_series_name=>true
-,p_show_group_name=>true
-,p_show_value=>true
-,p_legend_rendered=>'on'
-,p_legend_position=>'bottom'
-,p_time_axis_type=>'enabled'
+,p_seq=>60
+,p_name=>unistr('1\56DE\76EE\63A5\7A2E\7387')
+,p_data_source_type=>'SQL'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select',
+'    count_date,',
+'    (',
+'        sum(count)',
+'        over (order by count_date) ',
+'        /',
+'        (',
+'            select sum(count) total',
+'            from covid19_vaccination_targets',
+'            where 1=1',
+'                and gender in (select column_value from apex_string.split(:P1_GENDER, '':''))',
+'                and age in (select column_value from apex_string.split(:P1_AGE, '':''))',
+'                and prefecture in (select column_value from apex_string.split(:P1_PREFECTURE, '':''))',
+'        )',
+'    ) * 100',
+'    rate',
+'from ',
+'(',
+'    select',
+'        count_date,',
+'        sum(count) count',
+'    from covid19_vaccination_results',
+'    where status = 1',
+'        and gender in (select column_value from apex_string.split(:P1_GENDER, '':''))',
+'        and age in (select column_value from apex_string.split(:P1_AGE, '':''))',
+'        and prefecture in (select column_value from apex_string.split(:P1_PREFECTURE, '':''))',
+'    group by count_date',
+')',
+''))
+,p_ajax_items_to_submit=>'P1_GENDER,P1_AGE,P1_PREFECTURE'
+,p_series_type=>'line'
+,p_items_value_column_name=>'RATE'
+,p_items_label_column_name=>'COUNT_DATE'
+,p_line_style=>'dotted'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'on'
+,p_stack_category=>unistr('1\56DE\76EE\63A5\7A2E\7387')
+,p_items_label_rendered=>false
 );
 wwv_flow_api.create_jet_chart_series(
- p_id=>wwv_flow_api.id(9821008504256470230)
-,p_chart_id=>wwv_flow_api.id(9821008471365470229)
-,p_seq=>10
-,p_name=>unistr('2\56DE\76EE')
+ p_id=>wwv_flow_api.id(11073421278058138819)
+,p_chart_id=>wwv_flow_api.id(9821005827384470203)
+,p_seq=>70
+,p_name=>unistr('2\56DE\76EE\63A5\7A2E\7387')
 ,p_data_source_type=>'SQL'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'select',
@@ -11987,63 +11969,35 @@ wwv_flow_api.create_jet_chart_series(
 '    group by count_date',
 ')'))
 ,p_ajax_items_to_submit=>'P1_GENDER,P1_AGE,P1_PREFECTURE'
+,p_series_type=>'line'
 ,p_items_value_column_name=>'RATE'
 ,p_items_label_column_name=>'COUNT_DATE'
-,p_line_style=>'solid'
+,p_line_style=>'dotted'
 ,p_line_type=>'auto'
 ,p_marker_rendered=>'auto'
 ,p_marker_shape=>'auto'
-,p_assigned_to_y2=>'off'
-,p_items_label_rendered=>false
-);
-wwv_flow_api.create_jet_chart_series(
- p_id=>wwv_flow_api.id(9821008677543470231)
-,p_chart_id=>wwv_flow_api.id(9821008471365470229)
-,p_seq=>20
-,p_name=>unistr('1\56DE\76EE')
-,p_data_source_type=>'SQL'
-,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select',
-'    count_date,',
-'    (',
-'        sum(count)',
-'        over (order by count_date) ',
-'        /',
-'        (',
-'            select sum(count) total',
-'            from covid19_vaccination_targets',
-'            where 1=1',
-'                and gender in (select column_value from apex_string.split(:P1_GENDER, '':''))',
-'                and age in (select column_value from apex_string.split(:P1_AGE, '':''))',
-'                and prefecture in (select column_value from apex_string.split(:P1_PREFECTURE, '':''))',
-'        )',
-'    ) * 100',
-'    rate',
-'from ',
-'(',
-'    select',
-'        count_date,',
-'        sum(count) count',
-'    from covid19_vaccination_results',
-'    where status = 1',
-'        and gender in (select column_value from apex_string.split(:P1_GENDER, '':''))',
-'        and age in (select column_value from apex_string.split(:P1_AGE, '':''))',
-'        and prefecture in (select column_value from apex_string.split(:P1_PREFECTURE, '':''))',
-'    group by count_date',
-')'))
-,p_ajax_items_to_submit=>'P1_GENDER,P1_AGE,P1_PREFECTURE'
-,p_items_value_column_name=>'RATE'
-,p_items_label_column_name=>'COUNT_DATE'
-,p_line_style=>'solid'
-,p_line_type=>'auto'
-,p_marker_rendered=>'auto'
-,p_marker_shape=>'auto'
-,p_assigned_to_y2=>'off'
+,p_assigned_to_y2=>'on'
+,p_stack_category=>unistr('2\56DE\76EE\63A5\7A2E\7387')
 ,p_items_label_rendered=>false
 );
 wwv_flow_api.create_jet_chart_axis(
- p_id=>wwv_flow_api.id(9821008795973470232)
-,p_chart_id=>wwv_flow_api.id(9821008471365470229)
+ p_id=>wwv_flow_api.id(11073421188533138818)
+,p_chart_id=>wwv_flow_api.id(9821005827384470203)
+,p_axis=>'y2'
+,p_is_rendered=>'on'
+,p_title=>unistr('\63A5\7A2E\7387 (%)')
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_split_dual_y=>'auto'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(9821006067986470205)
+,p_chart_id=>wwv_flow_api.id(9821005827384470203)
 ,p_axis=>'x'
 ,p_is_rendered=>'on'
 ,p_format_type=>'date-short'
@@ -12057,10 +12011,11 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_tick_label_position=>'outside'
 );
 wwv_flow_api.create_jet_chart_axis(
- p_id=>wwv_flow_api.id(9821008854025470233)
-,p_chart_id=>wwv_flow_api.id(9821008471365470229)
+ p_id=>wwv_flow_api.id(9821006170736470206)
+,p_chart_id=>wwv_flow_api.id(9821005827384470203)
 ,p_axis=>'y'
 ,p_is_rendered=>'on'
+,p_title=>unistr('\63A5\7A2E\6570')
 ,p_format_scaling=>'none'
 ,p_scaling=>'linear'
 ,p_baseline_scaling=>'zero'
@@ -12641,9 +12596,6 @@ wwv_flow_api.create_report_columns(
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
 );
-end;
-/
-begin
 wwv_flow_api.create_report_columns(
  p_id=>wwv_flow_api.id(9876837353143122109)
 ,p_query_column_id=>3
@@ -12681,6 +12633,9 @@ wwv_flow_api.create_report_columns(
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
 );
+end;
+/
+begin
 wwv_flow_api.create_report_columns(
  p_id=>wwv_flow_api.id(9876837661910122112)
 ,p_query_column_id=>6
@@ -13591,16 +13546,6 @@ wwv_flow_api.create_page_da_action(
 ,p_affected_region_id=>wwv_flow_api.id(9821005720945470202)
 );
 wwv_flow_api.create_page_da_action(
- p_id=>wwv_flow_api.id(9821009845018470243)
-,p_event_id=>wwv_flow_api.id(9821009477765470239)
-,p_event_result=>'TRUE'
-,p_action_sequence=>30
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_REFRESH'
-,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_api.id(9821008367981470228)
-);
-wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(9846141409233325431)
 ,p_event_id=>wwv_flow_api.id(9821009477765470239)
 ,p_event_result=>'TRUE'
@@ -13636,9 +13581,6 @@ wwv_flow_api.create_page_da_action(
 ,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
 ,p_client_condition_expression=>'document.getElementById("pref_all").style.display != "none"'
 );
-end;
-/
-begin
 wwv_flow_api.create_page_da_event(
  p_id=>wwv_flow_api.id(9821010064497470245)
 ,p_name=>unistr('\5E74\9F62\5909\66F4')
@@ -13671,16 +13613,6 @@ wwv_flow_api.create_page_da_action(
 ,p_affected_region_id=>wwv_flow_api.id(9821005720945470202)
 );
 wwv_flow_api.create_page_da_action(
- p_id=>wwv_flow_api.id(9821010299997470247)
-,p_event_id=>wwv_flow_api.id(9821010064497470245)
-,p_event_result=>'TRUE'
-,p_action_sequence=>30
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_REFRESH'
-,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_api.id(9821008367981470228)
-);
-wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(9846141533091325432)
 ,p_event_id=>wwv_flow_api.id(9821010064497470245)
 ,p_event_result=>'TRUE'
@@ -13692,6 +13624,9 @@ wwv_flow_api.create_page_da_action(
 ,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
 ,p_client_condition_expression=>'document.getElementById("pref_grid").style.display != "none"'
 );
+end;
+/
+begin
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(10363810810847286905)
 ,p_event_id=>wwv_flow_api.id(9821010064497470245)
@@ -13746,16 +13681,6 @@ wwv_flow_api.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_api.id(9821005720945470202)
-);
-wwv_flow_api.create_page_da_action(
- p_id=>wwv_flow_api.id(9846138496595325401)
-,p_event_id=>wwv_flow_api.id(9821010414501470249)
-,p_event_result=>'TRUE'
-,p_action_sequence=>30
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_REFRESH'
-,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_api.id(9821008367981470228)
 );
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(9846141618332325433)
