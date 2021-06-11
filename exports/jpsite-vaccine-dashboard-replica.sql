@@ -28,14 +28,14 @@ prompt APPLICATION 23267 - ワクチンダッシュボード  -  自動化あり
 -- Application Export:
 --   Application:     23267
 --   Name:            ワクチンダッシュボード  -  自動化あり
---   Date and Time:   05:47 日曜日 6月 6, 2021
+--   Date and Time:   01:02 金曜日 6月 11, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      9
 --       Items:                    9
 --       Processes:                8
---       Regions:                 24
+--       Regions:                 25
 --       Buttons:                  3
 --       Dynamic Actions:          6
 --     Shared Components:
@@ -82,6 +82,9 @@ wwv_flow_api.create_flow(
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'WKSP_JAPANCOMMUNITY')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,unistr('\30EF\30AF\30C1\30F3\30C0\30C3\30B7\30E5\30DC\30FC\30C9  -  \81EA\52D5\5316\3042\308A'))
 ,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'VACCINE-DASHBOARD')
+,p_application_group=>wwv_flow_api.id(31466043983242460668)
+,p_application_group_name=>unistr('\5916\90E8\30C7\30E2\30A2\30D7\30EA')
+,p_application_group_comment=>unistr('\793E\5185\3092\542B\3080\3001\81EA\5206\3067\306F\4F5C\6210\3057\3066\3044\306A\3044\30C7\30E2\30A2\30D7\30EA')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'697466F0D668D3D6C956530ABD9717AEA1C4F47FAD52765582310C8018174482'
@@ -120,7 +123,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_03=>'IRYO_RESULT_URL'
 ,p_substitution_value_03=>'https://www.kantei.go.jp/jp/content/IRYO-vaccination_data2.xlsx'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606054708'
+,p_last_upd_yyyymmddhh24miss=>'20210611010206'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11680,7 +11683,7 @@ wwv_flow_api.create_page(
 ,p_deep_linking=>'Y'
 ,p_rejoin_existing_sessions=>'P'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20210606054708'
+,p_last_upd_yyyymmddhh24miss=>'20210611010206'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(9821005720945470202)
@@ -12846,7 +12849,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_name=>unistr('\8AAC\660E')
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_api.id(9818163901613375802)
-,p_plug_display_sequence=>130
+,p_plug_display_sequence=>120
 ,p_plug_display_point=>'BODY'
 ,p_plug_source=>unistr('\30EF\30AF\30C1\30F3\63A5\7A2E\72B6\6CC1\30C0\30C3\30B7\30E5\30DC\30FC\30C9 - \30EC\30D7\30EA\30AB<br/>\30C7\30FC\30BF\53C2\7167\5143 - <a href="https://cio.go.jp/c19vaccine_dashboard">\653F\5E9CCIO\30DD\30FC\30BF\30EB</a>')
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
@@ -12873,7 +12876,7 @@ wwv_flow_api.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(9818194988159375817)
-,p_plug_display_sequence=>110
+,p_plug_display_sequence=>100
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'BODY'
 ,p_query_type=>'SQL'
@@ -13157,13 +13160,221 @@ wwv_flow_api.create_jet_chart_axis(
 ,p_minor_tick_rendered=>'off'
 ,p_tick_label_rendered=>'on'
 );
+wwv_flow_api.create_report_region(
+ p_id=>wwv_flow_api.id(12491013961608967301)
+,p_name=>unistr('\533B\7642\5F93\4E8B\8005\542B\3080\7DCF\63A5\7A2E\6570')
+,p_template=>wwv_flow_api.id(9818194988159375817)
+,p_display_sequence=>90
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_component_template_options=>'#DEFAULT#:t-Report--stretch:t-Report--altRowsDefault:t-Report--rowHighlight:t-Report--inline'
+,p_display_point=>'BODY'
+,p_source_type=>'NATIVE_SQL_REPORT'
+,p_query_type=>'SQL'
+,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'with v_first as (',
+'    select',
+'        sum(count) count',
+'    from covid19_vaccination_results',
+'    where status = 1',
+'),',
+'v_second as (',
+'    select',
+'        sum(count) count',
+'    from covid19_vaccination_results',
+'    where status = 2',
+'),',
+'v_total as (',
+'    select ',
+'        sum(count) total',
+'    from covid19_vaccination_targets',
+'),',
+'v_iryo as (',
+'    select',
+'        sum(nvl(first,0))  as first,',
+'        sum(nvl(second,0)) as second',
+'    from',
+'    (',
+'        select',
+'            (nvl(first_pfizer,0) + nvl(first_moderna,0)) as first,',
+'            (nvl(second_pfizer,0) + nvl(second_moderna,0)) as second',
+'        from covid19_iryo_results',
+'        union all',
+'        select',
+'            first,',
+'            second',
+'        from covid19_iryo_results_old',
+'    )',
+')',
+'select',
+'    t.total population,',
+'    f.count + s.count count_total,',
+'    f.count count_first,',
+'    s.count count_second,',
+'    r.first  iryo_first,',
+'    r.second iryo_second,',
+'    (r.first + r.second) iryo_total,',
+'    (f.count + r.first) first_with_iryo,',
+'    (s.count + r.second) second_with_iryo,',
+'    (f.count + r.first + s.count + r.second) total_with_iryo,',
+'    to_char( ((f.count + r.first) / t.total) * 100, ''90.99'') || ''%'' rate_first,',
+'    to_char( ((s.count + r.second) / t.total) * 100, ''90.99'') || ''%'' rate_second',
+'from v_first f, v_second s, v_total t, v_iryo r'))
+,p_ajax_enabled=>'Y'
+,p_lazy_loading=>false
+,p_query_row_template=>wwv_flow_api.id(9818525229923375832)
+,p_query_num_rows=>15
+,p_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_csv_output=>'N'
+,p_prn_output=>'N'
+,p_sort_null=>'L'
+,p_plug_query_strip_html=>'N'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014082096967302)
+,p_query_column_id=>1
+,p_column_alias=>'POPULATION'
+,p_column_display_sequence=>10
+,p_column_heading=>unistr('\7DCF\4EBA\53E3<br/>P')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014172366967303)
+,p_query_column_id=>2
+,p_column_alias=>'COUNT_TOTAL'
+,p_column_display_sequence=>60
+,p_column_heading=>unistr('\5408\8A08 - \4E00\822C<br/>N1+N2')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014283008967304)
+,p_query_column_id=>3
+,p_column_alias=>'COUNT_FIRST'
+,p_column_display_sequence=>30
+,p_column_heading=>unistr('1\56DE\76EE - \4E00\822C<br/>N1')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014491960967306)
+,p_query_column_id=>4
+,p_column_alias=>'COUNT_SECOND'
+,p_column_display_sequence=>50
+,p_column_heading=>unistr('2\56DE\76EE - \4E00\822C<br/>N2')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014685511967308)
+,p_query_column_id=>5
+,p_column_alias=>'IRYO_FIRST'
+,p_column_display_sequence=>70
+,p_column_heading=>unistr('1\56DE\76EE - \533B\7642\5F93\4E8B\8005<br/>M1')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014771564967309)
+,p_query_column_id=>6
+,p_column_alias=>'IRYO_SECOND'
+,p_column_display_sequence=>80
+,p_column_heading=>unistr('2\56DE\76EE - \533B\7642\5F93\4E8B\8005<br/>M2')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014809704967310)
+,p_query_column_id=>7
+,p_column_alias=>'IRYO_TOTAL'
+,p_column_display_sequence=>90
+,p_column_heading=>unistr('\5408\8A08 - \533B\7642\5F93\4E8B\8005<br/>M1+M2')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491014927500967311)
+,p_query_column_id=>8
+,p_column_alias=>'FIRST_WITH_IRYO'
+,p_column_display_sequence=>100
+,p_column_heading=>unistr('1\56DE\76EE - \533B\7642\5F93\4E8B\8005\542B\3080<br/>(N1+M1)/P')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_html_expression=>'#FIRST_WITH_IRYO# (#RATE_FIRST#)'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491015096923967312)
+,p_query_column_id=>9
+,p_column_alias=>'SECOND_WITH_IRYO'
+,p_column_display_sequence=>110
+,p_column_heading=>unistr('2\56DE\76EE - \533B\7642\5F93\4E8B\8005\542B\3080<br/>(N2+M2)/P')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_html_expression=>'#SECOND_WITH_IRYO# (#RATE_SECOND#)'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491015101381967313)
+,p_query_column_id=>10
+,p_column_alias=>'TOTAL_WITH_IRYO'
+,p_column_display_sequence=>120
+,p_column_heading=>unistr('\5408\8A08 - \533B\7642\5F93\4E8B\8005\542B\3080<br/>N1+N2+M1+M2')
+,p_use_as_row_header=>'N'
+,p_column_format=>'999G999G999G999G999G999G990'
+,p_column_alignment=>'RIGHT'
+,p_derived_column=>'N'
+,p_include_in_export=>'Y'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491015232341967314)
+,p_query_column_id=>11
+,p_column_alias=>'RATE_FIRST'
+,p_column_display_sequence=>130
+,p_hidden_column=>'Y'
+,p_derived_column=>'N'
+);
+wwv_flow_api.create_report_columns(
+ p_id=>wwv_flow_api.id(12491015338715967315)
+,p_query_column_id=>12
+,p_column_alias=>'RATE_SECOND'
+,p_column_display_sequence=>140
+,p_hidden_column=>'Y'
+,p_derived_column=>'N'
+);
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(32526610808557473733)
 ,p_plug_name=>unistr('\63A5\7A2E\6570\7D2F\7A4D -  \533B\7642\5F93\4E8B\8005\542B\3080')
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_api.id(9818194988159375817)
-,p_plug_display_sequence=>120
+,p_plug_display_sequence=>110
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'BODY'
 ,p_query_type=>'SQL'
@@ -13437,6 +13648,9 @@ wwv_flow_api.create_page_item(
 ,p_attribute_01=>'1'
 ,p_attribute_02=>'NONE'
 );
+end;
+/
+begin
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(9821009978151470244)
 ,p_name=>'P1_AGE'
@@ -13445,7 +13659,7 @@ wwv_flow_api.create_page_item(
 ,p_item_default=>'-64:65-:UNK'
 ,p_prompt=>unistr('\5E74\4EE3')
 ,p_display_as=>'NATIVE_RADIOGROUP'
-,p_lov=>unistr('STATIC2:\3059\3079\3066;-64:65-:UNK,65\6B73\4EE5\4E0A;65-,64\6B73\4EE5\4E0B;-64:')
+,p_lov=>unistr('STATIC2:\3059\3079\3066;-64:65-:UNK,65\6B73\4EE5\4E0A;65-,64\6B73\4EE5\4E0B;-64')
 ,p_field_template=>wwv_flow_api.id(9818557705347375851)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_lov_display_extra=>'NO'
@@ -13624,9 +13838,6 @@ wwv_flow_api.create_page_da_action(
 ,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
 ,p_client_condition_expression=>'document.getElementById("pref_grid").style.display != "none"'
 );
-end;
-/
-begin
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(10363810810847286905)
 ,p_event_id=>wwv_flow_api.id(9821010064497470245)
