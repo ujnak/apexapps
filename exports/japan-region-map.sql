@@ -28,7 +28,7 @@ prompt APPLICATION 103 - 行政区域
 -- Application Export:
 --   Application:     103
 --   Name:            行政区域
---   Date and Time:   18:39 水曜日 6月 30, 2021
+--   Date and Time:   23:52 金曜日 7月 2, 2021
 --   Exported By:     ADMIN
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\884C\653F\533A\57DF')
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20210630183539'
+,p_last_upd_yyyymmddhh24miss=>'20210702235101'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -148,7 +148,7 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(5524030106710433)
+ p_id=>wwv_flow_api.id(6305147405524180)
 ,p_list_item_display_sequence=>30
 ,p_list_item_link_text=>unistr('\884C\653F\533A\57DF\30B3\30FC\30C9')
 ,p_list_item_link_target=>'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:::'
@@ -156,7 +156,7 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_for_pages=>'4'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(5623293770705486)
+ p_id=>wwv_flow_api.id(6312221581635875)
 ,p_list_item_display_sequence=>40
 ,p_list_item_link_text=>'APPEND'
 ,p_list_item_link_target=>'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:::'
@@ -164,12 +164,12 @@ wwv_flow_api.create_list_item(
 ,p_list_item_current_for_pages=>'5'
 );
 wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(5728746749126455)
+ p_id=>wwv_flow_api.id(6319601678706922)
 ,p_list_item_display_sequence=>50
 ,p_list_item_link_text=>unistr('\90FD\9053\5E9C\770C')
-,p_list_item_link_target=>'f?p=&APP_ID.:6:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_link_target=>'f?p=&APP_ID.:16:&APP_SESSION.::&DEBUG.:::'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
-,p_list_item_current_for_pages=>'6'
+,p_list_item_current_for_pages=>'16'
 );
 end;
 /
@@ -11861,10 +11861,10 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20210630152043'
+,p_last_upd_yyyymmddhh24miss=>'20210702232142'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5524469550710436)
+ p_id=>wwv_flow_api.id(6305541467524180)
 ,p_plug_name=>unistr('\30DE\30C3\30D7')
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_api.id(5258598818438579)
@@ -11877,8 +11877,8 @@ wwv_flow_api.create_page_plug(
 ,p_plug_source_type=>'NATIVE_MAP_REGION'
 );
 wwv_flow_api.create_map_region(
- p_id=>wwv_flow_api.id(5526404399710443)
-,p_region_id=>wwv_flow_api.id(5524469550710436)
+ p_id=>wwv_flow_api.id(6307528775524184)
+,p_region_id=>wwv_flow_api.id(6305541467524180)
 ,p_height=>640
 ,p_navigation_bar_type=>'FULL'
 ,p_navigation_bar_position=>'END'
@@ -11891,12 +11891,13 @@ wwv_flow_api.create_map_region(
 ,p_features=>'SCALE_BAR:INFINITE_MAP:RECTANGLE_ZOOM'
 );
 wwv_flow_api.create_map_region_layer(
- p_id=>wwv_flow_api.id(5526942277710444)
-,p_map_region_id=>wwv_flow_api.id(5526404399710443)
+ p_id=>wwv_flow_api.id(6308040249524185)
+,p_map_region_id=>wwv_flow_api.id(6307528775524184)
 ,p_name=>unistr('\884C\653F\533A\57DF\30B3\30FC\30C9')
 ,p_layer_type=>'POLYGON'
 ,p_display_sequence=>10
 ,p_location=>'REGION_SOURCE'
+,p_max_row_count=>10000
 ,p_has_spatial_index=>false
 ,p_geometry_column_data_type=>'SDO_GEOMETRY'
 ,p_geometry_column=>'GEOMETRY'
@@ -11914,7 +11915,7 @@ unistr('{if ADMIN_CODE/}<br><b>\884C\653F\533A\57DF\30B3\30FC\30C9</b>: &ADMIN_C
 ,p_allow_hide=>true
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5524597445710436)
+ p_id=>wwv_flow_api.id(6305604906524180)
 ,p_plug_name=>unistr('\691C\7D22')
 ,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:t-Region--hideHeader:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_api.id(5289385859438588)
@@ -11922,7 +11923,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_grid_column_span=>4
 ,p_plug_display_point=>'REGION_POSITION_02'
 ,p_plug_source_type=>'NATIVE_FACETED_SEARCH'
-,p_filtered_region_id=>wwv_flow_api.id(5524469550710436)
+,p_filtered_region_id=>wwv_flow_api.id(6305541467524180)
 ,p_attribute_01=>'N'
 ,p_attribute_06=>'E'
 ,p_attribute_07=>'Y'
@@ -11933,7 +11934,7 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_15=>'10'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(5525322752710441)
+ p_id=>wwv_flow_api.id(6306429226524183)
 ,p_plug_name=>unistr('\30DC\30BF\30F3\30FB\30D0\30FC')
 ,p_region_template_options=>'#DEFAULT#:t-ButtonRegion--noPadding:t-ButtonRegion--noUI'
 ,p_escape_on_http_output=>'Y'
@@ -11948,9 +11949,9 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_03=>'Y'
 );
 wwv_flow_api.create_page_button(
- p_id=>wwv_flow_api.id(5525898672710442)
+ p_id=>wwv_flow_api.id(6306972317524184)
 ,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_api.id(5525322752710441)
+,p_button_plug_id=>wwv_flow_api.id(6306429226524183)
 ,p_button_name=>'RESET'
 ,p_button_action=>'REDIRECT_PAGE'
 ,p_button_template_options=>'#DEFAULT#:t-Button--noUI:t-Button--iconLeft'
@@ -11961,11 +11962,11 @@ wwv_flow_api.create_page_button(
 ,p_icon_css_classes=>'fa-undo'
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(3240400587718012)
+ p_id=>wwv_flow_api.id(3242545822718033)
 ,p_name=>'P4_PREFECTURE_NAME'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_api.id(5524597445710436)
+,p_item_plug_id=>wwv_flow_api.id(6305604906524180)
 ,p_prompt=>unistr('\90FD\9053\5E9C\770C')
 ,p_source=>'PREFECTURE_NAME'
 ,p_source_type=>'FACET_COLUMN'
@@ -11985,18 +11986,18 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(3240598167718013)
+ p_id=>wwv_flow_api.id(3242629111718034)
 ,p_name=>'P4_BRANCH_IN_HOKKAIDO'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_api.id(5524597445710436)
+,p_item_plug_id=>wwv_flow_api.id(6305604906524180)
 ,p_prompt=>unistr('\652F\5E81')
 ,p_source=>'BRANCH_IN_HOKKAIDO'
 ,p_source_type=>'FACET_COLUMN'
 ,p_display_as=>'NATIVE_CHECKBOX'
 ,p_lov_display_null=>'YES'
 ,p_lov_null_text=>unistr('- \6307\5B9A\306A\3057 -')
-,p_depending_on_id=>wwv_flow_api.id(3240400587718012)
+,p_depending_on_id=>wwv_flow_api.id(3242545822718033)
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>unistr('\5317\6D77\9053')
 ,p_item_template_options=>'#DEFAULT#'
@@ -12014,17 +12015,17 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(3240779005718015)
+ p_id=>wwv_flow_api.id(3242756907718035)
 ,p_name=>'P4_MAJOR_CITY'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_api.id(5524597445710436)
+,p_item_plug_id=>wwv_flow_api.id(6305604906524180)
 ,p_prompt=>unistr('\90E1\30FB\653F\4EE4\6307\5B9A\90FD\5E02')
 ,p_source=>'MAJOR_CITY'
 ,p_source_type=>'FACET_COLUMN'
 ,p_display_as=>'NATIVE_CHECKBOX'
 ,p_lov_display_null=>'YES'
-,p_lov_null_text=>unistr('- \6307\5B9A\3059\308B -')
+,p_lov_null_text=>unistr('- \6307\5B9A\306A\3057 -')
 ,p_item_template_options=>'#DEFAULT#'
 ,p_fc_collapsible=>true
 ,p_fc_initial_collapsed=>false
@@ -12040,11 +12041,11 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(3241067797718018)
+ p_id=>wwv_flow_api.id(3242855421718036)
 ,p_name=>'P4_CITY_NAME'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>50
-,p_item_plug_id=>wwv_flow_api.id(5524597445710436)
+,p_item_plug_id=>wwv_flow_api.id(6305604906524180)
 ,p_prompt=>unistr('\5E02\533A\753A\6751')
 ,p_source=>'CITY_NAME'
 ,p_source_type=>'FACET_COLUMN'
@@ -12066,11 +12067,11 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(3241132638718019)
+ p_id=>wwv_flow_api.id(3242902244718037)
 ,p_name=>'P4_ADMIN_CODE'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>60
-,p_item_plug_id=>wwv_flow_api.id(5524597445710436)
+,p_item_plug_id=>wwv_flow_api.id(6305604906524180)
 ,p_prompt=>unistr('\884C\653F\533A\57DF\30B3\30FC\30C9')
 ,p_source=>'ADMIN_CODE'
 ,p_source_type=>'FACET_COLUMN'
@@ -12090,10 +12091,10 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5525080768710439)
+ p_id=>wwv_flow_api.id(6306197134524182)
 ,p_name=>'P4_SEARCH'
 ,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_api.id(5524597445710436)
+,p_item_plug_id=>wwv_flow_api.id(6305604906524180)
 ,p_prompt=>unistr('\691C\7D22')
 ,p_source=>'PREFECTURE_NAME,BRANCH_IN_HOKKAIDO,MAJOR_CITY,CITY_NAME,ADMIN_CODE'
 ,p_source_type=>'FACET_COLUMN'
@@ -12119,10 +12120,10 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20210630165940'
+,p_last_upd_yyyymmddhh24miss=>'20210702233803'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(11147467727415907)
+ p_id=>wwv_flow_api.id(12617520372160053)
 ,p_plug_name=>unistr('\30DE\30C3\30D7')
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_api.id(5258598818438579)
@@ -12136,8 +12137,8 @@ wwv_flow_api.create_page_plug(
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 );
 wwv_flow_api.create_map_region(
- p_id=>wwv_flow_api.id(5627340253705499)
-,p_region_id=>wwv_flow_api.id(11147467727415907)
+ p_id=>wwv_flow_api.id(6316391808635886)
+,p_region_id=>wwv_flow_api.id(12617520372160053)
 ,p_height=>640
 ,p_navigation_bar_type=>'FULL'
 ,p_navigation_bar_position=>'END'
@@ -12150,12 +12151,13 @@ wwv_flow_api.create_map_region(
 ,p_features=>'SCALE_BAR:INFINITE_MAP:RECTANGLE_ZOOM'
 );
 wwv_flow_api.create_map_region_layer(
- p_id=>wwv_flow_api.id(5627844705705500)
-,p_map_region_id=>wwv_flow_api.id(5627340253705499)
+ p_id=>wwv_flow_api.id(6316853286635887)
+,p_map_region_id=>wwv_flow_api.id(6316391808635886)
 ,p_name=>unistr('\884C\653F\533A\57DF\30B3\30FC\30C9')
 ,p_layer_type=>'POLYGON'
 ,p_display_sequence=>10
 ,p_location=>'REGION_SOURCE'
+,p_max_row_count=>200
 ,p_has_spatial_index=>false
 ,p_geometry_column_data_type=>'SDO_GEOMETRY'
 ,p_geometry_column=>'GEOMETRY'
@@ -12173,7 +12175,7 @@ unistr('{if ADMIN_CODE/}<br><b>\884C\653F\533A\57DF\30B3\30FC\30C9</b>: &ADMIN_C
 ,p_allow_hide=>true
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(11147595622415907)
+ p_id=>wwv_flow_api.id(12617583811160053)
 ,p_plug_name=>unistr('\691C\7D22')
 ,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:t-Region--hideHeader:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_api.id(5289385859438588)
@@ -12181,7 +12183,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_grid_column_span=>4
 ,p_plug_display_point=>'REGION_POSITION_02'
 ,p_plug_source_type=>'NATIVE_FACETED_SEARCH'
-,p_filtered_region_id=>wwv_flow_api.id(11147467727415907)
+,p_filtered_region_id=>wwv_flow_api.id(12617520372160053)
 ,p_attribute_01=>'N'
 ,p_attribute_06=>'E'
 ,p_attribute_07=>'Y'
@@ -12192,7 +12194,7 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_15=>'10'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(11148320929415912)
+ p_id=>wwv_flow_api.id(12618408131160056)
 ,p_plug_name=>unistr('\30DC\30BF\30F3\30FB\30D0\30FC')
 ,p_region_template_options=>'#DEFAULT#:t-ButtonRegion--noPadding:t-ButtonRegion--noUI'
 ,p_escape_on_http_output=>'Y'
@@ -12207,9 +12209,9 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_03=>'Y'
 );
 wwv_flow_api.create_page_button(
- p_id=>wwv_flow_api.id(5626652445705498)
+ p_id=>wwv_flow_api.id(6315692266635885)
 ,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_api.id(11148320929415912)
+,p_button_plug_id=>wwv_flow_api.id(12618408131160056)
 ,p_button_name=>'RESET'
 ,p_button_action=>'REDIRECT_PAGE'
 ,p_button_template_options=>'#DEFAULT#:t-Button--noUI:t-Button--iconLeft'
@@ -12220,10 +12222,10 @@ wwv_flow_api.create_page_button(
 ,p_icon_css_classes=>'fa-undo'
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5623928506705494)
+ p_id=>wwv_flow_api.id(6312927387635882)
 ,p_name=>'P5_SEARCH'
 ,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_api.id(11147595622415907)
+,p_item_plug_id=>wwv_flow_api.id(12617583811160053)
 ,p_prompt=>unistr('\691C\7D22')
 ,p_source=>'PREFECTURE_NAME,BRANCH_IN_HOKKAIDO,MAJOR_CITY,CITY_NAME,ADMIN_CODE'
 ,p_source_type=>'FACET_COLUMN'
@@ -12235,11 +12237,11 @@ wwv_flow_api.create_page_item(
 ,p_fc_show_chart=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5624313781705496)
+ p_id=>wwv_flow_api.id(6313384319635883)
 ,p_name=>'P5_PREFECTURE_NAME'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_api.id(11147595622415907)
+,p_item_plug_id=>wwv_flow_api.id(12617583811160053)
 ,p_prompt=>unistr('\90FD\9053\5E9C\770C')
 ,p_source=>'PREFECTURE_NAME'
 ,p_source_type=>'FACET_COLUMN'
@@ -12259,18 +12261,18 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5624734284705496)
+ p_id=>wwv_flow_api.id(6313713325635883)
 ,p_name=>'P5_BRANCH_IN_HOKKAIDO'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_api.id(11147595622415907)
+,p_item_plug_id=>wwv_flow_api.id(12617583811160053)
 ,p_prompt=>unistr('\652F\5E81')
 ,p_source=>'BRANCH_IN_HOKKAIDO'
 ,p_source_type=>'FACET_COLUMN'
 ,p_display_as=>'NATIVE_CHECKBOX'
 ,p_lov_display_null=>'YES'
 ,p_lov_null_text=>unistr('- \6307\5B9A\306A\3057 -')
-,p_depending_on_id=>wwv_flow_api.id(5624313781705496)
+,p_depending_on_id=>wwv_flow_api.id(6313384319635883)
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>unistr('\5317\6D77\9053')
 ,p_item_template_options=>'#DEFAULT#'
@@ -12288,17 +12290,17 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5625147745705496)
+ p_id=>wwv_flow_api.id(6314142438635883)
 ,p_name=>'P5_MAJOR_CITY'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_api.id(11147595622415907)
+,p_item_plug_id=>wwv_flow_api.id(12617583811160053)
 ,p_prompt=>unistr('\90E1\30FB\653F\4EE4\6307\5B9A\90FD\5E02')
 ,p_source=>'MAJOR_CITY'
 ,p_source_type=>'FACET_COLUMN'
 ,p_display_as=>'NATIVE_CHECKBOX'
 ,p_lov_display_null=>'YES'
-,p_lov_null_text=>unistr('- \6307\5B9A\3059\308B -')
+,p_lov_null_text=>unistr('- \6307\5B9A\306A\3057 -')
 ,p_item_template_options=>'#DEFAULT#'
 ,p_fc_collapsible=>true
 ,p_fc_initial_collapsed=>false
@@ -12314,11 +12316,11 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5625549375705496)
+ p_id=>wwv_flow_api.id(6314529636635883)
 ,p_name=>'P5_CITY_NAME'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>50
-,p_item_plug_id=>wwv_flow_api.id(11147595622415907)
+,p_item_plug_id=>wwv_flow_api.id(12617583811160053)
 ,p_prompt=>unistr('\5E02\533A\753A\6751')
 ,p_source=>'CITY_NAME'
 ,p_source_type=>'FACET_COLUMN'
@@ -12340,11 +12342,11 @@ wwv_flow_api.create_page_item(
 ,p_fc_toggleable=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5625990618705496)
+ p_id=>wwv_flow_api.id(6314904600635883)
 ,p_name=>'P5_ADMIN_CODE'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>60
-,p_item_plug_id=>wwv_flow_api.id(11147595622415907)
+,p_item_plug_id=>wwv_flow_api.id(12617583811160053)
 ,p_prompt=>unistr('\884C\653F\533A\57DF\30B3\30FC\30C9')
 ,p_source=>'ADMIN_CODE'
 ,p_source_type=>'FACET_COLUMN'
@@ -12365,10 +12367,10 @@ wwv_flow_api.create_page_item(
 );
 end;
 /
-prompt --application/pages/page_00006
+prompt --application/pages/page_00016
 begin
 wwv_flow_api.create_page(
- p_id=>6
+ p_id=>16
 ,p_user_interface_id=>wwv_flow_api.id(5378907879438631)
 ,p_name=>unistr('\90FD\9053\5E9C\770C')
 ,p_alias=>unistr('\90FD\9053\5E9C\770C')
@@ -12378,10 +12380,10 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20210630182010'
+,p_last_upd_yyyymmddhh24miss=>'20210702235101'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(11252955865836884)
+ p_id=>wwv_flow_api.id(12624891616231101)
 ,p_plug_name=>unistr('\30DE\30C3\30D7')
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_api.id(5258598818438579)
@@ -12395,8 +12397,8 @@ wwv_flow_api.create_page_plug(
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 );
 wwv_flow_api.create_map_region(
- p_id=>wwv_flow_api.id(5732771769126479)
-,p_region_id=>wwv_flow_api.id(11252955865836884)
+ p_id=>wwv_flow_api.id(6323746203706957)
+,p_region_id=>wwv_flow_api.id(12624891616231101)
 ,p_height=>640
 ,p_navigation_bar_type=>'FULL'
 ,p_navigation_bar_position=>'END'
@@ -12409,12 +12411,13 @@ wwv_flow_api.create_map_region(
 ,p_features=>'SCALE_BAR:INFINITE_MAP:RECTANGLE_ZOOM'
 );
 wwv_flow_api.create_map_region_layer(
- p_id=>wwv_flow_api.id(5733206471126480)
-,p_map_region_id=>wwv_flow_api.id(5732771769126479)
+ p_id=>wwv_flow_api.id(6324280657706957)
+,p_map_region_id=>wwv_flow_api.id(6323746203706957)
 ,p_name=>unistr('\90FD\9053\5E9C\770C')
 ,p_layer_type=>'POLYGON'
 ,p_display_sequence=>10
 ,p_location=>'REGION_SOURCE'
+,p_max_row_count=>50
 ,p_has_spatial_index=>false
 ,p_geometry_column_data_type=>'SDO_GEOMETRY'
 ,p_geometry_column=>'GEOMETRY'
@@ -12432,7 +12435,7 @@ unistr('{if ADMIN_CODE/}<br><b>\884C\653F\533A\57DF\30B3\30FC\30C9</b>: &ADMIN_C
 ,p_allow_hide=>true
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(11253083760836884)
+ p_id=>wwv_flow_api.id(12624955055231101)
 ,p_plug_name=>unistr('\691C\7D22')
 ,p_region_template_options=>'#DEFAULT#:t-Region--noPadding:t-Region--hideHeader:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_api.id(5289385859438588)
@@ -12440,7 +12443,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_grid_column_span=>4
 ,p_plug_display_point=>'REGION_POSITION_02'
 ,p_plug_source_type=>'NATIVE_FACETED_SEARCH'
-,p_filtered_region_id=>wwv_flow_api.id(11252955865836884)
+,p_filtered_region_id=>wwv_flow_api.id(12624891616231101)
 ,p_attribute_01=>'N'
 ,p_attribute_06=>'E'
 ,p_attribute_07=>'Y'
@@ -12451,7 +12454,7 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_15=>'10'
 );
 wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(11253809067836889)
+ p_id=>wwv_flow_api.id(12625779375231104)
 ,p_plug_name=>unistr('\30DC\30BF\30F3\30FB\30D0\30FC')
 ,p_region_template_options=>'#DEFAULT#:t-ButtonRegion--noPadding:t-ButtonRegion--noUI'
 ,p_escape_on_http_output=>'Y'
@@ -12466,23 +12469,23 @@ wwv_flow_api.create_page_plug(
 ,p_attribute_03=>'Y'
 );
 wwv_flow_api.create_page_button(
- p_id=>wwv_flow_api.id(5732080244126477)
+ p_id=>wwv_flow_api.id(6323003948706947)
 ,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_api.id(11253809067836889)
+,p_button_plug_id=>wwv_flow_api.id(12625779375231104)
 ,p_button_name=>'RESET'
 ,p_button_action=>'REDIRECT_PAGE'
 ,p_button_template_options=>'#DEFAULT#:t-Button--noUI:t-Button--iconLeft'
 ,p_button_template_id=>wwv_flow_api.id(5354563432438613)
 ,p_button_image_alt=>unistr('\30EA\30BB\30C3\30C8')
 ,p_button_position=>'REGION_TEMPLATE_NEXT'
-,p_button_redirect_url=>'f?p=&APP_ID.:6:&SESSION.::&DEBUG.:RR,4::'
+,p_button_redirect_url=>'f?p=&APP_ID.:16:&SESSION.::&DEBUG.:RR,4::'
 ,p_icon_css_classes=>'fa-undo'
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5729426807126473)
-,p_name=>'P6_SEARCH'
+ p_id=>wwv_flow_api.id(6320378399706931)
+,p_name=>'P16_SEARCH'
 ,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_api.id(11253083760836884)
+,p_item_plug_id=>wwv_flow_api.id(12624955055231101)
 ,p_prompt=>unistr('\691C\7D22')
 ,p_source=>'PREFECTURE_NAME,BRANCH_IN_HOKKAIDO,MAJOR_CITY,CITY_NAME,ADMIN_CODE'
 ,p_source_type=>'FACET_COLUMN'
@@ -12494,11 +12497,11 @@ wwv_flow_api.create_page_item(
 ,p_fc_show_chart=>false
 );
 wwv_flow_api.create_page_item(
- p_id=>wwv_flow_api.id(5729725428126475)
-,p_name=>'P6_PREFECTURE_NAME'
+ p_id=>wwv_flow_api.id(6320702206706932)
+,p_name=>'P16_PREFECTURE_NAME'
 ,p_source_data_type=>'VARCHAR2'
 ,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_api.id(11253083760836884)
+,p_item_plug_id=>wwv_flow_api.id(12624955055231101)
 ,p_prompt=>unistr('\90FD\9053\5E9C\770C')
 ,p_source=>'PREFECTURE_NAME'
 ,p_source_type=>'FACET_COLUMN'
