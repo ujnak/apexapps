@@ -14,7 +14,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_api.import_begin (
  p_version_yyyy_mm_dd=>'2021.04.15'
-,p_release=>'21.1.0'
+,p_release=>'21.1.1'
 ,p_default_workspace_id=>30040104978234657984
 ,p_default_application_id=>23267
 ,p_default_id_offset=>0
@@ -28,7 +28,7 @@ prompt APPLICATION 23267 - ワクチンダッシュボード  -  自動化あり
 -- Application Export:
 --   Application:     23267
 --   Name:            ワクチンダッシュボード  -  自動化あり
---   Date and Time:   01:24 日曜日 6月 13, 2021
+--   Date and Time:   01:58 金曜日 7月 9, 2021
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -66,7 +66,7 @@ prompt APPLICATION 23267 - ワクチンダッシュボード  -  自動化あり
 --       E-Mail:
 --     Supporting Objects:  Included
 --       Install scripts:          3
---   Version:         21.1.0
+--   Version:         21.1.1
 --   Instance ID:     63113759365424
 --
 
@@ -121,9 +121,11 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_02=>'VACCINATION_RESULT_URL'
 ,p_substitution_value_02=>'https://vrs-data.cio.go.jp/vaccination/opendata/latest/prefecture.ndjson'
 ,p_substitution_string_03=>'IRYO_RESULT_URL'
-,p_substitution_value_03=>'https://www.kantei.go.jp/jp/content/IRYO-vaccination_data2.xlsx'
-,p_last_updated_by=>'nobody'
-,p_last_upd_yyyymmddhh24miss=>'20210613012336'
+,p_substitution_value_03=>'https://www.kantei.go.jp/jp/content/vaccination_data5.xlsx'
+,p_substitution_string_04=>'IRYO_SHEET_NAME'
+,p_substitution_value_04=>unistr('\533B\7642\5F93\4E8B\8005\7B49')
+,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
+,p_last_upd_yyyymmddhh24miss=>'20210709014914'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11380,7 +11382,7 @@ wwv_flow_api.create_automation(
 ,p_query_type=>'SQL'
 ,p_include_rowid_column=>false
 ,p_commit_each_row=>false
-,p_error_handling_type=>'IGNORE'
+,p_error_handling_type=>'ABORT'
 );
 wwv_flow_api.create_automation_action(
  p_id=>wwv_flow_api.id(10227091487447805736)
@@ -11390,8 +11392,10 @@ wwv_flow_api.create_automation_action(
 ,p_action_type=>'NATIVE_PLSQL'
 ,p_action_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'declare',
-'    l_blob blob;',
+'    l_blob       blob;',
 '    l_uncompress blob;',
+'    l_last_blob  blob;',
+'    e_already_loaded exception;',
 'begin',
 '    l_blob := apex_web_service.make_rest_request_b',
 '    (',
@@ -11399,7 +11403,17 @@ wwv_flow_api.create_automation_action(
 '        p_http_method => ''GET''',
 '    );',
 '    l_uncompress := utl_compress.lz_uncompress(l_blob);',
-'    insert into covid19_data_files(store_date, content) values(sysdate, l_uncompress);',
+unistr('    -- \3082\3063\3068\3082\6700\5F8C\306B\30ED\30FC\30C9\3057\305F\30C7\30FC\30BF\3092\9078\629E\3057\307E\3059\3002'),
+'    select content into l_last_blob from covid19_data_files ',
+'    where id = (select max(id) from covid19_data_files);',
+'    if dbms_lob.compare(l_uncompress, l_last_blob) = 0 then',
+'        apex_automation.exit(''Skip data loading because the data is not updated.'');',
+'        -- apex_automation.log_info(''Skip data loading because the data is not updated.'');',
+'        -- raise e_already_loaded;',
+'    else',
+'        apex_automation.log_info(''The data is updated.'');',
+'        insert into covid19_data_files(store_date, content) values(sysdate, l_uncompress);',
+'    end if;',
 'end;'))
 ,p_action_clob_language=>'PLSQL'
 ,p_location=>'LOCAL'
@@ -11426,6 +11440,7 @@ wwv_flow_api.create_automation_action(
 unistr('    -- \3082\3063\3068\3082\6700\5F8C\306B\30ED\30FC\30C9\3057\305F\30C7\30FC\30BF\3092\9078\629E\3057\307E\3059\3002'),
 '    select content into l_blob from covid19_data_files ',
 '    where id = (select max(id) from covid19_data_files);',
+'    apex_automation.log_info( ''Loading data is invoked.'');',
 unistr('    -- \4E00\65E6\30E1\30E2\30EA\306B\30ED\30FC\30C9\3057\307E\3059\3002'),
 '    dbms_lob.createtemporary(l_tmp_blob, true);',
 '    dbms_lob.copy(',
@@ -11477,13 +11492,13 @@ wwv_flow_api.create_automation(
 ,p_name=>unistr('\533B\7642\5F93\4E8B\8005')
 ,p_static_id=>'loadiryo'
 ,p_trigger_type=>'POLLING'
-,p_polling_interval=>'FREQ=DAILY;INTERVAL=1;BYHOUR=12;BYMINUTE=0'
+,p_polling_interval=>'FREQ=DAILY;INTERVAL=1;BYHOUR=0;BYMINUTE=0'
 ,p_polling_status=>'ACTIVE'
 ,p_result_type=>'ALWAYS'
 ,p_use_local_sync_table=>false
 ,p_include_rowid_column=>false
 ,p_commit_each_row=>false
-,p_error_handling_type=>'IGNORE'
+,p_error_handling_type=>'ABORT'
 );
 wwv_flow_api.create_automation_action(
  p_id=>wwv_flow_api.id(10926120540536684683)
@@ -11494,13 +11509,24 @@ wwv_flow_api.create_automation_action(
 ,p_action_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'declare',
 '    l_blob blob;',
+'    l_last_blob blob;',
+'    e_already_loaded exception;',
 'begin',
 '    l_blob := apex_web_service.make_rest_request_b',
 '    (',
 '        p_url => :IRYO_RESULT_URL,',
 '        p_http_method => ''GET''',
 '    );',
-'    insert into covid19_iryo_data(store_date, content) values(sysdate, l_blob);',
+'    select content into l_last_blob from covid19_iryo_data',
+'    where id = (select max(id) from covid19_iryo_data);',
+'    if dbms_lob.compare(l_blob, l_last_blob) = 0 then',
+'        apex_automation.exit(''Skip data loading because the data is not updated.'');',
+'        -- apex_automation.log_info(''Skip data loading because the data is not updated.'');',
+'        -- raise e_already_loaded;',
+'    else',
+'        apex_automation.log_info(''The data is updated.'');',
+'        insert into covid19_iryo_data(store_date, content) values(sysdate, l_blob);',
+'    end if;',
 'end;'))
 ,p_action_clob_language=>'PLSQL'
 ,p_location=>'LOCAL'
@@ -11516,11 +11542,20 @@ wwv_flow_api.create_automation_action(
 'declare',
 '    l_id number;',
 '    l_blob blob;',
+'    l_sheet_file_name varchar2(80);',
 'begin',
 unistr('    -- \6700\5F8C\306E\53D6\5F97\3057\305FExcel\30D5\30A1\30A4\30EB\3092\30ED\30FC\30C9\5BFE\8C61\3068\3059\308B'),
 '    select id, content into l_id, l_blob from covid19_iryo_data',
 '    where id = (select max(id) from covid19_iryo_data);',
-'    --',
+'    apex_automation.log_info( ''Loading data with id = '' || l_id );',
+unistr('    -- sheet_file_name\306E\53D6\5F97'),
+'    select s.sheet_file_name into l_sheet_file_name',
+'    from apex_data_parser.get_xlsx_worksheets(',
+'        p_content => l_blob',
+'    ) s',
+'    where sheet_display_name = :IRYO_SHEET_NAME;',
+'    apex_automation.log_info( ''Sheet '' || l_sheet_file_name ',
+'        || '' is chosen for '' || :IRYO_SHEET_NAME );',
 'merge into covid19_iryo_results r',
 'using',
 '(',
@@ -11534,6 +11569,7 @@ unistr('    -- \6700\5F8C\306E\53D6\5F97\3057\305FExcel\30D5\30A1\30A4\30EB\3092
 '    apex_data_parser.parse(',
 '        p_content => l_blob,',
 '        p_file_name => ''dummy.xlsx''',
+'       , p_xlsx_sheet_name => l_sheet_file_name',
 unistr('        -- \8AAD\307F\8FBC\3081\308B\7BC4\56F2\306B\9650\5B9A\3059\308B'),
 '       , p_skip_rows => 5',
 '       , p_max_rows => 34',
@@ -11659,7 +11695,7 @@ wwv_flow_api.create_page(
 '    background-color: rgb(100,255,255);',
 '}',
 '.bgcolor-level-50 {',
-'    background-color: rgb(125, 185, 185);',
+'    background-color: rgb(125,255,555);',
 '}',
 '.bgcolor-level-40 {',
 '    background-color: rgb(150,255,255);',
@@ -11683,7 +11719,7 @@ wwv_flow_api.create_page(
 ,p_deep_linking=>'Y'
 ,p_rejoin_existing_sessions=>'P'
 ,p_last_updated_by=>'nobody'
-,p_last_upd_yyyymmddhh24miss=>'20210613012336'
+,p_last_upd_yyyymmddhh24miss=>'20210630120328'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(9821005720945470202)
@@ -12851,7 +12887,9 @@ wwv_flow_api.create_page_plug(
 ,p_plug_template=>wwv_flow_api.id(9818163901613375802)
 ,p_plug_display_sequence=>120
 ,p_plug_display_point=>'BODY'
-,p_plug_source=>unistr('\30EF\30AF\30C1\30F3\63A5\7A2E\72B6\6CC1\30C0\30C3\30B7\30E5\30DC\30FC\30C9 - \30EC\30D7\30EA\30AB<br/>\30C7\30FC\30BF\53C2\7167\5143 - <a href="https://cio.go.jp/c19vaccine_dashboard">\653F\5E9CCIO\30DD\30FC\30BF\30EB</a>')
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+unistr('\30EF\30AF\30C1\30F3\63A5\7A2E\72B6\6CC1\30C0\30C3\30B7\30E5\30DC\30FC\30C9 - \30EC\30D7\30EA\30AB<br/>\30C7\30FC\30BF\53C2\7167\5143 - <a href="https://cio.go.jp/c19vaccine_dashboard">\653F\5E9CCIO\30DD\30FC\30BF\30EB</a>'),
+unistr('<br/>\51FA\5178\5143:\5185\95A3\5B98\623F \60C5\5831\901A\4FE1\6280\8853\FF08\FF29\FF34\FF09\7DCF\5408\6226\7565\5BA4')))
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
