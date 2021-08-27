@@ -28,7 +28,7 @@ prompt APPLICATION 100 - 表EMPの操作
 -- Application Export:
 --   Application:     100
 --   Name:            表EMPの操作
---   Date and Time:   09:58 金曜日 8月 27, 2021
+--   Date and Time:   13:03 金曜日 8月 27, 2021
 --   Exported By:     APEXDEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -65,7 +65,7 @@ prompt APPLICATION 100 - 表EMPの操作
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---       Install scripts:          4
+--       Install scripts:          5
 --   Version:         20.2.0.00.20
 --   Instance ID:     9749554477293470
 --
@@ -116,7 +116,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\8868EMP\306E\64CD\4F5C')
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20210827095757'
+,p_last_upd_yyyymmddhh24miss=>'20210827130335'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -12455,6 +12455,61 @@ wwv_flow_api.create_install_object(
 ,p_last_updated_on=>to_date('20210827095757','YYYYMMDDHH24MISS')
 ,p_created_by=>'APEXDEV'
 ,p_created_on=>to_date('20210827095757','YYYYMMDDHH24MISS')
+);
+end;
+/
+prompt --application/deployment/install/install_proc
+begin
+wwv_flow_api.create_install_script(
+ p_id=>wwv_flow_api.id(10856029455560839)
+,p_install_id=>wwv_flow_api.id(10851690947431182)
+,p_name=>'proc'
+,p_sequence=>50
+,p_script_type=>'INSTALL'
+,p_script_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'CREATE OR REPLACE PROCEDURE "LOG_EMP_OP" (',
+'    p_row_status in varchar2',
+'  , p_app_user in varchar2',
+'  , p_app_session in varchar2',
+'  , p_empno in varchar2',
+'  , p_ename in varchar2',
+'  , p_job in varchar2',
+'  , p_mgr in varchar2',
+'  , p_hiredate in varchar2',
+'  , p_sal in varchar2',
+'  , p_comm in varchar2',
+'  , p_deptno in varchar2',
+')',
+'is',
+'    l_msg varchar2(80);',
+'    pragma autonomous_transaction;',
+'begin',
+'    l_msg := p_app_user || '':'' || p_app_session;',
+'    insert into emp_log(',
+'        op, oplog, empno',
+'        , ename, job, mgr, hiredate, sal, comm, deptno',
+'    )',
+'    values',
+'    (',
+'        p_row_status, l_msg, p_empno',
+'        , p_ename, p_job, p_mgr, p_hiredate, p_sal, p_comm, p_deptno',
+'    );',
+'    commit;',
+'end log_emp_op;',
+'/',
+'',
+''))
+);
+wwv_flow_api.create_install_object(
+ p_id=>wwv_flow_api.id(10856196108560839)
+,p_script_id=>wwv_flow_api.id(10856029455560839)
+,p_object_owner=>'#OWNER#'
+,p_object_type=>'PROCEDURE'
+,p_object_name=>'LOG_EMP_OP'
+,p_last_updated_by=>'APEXDEV'
+,p_last_updated_on=>to_date('20210827130335','YYYYMMDDHH24MISS')
+,p_created_by=>'APEXDEV'
+,p_created_on=>to_date('20210827130335','YYYYMMDDHH24MISS')
 );
 end;
 /
