@@ -28,7 +28,7 @@ prompt APPLICATION 103 - RDF CRUD操作
 -- Application Export:
 --   Application:     103
 --   Name:            RDF CRUD操作
---   Date and Time:   08:42 火曜日 12月 14, 2021
+--   Date and Time:   09:33 火曜日 12月 14, 2021
 --   Exported By:     APEXDEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -118,7 +118,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('RDF CRUD\64CD\4F5C')
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20211214084152'
+,p_last_upd_yyyymmddhh24miss=>'20211214093330'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -140,14 +140,6 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:'
 ,p_list_item_icon=>'fa-home'
 ,p_list_item_current_type=>'TARGET_PAGE'
-);
-wwv_flow_api.create_list_item(
- p_id=>wwv_flow_api.id(11540486507308923)
-,p_list_item_display_sequence=>20
-,p_list_item_link_text=>unistr('\30C8\30EA\30D7\30EB')
-,p_list_item_link_target=>'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
-,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
-,p_list_item_current_for_pages=>'2'
 );
 end;
 /
@@ -437,7 +429,6 @@ wwv_flow_api.create_flow_computation(
 ,p_computation_point=>'ON_NEW_INSTANCE'
 ,p_computation_type=>'STATIC_ASSIGNMENT'
 ,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>'https://www.apexugj.dev'
 );
 end;
 /
@@ -450,7 +441,6 @@ wwv_flow_api.create_flow_computation(
 ,p_computation_point=>'ON_NEW_INSTANCE'
 ,p_computation_type=>'STATIC_ASSIGNMENT'
 ,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>'admin'
 );
 end;
 /
@@ -463,7 +453,6 @@ wwv_flow_api.create_flow_computation(
 ,p_computation_point=>'ON_NEW_INSTANCE'
 ,p_computation_type=>'STATIC_ASSIGNMENT'
 ,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>'34qd4q4sfwAEE'
 );
 end;
 /
