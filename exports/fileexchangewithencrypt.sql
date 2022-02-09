@@ -28,14 +28,14 @@ prompt APPLICATION 100 - データ交換
 -- Application Export:
 --   Application:     100
 --   Name:            データ交換
---   Date and Time:   08:41 水曜日 2月 9, 2022
+--   Date and Time:   08:56 水曜日 2月 9, 2022
 --   Exported By:     APEXDEV
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      7
 --       Items:                   22
 --       Computations:             1
---       Processes:               13
+--       Processes:               14
 --       Regions:                  8
 --       Buttons:                  7
 --       Dynamic Actions:          3
@@ -118,7 +118,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>unistr('\30C7\30FC\30BF\4EA4\63DB')
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220209084138'
+,p_last_upd_yyyymmddhh24miss=>'20220209085602'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11505,7 +11505,7 @@ wwv_flow_api.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220209080701'
+,p_last_upd_yyyymmddhh24miss=>'20220209085602'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(9886117006695451)
@@ -11581,7 +11581,7 @@ wwv_flow_api.create_worksheet_column(
 ,p_display_order=>30
 ,p_column_identifier=>'L'
 ,p_column_label=>'External Key'
-,p_column_link=>'f?p=&APP_ID.:5:&SESSION.::&DEBUG.:5:ID:#EXTERNAL_KEY#'
+,p_column_link=>'f?p=&APP_ID.:5:&SESSION.::&DEBUG.::ID:#EXTERNAL_KEY#'
 ,p_column_linktext=>'#EXTERNAL_KEY#'
 ,p_column_type=>'STRING'
 );
@@ -11633,6 +11633,19 @@ wwv_flow_api.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_api.id(9886117006695451)
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(10127752822932410)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>unistr('\30C0\30A6\30F3\30ED\30FC\30C9\30FB\30DA\30FC\30B8\306E\30AF\30EA\30A2')
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'begin',
+'   apex_util.clear_page_cache(p_page_id => 5);',
+'end;'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 );
 end;
 /
