@@ -28,7 +28,7 @@ prompt APPLICATION 114 - APEX Tips
 -- Application Export:
 --   Application:     114
 --   Name:            APEX Tips
---   Date and Time:   05:01 水曜日 3月 23, 2022
+--   Date and Time:   06:45 水曜日 3月 23, 2022
 --   Exported By:     APEXDEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'APEX Tips'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220323050057'
+,p_last_upd_yyyymmddhh24miss=>'20220323064109'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -11338,7 +11338,7 @@ wwv_flow_api.create_page(
 'apex.actions.addShortcut("Ctrl+L", "feeling-lucky");'))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220323050038'
+,p_last_upd_yyyymmddhh24miss=>'20220323064109'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(16539781405046525)
@@ -11462,9 +11462,11 @@ wwv_flow_api.create_page_process(
 'begin',
 '    select ',
 '        json_object(',
-'            ''capital'' value capital',
+'            ''success'' value ''true'' format json',
+'            , ''capital'' value capital',
 '            , ''name'' value name',
 '            , ''population'' value population',
+'            returning varchar2(4000)',
 '        )',
 '    into',
 '        l_result',
