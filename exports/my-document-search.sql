@@ -28,7 +28,7 @@ prompt APPLICATION 97621 - My Document Search
 -- Application Export:
 --   Application:     97621
 --   Name:            My Document Search
---   Date and Time:   08:41 水曜日 4月 6, 2022
+--   Date and Time:   10:39 水曜日 4月 6, 2022
 --   Exported By:     YUJI.NAKAKOSHI@ORACLE.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'My Doc Search'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20220406084114'
+,p_last_upd_yyyymmddhh24miss=>'20220406103838'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -13432,9 +13432,9 @@ wwv_flow_api.create_page(
 ,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
 unistr('// \30B5\30A4\30C8\3068\3057\3066\8A2D\5B9A\3055\308C\3066\3044\308B\30C9\30AD\30E5\30E1\30F3\30C8\3092\691C\7D22\3059\308B\3002'),
 'var elem = document.getElementById("searchDoc");',
-'elem.addEventListener(''keypress'', test_event);',
+'elem.addEventListener(''keypress'', do_search);',
 unistr('// Enter\3092\62BC\3057\305F\3068\304D\306E\5217\306E\30B5\30A4\30C8\3092\691C\7D22\3059\308B\3002'),
-'function test_event(e) {',
+'function do_search(e) {',
 '  	if (e.keyCode === 13) {',
 '        let ie = e.srcElement;',
 '        let idx = ie.getAttribute("data-term-index");',
@@ -13459,7 +13459,7 @@ unistr('// Enter\3092\62BC\3057\305F\3068\304D\306E\5217\306E\30B5\30A4\30C8\309
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'YUJI.NAKAKOSHI@ORACLE.COM'
-,p_last_upd_yyyymmddhh24miss=>'20220406083806'
+,p_last_upd_yyyymmddhh24miss=>'20220406103838'
 );
 wwv_flow_api.create_report_region(
  p_id=>wwv_flow_api.id(160624193957895778669)
