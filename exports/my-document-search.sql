@@ -28,7 +28,7 @@ prompt APPLICATION 102 - My Document Search
 -- Application Export:
 --   Application:     102
 --   Name:            My Document Search
---   Date and Time:   02:51 土曜日 4月 16, 2022
+--   Date and Time:   00:48 日曜日 4月 17, 2022
 --   Exported By:     APEXDEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -115,7 +115,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'My Doc Search'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220416025015'
+,p_last_upd_yyyymmddhh24miss=>'20220417004835'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>3
 ,p_ui_type_name => null
@@ -13459,7 +13459,7 @@ unistr('// Enter\3092\62BC\3057\305F\3068\304D\306E\5217\306E\30B5\30A4\30C8\309
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220416025015'
+,p_last_upd_yyyymmddhh24miss=>'20220417004835'
 );
 wwv_flow_api.create_report_region(
  p_id=>wwv_flow_api.id(160632588455873425532)
@@ -13476,7 +13476,7 @@ wwv_flow_api.create_report_region(
 'select',
 '    apex_item.hidden(',
 '        p_idx => 1',
-'        , p_value => site_url',
+'        , p_value => substr(site_url,1,instr(site_url,''/'',-1))',
 '        , p_attributes => ''id="site_url-'' || rownum || ''"''',
 '    ) site_url',
 '    , ''<a href="https://'' || site_url || ''" target="_blank">'' || site_name || ''</a>'' site_name',
