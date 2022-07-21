@@ -28,7 +28,7 @@ prompt APPLICATION 117 - Object Storage Management
 -- Application Export:
 --   Application:     117
 --   Name:            Object Storage Management
---   Date and Time:   11:11 水曜日 7月 20, 2022
+--   Date and Time:   00:13 木曜日 7月 21, 2022
 --   Exported By:     APEXDEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -113,11 +113,11 @@ wwv_flow_imp.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Object Storage Management'
 ,p_substitution_string_02=>'G_BASE_URL'
-,p_substitution_value_02=>'https://objectstorage.us-ashburn-1.oraclecloud.com/n/mynamespace/'
+,p_substitution_value_02=>'https://objectstorage.us-ashburn-1.oraclecloud.com/n/id9lwqituhyg/'
 ,p_substitution_string_03=>'G_OCI_WEB_CREDENTIAL'
 ,p_substitution_value_03=>'OCI_API_ACCESS'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220720110952'
+,p_last_upd_yyyymmddhh24miss=>'20220721000623'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>4
 ,p_ui_type_name => null
@@ -139,18 +139,18 @@ wwv_imp_workspace.create_credential(
 );
 end;
 /
-prompt --workspace/remote_servers/objectstorage_us_ashburn_1_oraclecloud_com_n_mynamespace
+prompt --workspace/remote_servers/objectstorage_us_ashburn_1_oraclecloud_com_n_id9lwqituhyg
 begin
 wwv_imp_workspace.create_remote_server(
  p_id=>wwv_flow_imp.id(11613503939328037)
-,p_name=>'objectstorage-us-ashburn-1-oraclecloud-com-n-mynamespace'
-,p_static_id=>'objectstorage_us_ashburn_1_oraclecloud_com_n_mynamespace'
-,p_base_url=>nvl(wwv_flow_application_install.get_remote_server_base_url('objectstorage_us_ashburn_1_oraclecloud_com_n_mynamespace'),'https://objectstorage.us-ashburn-1.oraclecloud.com/n/mynamespace/')
-,p_https_host=>nvl(wwv_flow_application_install.get_remote_server_https_host('objectstorage_us_ashburn_1_oraclecloud_com_n_mynamespace'),'')
+,p_name=>'objectstorage-us-ashburn-1-oraclecloud-com-n-id9lwqituhyg'
+,p_static_id=>'objectstorage_us_ashburn_1_oraclecloud_com_n_id9lwqituhyg'
+,p_base_url=>nvl(wwv_flow_application_install.get_remote_server_base_url('objectstorage_us_ashburn_1_oraclecloud_com_n_id9lwqituhyg'),'https://objectstorage.us-ashburn-1.oraclecloud.com/n/id9lwqituhyg/')
+,p_https_host=>nvl(wwv_flow_application_install.get_remote_server_https_host('objectstorage_us_ashburn_1_oraclecloud_com_n_id9lwqituhyg'),'')
 ,p_server_type=>'WEB_SERVICE'
-,p_ords_timezone=>nvl(wwv_flow_application_install.get_remote_server_ords_tz('objectstorage_us_ashburn_1_oraclecloud_com_n_mynamespace'),'')
-,p_remote_sql_default_schema=>nvl(wwv_flow_application_install.get_remote_server_default_db('objectstorage_us_ashburn_1_oraclecloud_com_n_mynamespace'),'')
-,p_mysql_sql_modes=>nvl(wwv_flow_application_install.get_remote_server_sql_mode('objectstorage_us_ashburn_1_oraclecloud_com_n_mynamespace'),'')
+,p_ords_timezone=>nvl(wwv_flow_application_install.get_remote_server_ords_tz('objectstorage_us_ashburn_1_oraclecloud_com_n_id9lwqituhyg'),'')
+,p_remote_sql_default_schema=>nvl(wwv_flow_application_install.get_remote_server_default_db('objectstorage_us_ashburn_1_oraclecloud_com_n_id9lwqituhyg'),'')
+,p_mysql_sql_modes=>nvl(wwv_flow_application_install.get_remote_server_sql_mode('objectstorage_us_ashburn_1_oraclecloud_com_n_id9lwqituhyg'),'')
 ,p_prompt_on_install=>false
 );
 end;
@@ -14355,7 +14355,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220720110952'
+,p_last_upd_yyyymmddhh24miss=>'20220721000425'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(7854135887058720)
@@ -14372,7 +14372,7 @@ wwv_flow_imp_page.create_report_region(
  p_id=>wwv_flow_imp.id(7854357140058722)
 ,p_name=>'Bucket Contents'
 ,p_template=>wwv_flow_imp.id(11478789994267521)
-,p_display_sequence=>20
+,p_display_sequence=>40
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_component_template_options=>'#DEFAULT#:t-Report--altRowsDefault:t-Report--rowHighlight'
@@ -14484,7 +14484,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(7855916727058738)
 ,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_imp.id(7854357140058722)
+,p_button_plug_id=>wwv_flow_imp.id(7854135887058720)
 ,p_button_name=>'UPLOAD'
 ,p_button_action=>'REDIRECT_PAGE'
 ,p_button_template_options=>'#DEFAULT#'
@@ -14571,7 +14571,7 @@ wwv_flow_imp_page.create_page_process(
 '  l_response clob;',
 'begin',
 '  l_request_url := :G_BASE_URL || ''b/'' || c_bucket_name ',
-'    || ''/o/'' || apex_util.url_encode(c_object_name);',
+'    || ''/o/'' || utl_url.escape(c_object_name, false, ''AL32UTF8'');',
 '',
 '  l_response := apex_web_service.make_rest_request(',
 '    p_url => l_request_url',
@@ -14606,7 +14606,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'16'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220720105118'
+,p_last_upd_yyyymmddhh24miss=>'20220721000136'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(7854977801058728)
@@ -14712,7 +14712,7 @@ wwv_flow_imp_page.create_page_process(
 '    where name = :P2_FILE',
 '  ) loop',
 '    l_request_url := :G_BASE_URL || ''b/'' || :P2_BUCKET_NAME ',
-'     || ''/o/'' || apex_util.url_encode(file.filename);',
+'     || ''/o/'' || utl_url.escape(file.filename, false, ''AL32UTF8'');',
 '',
 '    apex_web_service.g_request_headers(1).name := ',
 '      ''Content-Type'';',
@@ -14756,7 +14756,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'17'
 ,p_last_updated_by=>'APEXDEV'
-,p_last_upd_yyyymmddhh24miss=>'20220720110238'
+,p_last_upd_yyyymmddhh24miss=>'20220721000623'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(7856371084058742)
@@ -14803,7 +14803,7 @@ wwv_flow_imp_page.create_page_process(
 'begin',
 '  l_request_url := :G_BASE_URL || ''b/'' ',
 '    || :P3_BUCKET_NAME || ''/o/'' ',
-'    || apex_util.url_encode(:P3_OBJECT_NAME);',
+'    || utl_url.escape(:P3_OBJECT_NAME, false, ''AL32UTF8'');',
 '',
 '  l_response := apex_web_service.make_rest_request_b(',
 '    p_url => l_request_url',
@@ -14838,7 +14838,7 @@ wwv_flow_imp_page.create_page_process(
 '  end if;',
 '  sys.htp.p(''Content-length: '' || l_content_length);',
 '  sys.htp.p(''Content-Disposition: attachment; filename="''',
-'    || :P3_OBJECT_NAME || ''"'' );',
+'    || utl_url.escape(:P3_OBJECT_NAME, false, ''AL32UTF8'') || ''"'' );',
 '  sys.htp.p(''Cache-Control: max-age=3600''); -- if desired',
 '  sys.owa_util.http_header_close;',
 '  sys.wpg_docload.download_file(l_response);',
