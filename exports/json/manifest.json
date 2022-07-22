@@ -7,7 +7,7 @@
          "icon": "",
          "url": "http://apexugj.blogspot.com/2022/07/json-format-oson.html",
          "source": "https://raw.githubusercontent.com/ujnak/apexapps/master/exports/json-flexfield-json-transform.sql",
-	 "zip": "",
+         "zip": "https://raw.githubusercontent.com/ujnak/apexapps/master/exports/json-flexfield-json-transform.zip",
          "license": "",
          "i18n": {
            "en": {
