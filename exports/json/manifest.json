@@ -1,0 +1,23 @@
+{
+  "customApps": [
+      {
+         "internalName": "JSON_FLEX_FIELD_JSON_TRANSFORM",
+         "author": "Yuji N",
+         "version": "0.1",
+         "icon": "",
+         "url": "http://apexugj.blogspot.com/2022/07/json-format-oson.html",
+         "source": "https://raw.githubusercontent.com/ujnak/apexapps/master/exports/json-flexfield-json-transform.sql",
+	 "zip": "",
+         "license": "",
+         "i18n": {
+           "en": {
+               "name": "APEX app utilizes format oson and json_transform",
+               "description": "APEX app utilizes format oson and json_transform"           },
+           "ja": {
+               "name": "format osonとjson_transformを使用したAPEXアプリ",
+               "description": "format osonとjson_transformを使用したAPEXアプリ"
+           }
+         }
+      }
+    ]
+}
