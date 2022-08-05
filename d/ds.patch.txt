@@ -1,0 +1,48 @@
+--- ds.sql	2022-06-06 12:55:25.000000000 +0900
++++ ds_p.sql	2022-06-06 13:03:45.000000000 +0900
+@@ -31,11 +31,7 @@
+ 
+ with page_views1 as (
+     select page_view_id
+-      from wwv_flow_debug_messages
+-     where session_id=^1 ),
+-page_views2 as (
+-    select page_view_id
+-      from wwv_flow_debug_messages2
++      from apex_debug_messages
+      where session_id=^1 )
+ select page_view_id,
+        to_char(start_timestamp,'hh24:mi:ss') started,
+@@ -55,25 +51,22 @@
+                     when message like 'A C C E P T:%' then 'accept'
+                end) show_accept,
+            to_char(extract(second from max(message_timestamp)-min(message_timestamp)),'90D99') secs,
+-           min(flow_id)||
+-           case when min(flow_id) <> max(flow_id) then '-'||max(flow_id) end flow_id,
++           min(application_id)||
++           case when min(application_id) <> max(application_id) then '-'||max(application_id) end flow_id,
+            min(page_id)||
+            case when min(page_id)<>max(page_id) then '-'||max(page_id) end page_id,
+            min(session_id)||
+            case when min(session_id)<>max(session_id) then '-'||max(session_id) end session_id,
+-           min(ws.short_name)||
+-           case when min(ws.short_name)<>max(ws.short_name) then '-'||max(ws.short_name) end workspace,
++           min(ws.workspace)||
++           case when min(ws.workspace)<>max(ws.workspace) then '-'||max(ws.workspace) end workspace,
+            min(apex_user)||
+            case when min(apex_user)<>max(apex_user) then '-'||max(apex_user) end apex_user,
+            row_number() over (order by d.page_view_id) r#
+-    from (select * from wwv_flow_debug_messages
++    from (select * from apex_debug_messages
+            where page_view_id in (select page_view_id from page_views1)
+-          union all
+-          select * from wwv_flow_debug_messages2
+-           where page_view_id in (select page_view_id from page_views2)
+          ) d,
+-         wwv_flow_companies ws
+-    where d.security_group_id = ws.provisioning_company_id
++         apex_workspaces ws
++    where d.workspace_id = ws.workspace_id
+     group  by page_view_id )
+ order by r#
+ /

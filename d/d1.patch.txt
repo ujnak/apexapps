@@ -1,0 +1,33 @@
+--- d1.sql	2022-06-06 12:55:24.000000000 +0900
++++ d1_p.sql	2022-06-06 12:58:10.000000000 +0900
+@@ -54,23 +54,21 @@
+                end) request,
+            min(case when message like '%apex_error_code: %' then regexp_substr(message, 'apex_error_code:(.*)',1,1,null,1)
+                end) error_code,
+-           min(flow_id)||
+-           case when min(flow_id) <> max(flow_id) then '-'||max(flow_id) end flow_id,
++           min(application_id)||
++           case when min(application_id) <> max(application_id) then '-'||max(application_id) end flow_id,
+            min(page_id)||
+            case when min(page_id)<>max(page_id) then '-'||max(page_id) end page_id,
+            min(session_id)||
+            case when min(session_id)<>max(session_id) then '-'||max(session_id) end session_id,
+-           min(ws.short_name)||
+-           case when min(ws.short_name)<>max(ws.short_name) then '-'||max(ws.short_name) end workspace,
++           min(ws.workspace)||
++           case when min(ws.workspace)<>max(ws.workspace) then '-'||max(ws.workspace) end workspace,
+            min(apex_user)||
+            case when min(apex_user)<>max(apex_user) then '-'||max(apex_user) end apex_user,
+            row_number() over (order by d.page_view_id desc) r#
+-    from (select * from wwv_flow_debug_messages
+-          union all
+-          select * from wwv_flow_debug_messages2
++    from (select * from apex_debug_messages
+          ) d,
+-         wwv_flow_companies ws
+-    where d.security_group_id = ws.provisioning_company_id
++         apex_workspaces ws
++    where d.workspace_id = ws.workspace_id
+     group  by page_view_id )
+ where r# < 31
+ order by r# desc

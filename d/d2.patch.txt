@@ -1,0 +1,22 @@
+--- d2.sql	2022-06-06 12:55:24.000000000 +0900
++++ d2_p.sql	2022-06-06 13:04:28.000000000 +0900
+@@ -42,15 +42,14 @@
+         extract(second from (message_timestamp-first_value(message_timestamp) over (order by id))) secs,
+         message_level,
+         message,
+-        flow_id,
++        application_id flow_id,
+         page_id,
+         substr(session_id,1,7)||'~' sid,
+         regexp_replace(apex_user,'([[:alnum:]_]{1,3})[^@]*(@.*)','\1\2') apex_user,
+-        substr(security_group_id,1,7)||'~' sgid,
++        substr(workspace_id,1,7)||'~' sgid,
+         rtrim(call_stack,CR||':2') call_stack
+-    from (select * from wwv_flow_debug_messages
+-          union all
+-          select * from wwv_flow_debug_messages2),
++    from (select * from apex_debug_messages
++          ),
+          consts
+     where page_view_id=^1
+     order by id )
