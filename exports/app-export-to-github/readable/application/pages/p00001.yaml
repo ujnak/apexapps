@@ -1,0 +1,774 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: アプリケーション・エクスポート
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: アプリケーション・エクスポート ==============
+  id: 11739612430182106
+  identification: 
+    title: アプリケーション・エクスポート
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 11597654813181998
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_APPLICATION_ID ========================
+  id: 8977127790610849
+  identification: 
+    name: P1_APPLICATION_ID
+    type: ポップアップLOV
+
+  label: 
+    label: エクスポートするアプリケーション
+    alignment: Left
+
+  settings: 
+    表示形式: Inline Popup
+    初期フェッチ: Automatic
+    複数の値: false
+    手動入力: false
+    入力時に検索: false
+    追加出力: 'ALIAS:P1_ALIAS'
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 11701057494182054
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_APPLICATION # 11742162805194483
+    display-extra-values: false
+    display-null-value: true
+    null-display-value: '-- アプリケーションの選択 --'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_ALIAS =================================
+  id: 8977257829610850
+  identification: 
+    name: P1_ALIAS
+    type: テキスト・フィールド
+
+  label: 
+    label: アプリケーション別名
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 11701057494182054
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_COMMIT_MESSAGE ========================
+  id: 11747891353224126
+  identification: 
+    name: P1_COMMIT_MESSAGE
+    type: テキスト領域
+
+  label: 
+    label: コミットのメッセージ
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 50
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 11701057494182054
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_COMMIT_AUTHOR_NAME ====================
+  id: 11747920394224127
+  identification: 
+    name: P1_COMMIT_AUTHOR_NAME
+    type: テキスト・フィールド
+
+  label: 
+    label: コミッター
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 60
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 11701057494182054
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_ALLOW_OVERWRITE =======================
+  id: 11748039775224128
+  identification: 
+    name: P1_ALLOW_OVERWRITE
+    type: 切替え
+
+  label: 
+    label: 上書き許可
+    alignment: Left
+
+  settings: 
+    デフォルトの使用: true
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 11701057494182054
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: B_EXPORT ====================================
+  id: 11745381925224101
+  identification: 
+    button-name: B_EXPORT
+    label: エクスポート
+
+  layout: 
+    sequence: 70
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 11703568062182056
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: アプリケーションのエクスポート =============
+  id: 11745827714224106
+  identification: 
+    name: アプリケーションのエクスポート
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Procedure or Function
+    所有者: 解析対象スキーマ
+    プロシージャまたはファンクション: EXPORT_APEX_APP_TO_GITHUB
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: アプリケーションがエクスポートされました。
+
+  error: 
+    error-message: アプリケーションのエクスポートに失敗しました。
+    display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: p_repo_name ==============================
+    id: 11745939991224107
+    identification: 
+      name: p_repo_name
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_REPO_NAME
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_credential_name ========================
+    id: 11746082037224108
+    identification: 
+      name: p_credential_name
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_owner ==================================
+    id: 11746163255224109
+    identification: 
+      name: p_owner
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_OWNER
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: p_branch_name ============================
+    id: 11746296696224110
+    identification: 
+      name: p_branch_name
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 50
+
+  - # ====== Parameter: p_commit_details =========================
+    id: 11746330703224111
+    identification: 
+      name: p_commit_details
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: Function Body
+      language: PL/SQL
+      pl/sql-function-body: |
+        declare
+            l_commit_details_in_json clob;
+            l_author_in_json varchar2(4000);
+        begin
+            -- メッセージがなければ、デフォルトのメッセージを使用する。
+            if :P1_COMMIT_MESSAGE is null then
+                return null;
+            end if;
+            -- コミッターにデフォルトはAPEXの開発者アカウントとする。
+            l_author_in_json := json_object(
+                key 'name'
+                value
+                    case
+                    when :P1_COMMIT_AUTHOR_NAME is not null then
+                        :P1_COMMIT_AUTHOR_NAME
+                    else
+                        :APP_USER
+                    end
+            );
+            l_commit_details_in_json := json_object(
+                key 'message' value :P1_COMMIT_MESSAGE,
+                key 'author' value l_author_in_json format json
+            );
+            return l_commit_details_in_json;
+        end;
+        
+
+    advanced: 
+      display-sequence: 60
+
+  - # ====== Parameter: p_allow_overwrite ========================
+    id: 11746482623224112
+    identification: 
+      name: p_allow_overwrite
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: Item
+      item: P1_ALLOW_OVERWRITE
+
+    advanced: 
+      display-sequence: 70
+
+  - # ====== Parameter: p_alias ==================================
+    id: 11746523689224113
+    identification: 
+      name: p_alias
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P1_ALIAS
+
+    advanced: 
+      display-sequence: 80
+
+  - # ====== Parameter: p_application_id =========================
+    id: 11746630023224114
+    identification: 
+      name: p_application_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P1_APPLICATION_ID
+
+    advanced: 
+      display-sequence: 90
+
+  - # ====== Parameter: p_with_date ==============================
+    id: 11746791409224115
+    identification: 
+      name: p_with_date
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 100
+
+  - # ====== Parameter: p_with_ir_public_reports =================
+    id: 11746868646224116
+    identification: 
+      name: p_with_ir_public_reports
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 110
+
+  - # ====== Parameter: p_with_ir_private_reports ================
+    id: 11746936882224117
+    identification: 
+      name: p_with_ir_private_reports
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 120
+
+  - # ====== Parameter: p_with_ir_notifications ==================
+    id: 11747029917224118
+    identification: 
+      name: p_with_ir_notifications
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 130
+
+  - # ====== Parameter: p_with_translations ======================
+    id: 11747170214224119
+    identification: 
+      name: p_with_translations
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 140
+
+  - # ====== Parameter: p_with_original_ids ======================
+    id: 11747275830224120
+    identification: 
+      name: p_with_original_ids
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 150
+
+  - # ====== Parameter: p_with_no_subscriptions ==================
+    id: 11747374545224121
+    identification: 
+      name: p_with_no_subscriptions
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 160
+
+  - # ====== Parameter: p_with_comments ==========================
+    id: 11747433993224122
+    identification: 
+      name: p_with_comments
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 170
+
+  - # ====== Parameter: p_with_supporting_objects ================
+    id: 11747509701224123
+    identification: 
+      name: p_with_supporting_objects
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 180
+
+  - # ====== Parameter: p_with_acl_assignments ===================
+    id: 11747661874224124
+    identification: 
+      name: p_with_acl_assignments
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 190
+
+  - # ====== Parameter: p_directory ==============================
+    id: 11748101563224129
+    identification: 
+      name: p_directory
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_DIRECTORY
+
+    advanced: 
+      display-sequence: 40
+
+branches: 
+- # ====== Branch: 戻る ========================================
+  id: 11745695610224104
+  identification: 
+    name: 戻る
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:1:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 1 # ホーム
+
