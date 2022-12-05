@@ -1,0 +1,41 @@
+---
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: G_REPO_NAME ===========================
+  id: 2
+  identification: 
+    name: G_REPO_NAME
+
+  installation: 
+    prompt-substitution: true
+
+- # ====== Substitution: G_CREDENTIAL ==========================
+  id: 3
+  identification: 
+    name: G_CREDENTIAL
+
+  installation: 
+    prompt-substitution: true
+
+- # ====== Substitution: G_OWNER ===============================
+  id: 4
+  identification: 
+    name: G_OWNER
+
+  installation: 
+    prompt-substitution: true
+
+- # ====== Substitution: G_DIRECTORY ===========================
+  id: 5
+  identification: 
+    name: G_DIRECTORY
+
+  installation: 
+    prompt-substitution: true
+
