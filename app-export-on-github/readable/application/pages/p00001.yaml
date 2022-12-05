@@ -482,7 +482,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 40
+      display-sequence: 50
 
   - # ====== Parameter: p_commit_details =========================
     id: 11746330703224111
@@ -526,7 +526,7 @@ processes:
         
 
     advanced: 
-      display-sequence: 50
+      display-sequence: 60
 
   - # ====== Parameter: p_allow_overwrite ========================
     id: 11746482623224112
@@ -543,7 +543,7 @@ processes:
       item: P1_ALLOW_OVERWRITE
 
     advanced: 
-      display-sequence: 60
+      display-sequence: 70
 
   - # ====== Parameter: p_alias ==================================
     id: 11746523689224113
@@ -560,7 +560,7 @@ processes:
       item: P1_ALIAS
 
     advanced: 
-      display-sequence: 70
+      display-sequence: 80
 
   - # ====== Parameter: p_application_id =========================
     id: 11746630023224114
@@ -577,7 +577,7 @@ processes:
       item: P1_APPLICATION_ID
 
     advanced: 
-      display-sequence: 80
+      display-sequence: 90
 
   - # ====== Parameter: p_with_date ==============================
     id: 11746791409224115
@@ -593,7 +593,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 90
+      display-sequence: 100
 
   - # ====== Parameter: p_with_ir_public_reports =================
     id: 11746868646224116
@@ -609,7 +609,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 100
+      display-sequence: 110
 
   - # ====== Parameter: p_with_ir_private_reports ================
     id: 11746936882224117
@@ -625,7 +625,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 110
+      display-sequence: 120
 
   - # ====== Parameter: p_with_ir_notifications ==================
     id: 11747029917224118
@@ -641,7 +641,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 120
+      display-sequence: 130
 
   - # ====== Parameter: p_with_translations ======================
     id: 11747170214224119
@@ -657,7 +657,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 130
+      display-sequence: 140
 
   - # ====== Parameter: p_with_original_ids ======================
     id: 11747275830224120
@@ -673,7 +673,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 140
+      display-sequence: 150
 
   - # ====== Parameter: p_with_no_subscriptions ==================
     id: 11747374545224121
@@ -689,7 +689,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 150
+      display-sequence: 160
 
   - # ====== Parameter: p_with_comments ==========================
     id: 11747433993224122
@@ -705,7 +705,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 160
+      display-sequence: 170
 
   - # ====== Parameter: p_with_supporting_objects ================
     id: 11747509701224123
@@ -721,7 +721,7 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 170
+      display-sequence: 180
 
   - # ====== Parameter: p_with_acl_assignments ===================
     id: 11747661874224124
@@ -737,7 +737,24 @@ processes:
       type: API Default
 
     advanced: 
-      display-sequence: 180
+      display-sequence: 190
+
+  - # ====== Parameter: p_directory ==============================
+    id: 11748101563224129
+    identification: 
+      name: p_directory
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Static Value
+      static-value: exports
+
+    advanced: 
+      display-sequence: 40
 
 branches: 
 - # ====== Branch: 戻る ========================================
