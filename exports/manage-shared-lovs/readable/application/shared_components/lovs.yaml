@@ -1,0 +1,24 @@
+---
+- # ====== List of Values: TEST ================================
+  id: 12472515487746159
+  identification: 
+    name: TEST
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: A ============================================
+    id: 12472860151746160
+    entry: 
+      sequence: 1
+      display: A
+      return: A
+
+  - # ====== Entry: B ============================================
+    id: 12473291301746163
+    entry: 
+      sequence: 2
+      display: B
+      return: B
+
