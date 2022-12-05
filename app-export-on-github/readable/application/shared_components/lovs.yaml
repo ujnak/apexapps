@@ -1,0 +1,69 @@
+---
+- # ====== List of Values: LOV_APPLICATION =====================
+  id: 11742162805194483
+  identification: 
+    name: LOV_APPLICATION
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: select application_id, application_name, lower(alias) alias from apex_applications
+
+  column-mapping: 
+    return: APPLICATION_ID
+    display: APPLICATION_NAME
+    default-sort: APPLICATION_ID
+    sort-direction: Ascending (Nulls Last)
+
+  columns: 
+  - # ====== Column: APPLICATION_ID ==============================
+    id: 11742722543201083
+    identification: 
+      column-name: APPLICATION_ID
+      show: false
+
+    layout: 
+      sequence: 10
+
+    source: 
+      data-type: NUMBER
+
+    advanced: 
+      searchable: false
+
+  - # ====== Column: APPLICATION_NAME ============================
+    id: 11743148968201083
+    identification: 
+      column-name: APPLICATION_NAME
+      show: true
+
+    heading: 
+      heading: Application Name
+
+    layout: 
+      sequence: 20
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: true
+
+  - # ====== Column: ALIAS =======================================
+    id: 11743586266201083
+    identification: 
+      column-name: ALIAS
+      show: true
+
+    heading: 
+      heading: Alias
+
+    layout: 
+      sequence: 30
+
+    source: 
+      data-type: VARCHAR2
+
+    advanced: 
+      searchable: false
+
