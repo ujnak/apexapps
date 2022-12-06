@@ -1,0 +1,11 @@
+---
+- # ====== Application Item: ID ================================
+  id: 12739070968710600
+  identification: 
+    name: ID
+    scope: Application
+
+  security: 
+    session-state-protection: Unrestricted
+    escape-special-characters: true
+
