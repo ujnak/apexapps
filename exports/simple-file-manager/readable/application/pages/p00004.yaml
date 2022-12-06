@@ -1,0 +1,73 @@
+---
+# ====== Page: download ======================================
+id: 4
+identification: 
+  name: download
+  alias: DOWNLOAD
+  title: download
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Enabled
+  page-access-protection: Unrestricted
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+processes: 
+- # ====== Process: ダウンロード ===============================
+  id: 12447070106680426
+  identification: 
+    name: ダウンロード
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+        l_exist integer;
+      begin
+          -- IDが存在しなければ、ORA-1403 を発生させる。
+          select 1 into l_exist from sfm_contents where id = :ID;
+          apex_util.redirect_url(
+              apex_util.get_blob_file_src(
+                  p_item_name => 'P3_CONTENT',
+                  p_v1 => :ID,
+                  p_content_disposition => 'attachment'
+              )
+          );
+          apex_application.stop_apex_engine;
+      end;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: ID
+
