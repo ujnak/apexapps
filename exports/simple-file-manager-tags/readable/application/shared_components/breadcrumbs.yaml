@@ -1,0 +1,49 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 12991023245257010
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: ホーム =======================================
+    id: 12991284434257010
+    identification: 
+      name: ホーム
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # ホーム
+
+  - # ====== Entry: Contents =====================================
+    id: 13220708895257348
+    identification: 
+      name: Contents
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # Contents
+
+  - # ====== Entry: ファセット検索 ===============================
+    id: 13315144631797817
+    identification: 
+      name: ファセット検索
+      page-number: 5
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:::'
+        page: 5 # ファセット検索
+
