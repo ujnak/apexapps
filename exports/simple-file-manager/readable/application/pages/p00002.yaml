@@ -19,12 +19,6 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
-css: 
-  inline: |
-    #sfmcontents img {
-        width: 30px;
-    }
-
 security: 
   authentication: Page Requires Authentication
   deep-linking: Application Default
@@ -56,7 +50,7 @@ help:
 
 regions: 
 - # ====== Region: Sfm Contents ================================
-  id: 12711586953242672
+  id: 13215269939257333
   identification: 
     title: Sfm Contents
     type: 対話モード・レポート
@@ -74,7 +68,6 @@ regions:
           ,content_mimetype
           ,content_charset
           ,content_lastupd
-          ,text_index_source
           ,apex_util.host_url('SCRIPT') || 'download?id=' || id download_url
       from sfm_contents
 
@@ -92,7 +85,6 @@ regions:
     render-components: Above Content
 
   advanced: 
-    static-id: sfmcontents
     exclude-title-from-translation: false
 
   server-cache: 
@@ -102,7 +94,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 12711688071242672
+    id: 13215346651257333
     link: 
       link-column: Link to Custom Target
       target: 
@@ -175,14 +167,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: プライマリ・レポート ==================
-      id: 12718417054242690
+      id: 13221719247257360
       identification: 
         name: プライマリ・レポート
-        alias: 127185
+        alias: 132218
 
     columns: 
     - # ====== Column: DOWNLOAD_URL ================================
-      id: 12447165116680427
+      id: 12447335179680429
       identification: 
         column-name: DOWNLOAD_URL
         type: Plain Text
@@ -195,7 +187,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 19
+        sequence: 18
         column-alignment: start
 
       accessibility: 
@@ -220,7 +212,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID ==========================================
-      id: 12712009148242675
+      id: 13215718355257337
       identification: 
         column-name: ID
         type: Hidden Column
@@ -235,7 +227,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TITLE =======================================
-      id: 12712492535242676
+      id: 13216153839257341
       identification: 
         column-name: TITLE
         type: Plain Text
@@ -273,7 +265,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ABSTRACT ====================================
-      id: 12712899941242677
+      id: 13216536366257342
       identification: 
         column-name: ABSTRACT
         type: Plain Text
@@ -311,7 +303,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT =====================================
-      id: 12713256680242677
+      id: 13216992098257342
       identification: 
         column-name: CONTENT
         type: Download BLOB
@@ -338,6 +330,7 @@ regions:
         mime-type-column: CONTENT_MIMETYPE
         filename-column: CONTENT_FILENAME
         last-updated-column: CONTENT_LASTUPD
+        character-set-column: CONTENT_CHARSET
 
       column-filter: 
         type: None
@@ -359,7 +352,7 @@ regions:
         content-disposition: Attachment
 
     - # ====== Column: CONTENT_FILENAME ============================
-      id: 12713667143242677
+      id: 13217387299257342
       identification: 
         column-name: CONTENT_FILENAME
         type: Plain Text
@@ -397,7 +390,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT_MIMETYPE ============================
-      id: 12714084574242678
+      id: 13217755636257343
       identification: 
         column-name: CONTENT_MIMETYPE
         type: Plain Text
@@ -435,7 +428,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT_CHARSET =============================
-      id: 12714453202242678
+      id: 13218129733257343
       identification: 
         column-name: CONTENT_CHARSET
         type: Plain Text
@@ -473,7 +466,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT_LASTUPD =============================
-      id: 12714815897242678
+      id: 13218524863257343
       identification: 
         column-name: CONTENT_LASTUPD
         type: Plain Text
@@ -510,47 +503,6 @@ regions:
 
       security: 
         escape-special-characters: true
-
-    - # ====== Column: TEXT_INDEX_SOURCE ===========================
-      id: 12715285486242679
-      identification: 
-        column-name: TEXT_INDEX_SOURCE
-        type: Plain Text
-
-      heading: 
-        heading: Text Index Source
-        alignment: start
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 9
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: None
-
-      enable-users-to: 
-        hide: true
-        sort: false
-        filter: true
-        highlight: true
-        control-break: false
-        aggregate: false
-        compute: false
-        chart: false
-        group-by: false
-        pivot: false
-
-      security: 
-        escape-special-characters: true
-
-      configuration: 
-        build-option: コメント・アウト # 12485921276242335
 
     printing: 
       output: 
@@ -595,13 +547,13 @@ regions:
         alignment: center
 
 - # ====== Region: ブレッドクラム ==============================
-  id: 12717083302242684
+  id: 13220392498257348
   identification: 
     title: ブレッドクラム
     type: ブレッドクラム
 
   source: 
-    breadcrumb: ブレッドクラム # 12486572851242337
+    breadcrumb: ブレッドクラム # 12991023245257010
 
   layout: 
     sequence: 20
@@ -614,7 +566,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Title Bar # 12601697020242413
+    template: Title Bar # 13106143172257071
     template-options: 
     - '#DEFAULT#'
     - t-BreadcrumbRegion--useBreadcrumbTitle
@@ -636,20 +588,20 @@ regions:
 
   attributes: 
     appearance: 
-      breadcrumb-template: Breadcrumb # 12663701483242460
+      breadcrumb-template: Breadcrumb # 13168258085257105
       template-options: 
       - '#DEFAULT#'
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 12715780119242679
+  id: 13219052791257344
   identification: 
     button-name: CREATE
     label: 作成
 
   layout: 
     sequence: 10
-    region: Sfm Contents # 12711586953242672
+    region: Sfm Contents # 13215269939257333
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -658,7 +610,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 12662183512242459
+    button-template: Text # 13166629267257104
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -674,7 +626,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: レポートの編集 - ダイアログのクローズ
-  id: 12716009111242679
+  id: 13219358275257344
   identification: 
     name: レポートの編集 - ダイアログのクローズ
 
@@ -684,7 +636,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Region
-    region: Sfm Contents # 12711586953242672
+    region: Sfm Contents # 13215269939257333
 
   execution: 
     event-scope: Static
@@ -692,17 +644,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: リフレッシュ ================================
-    id: 12716511111242681
+    id: 13219817367257345
     identification: 
       action: リフレッシュ
 
     affected-elements: 
       selection-type: Region
-      region: Sfm Contents # 12711586953242672
+      region: Sfm Contents # 13215269939257333
 
     execution: 
       sequence: 10
-      event: レポートの編集 - ダイアログのクローズ # 12716009111242679
+      event: レポートの編集 - ダイアログのクローズ # 13219358275257344
       fire-when-event-result-is: True
       fire-on-initialization: false
 
