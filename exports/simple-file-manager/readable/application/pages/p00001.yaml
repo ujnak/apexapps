@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: 簡易ファイル管理 ============================
-  id: 12699280487242508
+  id: 13203664384257170
   identification: 
     title: 簡易ファイル管理
     type: 静的コンテンツ
@@ -54,7 +54,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 12556206370242389
+    template: Hero # 13060794461257050
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -82,13 +82,13 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: ページ・ナビゲーション ======================
-  id: 12734478711242717
+  id: 13236365834257384
   identification: 
     title: ページ・ナビゲーション
     type: リスト
 
   source: 
-    list: ページ・ナビゲーション # 12733812514242716
+    list: ページ・ナビゲーション # 13235686678257383
 
   layout: 
     sequence: 30
@@ -101,7 +101,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 12523299223242371
+    template: Blank with Attributes # 13027724396257035
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -122,7 +122,7 @@ regions:
 
   attributes: 
     appearance: 
-      list-template: Cards # 12637991910242440
+      list-template: Cards # 13142442774257091
       template-options: 
       - '#DEFAULT#'
       - u-colors
