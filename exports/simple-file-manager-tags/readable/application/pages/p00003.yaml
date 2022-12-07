@@ -1,0 +1,990 @@
+---
+# ====== Page: Sfm Content ===================================
+id: 3
+identification: 
+  name: Sfm Content
+  alias: SFM-CONTENT
+  title: Sfm Content
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer # 12991856576257013
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+
+dialog: 
+  chained: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Sfm Content =================================
+  id: 13204995108257320
+  identification: 
+    title: Sfm Content
+    type: フォーム
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: SFM_CONTENTS
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 13027724396257035
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: ボタン ======================================
+  id: 13210821501257329
+  identification: 
+    title: ボタン
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 13030562872257036
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: Text (escape special characters)
+      改行の表示: true
+
+page-items: 
+- # ====== Page Item: P3_TEXT_INDEX_SOURCE =====================
+  id: 12447444814680430
+  identification: 
+    name: P3_TEXT_INDEX_SOURCE
+    type: テキスト・フィールド
+
+  label: 
+    label: Text Index Source
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 90
+    region: Sfm Content # 13204995108257320
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 13164113023257103
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: TEXT_INDEX_SOURCE
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 12990428933257008
+
+- # ====== Page Item: P3_VERSION ===============================
+  id: 12447569667680431
+  identification: 
+    name: P3_VERSION
+    type: 数値フィールド
+
+  label: 
+    label: Version
+    alignment: Left
+
+  settings: 
+    数字の位置合せ: Start
+    仮想キーボード: Decimal
+
+  layout: 
+    sequence: 100
+    region: Sfm Content # 13204995108257320
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 13164113023257103
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: VERSION
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 12990428933257008
+
+- # ====== Page Item: P3_ID ====================================
+  id: 13205210294257321
+  identification: 
+    name: P3_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: Sfm Content # 13204995108257320
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_TITLE =================================
+  id: 13205673295257324
+  identification: 
+    name: P3_TITLE
+    type: テキスト・フィールド
+
+  label: 
+    label: Title
+    alignment: Right
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: None
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 20
+    region: Sfm Content # 13204995108257320
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 13165401425257104
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 80
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: TITLE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_ABSTRACT ==============================
+  id: 13206047188257325
+  identification: 
+    name: P3_ABSTRACT
+    type: テキスト領域
+
+  label: 
+    label: Abstract
+    alignment: Right
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 30
+    region: Sfm Content # 13204995108257320
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 13164113023257103
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+    height: 4
+
+  validation: 
+    value-required: false
+    maximum-length: 800
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: ABSTRACT
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_CONTENT ===============================
+  id: 13206477000257325
+  identification: 
+    name: P3_CONTENT
+    type: ファイル参照...
+
+  label: 
+    label: Content
+    alignment: Left
+
+  settings: 
+    表示形式: Inline File Browse
+    記憶域タイプ: BLOB column specified in Item Source attribute
+    mimeタイプ列: CONTENT_MIMETYPE
+    ファイル名列: CONTENT_FILENAME
+    文字セット列: CONTENT_CHARSET
+    blob最終更新列: CONTENT_LASTUPD
+    ダウンロード・リンクの表示: true
+    コンテンツ配置: Attachment
+
+  layout: 
+    sequence: 40
+    region: Sfm Content # 13204995108257320
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 13164113023257103
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: CONTENT
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_CONTENT_FILENAME ======================
+  id: 13206896498257325
+  identification: 
+    name: P3_CONTENT_FILENAME
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 50
+    region: Sfm Content # 13204995108257320
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: CONTENT_FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_CONTENT_MIMETYPE ======================
+  id: 13207270833257326
+  identification: 
+    name: P3_CONTENT_MIMETYPE
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 60
+    region: Sfm Content # 13204995108257320
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: CONTENT_MIMETYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_CONTENT_CHARSET =======================
+  id: 13207614356257326
+  identification: 
+    name: P3_CONTENT_CHARSET
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 70
+    region: Sfm Content # 13204995108257320
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: CONTENT_CHARSET
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P3_CONTENT_LASTUPD =======================
+  id: 13208083232257326
+  identification: 
+    name: P3_CONTENT_LASTUPD
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 80
+    region: Sfm Content # 13204995108257320
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 13204995108257320
+    column: CONTENT_LASTUPD
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 13211290412257329
+  identification: 
+    button-name: CANCEL
+    label: 取消
+
+  layout: 
+    sequence: 10
+    region: ボタン # 13210821501257329
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 13166629267257104
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 13212654534257331
+  identification: 
+    button-name: DELETE
+    label: 削除
+
+  layout: 
+    sequence: 20
+    region: ボタン # 13210821501257329
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 13166629267257104
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--danger
+    - t-Button--simple
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P3_ID
+
+- # ====== Button: SAVE ========================================
+  id: 13213045051257331
+  identification: 
+    button-name: SAVE
+    label: 変更の適用
+
+  layout: 
+    sequence: 30
+    region: ボタン # 13210821501257329
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 13166629267257104
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P3_ID
+
+- # ====== Button: CREATE ======================================
+  id: 13213493918257332
+  identification: 
+    button-name: CREATE
+    label: 作成
+
+  layout: 
+    sequence: 40
+    region: ボタン # 13210821501257329
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 13166629267257104
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P3_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 13211328448257329
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 13211290412257329
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: ダイアログを取り消す ========================
+    id: 13212141497257331
+    identification: 
+      action: ダイアログを取り消す
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 13211328448257329
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: 文字列の抽出 ===============================
+  id: 12447651884680432
+  identification: 
+    name: 文字列の抽出
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Procedure or Function
+    所有者: 解析対象スキーマ
+    プロシージャまたはファンクション: RETRIEVE_TEXT_INDEX_SOURCE
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE SAVE
+
+  parameters: 
+  - # ====== Parameter: p_id =====================================
+    id: 12447715032680433
+    identification: 
+      name: p_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P3_ID
+
+    advanced: 
+      display-sequence: 10
+
+- # ====== Process: ファイルのアップロード =====================
+  id: 12447898556680434
+  identification: 
+    name: ファイルのアップロード
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Procedure or Function
+    所有者: 解析対象スキーマ
+    プロシージャまたはファンクション: UPLOAD_FILE_TO_OBJECT_STORAGE
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE SAVE
+
+  parameters: 
+  - # ====== Parameter: p_id =====================================
+    id: 12447985681680435
+    identification: 
+      name: p_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P3_ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_region =================================
+    id: 12448070010680436
+    identification: 
+      name: p_region
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_REGION
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_namespace ==============================
+    id: 12448197870680437
+    identification: 
+      name: p_namespace
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_NAMESPACE
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: p_bucket =================================
+    id: 12448211785680438
+    identification: 
+      name: p_bucket
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_BUCKET
+
+    advanced: 
+      display-sequence: 40
+
+  - # ====== Parameter: p_credential =============================
+    id: 12448325504680439
+    identification: 
+      name: p_credential
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL
+
+    advanced: 
+      display-sequence: 50
+
+- # ====== Process: タグの抽出 =================================
+  id: 12448486519680440
+  identification: 
+    name: タグの抽出
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      update sfm_contents set tags = 
+          json_object(apex_string_util.find_tags(:P3_ABSTRACT))
+      where id = :P3_ID;
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE SAVE
+
+- # ====== Process: 初期化フォームSfm Content ==================
+  id: 13213805755257332
+  identification: 
+    name: 初期化フォームSfm Content
+    type: フォーム - 初期化
+    form-region: Sfm Content # 13204995108257320
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: プロセス・フォームSfm Content ==============
+  id: 13214226365257332
+  identification: 
+    name: プロセス・フォームSfm Content
+    type: フォーム - 行の自動処理(DML)
+    form-region: Sfm Content # 13204995108257320
+
+  settings: 
+    ターゲット・タイプ: Region Source
+    失われた更新の防止: true
+    行のロック: Yes
+    挿入後に主キーを返す: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: ダイアログを閉じる =========================
+  id: 13214636498257333
+  identification: 
+    name: ダイアログを閉じる
+    type: ダイアログを閉じる
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
