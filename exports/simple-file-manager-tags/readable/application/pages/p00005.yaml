@@ -1,0 +1,726 @@
+---
+# ====== Page: ファセット検索 ================================
+id: 5
+identification: 
+  name: ファセット検索
+  alias: ファセット検索
+  title: ファセット検索
+
+appearance: 
+  page-mode: Normal
+  page-template: Left Side Column # 12994729691257018
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: ブレッドクラム ==============================
+  id: 13314835036797816
+  identification: 
+    title: ブレッドクラム
+    type: ブレッドクラム
+
+  source: 
+    breadcrumb: ブレッドクラム # 12991023245257010
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 13106143172257071
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 13168258085257105
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: 検索結果 ====================================
+  id: 13315336257797817
+  identification: 
+    title: 検索結果
+    type: クラシック・レポート
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select
+          id
+          ,version
+          ,title
+          ,abstract
+          ,content_filename
+          ,content_mimetype
+          ,json_serialize(tags) tags
+      from sfm_contents
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 13093729861257065
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--hideHeader
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 50
+
+    appearance: 
+      template-type: Theme
+      template: Standard # 13131660254257085
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--stretch
+      - t-Report--staticRowColors
+      - t-Report--rowHighlight
+      - t-Report--inline
+      - t-Report--hideNoPagination
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 100000
+
+    messages: 
+      when-no-data-found: データが見つかりません
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ID ==========================================
+    id: 13318156944797820
+    identification: 
+      column-name: ID
+      type: Hidden Column
+
+    layout: 
+      sequence: 1
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: VERSION =====================================
+    id: 13318506003797820
+    identification: 
+      column-name: VERSION
+      type: Hidden Column
+
+    layout: 
+      sequence: 2
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TITLE =======================================
+    id: 13318982795797821
+    identification: 
+      column-name: TITLE
+      type: Plain Text
+
+    heading: 
+      heading: Title
+      alignment: start
+
+    layout: 
+      sequence: 3
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    column-formatting: 
+      html-expression: <a href="/ords/r/apexdev/&APP_ALIAS./download?id=#ID#&session=&APP_SESSION.">#TITLE#</a>
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ABSTRACT ====================================
+    id: 13319331345797821
+    identification: 
+      column-name: ABSTRACT
+      type: Plain Text
+
+    heading: 
+      heading: Abstract
+      alignment: start
+
+    layout: 
+      sequence: 4
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CONTENT_FILENAME ============================
+    id: 13319791744797821
+    identification: 
+      column-name: CONTENT_FILENAME
+      type: Plain Text
+
+    heading: 
+      heading: Content Filename
+      alignment: start
+
+    layout: 
+      sequence: 5
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CONTENT_MIMETYPE ============================
+    id: 13320187835797822
+    identification: 
+      column-name: CONTENT_MIMETYPE
+      type: Plain Text
+
+    heading: 
+      heading: Content Mimetype
+      alignment: start
+
+    layout: 
+      sequence: 6
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TAGS ========================================
+    id: 13320554567797822
+    identification: 
+      column-name: TAGS
+      type: Plain Text
+
+    heading: 
+      heading: Tags
+      alignment: start
+
+    layout: 
+      sequence: 7
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: 検索 ========================================
+  id: 13315451011797817
+  identification: 
+    title: 検索
+    type: ファセット検索
+
+  source: 
+    filtered-region: 検索結果 # 13315336257797817
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_02
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 4
+
+  appearance: 
+    template: Standard # 13093729861257065
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--hideHeader
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+    landmark-label: フィルタ
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      バッチ・ファセット変更: false
+      コンパクトな数値のしきい値: 10000
+      現在のファセットの表示: Selector
+      現在のファセット・セレクタ: '#active_facets'
+      総行数の表示: Yes
+      チャートの表示: Dialog
+      トップnの値のチャートを表示: 10
+
+  facets: 
+  - # ====== Facet: P5_SEARCH ====================================
+    id: 13315966688797818
+    identification: 
+      name: P5_SEARCH
+      type: 検索
+
+    label: 
+      label: 検索
+
+    settings: 
+      検索タイプ: Row Search
+      入力フィールド: Top of Faceted Search Region
+
+    layout: 
+      sequence: 10
+
+    source: 
+      database-column(s): TITLE,ABSTRACT,CONTENT_FILENAME,CONTENT_MIMETYPE,TAGS
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Facet: P5_CONTENT_MIMETYPE ==========================
+    id: 13316363004797818
+    identification: 
+      name: P5_CONTENT_MIMETYPE
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: Content Mimetype
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 20
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: true
+
+    advanced: 
+      show-chart-initially: false
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: CONTENT_MIMETYPE
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P5_TAGS ======================================
+    id: 13316718528797819
+    identification: 
+      name: P5_TAGS
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: Tags
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 30
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: true
+
+    advanced: 
+      show-chart-initially: false
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: TAGS
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: JSON Array
+      filter-combination: AND (Intersect)
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  filters: 
+  - # ====== Filter: P5_SEARCH ===================================
+    id: 13315966688797818
+    identification: 
+      name: P5_SEARCH
+      type: 検索
+
+    label: 
+      label: 検索
+
+    settings: 
+      検索タイプ: Row Search
+      縮小された検索フィールド: false
+
+    layout: 
+      sequence: 10
+
+    source: 
+      database-column(s): TITLE,ABSTRACT,CONTENT_FILENAME,CONTENT_MIMETYPE,TAGS
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Filter: P5_CONTENT_MIMETYPE =========================
+    id: 13316363004797818
+    identification: 
+      name: P5_CONTENT_MIMETYPE
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: Content Mimetype
+
+    layout: 
+      sequence: 20
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: CONTENT_MIMETYPE
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P5_TAGS =====================================
+    id: 13316718528797819
+    identification: 
+      name: P5_TAGS
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: Tags
+
+    layout: 
+      sequence: 30
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: TAGS
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: JSON Array
+      filter-combination: AND (Intersect)
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+- # ====== Region: ボタン・バー ================================
+  id: 13317069153797819
+  identification: 
+    title: ボタン・バー
+    type: 静的コンテンツ
+
+  source: 
+    html-code: <div id="active_facets"></div>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 13030562872257036
+    template-options: 
+    - '#DEFAULT#'
+    - t-ButtonRegion--noPadding
+    - t-ButtonRegion--noUI
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+buttons: 
+- # ====== Button: RESET =======================================
+  id: 13317525235797819
+  identification: 
+    button-name: RESET
+    label: リセット
+
+  layout: 
+    sequence: 10
+    region: ボタン・バー # 13317069153797819
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 13166772026257105
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--noUI
+    - t-Button--iconLeft
+    icon: fa-undo
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:RR,5::'
+      page: 5 # ファセット検索
+      clear-cache: RR,5
+
+    warn-on-unsaved-changes: Do Not Check
+
