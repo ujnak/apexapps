@@ -1,0 +1,97 @@
+---
+# ====== Page: download ======================================
+id: 4
+identification: 
+  name: download
+  alias: DOWNLOAD
+  title: download
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Enabled
+  page-access-protection: Unrestricted
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+processes: 
+- # ====== Process: ダウンロード ===============================
+  id: 12447221651680428
+  identification: 
+    name: ダウンロード
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_response dbms_cloud_oci_obs_object_storage_get_object_response_t;
+          l_status_code number;
+          l_filename sfm_contents.content_filename%type;
+          l_mime_type sfm_contents.content_mimetype%type;
+          l_version sfm_contents.version%type;
+          l_object_name varchar2(4000);
+          file_download_error exception;
+          l_download apex_data_export.t_export;
+      begin
+          -- オブジェクト・ストレージ上の名前をl_object_nameとして取り出す。
+          select version, content_filename, content_mimetype
+          into l_version, l_filename, l_mime_type
+          from sfm_contents
+          where id = :ID;
+          l_object_name := :ID || '/' || l_version || '/' || utl_url.escape(l_filename, false, 'AL32UTF8');
+      
+          -- オブジェクト・ストレージから対象ファイルを取り出す。
+          l_response := dbms_cloud_oci_obs_object_storage.get_object(
+              namespace_name => :G_NAMESPACE
+              ,bucket_name => :G_BUCKET
+              ,object_name => l_object_name
+              ,region => :G_REGION
+              ,credential_name => :G_CREDENTIAL
+          );
+          l_status_code := l_response.status_code;
+          if l_status_code != 200 then
+              raise file_download_error;
+          end if;
+      
+          -- 取り出したファイルを、ブラウザにダウンロードする。
+          l_download.file_name := l_filename;
+          l_download.mime_type := l_mime_type;
+          l_download.as_clob := false;
+          l_download.content_blob := l_response.response_body;
+          apex_data_export.download( p_export => l_download );
+          apex_application.stop_apex_engine;
+      end;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: ID
+
