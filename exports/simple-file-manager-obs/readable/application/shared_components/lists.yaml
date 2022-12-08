@@ -1,13 +1,13 @@
 ---
 - # ====== List: ナビゲーション・メニュー ======================
-  id: 12991540441257012
+  id: 13335272459848575
   identification: 
     name: ナビゲーション・メニュー
     type: Static Values
 
   entries: 
   - # ====== Entry: ホーム =======================================
-    id: 13202743069257168
+    id: 13546480313848751
     label: 
       label: ホーム
 
@@ -32,7 +32,7 @@
       translatable: false
 
   - # ====== Entry: Contents =====================================
-    id: 13204293178257171
+    id: 13547911502848754
     label: 
       label: Contents
 
@@ -57,14 +57,14 @@
       translatable: false
 
 - # ====== List: ナビゲーション・バー ==========================
-  id: 13191843189257124
+  id: 13535522993848709
   identification: 
     name: ナビゲーション・バー
     type: Static Values
 
   entries: 
   - # ====== Entry: &APP_USER. ===================================
-    id: 13236717608257384
+    id: 13580382721848956
     label: 
       label: '&APP_USER.'
 
@@ -88,13 +88,13 @@
       2.: has-username
 
   - # ====== Entry: --- ==========================================
-    id: 13237204952257384
+    id: 13580887922848957
     label: 
       label: '---'
 
     layout: 
       sequence: 20
-      parent-entry: '&APP_USER.' # 13236717608257384
+      parent-entry: '&APP_USER.' # 13580382721848956
 
     is-current: 
       type: Target Page
@@ -109,7 +109,7 @@
       translatable: false
 
   - # ====== Entry: サインアウト =================================
-    id: 13237697047257385
+    id: 13581293044848957
     label: 
       label: サインアウト
 
@@ -118,7 +118,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: '&APP_USER.' # 13236717608257384
+      parent-entry: '&APP_USER.' # 13580382721848956
 
     is-current: 
       type: Target Page
@@ -133,14 +133,14 @@
       translatable: false
 
 - # ====== List: ページ・ナビゲーション ========================
-  id: 13235686678257383
+  id: 13579289715848955
   identification: 
     name: ページ・ナビゲーション
     type: Static Values
 
   entries: 
   - # ====== Entry: Contents =====================================
-    id: 13236046768257383
+    id: 13579680957848955
     label: 
       label: Contents
 
