@@ -38,53 +38,16 @@ server-cache:
 
 processes: 
 - # ====== Process: ダウンロード ===============================
-  id: 12447221651680428
+  id: 12448625538680442
   identification: 
     name: ダウンロード
-    type: コードを実行
+    type: APIの呼出し
 
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: |
-      declare
-          l_response dbms_cloud_oci_obs_object_storage_get_object_response_t;
-          l_status_code number;
-          l_filename sfm_contents.content_filename%type;
-          l_mime_type sfm_contents.content_mimetype%type;
-          l_version sfm_contents.version%type;
-          l_object_name varchar2(4000);
-          file_download_error exception;
-          l_download apex_data_export.t_export;
-      begin
-          -- オブジェクト・ストレージ上の名前をl_object_nameとして取り出す。
-          select version, content_filename, content_mimetype
-          into l_version, l_filename, l_mime_type
-          from sfm_contents
-          where id = :ID;
-          l_object_name := :ID || '/' || l_version || '/' || utl_url.escape(l_filename, false, 'AL32UTF8');
-      
-          -- オブジェクト・ストレージから対象ファイルを取り出す。
-          l_response := dbms_cloud_oci_obs_object_storage.get_object(
-              namespace_name => :G_NAMESPACE
-              ,bucket_name => :G_BUCKET
-              ,object_name => l_object_name
-              ,region => :G_REGION
-              ,credential_name => :G_CREDENTIAL
-          );
-          l_status_code := l_response.status_code;
-          if l_status_code != 200 then
-              raise file_download_error;
-          end if;
-      
-          -- 取り出したファイルを、ブラウザにダウンロードする。
-          l_download.file_name := l_filename;
-          l_download.mime_type := l_mime_type;
-          l_download.as_clob := false;
-          l_download.content_blob := l_response.response_body;
-          apex_data_export.download( p_export => l_download );
-          apex_application.stop_apex_engine;
-      end;
+  settings: 
+    タイプ: PL/SQL Package
+    所有者: 解析対象スキーマ
+    パッケージ: SFM_FILE_UTIL
+    プロシージャまたはファンクション: DOWNLOAD_FILE
 
   execution: 
     sequence: 10
@@ -94,4 +57,90 @@ processes:
   server-side-condition: 
     type: Item is NOT NULL
     item: ID
+
+  parameters: 
+  - # ====== Parameter: p_id =====================================
+    id: 13621713980176303
+    identification: 
+      name: p_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_region =================================
+    id: 13621885792176304
+    identification: 
+      name: p_region
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_REGION
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_namespace ==============================
+    id: 13621986658176305
+    identification: 
+      name: p_namespace
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_NAMESPACE
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: p_bucket =================================
+    id: 13622044531176306
+    identification: 
+      name: p_bucket
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_BUCKET
+
+    advanced: 
+      display-sequence: 40
+
+  - # ====== Parameter: p_credential =============================
+    id: 13622155511176307
+    identification: 
+      name: p_credential
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL
+
+    advanced: 
+      display-sequence: 50
 
