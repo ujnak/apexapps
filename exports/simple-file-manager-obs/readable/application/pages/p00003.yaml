@@ -8,7 +8,7 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 13335526078848576
+  dialog-template: Drawer # 14273334447620072
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -42,7 +42,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Sfm Content =================================
-  id: 13548609137848896
+  id: 14486488223620412
   identification: 
     title: Sfm Content
     type: フォーム
@@ -65,7 +65,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 13371423346848606
+    template: Blank with Attributes # 14309246356620101
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -94,7 +94,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: ボタン ======================================
-  id: 13554525123848905
+  id: 14492242061620421
   identification: 
     title: ボタン
     type: 静的コンテンツ
@@ -110,7 +110,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Buttons Container # 13374210270848607
+    template: Buttons Container # 14312028603620103
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -136,7 +136,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P3_ID ====================================
-  id: 13548919842848897
+  id: 14486721528620413
   identification: 
     name: P3_ID
     type: 非表示
@@ -146,14 +146,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: ID
     data-type: NUMBER
     query-only: false
@@ -169,7 +169,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_TITLE =================================
-  id: 13549348145848900
+  id: 14487141438620416
   identification: 
     name: P3_TITLE
     type: テキスト・フィールド
@@ -187,7 +187,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -198,7 +198,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 13509196340848683
+    template: Required - Floating # 14446955751620192
     template-options: 
     - '#DEFAULT#'
     width: 32
@@ -211,7 +211,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: TITLE
     data-type: VARCHAR2
     query-only: false
@@ -229,7 +229,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_ABSTRACT ==============================
-  id: 13549796024848900
+  id: 14487472722620417
   identification: 
     name: P3_ABSTRACT
     type: テキスト領域
@@ -246,7 +246,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -257,7 +257,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 13507813560848682
+    template: Optional - Floating # 14445671516620191
     template-options: 
     - '#DEFAULT#'
     width: 60
@@ -271,7 +271,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: ABSTRACT
     data-type: VARCHAR2
     query-only: false
@@ -290,7 +290,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_CONTENT ===============================
-  id: 13550181240848901
+  id: 14487897297620417
   identification: 
     name: P3_CONTENT
     type: ファイル参照...
@@ -310,7 +310,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -321,7 +321,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 13507813560848682
+    template: Optional - Floating # 14445671516620191
     template-options: 
     - '#DEFAULT#'
     width: 60
@@ -334,7 +334,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: CONTENT
     data-type: BLOB
     query-only: false
@@ -348,7 +348,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_CONTENT_FILENAME ======================
-  id: 13550558066848901
+  id: 14488215547620417
   identification: 
     name: P3_CONTENT_FILENAME
     type: 非表示
@@ -358,14 +358,14 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: CONTENT_FILENAME
     data-type: VARCHAR2
     query-only: false
@@ -381,7 +381,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_CONTENT_MIMETYPE ======================
-  id: 13550954597848901
+  id: 14488647464620418
   identification: 
     name: P3_CONTENT_MIMETYPE
     type: 非表示
@@ -391,14 +391,14 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: CONTENT_MIMETYPE
     data-type: VARCHAR2
     query-only: false
@@ -414,7 +414,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_CONTENT_CHARSET =======================
-  id: 13551370744848901
+  id: 14489029193620418
   identification: 
     name: P3_CONTENT_CHARSET
     type: 非表示
@@ -424,14 +424,14 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: CONTENT_CHARSET
     data-type: VARCHAR2
     query-only: false
@@ -447,7 +447,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_CONTENT_LASTUPD =======================
-  id: 13551778053848902
+  id: 14489452754620418
   identification: 
     name: P3_CONTENT_LASTUPD
     type: 非表示
@@ -457,14 +457,14 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Sfm Content # 13548609137848896
+    region: Sfm Content # 14486488223620412
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
     column: CONTENT_LASTUPD
     data-type: DATE
     query-only: false
@@ -479,16 +479,137 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P3_TEXT_INDEX_SOURCE =====================
+  id: 14539199744073301
+  identification: 
+    name: P3_TEXT_INDEX_SOURCE
+    type: テキスト・フィールド
+
+  label: 
+    label: Text Index Source
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 90
+    region: Sfm Content # 14486488223620412
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 14445671516620191
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 14486488223620412
+    column: TEXT_INDEX_SOURCE
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 14271919779620068
+
+- # ====== Page Item: P3_VERSION ===============================
+  id: 14539294302073302
+  identification: 
+    name: P3_VERSION
+    type: 数値フィールド
+
+  label: 
+    label: Version
+    alignment: Left
+
+  settings: 
+    数字の位置合せ: Start
+    仮想キーボード: Decimal
+
+  layout: 
+    sequence: 100
+    region: Sfm Content # 14486488223620412
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 14445671516620191
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Sfm Content # 14486488223620412
+    column: VERSION
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 14271919779620068
+
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 13554992866848905
+  id: 14492654359620422
   identification: 
     button-name: CANCEL
     label: 取消
 
   layout: 
     sequence: 10
-    region: ボタン # 13554525123848905
+    region: ボタン # 14492242061620421
     position: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -497,7 +618,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 13510391253848684
+    button-template: Text # 14448199679620193
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -507,14 +628,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 13556352365848907
+  id: 14494050395620424
   identification: 
     button-name: DELETE
     label: 削除
 
   layout: 
     sequence: 20
-    region: ボタン # 13554525123848905
+    region: ボタン # 14492242061620421
     position: DELETE
     start-new-layout: false
     start-new-row: true
@@ -523,7 +644,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 13510391253848684
+    button-template: Text # 14448199679620193
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -545,14 +666,14 @@ buttons:
     item: P3_ID
 
 - # ====== Button: SAVE ========================================
-  id: 13556720420848907
+  id: 14494495830620425
   identification: 
     button-name: SAVE
     label: 変更の適用
 
   layout: 
     sequence: 30
-    region: ボタン # 13554525123848905
+    region: ボタン # 14492242061620421
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -561,7 +682,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 13510391253848684
+    button-template: Text # 14448199679620193
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -577,14 +698,14 @@ buttons:
     item: P3_ID
 
 - # ====== Button: CREATE ======================================
-  id: 13557139098848907
+  id: 14494871934620425
   identification: 
     button-name: CREATE
     label: 作成
 
   layout: 
     sequence: 40
-    region: ボタン # 13554525123848905
+    region: ボタン # 14492242061620421
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -593,7 +714,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 13510391253848684
+    button-template: Text # 14448199679620193
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -610,7 +731,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 13555016351848905
+  id: 14492776534620422
   identification: 
     name: Cancel Dialog
 
@@ -620,7 +741,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 13554992866848905
+    button: CANCEL # 14492654359620422
 
   execution: 
     event-scope: Static
@@ -628,174 +749,23 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: ダイアログを取り消す ========================
-    id: 13555862762848906
+    id: 14493509146620423
     identification: 
       action: ダイアログを取り消す
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 13555016351848905
+      event: Cancel Dialog # 14492776534620422
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
-- # ====== Process: 文字列の抽出 ===============================
-  id: 12448971557680445
-  identification: 
-    name: 文字列の抽出
-    type: APIの呼出し
-
-  settings: 
-    タイプ: PL/SQL Procedure or Function
-    所有者: 解析対象スキーマ
-    プロシージャまたはファンクション: RETRIEVE_TEXT_INDEX_SOURCE
-
-  execution: 
-    sequence: 30
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    type: Request is contained in Value
-    value: CREATE SAVE
-
-  parameters: 
-  - # ====== Parameter: p_id =====================================
-    id: 12449065629680446
-    identification: 
-      name: p_id
-
-    parameter: 
-      direction: In
-      data-type: NUMBER
-      has-default: false
-
-    value: 
-      type: Item
-      item: P3_ID
-
-    advanced: 
-      display-sequence: 10
-
-- # ====== Process: ファイルのアップロード =====================
-  id: 12449123837680447
-  identification: 
-    name: ファイルのアップロード
-    type: APIの呼出し
-
-  settings: 
-    タイプ: PL/SQL Package
-    所有者: 解析対象スキーマ
-    パッケージ: SFM_FILE_UTIL
-    プロシージャまたはファンクション: UPLOAD_FILE
-
-  execution: 
-    sequence: 40
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    type: Request is contained in Value
-    value: CREATE SAVE
-
-  parameters: 
-  - # ====== Parameter: p_id =====================================
-    id: 12449257177680448
-    identification: 
-      name: p_id
-
-    parameter: 
-      direction: In
-      data-type: NUMBER
-      has-default: false
-
-    value: 
-      type: Item
-      item: P3_ID
-
-    advanced: 
-      display-sequence: 10
-
-  - # ====== Parameter: p_region =================================
-    id: 12449300810680449
-    identification: 
-      name: p_region
-
-    parameter: 
-      direction: In
-      data-type: VARCHAR2
-      has-default: false
-
-    value: 
-      type: Item
-      item: G_REGION
-
-    advanced: 
-      display-sequence: 20
-
-  - # ====== Parameter: p_namespace ==============================
-    id: 12449415903680450
-    identification: 
-      name: p_namespace
-
-    parameter: 
-      direction: In
-      data-type: VARCHAR2
-      has-default: false
-
-    value: 
-      type: Item
-      item: G_NAMESPACE
-
-    advanced: 
-      display-sequence: 30
-
-  - # ====== Parameter: p_bucket =================================
-    id: 13621558084176301
-    identification: 
-      name: p_bucket
-
-    parameter: 
-      direction: In
-      data-type: VARCHAR2
-      has-default: false
-
-    value: 
-      type: Item
-      item: G_BUCKET
-
-    advanced: 
-      display-sequence: 40
-
-  - # ====== Parameter: p_credential =============================
-    id: 13621677350176302
-    identification: 
-      name: p_credential
-
-    parameter: 
-      direction: In
-      data-type: VARCHAR2
-      has-default: false
-
-    value: 
-      type: Item
-      item: G_CREDENTIAL
-
-    advanced: 
-      display-sequence: 50
-
 - # ====== Process: 初期化フォームSfm Content ==================
-  id: 13557541048848908
+  id: 14495254635620425
   identification: 
     name: 初期化フォームSfm Content
     type: フォーム - 初期化
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
 
   execution: 
     sequence: 10
@@ -803,11 +773,11 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: プロセス・フォームSfm Content ==============
-  id: 13557956465848908
+  id: 14495686109620425
   identification: 
     name: プロセス・フォームSfm Content
     type: フォーム - 行の自動処理(DML)
-    form-region: Sfm Content # 13548609137848896
+    form-region: Sfm Content # 14486488223620412
 
   settings: 
     ターゲット・タイプ: Region Source
@@ -824,10 +794,75 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: ダイアログを閉じる =========================
-  id: 13558362251848908
+  id: 14496068120620426
   identification: 
     name: ダイアログを閉じる
     type: ダイアログを閉じる
+
+  execution: 
+    sequence: 60
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
+- # ====== Process: 文字列の抽出 ===============================
+  id: 14539317427073303
+  identification: 
+    name: 文字列の抽出
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Procedure or Function
+    所有者: 解析対象スキーマ
+    プロシージャまたはファンクション: RETRIEVE_TEXT_INDEX_SOURCE
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE SAVE
+
+  parameters: 
+  - # ====== Parameter: p_id =====================================
+    id: 14539499228073304
+    identification: 
+      name: p_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P3_ID
+
+    advanced: 
+      display-sequence: 10
+
+- # ====== Process: ファイルのアップロード =====================
+  id: 14539507994073305
+  identification: 
+    name: ファイルのアップロード
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Package
+    所有者: 解析対象スキーマ
+    パッケージ: SFM_FILE_UTIL
+    プロシージャまたはファンクション: UPLOAD_FILE
 
   execution: 
     sequence: 50
@@ -839,13 +874,123 @@ processes:
 
   server-side-condition: 
     type: Request is contained in Value
-    value: CREATE,SAVE,DELETE
+    value: CREATE SAVE
+
+  parameters: 
+  - # ====== Parameter: p_id =====================================
+    id: 14539644221073306
+    identification: 
+      name: p_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P3_ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_region =================================
+    id: 14539705484073307
+    identification: 
+      name: p_region
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_REGION
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_namespace ==============================
+    id: 14539880667073308
+    identification: 
+      name: p_namespace
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_NAMESPACE
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: p_bucket =================================
+    id: 14539961382073309
+    identification: 
+      name: p_bucket
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_BUCKET
+
+    advanced: 
+      display-sequence: 40
+
+  - # ====== Parameter: p_credential =============================
+    id: 14540040567073310
+    identification: 
+      name: p_credential
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL
+
+    advanced: 
+      display-sequence: 50
 
 - # ====== Process: ダイアログを閉じる - ファイル無し ==========
-  id: 13622349441176309
+  id: 14540191120073311
   identification: 
     name: ダイアログを閉じる - ファイル無し
     type: ダイアログを閉じる
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P3_CONTENT
+
+- # ====== Process: ファイルの削除 =============================
+  id: 14540288980073312
+  identification: 
+    name: ファイルの削除
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Package
+    所有者: 解析対象スキーマ
+    パッケージ: SFM_FILE_UTIL
+    プロシージャまたはファンクション: DELETE_FILE
 
   execution: 
     sequence: 20
@@ -856,6 +1001,91 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    type: Item is NULL
-    item: P3_CONTENT
+    when-button-pressed: DELETE # 14494050395620424
+
+  parameters: 
+  - # ====== Parameter: p_id =====================================
+    id: 14540327390073313
+    identification: 
+      name: p_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P3_ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_region =================================
+    id: 14540436145073314
+    identification: 
+      name: p_region
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_REGION
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_namespace ==============================
+    id: 14540502761073315
+    identification: 
+      name: p_namespace
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_NAMESPACE
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: p_bucket =================================
+    id: 14540693128073316
+    identification: 
+      name: p_bucket
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_BUCKET
+
+    advanced: 
+      display-sequence: 40
+
+  - # ====== Parameter: p_credential =============================
+    id: 14540725903073317
+    identification: 
+      name: p_credential
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL
+
+    advanced: 
+      display-sequence: 50
 
