@@ -1,0 +1,163 @@
+---
+# ====== Page: download ======================================
+id: 4
+identification: 
+  name: download
+  alias: DOWNLOAD
+  title: download
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Enabled
+  page-access-protection: Unrestricted
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+processes: 
+- # ====== Process: ダウンロード ===============================
+  id: 13626398602176349
+  identification: 
+    name: ダウンロード
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Package
+    所有者: 解析対象スキーマ
+    パッケージ: SFM_FILE_UTIL
+    プロシージャまたはファンクション: DOWNLOAD_FILE
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: ID
+
+  parameters: 
+  - # ====== Parameter: p_id =====================================
+    id: 14540868378073318
+    identification: 
+      name: p_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_region =================================
+    id: 14540989922073319
+    identification: 
+      name: p_region
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_REGION
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_namespace ==============================
+    id: 14541075931073320
+    identification: 
+      name: p_namespace
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_NAMESPACE
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: p_bucket =================================
+    id: 14541138942073321
+    identification: 
+      name: p_bucket
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_BUCKET
+
+    advanced: 
+      display-sequence: 40
+
+  - # ====== Parameter: p_credential =============================
+    id: 14541207376073322
+    identification: 
+      name: p_credential
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL
+
+    advanced: 
+      display-sequence: 50
+
+  - # ====== Parameter: p_vault_ocid =============================
+    id: 14543115021073341
+    identification: 
+      name: p_vault_ocid
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_VAULT_OCID
+
+    advanced: 
+      display-sequence: 60
+
