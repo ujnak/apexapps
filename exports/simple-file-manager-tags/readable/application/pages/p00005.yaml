@@ -8,7 +8,7 @@ identification:
 
 appearance: 
   page-mode: Normal
-  page-template: Left Side Column # 13338496500848584
+  page-template: Left Side Column # 14276260076620078
   template-options: 
   - '#DEFAULT#'
 
@@ -38,13 +38,13 @@ server-cache:
 
 regions: 
 - # ====== Region: ブレッドクラム ==============================
-  id: 13654735448547930
+  id: 14593513849283326
   identification: 
     title: ブレッドクラム
     type: ブレッドクラム
 
   source: 
-    breadcrumb: ブレッドクラム # 13334764920848573
+    breadcrumb: ブレッドクラム # 14272508376620070
 
   layout: 
     sequence: 10
@@ -57,7 +57,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Title Bar # 13449848956848646
+    template: Title Bar # 14387605141620148
     template-options: 
     - '#DEFAULT#'
     - t-BreadcrumbRegion--useBreadcrumbTitle
@@ -79,12 +79,12 @@ regions:
 
   attributes: 
     appearance: 
-      breadcrumb-template: Breadcrumb # 13511964619848686
+      breadcrumb-template: Breadcrumb # 14449725265620194
       template-options: 
       - '#DEFAULT#'
 
 - # ====== Region: 検索結果 ====================================
-  id: 13655361463547931
+  id: 14594110298283328
   identification: 
     title: 検索結果
     type: クラシック・レポート
@@ -114,7 +114,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 13437474773848640
+    template: Standard # 14375296927620138
     template-options: 
     - '#DEFAULT#'
     - t-Region--noPadding
@@ -143,7 +143,7 @@ regions:
 
     appearance: 
       template-type: Theme
-      template: Standard # 13475357720848661
+      template: Standard # 14413139194620169
       template-options: 
       - '#DEFAULT#'
       - t-Report--stretch
@@ -182,7 +182,7 @@ regions:
 
   columns: 
   - # ====== Column: ID ==========================================
-    id: 13658157347547934
+    id: 14596963764283332
     identification: 
       column-name: ID
       type: Hidden Column
@@ -197,7 +197,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: VERSION =====================================
-    id: 13658520477547934
+    id: 14597378962283332
     identification: 
       column-name: VERSION
       type: Hidden Column
@@ -212,7 +212,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: TITLE =======================================
-    id: 13658947047547934
+    id: 14597702855283333
     identification: 
       column-name: TITLE
       type: Plain Text
@@ -229,7 +229,9 @@ regions:
       value-identifies-row: false
 
     column-formatting: 
-      html-expression: <a href="/ords/r/apexdev/&APP_ALIAS./download?id=#ID#&session=&APP_SESSION.">#TITLE#</a>
+      html-expression: |
+        <a href="&G_DOWNLOAD_URL.#ID#&session=&APP_SESSION.">#TITLE#</a>
+        
 
     sorting: 
       sortable: true
@@ -247,7 +249,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ABSTRACT ====================================
-    id: 13659398213547935
+    id: 14598102674283333
     identification: 
       column-name: ABSTRACT
       type: Plain Text
@@ -279,7 +281,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CONTENT_FILENAME ============================
-    id: 13659756071547935
+    id: 14598545944283334
     identification: 
       column-name: CONTENT_FILENAME
       type: Plain Text
@@ -311,7 +313,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CONTENT_MIMETYPE ============================
-    id: 13660144222547935
+    id: 14598914725283334
     identification: 
       column-name: CONTENT_MIMETYPE
       type: Plain Text
@@ -343,7 +345,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: TAGS ========================================
-    id: 13660559809547936
+    id: 14599319085283334
     identification: 
       column-name: TAGS
       type: Plain Text
@@ -375,13 +377,13 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: 検索 ========================================
-  id: 13655471352547931
+  id: 14594272899283328
   identification: 
     title: 検索
     type: ファセット検索
 
   source: 
-    filtered-region: 検索結果 # 13655361463547931
+    filtered-region: 検索結果 # 14594110298283328
 
   layout: 
     sequence: 10
@@ -394,7 +396,7 @@ regions:
     column-span: 4
 
   appearance: 
-    template: Standard # 13437474773848640
+    template: Standard # 14375296927620138
     template-options: 
     - '#DEFAULT#'
     - t-Region--noPadding
@@ -429,7 +431,7 @@ regions:
 
   facets: 
   - # ====== Facet: P5_SEARCH ====================================
-    id: 13655934399547932
+    id: 14594736180283329
     identification: 
       name: P5_SEARCH
       type: 検索
@@ -451,7 +453,7 @@ regions:
       store-value-encrypted-in-session-state: true
 
   - # ====== Facet: P5_CONTENT_MIMETYPE ==========================
-    id: 13656383282547932
+    id: 14595158545283329
     identification: 
       name: P5_CONTENT_MIMETYPE
       type: チェック・ボックス・グループ
@@ -497,7 +499,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Facet: P5_TAGS ======================================
-    id: 13656705482547932
+    id: 14595586198283330
     identification: 
       name: P5_TAGS
       type: チェック・ボックス・グループ
@@ -545,7 +547,7 @@ regions:
 
   filters: 
   - # ====== Filter: P5_SEARCH ===================================
-    id: 13655934399547932
+    id: 14594736180283329
     identification: 
       name: P5_SEARCH
       type: 検索
@@ -567,7 +569,7 @@ regions:
       store-value-encrypted-in-session-state: true
 
   - # ====== Filter: P5_CONTENT_MIMETYPE =========================
-    id: 13656383282547932
+    id: 14595158545283329
     identification: 
       name: P5_CONTENT_MIMETYPE
       type: チェック・ボックス・グループ
@@ -605,7 +607,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Filter: P5_TAGS =====================================
-    id: 13656705482547932
+    id: 14595586198283330
     identification: 
       name: P5_TAGS
       type: チェック・ボックス・グループ
@@ -644,7 +646,7 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: ボタン・バー ================================
-  id: 13657011805547932
+  id: 14595824579283330
   identification: 
     title: ボタン・バー
     type: 静的コンテンツ
@@ -663,7 +665,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Buttons Container # 13374210270848607
+    template: Buttons Container # 14312028603620103
     template-options: 
     - '#DEFAULT#'
     - t-ButtonRegion--noPadding
@@ -691,14 +693,14 @@ regions:
 
 buttons: 
 - # ====== Button: RESET =======================================
-  id: 13657565206547933
+  id: 14596333223283330
   identification: 
     button-name: RESET
     label: リセット
 
   layout: 
     sequence: 10
-    region: ボタン・バー # 13657011805547932
+    region: ボタン・バー # 14595824579283330
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -707,7 +709,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 13510483724848685
+    button-template: Text with Icon # 14448222111620194
     hot: false
     template-options: 
     - '#DEFAULT#'
