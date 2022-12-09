@@ -50,7 +50,7 @@ help:
 
 regions: 
 - # ====== Region: Sfm Contents ================================
-  id: 13558921874848909
+  id: 14496641718620426
   identification: 
     title: Sfm Contents
     type: 対話モード・レポート
@@ -67,7 +67,7 @@ regions:
           ,content_mimetype
           ,content_charset
           ,content_lastupd
-          ,apex_util.host_url('SCRIPT') || 'download?id=' || id download_url
+          ,:G_DOWNLOAD_URL || id download_url
       from sfm_contents
 
   layout: 
@@ -93,7 +93,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 13559069951848909
+    id: 14496728652620426
     link: 
       link-column: Link to Custom Target
       target: 
@@ -166,14 +166,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: プライマリ・レポート ==================
-      id: 13565332072848930
+      id: 14503129369620447
       identification: 
         name: プライマリ・レポート
-        alias: 135654
+        alias: 145032
 
     columns: 
     - # ====== Column: DOWNLOAD_URL ================================
-      id: 12448734391680443
+      id: 13626433590176350
       identification: 
         column-name: DOWNLOAD_URL
         type: Plain Text
@@ -211,7 +211,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID ==========================================
-      id: 13559496433848911
+      id: 14497108941620429
       identification: 
         column-name: ID
         type: Hidden Column
@@ -226,7 +226,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TITLE =======================================
-      id: 13559822357848912
+      id: 14497546787620431
       identification: 
         column-name: TITLE
         type: Plain Text
@@ -246,7 +246,7 @@ regions:
         value-identifies-row: false
 
       column-formatting: 
-        html-expression: <a href="/ords/r/apexdev/&APP_ALIAS./download?id=#ID#&session=&APP_SESSION.">#TITLE#</a>
+        html-expression: <a href="#DOWNLOAD_URL#&session=&APP_SESSION.">#TITLE#</a>
 
       column-filter: 
         type: Default Based on Column Type
@@ -267,7 +267,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ABSTRACT ====================================
-      id: 13560275132848913
+      id: 14497931181620431
       identification: 
         column-name: ABSTRACT
         type: Plain Text
@@ -305,7 +305,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT_FILENAME ============================
-      id: 13561043006848913
+      id: 14498754876620432
       identification: 
         column-name: CONTENT_FILENAME
         type: Plain Text
@@ -343,7 +343,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT_MIMETYPE ============================
-      id: 13561441389848914
+      id: 14499109139620433
       identification: 
         column-name: CONTENT_MIMETYPE
         type: Plain Text
@@ -381,7 +381,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT_CHARSET =============================
-      id: 13561818116848914
+      id: 14499515867620433
       identification: 
         column-name: CONTENT_CHARSET
         type: Plain Text
@@ -419,7 +419,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENT_LASTUPD =============================
-      id: 13562286104848914
+      id: 14499910788620433
       identification: 
         column-name: CONTENT_LASTUPD
         type: Plain Text
@@ -500,13 +500,13 @@ regions:
         alignment: center
 
 - # ====== Region: ブレッドクラム ==============================
-  id: 13563991545848917
+  id: 14501707164620438
   identification: 
     title: ブレッドクラム
     type: ブレッドクラム
 
   source: 
-    breadcrumb: ブレッドクラム # 13334764920848573
+    breadcrumb: ブレッドクラム # 14272508376620070
 
   layout: 
     sequence: 20
@@ -519,7 +519,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Title Bar # 13449848956848646
+    template: Title Bar # 14387605141620148
     template-options: 
     - '#DEFAULT#'
     - t-BreadcrumbRegion--useBreadcrumbTitle
@@ -541,20 +541,20 @@ regions:
 
   attributes: 
     appearance: 
-      breadcrumb-template: Breadcrumb # 13511964619848686
+      breadcrumb-template: Breadcrumb # 14449725265620194
       template-options: 
       - '#DEFAULT#'
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 13562755617848915
+  id: 14500456297620434
   identification: 
     button-name: CREATE
     label: 作成
 
   layout: 
     sequence: 10
-    region: Sfm Contents # 13558921874848909
+    region: Sfm Contents # 14496641718620426
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -563,7 +563,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 13510391253848684
+    button-template: Text # 14448199679620193
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -579,7 +579,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: レポートの編集 - ダイアログのクローズ
-  id: 13563020292848915
+  id: 14500742265620434
   identification: 
     name: レポートの編集 - ダイアログのクローズ
 
@@ -589,7 +589,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Region
-    region: Sfm Contents # 13558921874848909
+    region: Sfm Contents # 14496641718620426
 
   execution: 
     event-scope: Static
@@ -597,17 +597,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: リフレッシュ ================================
-    id: 13563529525848917
+    id: 14501200272620436
     identification: 
       action: リフレッシュ
 
     affected-elements: 
       selection-type: Region
-      region: Sfm Contents # 13558921874848909
+      region: Sfm Contents # 14496641718620426
 
     execution: 
       sequence: 10
-      event: レポートの編集 - ダイアログのクローズ # 13563020292848915
+      event: レポートの編集 - ダイアログのクローズ # 14500742265620434
       fire-when-event-result-is: True
       fire-on-initialization: false
 
