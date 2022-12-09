@@ -1,0 +1,21 @@
+---
+- # ====== Application Item: ID ================================
+  id: 14521798884727567
+  identification: 
+    name: ID
+    scope: Application
+
+  security: 
+    session-state-protection: Unrestricted
+    escape-special-characters: true
+
+- # ====== Application Item: G_DOWNLOAD_URL ====================
+  id: 14521988659744599
+  identification: 
+    name: G_DOWNLOAD_URL
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
