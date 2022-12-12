@@ -8,10 +8,9 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 15425195420194888
+  dialog-template: Modal Dialog # 15448850172194916
   template-options: 
   - '#DEFAULT#'
-  - js-dialog-class-t-Drawer--pullOutEnd
 
 dialog: 
   chained: false
@@ -227,7 +226,7 @@ page-items:
 
   label: 
     label: Name
-    alignment: Right
+    alignment: Left
 
   settings: 
     サブタイプ: Text
