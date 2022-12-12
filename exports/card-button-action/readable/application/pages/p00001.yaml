@@ -1,0 +1,331 @@
+---
+# ====== Page: カードアクション ==============================
+id: 1
+identification: 
+  name: カードアクション
+  alias: HOME
+  title: カードアクション
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  function-and-global-variable-declaration: |
+    const SET_EMPNO = {
+        name: "setempno",
+        action: function(event, element, args) {
+            apex.item("P1_EMPNO").setValue(args.empno);
+        }
+    };
+    
+    const PAGE_ACTIONS_EMPCARD = [ SET_EMPNO ];
+  execute-when-page-loads: apex.actions.add(PAGE_ACTIONS_EMPCARD);
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: カードアクション ============================
+  id: 16107160102924685
+  identification: 
+    title: カードアクション
+    type: カード
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select "EMPNO",
+             "ENAME",
+             "JOB",
+             "MGR",
+             ( select l1."ENAME" from "EMP" l1 where l1."EMPNO" = m."MGR") "MGR_L$1",
+             "HIREDATE",
+             "SAL",
+             "COMM",
+             "DEPTNO",
+             ( select l2."DNAME" from "DEPT" l2 where l2."DEPTNO" = m."DEPTNO") "DEPTNO_L$2"
+      from "EMP" m
+    order-by-item: 
+      item-name: P1_ORDER_BY
+      order-bys: 
+      - key: ENAME
+        clause: '"ENAME" asc'
+
+      - key: JOB
+        clause: '"JOB" asc'
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container # 15938587964924572
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 16107638799924687
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    title: 
+      advanced-formatting: true
+      html-expression: |
+        &ENAME.
+        <button type="button" title="Edit" aria-label="Edit" class="t-Button t-Button--noLabel t-Button--icon t-Button--noUI" data-action="setempno?empno=&EMPNO."><span aria-hidden="true" class="t-Icon fa fa-pencil"></span></button>
+        
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: false
+      column: JOB
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: No Icon
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-row-count: false
+
+    actions: 
+    - # ====== Action: BUTTON ======================================
+      id: 15658451904367014
+      identification: 
+        type: Button
+        label: 従業員番号の設定
+
+      layout: 
+        position: Primary
+        sequence: 10
+
+      link: 
+        type: Redirect to URL
+        target: '#action$setempno?empno=&EMPNO.'
+
+      appearance: 
+        display-type: Text
+        hot: false
+
+- # ====== Region: カードアクション ============================
+  id: 16108667157924690
+  identification: 
+    title: カードアクション
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 15964496261924585
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_EMPNO =================================
+  id: 15658375445367013
+  identification: 
+    name: P1_EMPNO
+    type: テキスト・フィールド
+
+  label: 
+    label: 従業員番号
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 10
+    region: カードアクション # 16108667157924690
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 16067804715924639
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_ORDER_BY ==============================
+  id: 16108144358924689
+  identification: 
+    name: P1_ORDER_BY
+    type: 選択リスト
+
+  label: 
+    label: 並替え基準
+    alignment: Right
+
+  settings: 
+    選択時のページ・アクション: None
+    複数選択を許可: false
+
+  layout: 
+    sequence: 10
+    region: カードアクション # 16107160102924685
+    position: ORDER_BY_ITEM
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 16067804715924639
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC2:Ename;ENAME,Job;JOB'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: ENAME
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
