@@ -1,0 +1,36 @@
+---
+- # ====== Field Template: Hidden ==============================
+  id: 17512675289933549
+  identification: 
+    name: Hidden
+
+- # ====== Field Template: Optional ============================
+  id: 17512756511933549
+  identification: 
+    name: Optional
+
+- # ====== Field Template: Optional - Above ====================
+  id: 17512876007933549
+  identification: 
+    name: Optional - Above
+
+- # ====== Field Template: Optional - Floating =================
+  id: 17512903521933549
+  identification: 
+    name: Optional - Floating
+
+- # ====== Field Template: Required ============================
+  id: 17513061437933549
+  identification: 
+    name: Required
+
+- # ====== Field Template: Required - Above ====================
+  id: 17513714013933550
+  identification: 
+    name: Required - Above
+
+- # ====== Field Template: Required - Floating =================
+  id: 17514251807933550
+  identification: 
+    name: Required - Floating
+
