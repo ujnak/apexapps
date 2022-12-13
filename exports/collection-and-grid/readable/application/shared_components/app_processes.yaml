@@ -1,0 +1,19 @@
+---
+- # ====== Application Process: コレクションの初期化 ===========
+  id: 17323963687797850
+  identification: 
+    name: コレクションの初期化
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      apex_collection.create_or_truncate_collection(
+          p_collection_name => 'TEST'
+      );
+
+  execution: 
+    sequence: 1
+    point: New Session
+
