@@ -1,0 +1,755 @@
+---
+# ====== Page: Img Item ======================================
+id: 2
+identification: 
+  name: Img Item
+  alias: IMG-ITEM
+  title: Img Item
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+  - ui-dialog--stretch
+
+dialog: 
+  chained: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    #preview {
+        width: 100%;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Preview =====================================
+  id: 17565811979940115
+  identification: 
+    title: Preview
+    type: 静的コンテンツ
+
+  source: 
+    html-code: <img id="preview" src="&P2_URL."></img>
+
+  layout: 
+    sequence: 50
+    parent-region: Img Item # 43058261314330912
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 42886492300330793
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: Img Item ====================================
+  id: 43058261314330912
+  identification: 
+    title: Img Item
+    type: フォーム
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: IMG_ITEMS
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 42886492300330793
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: ボタン ======================================
+  id: 43059871783331032
+  identification: 
+    title: ボタン
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 42889343036330794
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: Text (escape special characters)
+      改行の表示: true
+
+page-items: 
+- # ====== Page Item: P2_URL ===================================
+  id: 17565713851940114
+  identification: 
+    name: P2_URL
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 60
+    region: Img Item # 43058261314330912
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_CURRENT_LOCATION ======================
+  id: 17566604339940123
+  identification: 
+    name: P2_CURRENT_LOCATION
+    type: 非表示
+
+  settings: 
+    保護された値: false
+
+  layout: 
+    sequence: 30
+    region: Img Item # 43058261314330912
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Img Item # 43058261314330912
+    column: CURRENT_LOCATION
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_IMAGE =================================
+  id: 30505865784600257
+  identification: 
+    name: P2_IMAGE
+    type: ファイル参照...
+
+  label: 
+    label: Image
+    alignment: Left
+
+  settings: 
+    表示形式: Native File Browse
+    記憶域タイプ: Table APEX_APPLICATION_TEMP_FILES
+    ファイルをパージするタイミング: End of Session
+    複数ファイルの許可: false
+
+  layout: 
+    sequence: 40
+    region: Img Item # 43058261314330912
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 43017328596330856
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    custom-attributes: 
+    - capture="environment"
+    - accept="image/*"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_ID ====================================
+  id: 43058562622330913
+  identification: 
+    name: P2_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: Img Item # 43058261314330912
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Img Item # 43058261314330912
+    column: ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_NAME ==================================
+  id: 43058908156331030
+  identification: 
+    name: P2_NAME
+    type: テキスト・フィールド
+
+  label: 
+    label: Name
+    alignment: Right
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 20
+    region: Img Item # 43058261314330912
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 43018582516330857
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 80
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Img Item # 43058261314330912
+    column: NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 43060318864331032
+  identification: 
+    button-name: CANCEL
+    label: 取消
+
+  layout: 
+    sequence: 10
+    region: ボタン # 43059871783331032
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 43019761505330858
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 43061681884331033
+  identification: 
+    button-name: DELETE
+    label: 削除
+
+  layout: 
+    sequence: 20
+    region: ボタン # 43059871783331032
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 43019761505330858
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--danger
+    - t-Button--simple
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P2_ID
+
+- # ====== Button: SAVE ========================================
+  id: 43062155549331033
+  identification: 
+    button-name: SAVE
+    label: 変更の適用
+
+  layout: 
+    sequence: 30
+    region: ボタン # 43059871783331032
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 43019761505330858
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P2_ID
+
+- # ====== Button: CREATE ======================================
+  id: 43062476675331033
+  identification: 
+    button-name: CREATE
+    label: 作成
+
+  layout: 
+    sequence: 40
+    region: ボタン # 43059871783331032
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 43019761505330858
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P2_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: 画像の選択 ==========================
+  id: 17565966855940116
+  identification: 
+    name: 画像の選択
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P2_IMAGE
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: 選択した画像のプレビュー ====================
+    id: 17566093302940117
+    identification: 
+      name: 選択した画像のプレビュー
+      action: JavaScriptコードの実行
+
+    settings: 
+      コード: |
+        let fileReader = new FileReader();
+        fileReader.onload = (function() {
+            document.getElementById("preview").src = fileReader.result;
+        });
+        fileReader.readAsDataURL(this.triggeringElement.files[0]);
+
+    execution: 
+      sequence: 10
+      event: 画像の選択 # 17565966855940116
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: 現在の位置の取得 ============================
+    id: 17566726103940124
+    identification: 
+      action: 現在の位置の取得
+
+    settings: 
+      戻り型: GeoJSON
+      アイテム: P2_CURRENT_LOCATION
+      高精度の有効化: false
+
+    execution: 
+      sequence: 20
+      event: 画像の選択 # 17565966855940116
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 43060390958331032
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 43060318864331032
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: ダイアログを取り消す ========================
+    id: 43061206542331032
+    identification: 
+      action: ダイアログを取り消す
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 43060390958331032
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: 画像URLの取得 ==============================
+  id: 17566266855940119
+  identification: 
+    name: 画像URLの取得
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      select :G_PREAUTH_URL || g.location into :P2_URL
+      from img_items i join 
+      (
+          select id, item_id, location, file_name, mime_type from
+              (
+                  select
+                      row_number() over (partition by item_id order by last_updated desc) rn,
+                      id, item_id, location, file_name, mime_type
+                  from img_images
+              )
+          where rn = 1
+      ) g on i.id = g.item_id
+      where i.id = :P2_ID;
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P2_ID
+
+- # ====== Process: オブジェクト・ストレージに保存 =============
+  id: 30506046976600258
+  identification: 
+    name: オブジェクト・ストレージに保存
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_file_name img_images.file_name%type;
+          l_location  img_images.location%type;
+          l_mime_type img_images.mime_type%type;
+          l_blob blob;
+          l_put_response dbms_cloud_oci_obs_object_storage_put_object_response_t;
+          l_image_id img_images.id%type;
+          l_status_code integer;
+          file_upload_error exception;
+      begin
+          /*
+           * APEXの機能でアップロードされたファイルを取得する。
+           */
+          select blob_content, filename, mime_type into l_blob, l_file_name, l_mime_type
+          from apex_application_temp_files
+          where name = :P2_IMAGE;
+          /*
+           * 仮のLOCATIONで、表IMG_IMAGESに行を挿入しIDを取得する。
+           * 取得したIDでオブジェクト・ストレージのオブジェクト名を決定します。
+           */
+          insert into img_images(item_id, file_name, mime_type, location, last_updated)
+          values(:P2_ID, l_file_name, l_mime_type, 'temp', sysdate)
+          returning id into l_image_id;
+          l_location := :P2_ID || '/' || l_image_id || '/' || l_file_name;
+          /*
+           * 画像をオブジェクト・ストレージにアップロードする。
+           */
+           l_put_response := dbms_cloud_oci_obs_object_storage.put_object
+          (
+      	    namespace_name => :G_NAMESPACE
+              , bucket_name => :G_BUCKET
+              , object_name => l_location
+              , content_type => l_mime_type
+              , put_object_body => l_blob
+      	    , region => :G_REGION
+      	    , credential_name => :G_CREDENTIAL
+          );
+          l_status_code := l_put_response.status_code;
+          if l_status_code != 200 then
+              raise file_upload_error;
+          end if;
+          /*
+           * オブジェクト名と更新日を更新する。
+           */
+          update img_images set location = l_location, last_updated = sysdate where id = l_image_id;
+      end;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE SAVE
+
+- # ====== Process: 初期化フォームImg Item =====================
+  id: 43062952346331033
+  identification: 
+    name: 初期化フォームImg Item
+    type: フォーム - 初期化
+    form-region: Img Item # 43058261314330912
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: プロセス・フォームImg Item =================
+  id: 43063306038331034
+  identification: 
+    name: プロセス・フォームImg Item
+    type: フォーム - 行の自動処理(DML)
+    form-region: Img Item # 43058261314330912
+
+  settings: 
+    ターゲット・タイプ: Region Source
+    失われた更新の防止: true
+    行のロック: Yes
+    挿入後に主キーを返す: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: ダイアログを閉じる =========================
+  id: 43063677030331034
+  identification: 
+    name: ダイアログを閉じる
+    type: ダイアログを閉じる
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
