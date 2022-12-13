@@ -1,0 +1,63 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 17844146570721606
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: Home =========================================
+    id: 17844387026721606
+    identification: 
+      name: Home
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+  - # ====== Entry: Dashboard ====================================
+    id: 18067357850721751
+    identification: 
+      name: Dashboard
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # Dashboard
+
+  - # ====== Entry: Employees ====================================
+    id: 18077627669721773
+    identification: 
+      name: Employees
+      page-number: 3
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # Employees
+
+  - # ====== Entry: Departments ==================================
+    id: 18099461272722529
+    identification: 
+      name: Departments
+      page-number: 5
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:::'
+        page: 5 # Departments
+
