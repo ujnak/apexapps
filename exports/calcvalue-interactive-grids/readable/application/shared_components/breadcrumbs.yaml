@@ -1,0 +1,21 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 17339892067933452
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: グリッド編集 =================================
+    id: 17340029976933452
+    identification: 
+      name: グリッド編集
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # グリッド編集
+
