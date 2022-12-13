@@ -1,0 +1,21 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 42849821468330765
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: 画像ビューワー ===============================
+    id: 42849975460330765
+    identification: 
+      name: 画像ビューワー
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.'
+        page: 1 # 画像ビューワー
+
