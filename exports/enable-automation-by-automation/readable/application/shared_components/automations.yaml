@@ -1,0 +1,51 @@
+---
+- # ====== Automation: 自動有効化 ==============================
+  id: 20518201319223000
+  identification: 
+    name: 自動有効化
+    static-id: 自動有効化
+
+  execution: 
+    type: Scheduled
+    schedule-expression: FREQ=MINUTELY;INTERVAL=15
+    schedule-status: Active
+    actions-initiated-on: Rows returned
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select automation_id, application_id, static_id from apex_appl_automations
+      where static_id like 'auto-enable-%'
+      and polling_status_code = 'DISABLED'
+
+  column-mapping: 
+    primary-key-column: AUTOMATION_ID
+
+  action-execution: 
+    commit: Once
+    maximum-rows-to-process: 1
+    action-error-handling: Disable Automation
+
+  actions: 
+  - # ====== Action: 自動化をアクティブにする ====================
+    id: 20518581563223001
+    identification: 
+      name: 自動化をアクティブにする
+      type: コードを実行
+
+    source: 
+      location: Local Database
+      language: PL/SQL
+      pl/sql-code: |
+        begin
+            apex_automation.log_info('自動化親アプリ APPLICATION_ID = ' || :APPLICATION_ID || ' STATIC_ID = ' || :STATIC_ID);
+            apex_automation.enable(:APPLICATION_ID, :STATIC_ID);
+        end;
+
+    execution: 
+      sequence: 10
+
+    error: 
+      stop-execution-on-error: true
+
