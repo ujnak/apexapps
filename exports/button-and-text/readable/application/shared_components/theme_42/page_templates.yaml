@@ -1,0 +1,51 @@
+---
+- # ====== Page Template: Drawer ===============================
+  id: 21218775643983329
+  identification: 
+    name: Drawer
+
+- # ====== Page Template: Left Side Column =====================
+  id: 21221651044983338
+  identification: 
+    name: Left Side Column
+
+- # ====== Page Template: Left and Right Side Columns ==========
+  id: 21225361798983340
+  identification: 
+    name: Left and Right Side Columns
+
+- # ====== Page Template: Login ================================
+  id: 21229301708983342
+  identification: 
+    name: Login
+
+- # ====== Page Template: Marquee ==============================
+  id: 21231929580983344
+  identification: 
+    name: Marquee
+
+- # ====== Page Template: Minimal (No Navigation) ==============
+  id: 21235939572983346
+  identification: 
+    name: Minimal (No Navigation)
+
+- # ====== Page Template: Modal Dialog =========================
+  id: 21239372338983348
+  identification: 
+    name: Modal Dialog
+
+- # ====== Page Template: Right Side Column ====================
+  id: 21240819783983349
+  identification: 
+    name: Right Side Column
+
+- # ====== Page Template: Standard =============================
+  id: 21244590080983351
+  identification: 
+    name: Standard
+
+- # ====== Page Template: Wizard Modal Dialog ==================
+  id: 21247947884983352
+  identification: 
+    name: Wizard Modal Dialog
+
