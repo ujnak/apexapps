@@ -1,0 +1,382 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: ボタンとテキスト
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: 左 ==========================================
+  id: 20272558502669949
+  identification: 
+    title: 左
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 21254665425983358
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-flex
+    - u-justify-content-center
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: region-left
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: 右 ==========================================
+  id: 20272648509669950
+  identification: 
+    title: 右
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 21254665425983358
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: region-right
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: ボタンとテキスト ============================
+  id: 21429616702983501
+  identification: 
+    title: ボタンとテキスト
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 21287626770983377
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: 左のヘルプ ==================================
+  id: 21433267646995503
+  identification: 
+    title: 左のヘルプ
+    type: 静的コンテンツ
+
+  source: 
+    html-code: |
+      <br/>
+      左側に配置しているボタンです。
+
+  layout: 
+    sequence: 20
+    parent-region: 左 # 20272558502669949
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    column-css-classes: 
+    - u-flex
+    - u-justify-content-center
+
+  appearance: 
+    template: Blank with Attributes # 21254665425983358
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: 右のヘルプ ==================================
+  id: 21433361571995504
+  identification: 
+    title: 右のヘルプ
+    type: 静的コンテンツ
+
+  source: 
+    html-code: |
+      <br/>
+      左側に配置しているボタンです。
+
+  layout: 
+    sequence: 20
+    parent-region: 右 # 20272648509669950
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    column-css-classes: 
+    - u-flex
+    - u-justify-content-center
+
+  appearance: 
+    template: Blank with Attributes # 21254665425983358
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: Layout Modifiersのサンプル ==================
+  id: 21433404921995505
+  identification: 
+    title: Layout Modifiersのサンプル
+    type: 静的コンテンツ
+
+  source: 
+    html-code: |
+      <div class="u-flex u-justify-content-center">
+      <div class="u-flex u-flex-direction-column">
+      <div>最初のアイテム</div>
+      <div>次のアイテム</div>
+      </div>
+      </div>
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 21320610720983394
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+buttons: 
+- # ====== Button: B_BUTTON_LEFT ===============================
+  id: 21433094709995501
+  identification: 
+    button-name: B_BUTTON_LEFT
+    label: 左のボタン
+
+  layout: 
+    sequence: 10
+    region: 左 # 20272558502669949
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    column-css-classes: 
+    - u-flex
+    - u-justify-content-center
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 21393521087983442
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: B_BUTTON_RIGHT ==============================
+  id: 21433173583995502
+  identification: 
+    button-name: B_BUTTON_RIGHT
+    label: 右のボタン
+
+  layout: 
+    sequence: 10
+    region: 右 # 20272648509669950
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    column-css-classes: 
+    - u-flex
+    - u-justify-content-center
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 21393521087983442
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
