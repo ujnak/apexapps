@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: 左 ==========================================
-  id: 20272558502669949
+  id: 42518481553071146
   identification: 
     title: 左
     type: 静的コンテンツ
@@ -54,7 +54,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 21254665425983358
+    template: Blank with Attributes # 43500588476384555
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -83,7 +83,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: 右 ==========================================
-  id: 20272648509669950
+  id: 42518571560071147
   identification: 
     title: 右
     type: 静的コンテンツ
@@ -99,7 +99,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 21254665425983358
+    template: Blank with Attributes # 43500588476384555
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -125,7 +125,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: ボタンとテキスト ============================
-  id: 21429616702983501
+  id: 43675539753384698
   identification: 
     title: ボタンとテキスト
     type: 静的コンテンツ
@@ -141,7 +141,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 21287626770983377
+    template: Hero # 43533549821384574
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -169,7 +169,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: 左のヘルプ ==================================
-  id: 21433267646995503
+  id: 43679190697396700
   identification: 
     title: 左のヘルプ
     type: 静的コンテンツ
@@ -181,7 +181,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: 左 # 20272558502669949
+    parent-region: 左 # 42518481553071146
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -193,7 +193,7 @@ regions:
     - u-justify-content-center
 
   appearance: 
-    template: Blank with Attributes # 21254665425983358
+    template: Blank with Attributes # 43500588476384555
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -218,7 +218,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: 右のヘルプ ==================================
-  id: 21433361571995504
+  id: 43679284622396701
   identification: 
     title: 右のヘルプ
     type: 静的コンテンツ
@@ -226,11 +226,11 @@ regions:
   source: 
     html-code: |
       <br/>
-      左側に配置しているボタンです。
+      右側に配置しているボタンです。
 
   layout: 
     sequence: 20
-    parent-region: 右 # 20272648509669950
+    parent-region: 右 # 42518571560071147
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -242,7 +242,7 @@ regions:
     - u-justify-content-center
 
   appearance: 
-    template: Blank with Attributes # 21254665425983358
+    template: Blank with Attributes # 43500588476384555
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -267,7 +267,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: Layout Modifiersのサンプル ==================
-  id: 21433404921995505
+  id: 43679327972396702
   identification: 
     title: Layout Modifiersのサンプル
     type: 静的コンテンツ
@@ -292,7 +292,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 21320610720983394
+    template: Standard # 43566533771384591
     template-options: 
     - '#DEFAULT#'
     - t-Region--scrollBody
@@ -312,6 +312,9 @@ regions:
   customization: 
     customizable: Not Customizable By End Users
 
+  configuration: 
+    build-option: コメント・アウト # 43463392708384521
+
   attributes: 
     settings: 
       出力形式: HTML
@@ -319,14 +322,14 @@ regions:
 
 buttons: 
 - # ====== Button: B_BUTTON_LEFT ===============================
-  id: 21433094709995501
+  id: 43679017760396698
   identification: 
     button-name: B_BUTTON_LEFT
     label: 左のボタン
 
   layout: 
     sequence: 10
-    region: 左 # 20272558502669949
+    region: 左 # 42518481553071146
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -339,7 +342,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 21393521087983442
+    button-template: Text # 43639444138384639
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -350,14 +353,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: B_BUTTON_RIGHT ==============================
-  id: 21433173583995502
+  id: 43679096634396699
   identification: 
     button-name: B_BUTTON_RIGHT
     label: 右のボタン
 
   layout: 
     sequence: 10
-    region: 右 # 20272648509669950
+    region: 右 # 42518571560071147
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -370,7 +373,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 21393521087983442
+    button-template: Text # 43639444138384639
     hot: false
     template-options: 
     - '#DEFAULT#'
