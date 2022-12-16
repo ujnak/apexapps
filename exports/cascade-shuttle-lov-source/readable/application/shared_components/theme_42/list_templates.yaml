@@ -1,0 +1,66 @@
+---
+- # ====== List Template: Badge List ===========================
+  id: 22174722539153291
+  identification: 
+    name: Badge List
+
+- # ====== List Template: Cards ================================
+  id: 22178744540153293
+  identification: 
+    name: Cards
+
+- # ====== List Template: Links List ===========================
+  id: 22184361635153296
+  identification: 
+    name: Links List
+
+- # ====== List Template: Media List ===========================
+  id: 22185917064153297
+  identification: 
+    name: Media List
+
+- # ====== List Template: Menu Bar =============================
+  id: 22188780083153300
+  identification: 
+    name: Menu Bar
+
+- # ====== List Template: Menu Popup ===========================
+  id: 22189791760153301
+  identification: 
+    name: Menu Popup
+
+- # ====== List Template: Navigation Bar =======================
+  id: 22190347620153301
+  identification: 
+    name: Navigation Bar
+
+- # ====== List Template: Side Navigation Menu =================
+  id: 22190759630153301
+  identification: 
+    name: Side Navigation Menu
+
+- # ====== List Template: Tabs =================================
+  id: 22192566970153302
+  identification: 
+    name: Tabs
+
+- # ====== List Template: Top Navigation Mega Menu =============
+  id: 22194125304153303
+  identification: 
+    name: Top Navigation Mega Menu
+
+- # ====== List Template: Top Navigation Menu ==================
+  id: 22196160967153304
+  identification: 
+    name: Top Navigation Menu
+
+- # ====== List Template: Top Navigation Tabs ==================
+  id: 22197100861153305
+  identification: 
+    name: Top Navigation Tabs
+
+- # ====== List Template: Wizard Progress ======================
+  id: 22198783991153306
+  identification: 
+    name: Wizard Progress
+
