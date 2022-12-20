@@ -1,0 +1,34 @@
+---
+- # ====== Role: 管理者 ========================================
+  id: 24360595805717647
+  identification: 
+    name: 管理者
+
+  advanced: 
+    static-id: ADMINISTRATOR
+
+  description: 
+    description: アプリケーション管理者に割り当てられたロール。
+
+- # ====== Role: コントリビュータ ==============================
+  id: 24360744741717647
+  identification: 
+    name: コントリビュータ
+
+  advanced: 
+    static-id: CONTRIBUTOR
+
+  description: 
+    description: アプリケーション・コントリビュータに割り当てられたロール。
+
+- # ====== Role: リーダー ======================================
+  id: 24360835784717647
+  identification: 
+    name: リーダー
+
+  advanced: 
+    static-id: READER
+
+  description: 
+    description: アプリケーション・リーダーに割り当てられたロール。
+
