@@ -1,0 +1,548 @@
+---
+# ====== Page: 管理 ==========================================
+id: 10000
+identification: 
+  name: 管理
+  alias: ADMIN
+  title: 管理
+  page-group: 管理 # 24362262785717654
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authorization-scheme: 管理権限 # 24360925953717647
+  authentication: Page Requires Authentication
+  deep-linking: Disabled
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+help: 
+  help-text: |
+    <p>管理ページで、アプリケーション所有者(管理者)は、アプリケーションを構成し、アプリケーション全体で使用される共通データを管理できます。
+    管理者は、使用可能な設定のいずれかを選択して、アプリケーションの表示方法またはエンド・ユーザーに使用可能な機能(あるいはその両方)を必要に応じて変更できます。</p>
+    <p>このページへのアクセスは、管理者のみに制限する必要があります。</p>
+
+regions: 
+- # ====== Region: ブレッドクラム ==============================
+  id: 24406690659718107
+  identification: 
+    title: ブレッドクラム
+    type: ブレッドクラム
+
+  source: 
+    breadcrumb: ブレッドクラム # 24156676454717484
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 24271734970717559
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 24333812928717599
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: 列2 =========================================
+  id: 24408316351718108
+  identification: 
+    title: 列2
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes (No Grid) # 24194729996717520
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: アクセス制御 ================================
+  id: 24408780864718109
+  identification: 
+    title: アクセス制御
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 30
+    parent-region: 列2 # 24408316351718108
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 24259331220717553
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  configuration: 
+    build-option: '機能: アクセス制御' # 24359215367717645
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: ACL情報 =====================================
+  id: 24409569250718109
+  identification: 
+    title: ACL情報
+    type: 動的コンテンツ
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: |
+      declare
+          l_acl_scope varchar2(45);
+      begin
+          l_acl_scope := apex_app_setting.get_value( p_name => 'ACCESS_CONTROL_SCOPE' );
+      
+          if l_acl_scope = 'ALL_USERS' then
+              return apex_lang.message('APEX.FEATURE.ACL.INFO.ALL_USERS');
+          elsif l_acl_scope = 'ACL_ONLY' then
+              return apex_lang.message('APEX.FEATURE.ACL.INFO.ACL_ONLY');
+          else
+              return apex_lang.message('APEX.FEATURE.ACL.INFO.ACL_VALUE_INVALID', l_acl_scope);
+          end if;
+      end;
+
+  layout: 
+    sequence: 10
+    parent-region: アクセス制御 # 24408780864718109
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Alert # 24188144422717515
+    template-options: 
+    - '#DEFAULT#'
+    - t-Alert--colorBG
+    - t-Alert--horizontal
+    - t-Alert--noIcon
+    - t-Alert--warning
+    - t-Alert--accessibleHeading
+    css-classes: 
+    - margin-sm
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
+- # ====== Region: ユーザー数レポート ==========================
+  id: 24409983273718110
+  identification: 
+    title: ユーザー数レポート
+    type: クラシック・レポート
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select r.role_name, (select count(*) from apex_appl_acl_user_roles ur where r.role_id = ur.role_id) user_count, r.role_id
+      from apex_appl_acl_roles r
+      where r.application_id = :APP_ID
+      group by r.role_name, r.role_id
+      order by 2 desc, 1
+
+  layout: 
+    sequence: 20
+    parent-region: アクセス制御 # 24408780864718109
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 24259331220717553
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader
+    - t-Region--stacked
+    - t-Region--scrollBody
+    - t-Region--noPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Value Attribute Pairs - Row # 24298694830717575
+      template-options: 
+      - '#DEFAULT#'
+      - t-AVPList--rightAligned
+
+    pagination: 
+      type: No Pagination (Show All Rows)
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 500
+
+    messages: 
+      when-no-data-found: データが見つかりません
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: true
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ROLE_NAME ===================================
+    id: 24410674332718114
+    identification: 
+      column-name: ROLE_NAME
+      type: Plain Text
+
+    heading: 
+      heading: Role Name
+      alignment: start
+
+    layout: 
+      sequence: 1
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: USER_COUNT ==================================
+    id: 24411078174718115
+    identification: 
+      column-name: USER_COUNT
+      type: Plain Text
+
+    heading: 
+      heading: User Count
+      alignment: start
+
+    layout: 
+      sequence: 2
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      format-mask: 999G999G999G999G999G999G990
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ROLE_ID =====================================
+    id: 24411445009718115
+    identification: 
+      column-name: ROLE_ID
+      type: Plain Text
+
+    heading: 
+      heading: Role Id
+      alignment: start
+
+    layout: 
+      sequence: 3
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: アクセス制御アクション ======================
+  id: 24414424138718448
+  identification: 
+    title: アクセス制御アクション
+    type: リスト
+
+  source: 
+    list: アクセス制御 # 24407277331718107
+
+  layout: 
+    sequence: 30
+    parent-region: アクセス制御 # 24408780864718109
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 24193364903717520
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      list-template: Media List # 24315262139717585
+      template-options: 
+      - '#DEFAULT#'
+      - u-colors
+
+buttons: 
+- # ====== Button: ADD_USER ====================================
+  id: 24409134153718109
+  identification: 
+    button-name: ADD_USER
+    label: ユーザーの追加
+
+  layout: 
+    sequence: 10
+    region: アクセス制御 # 24408780864718109
+    position: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 24332372640717598
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--noUI
+    - t-Button--iconLeft
+    icon: fa-user-plus
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:10012:&APP_SESSION.::&DEBUG.:RP,10012::'
+      page: 10012 # ユーザー・アクセスの管理
+      clear-cache: RP,10012
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: レポートのリフレッシュ ==============
+  id: 24413571530718447
+  identification: 
+    name: レポートのリフレッシュ
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: Button
+    button: ADD_USER # 24409134153718109
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: リフレッシュ ================================
+    id: 24414044402718448
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: ユーザー数レポート # 24409983273718110
+
+    execution: 
+      sequence: 10
+      event: レポートのリフレッシュ # 24413571530718447
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
