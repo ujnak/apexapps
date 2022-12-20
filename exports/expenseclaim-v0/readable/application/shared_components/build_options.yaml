@@ -1,0 +1,24 @@
+---
+- # ====== Build Option: コメント・アウト ======================
+  id: 24156079641717480
+  identification: 
+    name: コメント・アウト
+
+  status: 
+    status: Exclude
+    default-on-export: Same as Current Status
+    on-upgrade-keep-status: false
+
+- # ====== Build Option: 機能: アクセス制御 ====================
+  id: 24359215367717645
+  identification: 
+    name: '機能: アクセス制御'
+
+  status: 
+    status: Include
+    default-on-export: Same as Current Status
+    on-upgrade-keep-status: false
+
+  comments: 
+    comments: ロール・ベース・ユーザー認証をアプリケーションに組み込み、アプリケーション・ロールへのユーザー名マッピングを管理します。
+
