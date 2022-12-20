@@ -1,0 +1,799 @@
+---
+# ====== Page: 複数ユーザーの追加 - ステップ2 ================
+id: 10014
+identification: 
+  name: 複数ユーザーの追加 - ステップ2
+  alias: 複数ユーザーの追加-ステップ2
+  title: 複数ユーザーの追加
+  page-group: 管理 # 24362262785717654
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .a-ListView-item .fa {
+      color: var(--ut-component-text-muted-color);
+    }
+    
+    .a-ListView-item .u-success-text {
+      color: var(--ut-palette-success) !important;
+    }
+
+security: 
+  authorization-scheme: 管理権限 # 24360925953717647
+  authentication: Page Requires Authentication
+  deep-linking: Disabled
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+configuration: 
+  build-option: '機能: アクセス制御' # 24359215367717645
+
+regions: 
+- # ====== Region: ボタン ======================================
+  id: 24388724126717732
+  identification: 
+    title: ボタン
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 24196182836717521
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: ウィザード・コンテナ ========================
+  id: 24388862229717732
+  identification: 
+    title: ウィザード・コンテナ
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 24193364903717520
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--stretchInputs
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: 例外 ========================================
+  id: 24389016005717732
+  identification: 
+    title: 例外
+    type: クラシック・レポート
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select c001 username, c002 reason
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_INVALID'
+      order by 1
+
+  layout: 
+    sequence: 60
+    parent-region: ウィザード・コンテナ # 24388862229717732
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Collapsible # 24212240345717530
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - is-collapsed
+    - t-Region--noUI
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      select 1
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_INVALID'
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 10000
+
+    appearance: 
+      template-type: Theme
+      template: Standard # 24294092063717572
+      template-options: 
+      - t-Report--stretch
+      - t-Report--staticRowColors
+      - t-Report--rowHighlightOff
+
+    pagination: 
+      type: No Pagination (Show All Rows)
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 500
+
+    messages: 
+      when-no-data-found: データが見つかりません
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: true
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: USERNAME ====================================
+    id: 24396142831717748
+    identification: 
+      column-name: USERNAME
+      type: Plain Text
+
+    heading: 
+      heading: ユーザー名
+      alignment: start
+
+    layout: 
+      sequence: 1
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: REASON ======================================
+    id: 24396560221717750
+    identification: 
+      column-name: REASON
+      type: Plain Text
+
+    heading: 
+      heading: 理由
+      alignment: start
+
+    layout: 
+      sequence: 2
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: 追加する&P10014_VALID_COUNT.人のユーザー ====
+  id: 24389141362717732
+  identification: 
+    title: 追加する&P10014_VALID_COUNT.人のユーザー
+    type: リスト・ビュー
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select distinct c001 username
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_VALID'
+      order by 1
+
+  layout: 
+    sequence: 50
+    parent-region: ウィザード・コンテナ # 24388862229717732
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 24193364903717520
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      select 1
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_VALID'
+
+  security: 
+    escape-special-characters: true
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      機能: Advanced Formatting
+      テキスト形式: '<span class="fa fa-check-circle u-success-text" aria-hidden="true"></span> <span style="line-height:36px;text-transform:lowercase;">&USERNAME!HTML.</span>'
+
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 10000
+
+- # ====== Region: 非表示のアイテム ============================
+  id: 24389291270717732
+  identification: 
+    title: 非表示のアイテム
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 24193364903717520
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: 有効なユーザーが存在します - ページ情報 =====
+  id: 24399598161718096
+  identification: 
+    title: 有効なユーザーが存在します - ページ情報
+    type: 動的コンテンツ
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: |
+      return '<p>' ||
+             apex_lang.message (
+                 'APEX.FEATURE.ACL.BULK_USER.CREATE_CONFIRM',
+                 apex_escape.html(:P10014_VALID_COUNT),
+                 apex_escape.html(:P10014_ROLE)
+             ) ||
+             '</p>';
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 24193364903717520
+    template-options: 
+    - '#DEFAULT#'
+    - margin-bottom-sm
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      select 1
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_VALID'
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
+- # ====== Region: 有効なユーザーが存在しません - ページ情報 ===
+  id: 24400222575718097
+  identification: 
+    title: 有効なユーザーが存在しません - ページ情報
+    type: 静的コンテンツ
+
+  source: 
+    html-code: <p>有効な新規ユーザーが見つかりません</p>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 24193364903717520
+    template-options: 
+    - '#DEFAULT#'
+    - margin-bottom-sm
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: No Rows returned
+    sql-query: |
+      select 1
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_VALID'
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P10014_ROLE ==============================
+  id: 24402646427718099
+  identification: 
+    name: P10014_ROLE
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: 非表示のアイテム # 24389291270717732
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return single value)
+    sql-query: |
+      select LISTAGG( role_name, ', ')
+               WITHIN GROUP (ORDER BY role_name) role_name
+      from APEX_APPL_ACL_ROLES
+      where application_id = :APP_ID
+      and instr(:P10013_ROLE, role_id, 1) > 0
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10014_VALID_COUNT =======================
+  id: 24403094093718100
+  identification: 
+    name: P10014_VALID_COUNT
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 20
+    region: 非表示のアイテム # 24389291270717732
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return single value)
+    sql-query: |
+      select count(*)
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_VALID'
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P10014_INVALID_COUNT =====================
+  id: 24403471942718100
+  identification: 
+    name: P10014_INVALID_COUNT
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 30
+    region: 非表示のアイテム # 24389291270717732
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return single value)
+    sql-query: |
+      select count(*)
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_VALID'
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: SUBMIT ======================================
+  id: 24389335245717732
+  identification: 
+    button-name: SUBMIT
+    label: ユーザーの追加
+
+  layout: 
+    sequence: 20
+    region: ボタン # 24388724126717732
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 24332280638717598
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      select 1
+        from apex_collections
+       where collection_name = 'ACL_BULK_USER_VALID'
+
+- # ====== Button: PREVIOUS ====================================
+  id: 24400985625718098
+  identification: 
+    button-name: PREVIOUS
+    label: 前
+
+  layout: 
+    sequence: 10
+    region: ボタン # 24388724126717732
+    position: PREVIOUS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 24331516996717596
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-chevron-left
+
+  behavior: 
+    action: Redirect to URL
+    target: 'javascript:history.back();'
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CANCEL ======================================
+  id: 24401363628718098
+  identification: 
+    button-name: CANCEL
+    label: 取消
+
+  layout: 
+    sequence: 10
+    region: ボタン # 24388724126717732
+    position: PREVIOUS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 24332280638717598
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+dynamic-actions: 
+- # ====== Dynamic Action: ダイアログを取り消す ================
+  id: 24401467933718098
+  identification: 
+    name: ダイアログを取り消す
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 24401363628718098
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: ダイアログを取り消す ========================
+    id: 24402178849718098
+    identification: 
+      action: ダイアログを取り消す
+
+    execution: 
+      sequence: 10
+      event: ダイアログを取り消す # 24401467933718098
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: アクセス制御リストへのユーザーの追加 =======
+  id: 24403862313718100
+  identification: 
+    name: アクセス制御リストへのユーザーの追加
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_user_role_ids apex_application_global.vc_arr2;
+      begin
+          for c in (  select distinct c001 as username, c003 as user_roles
+                      from   apex_collections
+                      where  collection_name = 'ACL_BULK_USER_VALID' )
+          loop
+               l_user_role_ids := apex_util.string_to_table(c.user_roles);
+               for i in 1..l_user_role_ids.count loop
+                   apex_acl.add_user_role(p_application_id => :APP_ID, p_user_name => c.username, p_role_id => l_user_role_ids(i));
+               end loop;
+          end loop;
+      
+          apex_collection.delete_collection('ACL_BULK_USER_INVALID');
+          apex_collection.delete_collection('ACL_BULK_USER_VALID');
+          :P10013_PRELIM_USERS := null;
+      end;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: ユーザーが追加されました。
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SUBMIT # 24389335245717732
+
+- # ====== Process: ダイアログを閉じる =========================
+  id: 24404223954718101
+  identification: 
+    name: ダイアログを閉じる
+    type: ダイアログを閉じる
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
