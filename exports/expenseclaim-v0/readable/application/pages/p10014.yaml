@@ -5,7 +5,7 @@ identification:
   name: 複数ユーザーの追加 - ステップ2
   alias: 複数ユーザーの追加-ステップ2
   title: 複数ユーザーの追加
-  page-group: 管理 # 24362262785717654
+  page-group: 管理 # 25706551580852126
 
 appearance: 
   page-mode: Modal Dialog
@@ -34,7 +34,7 @@ css:
     }
 
 security: 
-  authorization-scheme: 管理権限 # 24360925953717647
+  authorization-scheme: 管理権限 # 25705217936852121
   authentication: Page Requires Authentication
   deep-linking: Disabled
   page-access-protection: Arguments Must Have Checksum
@@ -52,11 +52,11 @@ server-cache:
   caching: Disabled
 
 configuration: 
-  build-option: '機能: アクセス制御' # 24359215367717645
+  build-option: '機能: アクセス制御' # 25703566729852118
 
 regions: 
 - # ====== Region: ボタン ======================================
-  id: 24388724126717732
+  id: 25733160951852182
   identification: 
     title: ボタン
     type: 静的コンテンツ
@@ -72,7 +72,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Buttons Container # 24196182836717521
+    template: Buttons Container # 25540433042852027
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -97,7 +97,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: ウィザード・コンテナ ========================
-  id: 24388862229717732
+  id: 25733202960852182
   identification: 
     title: ウィザード・コンテナ
     type: 静的コンテンツ
@@ -113,7 +113,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     - t-Form--stretchInputs
@@ -139,7 +139,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: 例外 ========================================
-  id: 24389016005717732
+  id: 25733495893852182
   identification: 
     title: 例外
     type: クラシック・レポート
@@ -155,7 +155,7 @@ regions:
 
   layout: 
     sequence: 60
-    parent-region: ウィザード・コンテナ # 24388862229717732
+    parent-region: ウィザード・コンテナ # 25733202960852182
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -164,7 +164,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Collapsible # 24212240345717530
+    template: Collapsible # 25556537349852035
     template-options: 
     - '#DEFAULT#'
     - t-Region--noPadding
@@ -201,7 +201,7 @@ regions:
 
     appearance: 
       template-type: Theme
-      template: Standard # 24294092063717572
+      template: Standard # 25641551890852078
       template-options: 
       - t-Report--stretch
       - t-Report--staticRowColors
@@ -236,7 +236,7 @@ regions:
 
   columns: 
   - # ====== Column: USERNAME ====================================
-    id: 24396142831717748
+    id: 25740529257852196
     identification: 
       column-name: USERNAME
       type: Plain Text
@@ -268,7 +268,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: REASON ======================================
-    id: 24396560221717750
+    id: 25740929883852197
     identification: 
       column-name: REASON
       type: Plain Text
@@ -300,7 +300,7 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: 追加する&P10014_VALID_COUNT.人のユーザー ====
-  id: 24389141362717732
+  id: 25733516853852182
   identification: 
     title: 追加する&P10014_VALID_COUNT.人のユーザー
     type: リスト・ビュー
@@ -316,7 +316,7 @@ regions:
 
   layout: 
     sequence: 50
-    parent-region: ウィザード・コンテナ # 24388862229717732
+    parent-region: ウィザード・コンテナ # 25733202960852182
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -325,7 +325,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -364,7 +364,7 @@ regions:
       number-of-rows: 10000
 
 - # ====== Region: 非表示のアイテム ============================
-  id: 24389291270717732
+  id: 25733677458852182
   identification: 
     title: 非表示のアイテム
     type: 静的コンテンツ
@@ -380,7 +380,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -405,7 +405,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: 有効なユーザーが存在します - ページ情報 =====
-  id: 24399598161718096
+  id: 25743958586852572
   identification: 
     title: 有効なユーザーが存在します - ページ情報
     type: 動的コンテンツ
@@ -432,7 +432,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     - margin-bottom-sm
@@ -464,7 +464,7 @@ regions:
       lazy-loading: false
 
 - # ====== Region: 有効なユーザーが存在しません - ページ情報 ===
-  id: 24400222575718097
+  id: 25744638047852573
   identification: 
     title: 有効なユーザーが存在しません - ページ情報
     type: 静的コンテンツ
@@ -483,7 +483,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     - margin-bottom-sm
@@ -517,7 +517,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P10014_ROLE ==============================
-  id: 24402646427718099
+  id: 25747032645852575
   identification: 
     name: P10014_ROLE
     type: 非表示
@@ -527,7 +527,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: 非表示のアイテム # 24389291270717732
+    region: 非表示のアイテム # 25733677458852182
     position: BODY
 
   advanced: 
@@ -553,7 +553,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P10014_VALID_COUNT =======================
-  id: 24403094093718100
+  id: 25747489903852576
   identification: 
     name: P10014_VALID_COUNT
     type: 非表示
@@ -563,7 +563,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: 非表示のアイテム # 24389291270717732
+    region: 非表示のアイテム # 25733677458852182
     position: BODY
 
   advanced: 
@@ -587,7 +587,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P10014_INVALID_COUNT =====================
-  id: 24403471942718100
+  id: 25747831656852576
   identification: 
     name: P10014_INVALID_COUNT
     type: 非表示
@@ -597,7 +597,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: 非表示のアイテム # 24389291270717732
+    region: 非表示のアイテム # 25733677458852182
     position: BODY
 
   advanced: 
@@ -622,14 +622,14 @@ page-items:
 
 buttons: 
 - # ====== Button: SUBMIT ======================================
-  id: 24389335245717732
+  id: 25733759491852182
   identification: 
     button-name: SUBMIT
     label: ユーザーの追加
 
   layout: 
     sequence: 20
-    region: ボタン # 24388724126717732
+    region: ボタン # 25733160951852182
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -638,7 +638,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -656,14 +656,14 @@ buttons:
        where collection_name = 'ACL_BULK_USER_VALID'
 
 - # ====== Button: PREVIOUS ====================================
-  id: 24400985625718098
+  id: 25745383857852573
   identification: 
     button-name: PREVIOUS
     label: 前
 
   layout: 
     sequence: 10
-    region: ボタン # 24388724126717732
+    region: ボタン # 25733160951852182
     position: PREVIOUS
     start-new-layout: false
     start-new-row: true
@@ -672,7 +672,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 24331516996717596
+    button-template: Icon # 25675834731852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -685,14 +685,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CANCEL ======================================
-  id: 24401363628718098
+  id: 25745720768852574
   identification: 
     button-name: CANCEL
     label: 取消
 
   layout: 
     sequence: 10
-    region: ボタン # 24388724126717732
+    region: ボタン # 25733160951852182
     position: PREVIOUS
     start-new-layout: false
     start-new-row: true
@@ -701,7 +701,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -712,7 +712,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: ダイアログを取り消す ================
-  id: 24401467933718098
+  id: 25745838059852574
   identification: 
     name: ダイアログを取り消す
 
@@ -722,7 +722,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 24401363628718098
+    button: CANCEL # 25745720768852574
 
   execution: 
     event-scope: Static
@@ -730,19 +730,19 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: ダイアログを取り消す ========================
-    id: 24402178849718098
+    id: 25746573627852574
     identification: 
       action: ダイアログを取り消す
 
     execution: 
       sequence: 10
-      event: ダイアログを取り消す # 24401467933718098
+      event: ダイアログを取り消す # 25745838059852574
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: アクセス制御リストへのユーザーの追加 =======
-  id: 24403862313718100
+  id: 25748273516852576
   identification: 
     name: アクセス制御リストへのユーザーの追加
     type: コードを実行
@@ -781,10 +781,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SUBMIT # 24389335245717732
+    when-button-pressed: SUBMIT # 25733759491852182
 
 - # ====== Process: ダイアログを閉じる =========================
-  id: 24404223954718101
+  id: 25748685612852577
   identification: 
     name: ダイアログを閉じる
     type: ダイアログを閉じる
