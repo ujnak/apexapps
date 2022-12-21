@@ -1,6 +1,6 @@
 ---
 - # ====== List of Values: ACCESS_ROLES ========================
-  id: 24385855232717723
+  id: 25730125118852172
   identification: 
     name: ACCESS_ROLES
 
@@ -18,7 +18,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: EMAIL_USERNAME_FORMAT ===============
-  id: 24393206086717735
+  id: 25737688562852188
   identification: 
     name: EMAIL_USERNAME_FORMAT
 
@@ -27,7 +27,7 @@
 
   entries: 
   - # ====== Entry: 電子メール・アドレス =========================
-    id: 24393546167717736
+    id: 25737991606852188
     entry: 
       sequence: 1
       display: 電子メール・アドレス
