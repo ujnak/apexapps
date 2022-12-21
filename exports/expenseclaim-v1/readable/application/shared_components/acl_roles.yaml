@@ -1,0 +1,66 @@
+---
+- # ====== Role: 管理者 ========================================
+  id: 25704819467852120
+  identification: 
+    name: 管理者
+
+  advanced: 
+    static-id: ADMINISTRATOR
+
+  description: 
+    description: アプリケーション管理者に割り当てられたロール。
+
+- # ====== Role: コントリビュータ ==============================
+  id: 25705096898852121
+  identification: 
+    name: コントリビュータ
+
+  advanced: 
+    static-id: CONTRIBUTOR
+
+  description: 
+    description: アプリケーション・コントリビュータに割り当てられたロール。
+
+- # ====== Role: リーダー ======================================
+  id: 25705187018852121
+  identification: 
+    name: リーダー
+
+  advanced: 
+    static-id: READER
+
+  description: 
+    description: アプリケーション・リーダーに割り当てられたロール。
+
+- # ====== Role: 従業員 ========================================
+  id: 25939807822825561
+  identification: 
+    name: 従業員
+
+  advanced: 
+    static-id: EMPLOYEE
+
+- # ====== Role: 上司 ==========================================
+  id: 25939968132831152
+  identification: 
+    name: 上司
+
+  advanced: 
+    static-id: MANAGER
+
+- # ====== Role: 部門長 ========================================
+  id: 25940096024833332
+  identification: 
+    name: 部門長
+
+  advanced: 
+    static-id: VICE_PRESIDENT
+
+- # ====== Role: 経理 ==========================================
+  id: 25940174878835311
+  identification: 
+    name: 経理
+
+  advanced: 
+    static-id: ACCOUNTANT
+
