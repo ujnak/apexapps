@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: 従業員 ======================================
-  id: 24480346791200527
+  id: 25835482744911367
   identification: 
     title: 従業員
     type: 対話モード・レポート
@@ -49,19 +49,20 @@ regions:
     sql-query: |
       select 
           expe.expe_id
-          , expe.expe_justification
-          , expe.expe_amount
-          , expe.expe_status
-          , expe.expe_submitted_on
-          , expe.expe_invoice_dd
-          , expe.expe_purpose
-          , inst.prcs_id
-          , tibx.sbfl_id
+          ,expe.expe_justification
+          ,expe.expe_amount
+          ,expe.expe_status
+          ,expe.expe_submitted_on
+          ,expe.expe_invoice_dd
+          ,expe.expe_purpose
+          ,inst.prcs_id
+          ,tibx.sbfl_id
+          ,tibx.sbfl_step_key
       from tuto_expenses expe
           join flow_instances_vw inst on expe.expe_id = inst.prcs_business_ref
           left join flow_task_inbox_vw tibx on expe.expe_id = tibx.sbfl_business_ref
-      where inst.dgrm_name = '経費精算'
-          and (tibx.sbfl_dgrm_name = '経費精算' or tibx.sbfl_dgrm_name is null)
+      where inst.dgrm_name = :APP_NAME
+          and (tibx.sbfl_dgrm_name = :APP_NAME or tibx.sbfl_dgrm_name is null)
           and expe.expe_submitted_by = :APP_USER
 
   layout: 
@@ -75,7 +76,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 24249516144717548
+    template: Interactive Report # 25593808566852054
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -95,7 +96,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 24480433327200527
+    id: 25835507869911367
     link: 
       link-column: Link to Custom Target
       target: 
@@ -165,14 +166,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: プライマリ・レポート ==================
-      id: 24493427006764340
+      id: 25854314564135738
       identification: 
         name: プライマリ・レポート
-        alias: 244935
+        alias: 258544
 
     columns: 
     - # ====== Column: EXPE_ID =====================================
-      id: 24480852520200528
+      id: 25835997803911369
       identification: 
         column-name: EXPE_ID
         type: Hidden Column
@@ -187,7 +188,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EXPE_JUSTIFICATION ==========================
-      id: 24481202474200530
+      id: 25836392453911370
       identification: 
         column-name: EXPE_JUSTIFICATION
         type: Plain Text
@@ -225,7 +226,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EXPE_AMOUNT =================================
-      id: 24481690591200530
+      id: 25836756994911370
       identification: 
         column-name: EXPE_AMOUNT
         type: Plain Text
@@ -263,7 +264,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EXPE_STATUS =================================
-      id: 24482044472200531
+      id: 25837177750911370
       identification: 
         column-name: EXPE_STATUS
         type: Link
@@ -310,7 +311,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EXPE_SUBMITTED_ON ===========================
-      id: 24482404873200531
+      id: 25837569179911371
       identification: 
         column-name: EXPE_SUBMITTED_ON
         type: Plain Text
@@ -349,7 +350,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EXPE_INVOICE_DD =============================
-      id: 24482855331200531
+      id: 25837967283911371
       identification: 
         column-name: EXPE_INVOICE_DD
         type: Plain Text
@@ -388,7 +389,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EXPE_PURPOSE ================================
-      id: 24483231171200532
+      id: 25838366782911372
       identification: 
         column-name: EXPE_PURPOSE
         type: Plain Text
@@ -426,7 +427,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PRCS_ID =====================================
-      id: 24483653544200532
+      id: 25838704660911372
       identification: 
         column-name: PRCS_ID
         type: Plain Text
@@ -464,7 +465,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SBFL_ID =====================================
-      id: 24484053212200533
+      id: 25839181484911372
       identification: 
         column-name: SBFL_ID
         type: Plain Text
@@ -479,6 +480,44 @@ regions:
       layout: 
         sequence: 9
         column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SBFL_STEP_KEY ===============================
+      id: 25839547509911373
+      identification: 
+        column-name: SBFL_STEP_KEY
+        type: Plain Text
+
+      heading: 
+        heading: Sbfl Step Key
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
 
       accessibility: 
         value-identifies-row: false
@@ -544,13 +583,13 @@ regions:
         alignment: center
 
 - # ====== Region: ブレッドクラム ==============================
-  id: 24486201314200536
+  id: 25841756894911375
   identification: 
     title: ブレッドクラム
     type: ブレッドクラム
 
   source: 
-    breadcrumb: ブレッドクラム # 24156676454717484
+    breadcrumb: ブレッドクラム # 25500926452852006
 
   layout: 
     sequence: 10
@@ -563,7 +602,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Title Bar # 24271734970717559
+    template: Title Bar # 25616035465852065
     template-options: 
     - '#DEFAULT#'
     - t-BreadcrumbRegion--useBreadcrumbTitle
@@ -585,20 +624,20 @@ regions:
 
   attributes: 
     appearance: 
-      breadcrumb-template: Breadcrumb # 24333812928717599
+      breadcrumb-template: Breadcrumb # 25678118258852098
       template-options: 
       - '#DEFAULT#'
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 24484508147200533
+  id: 25840088610911373
   identification: 
     button-name: CREATE
     label: 作成
 
   layout: 
     sequence: 10
-    region: 従業員 # 24480346791200527
+    region: 従業員 # 25835482744911367
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -607,7 +646,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -623,7 +662,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: レポートの編集 - ダイアログのクローズ
-  id: 24484827190200533
+  id: 25840314537911373
   identification: 
     name: レポートの編集 - ダイアログのクローズ
 
@@ -633,7 +672,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Region
-    region: 従業員 # 24480346791200527
+    region: 従業員 # 25835482744911367
 
   execution: 
     event-scope: Static
@@ -641,17 +680,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: リフレッシュ ================================
-    id: 24485327556200534
+    id: 25840870941911374
     identification: 
       action: リフレッシュ
 
     affected-elements: 
       selection-type: Region
-      region: 従業員 # 24480346791200527
+      region: 従業員 # 25835482744911367
 
     execution: 
       sequence: 10
-      event: レポートの編集 - ダイアログのクローズ # 24484827190200533
+      event: レポートの編集 - ダイアログのクローズ # 25840314537911373
       fire-when-event-result-is: True
       fire-on-initialization: false
 
