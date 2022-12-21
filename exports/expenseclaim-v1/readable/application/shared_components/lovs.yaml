@@ -1,0 +1,35 @@
+---
+- # ====== List of Values: ACCESS_ROLES ========================
+  id: 25730125118852172
+  identification: 
+    name: ACCESS_ROLES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select role_name d, role_id r
+      from APEX_APPL_ACL_ROLES where application_id = :APP_ID 
+      order by 1
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: EMAIL_USERNAME_FORMAT ===============
+  id: 25737688562852188
+  identification: 
+    name: EMAIL_USERNAME_FORMAT
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: 電子メール・アドレス =========================
+    id: 25737991606852188
+    entry: 
+      sequence: 1
+      display: 電子メール・アドレス
+      return: EMAIL
+
