@@ -28,10 +28,10 @@ advanced:
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: Oracle APEXアカウント # 24156359078717482
+  authentication-scheme: Oracle APEXアカウント # 25500691213852006
 
 authorization: 
-  authorization-scheme: リーダー権限 # 24361091153717647
+  authorization-scheme: リーダー権限 # 25705375149852121
   run-on-public-pages: false
   run-on-background-job: true
   source-for-role-or-group-schemes: Access Control User Role Assignments
@@ -90,18 +90,18 @@ navigation:
     page: LOGIN
 
 navigation-menu: 
-  list-template: Side Navigation Menu # 24319649046717588
+  list-template: Side Navigation Menu # 25664352560852091
   template-options: 
   - '#DEFAULT#'
   - t-TreeNav--styleA
   - js-navCollapsed--hidden
   list-position: Side
-  list: ナビゲーション・メニュー # 24157135713717486
+  list: ナビゲーション・メニュー # 25501448846852006
 
 navigation-bar: 
   implementation: List
-  list: ナビゲーション・バー # 24357350887717627
-  list-template: Navigation Bar # 24329086150717593
+  list: ナビゲーション・バー # 25701703270852112
+  list-template: Navigation Bar # 25663990676852090
   template-options: 
   - '#DEFAULT#'
 
@@ -125,7 +125,7 @@ substitutions:
 
 application-settings: 
 - # ====== Application Setting: ACCESS_CONTROL_SCOPE ===========
-  id: 24361936221717652
+  id: 25706248866852124
   identification: 
     name: ACCESS_CONTROL_SCOPE
 
@@ -138,7 +138,7 @@ application-settings:
     on-upgrade-keep-value: true
 
   configuration: 
-    build-option: '機能: アクセス制御' # 24359215367717645
+    build-option: '機能: アクセス制御' # 25703566729852118
 
   comments: 
     comments: アクセス制御リストに存在しない認証されたユーザーに提供されたデフォルトのアクセス・レベル
