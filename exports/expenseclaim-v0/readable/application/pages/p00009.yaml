@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: 進捗の表示 ==================================
-  id: 23176446427202016
+  id: 25847143330972109
   identification: 
     title: 進捗の表示
     type: Flows for APEX - Viewer
@@ -54,9 +54,7 @@ regions:
     table-owner: Parsing Schema
     table-name: FLOW_INSTANCE_DETAILS_VW
     include-rowid-column: false
-    where-clause: |
-      dgrm_name = '経費精算' and prcs_id = :P9_PRCS_ID
-      
+    where-clause: 'dgrm_name = :APP_NAME and prcs_id = :P9_PRCS_ID'
 
   order-by: 
     type: None
@@ -72,7 +70,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes (No Grid) # 24194729996717520
+    template: Blank with Attributes (No Grid) # 25539076526852027
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -105,7 +103,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P9_PRCS_ID ===============================
-  id: 23176527031202017
+  id: 25847277360972110
   identification: 
     name: P9_PRCS_ID
     type: 非表示
@@ -115,7 +113,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: 進捗の表示 # 23176446427202016
+    region: 進捗の表示 # 25847143330972109
     position: BODY
 
   advanced: 
