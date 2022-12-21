@@ -5,7 +5,7 @@ identification:
   name: 複数ユーザーの追加 - ステップ1
   alias: 複数ユーザーの追加-ステップ1
   title: 複数ユーザーの追加
-  page-group: 管理 # 24362262785717654
+  page-group: 管理 # 25706551580852126
 
 appearance: 
   page-mode: Modal Dialog
@@ -24,7 +24,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: 管理権限 # 24360925953717647
+  authorization-scheme: 管理権限 # 25705217936852121
   authentication: Page Requires Authentication
   deep-linking: Disabled
   page-access-protection: Arguments Must Have Checksum
@@ -42,11 +42,11 @@ server-cache:
   caching: Disabled
 
 configuration: 
-  build-option: '機能: アクセス制御' # 24359215367717645
+  build-option: '機能: アクセス制御' # 25703566729852118
 
 regions: 
 - # ====== Region: ボタン ======================================
-  id: 24388469740717732
+  id: 25732814974852182
   identification: 
     title: ボタン
     type: 静的コンテンツ
@@ -62,7 +62,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Buttons Container # 24196182836717521
+    template: Buttons Container # 25540433042852027
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -87,7 +87,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: ウィザード・コンテナ ========================
-  id: 24388597015717732
+  id: 25732914466852182
   identification: 
     title: ウィザード・コンテナ
     type: 静的コンテンツ
@@ -103,7 +103,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     - t-Form--stretchInputs
@@ -130,7 +130,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P10013_ROLE ==============================
-  id: 24392319195717735
+  id: 25736756190852186
   identification: 
     name: P10013_ROLE
     type: チェック・ボックス・グループ
@@ -144,7 +144,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: ウィザード・コンテナ # 24388597015717732
+    region: ウィザード・コンテナ # 25732914466852182
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -155,7 +155,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
 
@@ -164,7 +164,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: ACCESS_ROLES # 24385855232717723
+    list-of-values: ACCESS_ROLES # 25730125118852172
     display-extra-values: false
 
   advanced: 
@@ -173,10 +173,6 @@ page-items:
   source: 
     type: Null
     used: Only when current value in session state is null
-
-  default: 
-    type: Static
-    static-value: 2
 
   session-state: 
     storage: Per Session (Persistent)
@@ -188,7 +184,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P10013_PRELIM_USERS ======================
-  id: 24392712713717735
+  id: 25737171048852187
   identification: 
     name: P10013_PRELIM_USERS
     type: テキスト領域
@@ -205,7 +201,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: ウィザード・コンテナ # 24388597015717732
+    region: ウィザード・コンテナ # 25732914466852182
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -216,7 +212,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
     width: 80
@@ -250,7 +246,7 @@ page-items:
     inline-help-text: カンマ、セミコロンまたは空白で区切ったユーザー名を入力します。既存または重複するユーザー名は自動的に無視されます。
 
 - # ====== Page Item: P10013_USERNAME_FORMAT ===================
-  id: 24393144853717735
+  id: 25737551302852188
   identification: 
     name: P10013_USERNAME_FORMAT
     type: チェック・ボックス・グループ
@@ -264,7 +260,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: ウィザード・コンテナ # 24388597015717732
+    region: ウィザード・コンテナ # 25732914466852182
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -275,7 +271,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
 
@@ -284,7 +280,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: EMAIL_USERNAME_FORMAT # 24393206086717735
+    list-of-values: EMAIL_USERNAME_FORMAT # 25737688562852188
     display-extra-values: false
 
   advanced: 
@@ -305,14 +301,14 @@ page-items:
 
 buttons: 
 - # ====== Button: NEXT ========================================
-  id: 24388677711717732
+  id: 25733030926852182
   identification: 
     button-name: NEXT
     label: 次
 
   layout: 
     sequence: 10
-    region: ボタン # 24388469740717732
+    region: ボタン # 25732814974852182
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -321,7 +317,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 24332372640717598
+    button-template: Text with Icon # 25676633826852097
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -334,14 +330,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CANCEL ======================================
-  id: 24390636912717733
+  id: 25735098496852184
   identification: 
     button-name: CANCEL
     label: 取消
 
   layout: 
     sequence: 10
-    region: ボタン # 24388469740717732
+    region: ボタン # 25732814974852182
     position: PREVIOUS
     start-new-layout: false
     start-new-row: true
@@ -350,7 +346,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -361,7 +357,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: ダイアログを取り消す ================
-  id: 24390732531717734
+  id: 25735153489852184
   identification: 
     name: ダイアログを取り消す
 
@@ -371,7 +367,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 24390636912717733
+    button: CANCEL # 25735098496852184
 
   execution: 
     event-scope: Static
@@ -379,19 +375,19 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: ダイアログを取り消す ========================
-    id: 24391472652717734
+    id: 25735884561852185
     identification: 
       action: ダイアログを取り消す
 
     execution: 
       sequence: 10
-      event: ダイアログを取り消す # 24390732531717734
+      event: ダイアログを取り消す # 25735153489852184
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: コレクションの作成 =========================
-  id: 24394225401717740
+  id: 25738633371852191
   identification: 
     name: コレクションの作成
     type: コードを実行
@@ -542,11 +538,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: NEXT # 24388677711717732
+    when-button-pressed: NEXT # 25733030926852182
 
 branches: 
 - # ====== Branch: ページに移動 10014 ==========================
-  id: 24391987145717734
+  id: 25736300808852185
   identification: 
     name: ページに移動 10014
 
@@ -562,5 +558,5 @@ branches:
       clear-cache: RP,10014
 
   server-side-condition: 
-    when-button-pressed: NEXT # 24388677711717732
+    when-button-pressed: NEXT # 25733030926852182
 
