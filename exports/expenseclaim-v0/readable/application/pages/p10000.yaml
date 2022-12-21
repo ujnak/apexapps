@@ -5,7 +5,7 @@ identification:
   name: 管理
   alias: ADMIN
   title: 管理
-  page-group: 管理 # 24362262785717654
+  page-group: 管理 # 25706551580852126
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: 管理権限 # 24360925953717647
+  authorization-scheme: 管理権限 # 25705217936852121
   authentication: Page Requires Authentication
   deep-linking: Disabled
   page-access-protection: Arguments Must Have Checksum
@@ -46,13 +46,13 @@ help:
 
 regions: 
 - # ====== Region: ブレッドクラム ==============================
-  id: 24406690659718107
+  id: 25751047720852582
   identification: 
     title: ブレッドクラム
     type: ブレッドクラム
 
   source: 
-    breadcrumb: ブレッドクラム # 24156676454717484
+    breadcrumb: ブレッドクラム # 25500926452852006
 
   layout: 
     sequence: 10
@@ -65,7 +65,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Title Bar # 24271734970717559
+    template: Title Bar # 25616035465852065
     template-options: 
     - '#DEFAULT#'
     - t-BreadcrumbRegion--useBreadcrumbTitle
@@ -87,12 +87,12 @@ regions:
 
   attributes: 
     appearance: 
-      breadcrumb-template: Breadcrumb # 24333812928717599
+      breadcrumb-template: Breadcrumb # 25678118258852098
       template-options: 
       - '#DEFAULT#'
 
 - # ====== Region: 列2 =========================================
-  id: 24408316351718108
+  id: 25752780056852583
   identification: 
     title: 列2
     type: 静的コンテンツ
@@ -108,7 +108,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes (No Grid) # 24194729996717520
+    template: Blank with Attributes (No Grid) # 25539076526852027
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -133,14 +133,14 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: アクセス制御 ================================
-  id: 24408780864718109
+  id: 25753178935852584
   identification: 
     title: アクセス制御
     type: 静的コンテンツ
 
   layout: 
     sequence: 30
-    parent-region: 列2 # 24408316351718108
+    parent-region: 列2 # 25752780056852583
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -149,7 +149,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 24259331220717553
+    template: Standard # 25603645775852059
     template-options: 
     - '#DEFAULT#'
     - t-Region--noPadding
@@ -171,7 +171,7 @@ regions:
     customizable: Not Customizable By End Users
 
   configuration: 
-    build-option: '機能: アクセス制御' # 24359215367717645
+    build-option: '機能: アクセス制御' # 25703566729852118
 
   attributes: 
     settings: 
@@ -179,7 +179,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: ACL情報 =====================================
-  id: 24409569250718109
+  id: 25753907825852584
   identification: 
     title: ACL情報
     type: 動的コンテンツ
@@ -203,7 +203,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: アクセス制御 # 24408780864718109
+    parent-region: アクセス制御 # 25753178935852584
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -212,7 +212,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Alert # 24188144422717515
+    template: Alert # 25532490056852023
     template-options: 
     - '#DEFAULT#'
     - t-Alert--colorBG
@@ -243,7 +243,7 @@ regions:
       lazy-loading: false
 
 - # ====== Region: ユーザー数レポート ==========================
-  id: 24409983273718110
+  id: 25754321979852585
   identification: 
     title: ユーザー数レポート
     type: クラシック・レポート
@@ -260,7 +260,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: アクセス制御 # 24408780864718109
+    parent-region: アクセス制御 # 25753178935852584
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -269,7 +269,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 24259331220717553
+    template: Standard # 25603645775852059
     template-options: 
     - '#DEFAULT#'
     - t-Region--removeHeader
@@ -299,7 +299,7 @@ regions:
 
     appearance: 
       template-type: Theme
-      template: Value Attribute Pairs - Row # 24298694830717575
+      template: Value Attribute Pairs - Row # 25646599678852081
       template-options: 
       - '#DEFAULT#'
       - t-AVPList--rightAligned
@@ -333,7 +333,7 @@ regions:
 
   columns: 
   - # ====== Column: ROLE_NAME ===================================
-    id: 24410674332718114
+    id: 25755007465852586
     identification: 
       column-name: ROLE_NAME
       type: Plain Text
@@ -365,7 +365,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: USER_COUNT ==================================
-    id: 24411078174718115
+    id: 25755419237852587
     identification: 
       column-name: USER_COUNT
       type: Plain Text
@@ -400,7 +400,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ROLE_ID =====================================
-    id: 24411445009718115
+    id: 25755894140852587
     identification: 
       column-name: ROLE_ID
       type: Plain Text
@@ -432,17 +432,17 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: アクセス制御アクション ======================
-  id: 24414424138718448
+  id: 25758894025852956
   identification: 
     title: アクセス制御アクション
     type: リスト
 
   source: 
-    list: アクセス制御 # 24407277331718107
+    list: アクセス制御 # 25751640161852583
 
   layout: 
     sequence: 30
-    parent-region: アクセス制御 # 24408780864718109
+    parent-region: アクセス制御 # 25753178935852584
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -451,7 +451,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -472,21 +472,21 @@ regions:
 
   attributes: 
     appearance: 
-      list-template: Media List # 24315262139717585
+      list-template: Media List # 25659549329852088
       template-options: 
       - '#DEFAULT#'
       - u-colors
 
 buttons: 
 - # ====== Button: ADD_USER ====================================
-  id: 24409134153718109
+  id: 25753500719852584
   identification: 
     button-name: ADD_USER
     label: ユーザーの追加
 
   layout: 
     sequence: 10
-    region: アクセス制御 # 24408780864718109
+    region: アクセス制御 # 25753178935852584
     position: EDIT
     start-new-layout: false
     start-new-row: true
@@ -495,7 +495,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 24332372640717598
+    button-template: Text with Icon # 25676633826852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -514,7 +514,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: レポートのリフレッシュ ==============
-  id: 24413571530718447
+  id: 25757933640852954
   identification: 
     name: レポートのリフレッシュ
 
@@ -524,7 +524,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Button
-    button: ADD_USER # 24409134153718109
+    button: ADD_USER # 25753500719852584
 
   execution: 
     event-scope: Static
@@ -532,17 +532,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: リフレッシュ ================================
-    id: 24414044402718448
+    id: 25758492893852955
     identification: 
       action: リフレッシュ
 
     affected-elements: 
       selection-type: Region
-      region: ユーザー数レポート # 24409983273718110
+      region: ユーザー数レポート # 25754321979852585
 
     execution: 
       sequence: 10
-      event: レポートのリフレッシュ # 24413571530718447
+      event: レポートのリフレッシュ # 25757933640852954
       fire-when-event-result-is: True
       fire-on-initialization: false
 
