@@ -33,7 +33,7 @@ session-management:
   rejoin-sessions: Application Default
 
 advanced: 
-  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  enable-duplicate-page-submissions: No - Prevent page from being re-posted
   reload-on-submit: Only for Success
 
 server-cache: 
@@ -41,25 +41,17 @@ server-cache:
 
 regions: 
 - # ====== Region: 経費精算の申請 ==============================
-  id: 24468534831200511
+  id: 25822818039911355
   identification: 
     title: 経費精算の申請
     type: フォーム
 
   source: 
     location: Local Database
-    type: SQL Query
-    sql-query: |
-      select
-          expe_id 
-          , expe_justification
-          , expe_amount
-          , expe_status
-          , expe_invoice_dd
-          , expe_purpose
-          , expe_comment_mgr
-          , expe_comment_vp
-      from tuto_expenses
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TUTO_EXPENSES
+    include-rowid-column: false
 
   layout: 
     sequence: 10
@@ -72,7 +64,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -101,7 +93,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: ボタン ======================================
-  id: 24475672665200520
+  id: 25830693530911362
   identification: 
     title: ボタン
     type: 静的コンテンツ
@@ -117,7 +109,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Buttons Container # 24196182836717521
+    template: Buttons Container # 25540433042852027
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -142,8 +134,130 @@ regions:
       改行の表示: true
 
 page-items: 
+- # ====== Page Item: P3_EXPE_ACCOUNT ==========================
+  id: 24811361567583047
+  identification: 
+    name: P3_EXPE_ACCOUNT
+    type: 数値フィールド
+
+  label: 
+    label: Expe Account
+    alignment: Left
+
+  settings: 
+    数字の位置合せ: Start
+    仮想キーボード: Decimal
+
+  layout: 
+    sequence: 80
+    region: 経費精算の申請 # 25822818039911355
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 25674041868852096
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: 経費精算の申請 # 25822818039911355
+    column: EXPE_ACCOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 25500313736852006
+
+- # ====== Page Item: P3_EXPE_SUBMITTED_BY =====================
+  id: 24811475345583048
+  identification: 
+    name: P3_EXPE_SUBMITTED_BY
+    type: テキスト・フィールド
+
+  label: 
+    label: Expe Submitted By
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 90
+    region: 経費精算の申請 # 25822818039911355
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 25674041868852096
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 30
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: 経費精算の申請 # 25822818039911355
+    column: EXPE_SUBMITTED_BY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 25500313736852006
+
 - # ====== Page Item: P3_EXPE_COMMENT_MGR ======================
-  id: 23175411936202006
+  id: 24811577579583049
   identification: 
     name: P3_EXPE_COMMENT_MGR
     type: 表示のみ
@@ -159,8 +273,8 @@ page-items:
     ページの送信時に送信: true
 
   layout: 
-    sequence: 80
-    region: 経費精算の申請 # 24468534831200511
+    sequence: 100
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -171,7 +285,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
 
@@ -179,7 +293,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_COMMENT_MGR
     data-type: VARCHAR2
     query-only: false
@@ -199,7 +313,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_EXPE_COMMENT_VP =======================
-  id: 23175568242202007
+  id: 24811659925583050
   identification: 
     name: P3_EXPE_COMMENT_VP
     type: 表示のみ
@@ -215,8 +329,8 @@ page-items:
     ページの送信時に送信: true
 
   layout: 
-    sequence: 90
-    region: 経費精算の申請 # 24468534831200511
+    sequence: 110
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -227,7 +341,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
 
@@ -235,7 +349,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_COMMENT_VP
     data-type: VARCHAR2
     query-only: false
@@ -255,7 +369,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_EXPE_ID ===============================
-  id: 24468994512200512
+  id: 25823292320911355
   identification: 
     name: P3_EXPE_ID
     type: 非表示
@@ -265,14 +379,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: 経費精算の申請 # 24468534831200511
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_ID
     data-type: NUMBER
     query-only: false
@@ -288,14 +402,14 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_EXPE_JUSTIFICATION ====================
-  id: 24469366565200513
+  id: 25823666151911356
   identification: 
     name: P3_EXPE_JUSTIFICATION
     type: テキスト領域
 
   label: 
     label: Expe Justification
-    alignment: Right
+    alignment: Left
 
   settings: 
     サイズ変更可能: true
@@ -305,7 +419,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: 経費精算の申請 # 24468534831200511
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -316,7 +430,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
     width: 60
@@ -324,13 +438,13 @@ page-items:
 
   validation: 
     value-required: false
-    maximum-length: 600
+    maximum-length: 150
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_JUSTIFICATION
     data-type: VARCHAR2
     query-only: false
@@ -349,7 +463,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_EXPE_AMOUNT ===========================
-  id: 24469714475200514
+  id: 25824033715911356
   identification: 
     name: P3_EXPE_AMOUNT
     type: 数値フィールド
@@ -364,7 +478,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: 経費精算の申請 # 24468534831200511
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -375,7 +489,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
     width: 32
@@ -388,7 +502,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_AMOUNT
     data-type: NUMBER
     query-only: false
@@ -406,7 +520,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_EXPE_STATUS ===========================
-  id: 24470194371200514
+  id: 25824400492911356
   identification: 
     name: P3_EXPE_STATUS
     type: 非表示
@@ -416,14 +530,14 @@ page-items:
 
   layout: 
     sequence: 40
-    region: 経費精算の申請 # 24468534831200511
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_STATUS
     data-type: VARCHAR2
     query-only: false
@@ -438,8 +552,72 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P3_EXPE_SUBMITTED_ON =====================
+  id: 25824830866911357
+  identification: 
+    name: P3_EXPE_SUBMITTED_ON
+    type: 日付ピッカー
+
+  label: 
+    label: Expe Submitted On
+    alignment: Left
+
+  settings: 
+    時間の表示: false
+    表示形式: Popup
+    最小日付: None
+    最大日付: None
+    複数月: No
+    デフォルトの使用: true
+
+  layout: 
+    sequence: 50
+    region: 経費精算の申請 # 25822818039911355
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 25675322545852097
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 60
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: 経費精算の申請 # 25822818039911355
+    column: EXPE_SUBMITTED_ON
+    data-type: TIMESTAMP WITH TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 25500313736852006
+
 - # ====== Page Item: P3_EXPE_INVOICE_DD =======================
-  id: 24471327495200516
+  id: 25825694613911358
   identification: 
     name: P3_EXPE_INVOICE_DD
     type: 日付ピッカー
@@ -458,7 +636,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: 経費精算の申請 # 24468534831200511
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -469,7 +647,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
     width: 32
@@ -482,7 +660,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_INVOICE_DD
     data-type: DATE
     query-only: false
@@ -500,14 +678,14 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_EXPE_PURPOSE ==========================
-  id: 24471793737200516
+  id: 25826021870911358
   identification: 
     name: P3_EXPE_PURPOSE
     type: テキスト領域
 
   label: 
     label: Expe Purpose
-    alignment: Right
+    alignment: Left
 
   settings: 
     サイズ変更可能: true
@@ -517,7 +695,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: 経費精算の申請 # 24468534831200511
+    region: 経費精算の申請 # 25822818039911355
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -528,7 +706,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
     width: 60
@@ -536,13 +714,13 @@ page-items:
 
   validation: 
     value-required: false
-    maximum-length: 200
+    maximum-length: 50
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 経費精算の申請 # 24468534831200511
+    form-region: 経費精算の申請 # 25822818039911355
     column: EXPE_PURPOSE
     data-type: VARCHAR2
     query-only: false
@@ -562,14 +740,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 24476061159200520
+  id: 25831080809911362
   identification: 
     button-name: CANCEL
     label: 取消
 
   layout: 
     sequence: 10
-    region: ボタン # 24475672665200520
+    region: ボタン # 25830693530911362
     position: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -578,7 +756,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -588,14 +766,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 24477446999200522
+  id: 25832459349911364
   identification: 
     button-name: DELETE
     label: 削除
 
   layout: 
     sequence: 20
-    region: ボタン # 24475672665200520
+    region: ボタン # 25830693530911362
     position: DELETE
     start-new-layout: false
     start-new-row: true
@@ -604,7 +782,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -624,14 +802,14 @@ buttons:
     item: P3_EXPE_ID
 
 - # ====== Button: SAVE ========================================
-  id: 24477891823200522
+  id: 25832817942911364
   identification: 
     button-name: SAVE
     label: 変更の適用
 
   layout: 
     sequence: 30
-    region: ボタン # 24475672665200520
+    region: ボタン # 25830693530911362
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -640,7 +818,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -662,14 +840,14 @@ buttons:
       :P3_EXPE_STATUS <> 'paid'
 
 - # ====== Button: CREATE ======================================
-  id: 24478297331200523
+  id: 25833209556911364
   identification: 
     button-name: CREATE
     label: 作成
 
   layout: 
     sequence: 40
-    region: ボタン # 24475672665200520
+    region: ボタン # 25830693530911362
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -678,7 +856,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -695,7 +873,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 24476135144200520
+  id: 25831173045911362
   identification: 
     name: Cancel Dialog
 
@@ -705,7 +883,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 24476061159200520
+    button: CANCEL # 25831080809911362
 
   execution: 
     event-scope: Static
@@ -713,19 +891,38 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: ダイアログを取り消す ========================
-    id: 24476960864200522
+    id: 25831965060911363
     identification: 
       action: ダイアログを取り消す
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 24476135144200520
+      event: Cancel Dialog # 25831173045911362
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+validations: 
+- # ====== Validation: P3_EXPE_SUBMITTED_ON must be timestamp ==
+  id: 25825390820911357
+  identification: 
+    name: P3_EXPE_SUBMITTED_ON must be timestamp
+
+  execution: 
+    sequence: 40
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P3_EXPE_SUBMITTED_ON
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL#は有効なタイムスタンプである必要があります。'
+    display-location: Inline with Field and in Notification
+    associated-item: P3_EXPE_SUBMITTED_ON # 25824830866911357
+
 computations: 
 - # ====== Computation: P3_EXPE_STATUS =========================
-  id: 23175615513202008
+  id: 25846301724972101
   identification: 
     item-name: P3_EXPE_STATUS
 
@@ -738,15 +935,66 @@ computations:
     static-value: submitted
 
 processes: 
-- # ====== Process: ワークフローの開始 =========================
-  id: 23175797752202009
+- # ====== Process: 初期化フォーム経費精算の申請 ===============
+  id: 25833672992911365
   identification: 
-    name: ワークフローの開始
+    name: 初期化フォーム経費精算の申請
+    type: フォーム - 初期化
+    form-region: 経費精算の申請 # 25822818039911355
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: プロセス・フォーム経費精算の申請 ===========
+  id: 25834016463911366
+  identification: 
+    name: プロセス・フォーム経費精算の申請
+    type: フォーム - 行の自動処理(DML)
+    form-region: 経費精算の申請 # 25822818039911355
+
+  settings: 
+    ターゲット・タイプ: Region Source
+    失われた更新の防止: true
+    行のロック: Yes
+    挿入後に主キーを返す: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: ダイアログを閉じる =========================
+  id: 25834433476911366
+  identification: 
+    name: ダイアログを閉じる
+    type: ダイアログを閉じる
+
+  execution: 
+    sequence: 80
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
+- # ====== Process: F4A:ワークフローの開始 =====================
+  id: 25846401312972102
+  identification: 
+    name: 'F4A:ワークフローの開始'
     type: Flows for APEX - Manage Flow Instance
 
   settings: 
     action: Create and Start
-    flow-instance-name: 経費精算 - &APP_USER. - &P3_EXPE_AMOUNT. 米ドル
+    flow-instance-name: '&APP_NAME. - &APP_USER. - &P3_EXPE_AMOUNT. 米ドル'
     select-flow-using: Component Setting
     flow-(diagram)-selection-based-on: Name
     set-business-reference: P3_EXPE_ID
@@ -770,10 +1018,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: CREATE # 24478297331200523
+    when-button-pressed: CREATE # 25833209556911364
 
 - # ====== Process: SUBFLOW_IDとSTEP_KEYの取得 =================
-  id: 23175851607202010
+  id: 25846672024972104
   identification: 
     name: SUBFLOW_IDとSTEP_KEYの取得
     type: コードを実行
@@ -795,12 +1043,12 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: CREATE # 24478297331200523
+    when-button-pressed: CREATE # 25833209556911364
 
-- # ====== Process: 経費精算の申請 =============================
-  id: 23175919618202011
+- # ====== Process: F4A:経費精算の申請 =========================
+  id: 25846761718972105
   identification: 
-    name: 経費精算の申請
+    name: 'F4A:経費精算の申請'
     type: Flows for APEX - Manage Flow Instance Step
 
   settings: 
@@ -821,12 +1069,12 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: CREATE # 24478297331200523
+    when-button-pressed: CREATE # 25833209556911364
 
-- # ====== Process: 経費精算の再申請 ===========================
-  id: 23176079587202012
+- # ====== Process: F4A:申請の修正 =============================
+  id: 25846867688972106
   identification: 
-    name: 経費精算の再申請
+    name: 'F4A:申請の修正'
     type: Flows for APEX - Manage Flow Instance Step
 
   settings: 
@@ -851,12 +1099,12 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 24477891823200522
+    when-button-pressed: SAVE # 25832817942911364
 
-- # ====== Process:  経費の更新 ================================
-  id: 23176699058202018
+- # ====== Process: F4A:経費の更新 =============================
+  id: 25846946092972107
   identification: 
-    name: ' 経費の更新'
+    name: 'F4A:経費の更新'
     type: Flows for APEX - Manage Flow Instance Variables
 
   settings: 
@@ -878,12 +1126,12 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SAVE # 24477891823200522
+    when-button-pressed: SAVE # 25832817942911364
 
-- # ====== Process: ワークフローの削除 =========================
-  id: 23176706222202019
+- # ====== Process: F4A:ワークフローの削除 =====================
+  id: 25847078852972108
   identification: 
-    name: ワークフローの削除
+    name: 'F4A:ワークフローの削除'
     type: Flows for APEX - Manage Flow Instance
 
   settings: 
@@ -903,56 +1151,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: DELETE # 24477446999200522
-
-- # ====== Process: 初期化フォーム経費精算の申請 ===============
-  id: 24478651780200523
-  identification: 
-    name: 初期化フォーム経費精算の申請
-    type: フォーム - 初期化
-    form-region: 経費精算の申請 # 24468534831200511
-
-  execution: 
-    sequence: 10
-    point: Before Header
-    run-process: Once Per Page Visit (default)
-
-- # ====== Process: プロセス・フォーム経費精算の申請 ===========
-  id: 24479032347200523
-  identification: 
-    name: プロセス・フォーム経費精算の申請
-    type: フォーム - 行の自動処理(DML)
-    form-region: 経費精算の申請 # 24468534831200511
-
-  settings: 
-    ターゲット・タイプ: Region Source
-    失われた更新の防止: true
-    行のロック: Yes
-    挿入後に主キーを返す: true
-
-  execution: 
-    sequence: 10
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-- # ====== Process: ダイアログを閉じる =========================
-  id: 24479404673200523
-  identification: 
-    name: ダイアログを閉じる
-    type: ダイアログを閉じる
-
-  execution: 
-    sequence: 80
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    type: Request is contained in Value
-    value: CREATE,SAVE,DELETE
+    when-button-pressed: DELETE # 25832459349911364
 
