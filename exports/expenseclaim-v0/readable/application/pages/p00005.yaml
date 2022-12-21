@@ -41,26 +41,17 @@ server-cache:
 
 regions: 
 - # ====== Region: 申請のレビュー ==============================
-  id: 24725548732229051
+  id: 25856694901408456
   identification: 
     title: 申請のレビュー
     type: フォーム
 
   source: 
     location: Local Database
-    type: SQL Query
-    sql-query: |
-      select
-          expe_id 
-          ,expe_amount
-          ,expe_purpose
-          ,expe_justification
-          ,expe_submitted_by
-          ,expe_invoice_dd
-          ,expe_status
-          ,expe_comment_mgr
-          ,expe_comment_vp
-      from tuto_expenses
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TUTO_EXPENSES
+    include-rowid-column: false
 
   layout: 
     sequence: 10
@@ -73,7 +64,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 24193364903717520
+    template: Blank with Attributes # 25537614731852026
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -102,7 +93,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: ボタン ======================================
-  id: 24733350175229059
+  id: 25865109009408464
   identification: 
     title: ボタン
     type: 静的コンテンツ
@@ -118,7 +109,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Buttons Container # 24196182836717521
+    template: Buttons Container # 25540433042852027
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -143,8 +134,67 @@ regions:
       改行の表示: true
 
 page-items: 
+- # ====== Page Item: P5_EXPE_ACCOUNT ==========================
+  id: 25847369566972111
+  identification: 
+    name: P5_EXPE_ACCOUNT
+    type: 数値フィールド
+
+  label: 
+    label: Expe Account
+    alignment: Left
+
+  settings: 
+    数字の位置合せ: Start
+    仮想キーボード: Decimal
+
+  layout: 
+    sequence: 90
+    region: 申請のレビュー # 25856694901408456
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 25674041868852096
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: 申請のレビュー # 25856694901408456
+    column: EXPE_ACCOUNT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 25500313736852006
+
 - # ====== Page Item: P5_EXPE_COMMENT_MGR ======================
-  id: 23177601704202028
+  id: 25847410593972112
   identification: 
     name: P5_EXPE_COMMENT_MGR
     type: テキスト領域
@@ -160,8 +210,8 @@ page-items:
     空白の切捨て: Leading and Trailing
 
   layout: 
-    sequence: 90
-    region: 申請のレビュー # 24725548732229051
+    sequence: 100
+    region: 申請のレビュー # 25856694901408456
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -172,7 +222,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -180,13 +230,13 @@ page-items:
 
   validation: 
     value-required: false
-    maximum-length: 4000
+    maximum-length: 1000
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_COMMENT_MGR
     data-type: VARCHAR2
     query-only: false
@@ -205,7 +255,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_EXPE_COMMENT_VP =======================
-  id: 23177784782202029
+  id: 25847551071972113
   identification: 
     name: P5_EXPE_COMMENT_VP
     type: 表示のみ
@@ -221,8 +271,8 @@ page-items:
     ページの送信時に送信: true
 
   layout: 
-    sequence: 100
-    region: 申請のレビュー # 24725548732229051
+    sequence: 110
+    region: 申請のレビュー # 25856694901408456
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -233,7 +283,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
 
@@ -241,7 +291,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_COMMENT_VP
     data-type: VARCHAR2
     query-only: false
@@ -261,7 +311,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_EXPE_ID ===============================
-  id: 24725988716229052
+  id: 25857025474408457
   identification: 
     name: P5_EXPE_ID
     type: 非表示
@@ -271,14 +321,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: 申請のレビュー # 24725548732229051
+    region: 申請のレビュー # 25856694901408456
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_ID
     data-type: NUMBER
     query-only: false
@@ -294,7 +344,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_EXPE_JUSTIFICATION ====================
-  id: 24726328912229053
+  id: 25857437667408457
   identification: 
     name: P5_EXPE_JUSTIFICATION
     type: 表示のみ
@@ -311,7 +361,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: 申請のレビュー # 24725548732229051
+    region: 申請のレビュー # 25856694901408456
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -322,7 +372,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
 
@@ -330,7 +380,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_JUSTIFICATION
     data-type: VARCHAR2
     query-only: false
@@ -346,7 +396,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_EXPE_AMOUNT ===========================
-  id: 24726707005229054
+  id: 25857868123408457
   identification: 
     name: P5_EXPE_AMOUNT
     type: 表示のみ
@@ -363,7 +413,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: 申請のレビュー # 24725548732229051
+    region: 申請のレビュー # 25856694901408456
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -374,7 +424,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
 
@@ -382,7 +432,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_AMOUNT
     data-type: NUMBER
     query-only: false
@@ -398,7 +448,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_EXPE_STATUS ===========================
-  id: 24727129663229054
+  id: 25858293194408458
   identification: 
     name: P5_EXPE_STATUS
     type: 非表示
@@ -408,14 +458,14 @@ page-items:
 
   layout: 
     sequence: 40
-    region: 申請のレビュー # 24725548732229051
+    region: 申請のレビュー # 25856694901408456
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_STATUS
     data-type: VARCHAR2
     query-only: false
@@ -431,7 +481,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_EXPE_SUBMITTED_BY =====================
-  id: 24727570949229054
+  id: 25858668570408458
   identification: 
     name: P5_EXPE_SUBMITTED_BY
     type: 表示のみ
@@ -448,7 +498,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: 申請のレビュー # 24725548732229051
+    region: 申請のレビュー # 25856694901408456
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -459,7 +509,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
 
@@ -467,7 +517,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_SUBMITTED_BY
     data-type: VARCHAR2
     query-only: false
@@ -482,8 +532,72 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P5_EXPE_SUBMITTED_ON =====================
+  id: 25859057356408458
+  identification: 
+    name: P5_EXPE_SUBMITTED_ON
+    type: 日付ピッカー
+
+  label: 
+    label: Expe Submitted On
+    alignment: Left
+
+  settings: 
+    時間の表示: false
+    表示形式: Popup
+    最小日付: None
+    最大日付: None
+    複数月: No
+    デフォルトの使用: true
+
+  layout: 
+    sequence: 60
+    region: 申請のレビュー # 25856694901408456
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating # 25675322545852097
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 120
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: 申請のレビュー # 25856694901408456
+    column: EXPE_SUBMITTED_ON
+    data-type: TIMESTAMP WITH TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: コメント・アウト # 25500313736852006
+
 - # ====== Page Item: P5_EXPE_INVOICE_DD =======================
-  id: 24728707754229055
+  id: 25859839259408459
   identification: 
     name: P5_EXPE_INVOICE_DD
     type: 表示のみ
@@ -500,7 +614,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: 申請のレビュー # 24725548732229051
+    region: 申請のレビュー # 25856694901408456
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -511,7 +625,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 24331083762717596
+    template: Required - Floating # 25675322545852097
     template-options: 
     - '#DEFAULT#'
 
@@ -519,7 +633,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_INVOICE_DD
     data-type: DATE
     query-only: false
@@ -535,7 +649,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_EXPE_PURPOSE ==========================
-  id: 24729182376229055
+  id: 25860244321408459
   identification: 
     name: P5_EXPE_PURPOSE
     type: 表示のみ
@@ -552,7 +666,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: 申請のレビュー # 24725548732229051
+    region: 申請のレビュー # 25856694901408456
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -563,7 +677,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 24329784156717595
+    template: Optional - Floating # 25674041868852096
     template-options: 
     - '#DEFAULT#'
 
@@ -571,7 +685,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
     column: EXPE_PURPOSE
     data-type: VARCHAR2
     query-only: false
@@ -588,14 +702,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 24733702670229060
+  id: 25865560810408464
   identification: 
     button-name: CANCEL
     label: 取消
 
   layout: 
     sequence: 10
-    region: ボタン # 24733350175229059
+    region: ボタン # 25865109009408464
     position: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -604,7 +718,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -614,14 +728,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: APPROVE =====================================
-  id: 24735556505229063
+  id: 25867311859408466
   identification: 
     button-name: APPROVE
     label: 承認
 
   layout: 
     sequence: 30
-    region: ボタン # 24733350175229059
+    region: ボタン # 25865109009408464
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -630,7 +744,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -642,14 +756,14 @@ buttons:
     database-action: SQL UPDATE action
 
 - # ====== Button: DECLINE =====================================
-  id: 24735928687229063
+  id: 25867713718408466
   identification: 
     button-name: DECLINE
     label: 却下
 
   layout: 
     sequence: 40
-    region: ボタン # 24733350175229059
+    region: ボタン # 25865109009408464
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -658,7 +772,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 24332280638717598
+    button-template: Text # 25676594419852097
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -671,7 +785,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 24733811782229060
+  id: 25865661610408464
   identification: 
     name: Cancel Dialog
 
@@ -681,7 +795,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 24733702670229060
+    button: CANCEL # 25865560810408464
 
   execution: 
     event-scope: Static
@@ -689,19 +803,38 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: ダイアログを取り消す ========================
-    id: 24734651323229062
+    id: 25866437944408465
     identification: 
       action: ダイアログを取り消す
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 24733811782229060
+      event: Cancel Dialog # 25865661610408464
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+validations: 
+- # ====== Validation: P5_EXPE_SUBMITTED_ON must be timestamp ==
+  id: 25859545262408459
+  identification: 
+    name: P5_EXPE_SUBMITTED_ON must be timestamp
+
+  execution: 
+    sequence: 50
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P5_EXPE_SUBMITTED_ON
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL#は有効なタイムスタンプである必要があります。'
+    display-location: Inline with Field and in Notification
+    associated-item: P5_EXPE_SUBMITTED_ON # 25859057356408458
+
 computations: 
 - # ====== Computation: P5_EXPE_STATUS =========================
-  id: 23178072794202032
+  id: 25847610801972114
   identification: 
     item-name: P5_EXPE_STATUS
 
@@ -718,7 +851,7 @@ computations:
     value: APPROVE
 
 - # ====== Computation: P5_EXPE_STATUS =========================
-  id: 23178112970202033
+  id: 25847716130972115
   identification: 
     item-name: P5_EXPE_STATUS
 
@@ -735,10 +868,10 @@ computations:
     value: DECLINE
 
 processes: 
-- # ====== Process: EXPE_STATUSの設定 ==========================
-  id: 23178205618202034
+- # ====== Process: F4A:EXPE_STATUSの設定 ======================
+  id: 25847854083972116
   identification: 
-    name: EXPE_STATUSの設定
+    name: 'F4A:EXPE_STATUSの設定'
     type: Flows for APEX - Manage Flow Instance Variables
 
   settings: 
@@ -759,10 +892,10 @@ processes:
   error: 
     display-location: Inline in Notification
 
-- # ====== Process: 申請または却下 =============================
-  id: 23178398185202035
+- # ====== Process: F4A:申請のレビュー =========================
+  id: 25847954057972117
   identification: 
-    name: 申請または却下
+    name: 'F4A:申請のレビュー'
     type: Flows for APEX - Manage Flow Instance Step
 
   settings: 
@@ -783,11 +916,11 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: 初期化フォーム申請のレビュー ===============
-  id: 24736332646229063
+  id: 25868158077408466
   identification: 
     name: 初期化フォーム申請のレビュー
     type: フォーム - 初期化
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
 
   execution: 
     sequence: 10
@@ -795,11 +928,11 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: プロセス・フォーム申請のレビュー ===========
-  id: 24736794637229063
+  id: 25868527234408467
   identification: 
     name: プロセス・フォーム申請のレビュー
     type: フォーム - 行の自動処理(DML)
-    form-region: 申請のレビュー # 24725548732229051
+    form-region: 申請のレビュー # 25856694901408456
 
   settings: 
     ターゲット・タイプ: Region Source
@@ -816,7 +949,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: ダイアログを閉じる =========================
-  id: 24737135542229064
+  id: 25868929051408467
   identification: 
     name: ダイアログを閉じる
     type: ダイアログを閉じる
