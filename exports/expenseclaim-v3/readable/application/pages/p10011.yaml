@@ -1,0 +1,444 @@
+---
+# ====== Page: ユーザー・アクセスの管理 ======================
+id: 10011
+identification: 
+  name: ユーザー・アクセスの管理
+  alias: ユーザー-アクセスの管理
+  title: ユーザー・アクセスの管理
+  page-group: 管理 # 52274293712222893
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Modal Dialog # 52090100627222785
+  template-options: 
+  - '#DEFAULT#'
+  - ui-dialog--stretch
+  - t-Dialog--noPadding
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+security: 
+  authorization-scheme: 管理権限 # 52272960068222888
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+help: 
+  help-text: |
+    <p>このページには、アプリケーション・ユーザーと付与されているアクセス・レベルのレポートが表示されます。</p>
+    <p>列ヘッダーをクリックしてデータをソートおよびフィルタするか、<strong>「アクション」</strong>ボタンをクリックして列表示と多くの追加の拡張機能をカスタマイズします。<br>
+    <strong>「リセット」</strong>ボタンをクリックすると、対話モード・レポートをデフォルト設定に戻すことができます。</p>
+    <p>編集アイコン(黄色の鉛筆)をクリックしてユーザーの詳細とアクセス・レベルを編集するか、ユーザーを削除します。</p>
+    <p>レポートの一番上にある<strong>「ユーザーの追加」</strong>をクリックして、新しいユーザーとそのアクセス・レベルを追加します。</p>
+
+configuration: 
+  build-option: '機能: アクセス制御' # 52271308861222885
+
+regions: 
+- # ====== Region: ユーザー・アクセスの管理 ====================
+  id: 52286560705222914
+  identification: 
+    title: ユーザー・アクセスの管理
+    type: 対話モード・レポート
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select id,
+         user_name_lc USERNAME,
+         role_names ACCESS_ROLE
+      from APEX_APPL_ACL_USERS
+      where APPLICATION_ID = :APP_ID
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report # 52161550698222821
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--noBorders
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 52287433740222915
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:10012:&APP_SESSION.::&DEBUG.:RP:P10012_ID:\#ID#\'
+        page: 10012 # ユーザー・アクセスの管理
+        clear-cache: RP
+        values: 
+          p10012_id: '#ID#'
+
+      link-icon: <span aria-label="&#x7DE8;&#x96C6;"><span class="fa fa-edit" aria-hidden="true" title="&#x7DE8;&#x96C6;"></span></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: データが見つかりません。
+      when-more-data-found: このレポートの最大行数は#MAX_ROW_COUNT#行です。フィルタを適用して、問合せのレコード数を削減してください。
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: プライマリ・レポート ==================
+      id: 52290145220222930
+      identification: 
+        name: プライマリ・レポート
+        alias: 257225
+
+    columns: 
+    - # ====== Column: ID ==========================================
+      id: 52287745278222922
+      identification: 
+        column-name: ID
+        type: Hidden Column
+
+      heading: 
+        heading: ID
+
+      layout: 
+        sequence: 0
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: USERNAME ====================================
+      id: 52288205372222924
+      identification: 
+        column-name: USERNAME
+        type: Plain Text
+
+      heading: 
+        heading: ユーザー名
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ACCESS_ROLE =================================
+      id: 52288589809222925
+      identification: 
+        column-name: ACCESS_ROLE
+        type: Plain Text
+
+      heading: 
+        heading: ロール
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 3
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: ユーザー・アクセスの管理
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+buttons: 
+- # ====== Button: RESET_REPORT ================================
+  id: 52291121491222932
+  identification: 
+    button-name: RESET_REPORT
+    label: リセット
+
+  layout: 
+    sequence: 20
+    region: ユーザー・アクセスの管理 # 52286560705222914
+    position: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 52244375958222864
+    hot: false
+    template-options: 
+    - t-Button--iconLeft
+    - t-Button--gapRight
+    icon: fa-undo-alt
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:&APP_PAGE_ID.:&APP_SESSION.::&DEBUG.:&APP_PAGE_ID.,RR::'
+      page: '&APP_PAGE_ID.'
+      clear-cache: '&APP_PAGE_ID.,RR'
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: ADD_MULTIPLE_USERS ==========================
+  id: 52291471425222933
+  identification: 
+    button-name: ADD_MULTIPLE_USERS
+    label: 複数ユーザーの追加
+
+  layout: 
+    sequence: 30
+    region: ユーザー・アクセスの管理 # 52286560705222914
+    position: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 52244336551222864
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:10013:&APP_SESSION.::&DEBUG.:10013::'
+      page: 10013 # 複数ユーザーの追加 - ステップ1
+      clear-cache: 10013
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: ADD_USER ====================================
+  id: 52291915487222933
+  identification: 
+    button-name: ADD_USER
+    label: ユーザーの追加
+
+  layout: 
+    sequence: 40
+    region: ユーザー・アクセスの管理 # 52286560705222914
+    position: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 52244336551222864
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:10012:&APP_SESSION.::&DEBUG.:10012::'
+      page: 10012 # ユーザー・アクセスの管理
+      clear-cache: 10012
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: レポートのリフレッシュ ==============
+  id: 52286693253222914
+  identification: 
+    name: レポートのリフレッシュ
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: Region
+    region: ユーザー・アクセスの管理 # 52286560705222914
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: リフレッシュ ================================
+    id: 52292516781222934
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: ユーザー・アクセスの管理 # 52286560705222914
+
+    execution: 
+      sequence: 10
+      event: レポートのリフレッシュ # 52286693253222914
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
