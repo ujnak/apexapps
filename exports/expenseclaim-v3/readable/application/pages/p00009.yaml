@@ -1,0 +1,138 @@
+---
+# ====== Page: 進捗の表示 ====================================
+id: 9
+identification: 
+  name: 進捗の表示
+  alias: 進捗の表示
+  title: 進捗の表示
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  width: 900
+  height: 550
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: 進捗の表示 ==================================
+  id: 52414885462342876
+  identification: 
+    title: 進捗の表示
+    type: Flows for APEX - Viewer
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: FLOW_INSTANCE_DETAILS_VW
+    include-rowid-column: false
+    where-clause: 'prcs_id = :P9_PRCS_ID'
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes (No Grid) # 52106818658222794
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      diagram-xml: DGRM_CONTENT
+      add-highlighting: true
+      current-nodes: ALL_CURRENT
+      completed-nodes: ALL_COMPLETED
+      error-nodes: ALL_ERRORS
+      enable-call-activities: true
+      diagram-identifier: PRDG_ID
+      calling-diagram-identifier: PRDG_PRDG_ID
+      calling-object-id: CALLING_OBJT
+      breadcrumb-text: BREADCRUMB
+      allow-drilldown-on-diagram-level: DRILLDOWN_ALLOWED
+      refresh-on-load: true
+      enabled-viewer-navigation: false
+
+page-items: 
+- # ====== Page Item: P9_PRCS_ID ===============================
+  id: 52415019492342877
+  identification: 
+    name: P9_PRCS_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: 進捗の表示 # 52414885462342876
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
