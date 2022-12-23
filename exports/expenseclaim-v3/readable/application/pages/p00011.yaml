@@ -1,0 +1,1261 @@
+---
+# ====== Page: 申請のレビュー ================================
+id: 11
+identification: 
+  name: 申請のレビュー
+  alias: 申請のレビュー
+  title: 申請のレビュー
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: ブレッドクラム ==============================
+  id: 26621917077657903
+  identification: 
+    title: ブレッドクラム
+    type: ブレッドクラム
+
+  source: 
+    breadcrumb: ブレッドクラム # 52068668584222773
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 52183777597222832
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 52245860390222865
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: 管理タスク - スマート・フィルタ =============
+  id: 26623001183657908
+  identification: 
+    title: 管理タスク - スマート・フィルタ
+    type: スマート・フィルタ
+
+  source: 
+    filtered-region: 管理タスク - レポート # 26623102610657908
+
+  layout: 
+    sequence: 10
+    parent-region: ブレッドクラム # 26621917077657903
+    position: SMART_FILTERS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes (No Grid) # 52106818658222794
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      最大サジェスチョン・チップ: 0
+      その他のフィルタ・サジェスチョン・チップ: false
+      コンパクトな数値のしきい値: 10000
+      総行数の表示: No
+
+  facets: 
+  - # ====== Facet: P11_SEARCH ===================================
+    id: 26623515855657909
+    identification: 
+      name: P11_SEARCH
+      type: 検索
+
+    label: 
+      label: 検索
+
+    settings: 
+      検索タイプ: Row Search
+      入力フィールド: Top of Faceted Search Region
+
+    layout: 
+      sequence: 10
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Facet: P11_DUE ======================================
+    id: 26623907616657909
+    identification: 
+      name: P11_DUE
+      type: 範囲
+
+    label: 
+      label: 期限
+      show-label-for-current-facet: true
+
+    settings: 
+      複数の選択: true
+      手動入力: false
+
+    layout: 
+      sequence: 20
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.DUE # 26624015441657909
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: DUE_IN_HOURS
+      data-type: NUMBER
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Facet: P11_TYPE =====================================
+    id: 26627032031657912
+    identification: 
+      name: P11_TYPE
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: タイプ
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 30
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: TASK_DEF_NAME
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P11_PRIORITY =================================
+    id: 26627443300657917
+    identification: 
+      name: P11_PRIORITY
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: 優先度
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 40
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.PRIORITY # 26583546862534975
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: false
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: PRIORITY
+      data-type: NUMBER
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P11_STATE ====================================
+    id: 26627807504657917
+    identification: 
+      name: P11_STATE
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: 状態
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 50
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.STATE # 26627959805657917
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: false
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: STATE_CODE
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P11_OUTCOME ==================================
+    id: 26628543241657918
+    identification: 
+      name: P11_OUTCOME
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: 結果
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 60
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: OUTCOME
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P11_APPLICATION ==============================
+    id: 26628992853657918
+    identification: 
+      name: P11_APPLICATION
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: アプリケーション
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 70
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: DETAILS_APP_NAME
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P11_INITIATOR ================================
+    id: 26629351327657919
+    identification: 
+      name: P11_INITIATOR
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: イニシエータ
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 80
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: INITIATOR_LOWER
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P11_INITIATED ================================
+    id: 26629781170657919
+    identification: 
+      name: P11_INITIATED
+      type: 範囲
+
+    label: 
+      label: 開始済
+      show-label-for-current-facet: true
+
+    settings: 
+      複数の選択: true
+      手動入力: false
+
+    layout: 
+      sequence: 90
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.INITIATED # 26629828052657919
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      show-selected-first: false
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: false
+
+    advanced: 
+      display-toggling: false
+      collapsible: false
+
+    source: 
+      database-column: CREATED_AGO_HOURS
+      data-type: NUMBER
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  filters: 
+  - # ====== Filter: P11_SEARCH ==================================
+    id: 26623515855657909
+    identification: 
+      name: P11_SEARCH
+      type: 検索
+
+    label: 
+      label: 検索
+
+    settings: 
+      検索タイプ: Row Search
+      縮小された検索フィールド: false
+
+    layout: 
+      sequence: 10
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Filter: P11_DUE =====================================
+    id: 26623907616657909
+    identification: 
+      name: P11_DUE
+      type: 範囲
+
+    label: 
+      label: 期限
+
+    settings: 
+      複数の選択: true
+      手動入力: false
+
+    layout: 
+      sequence: 20
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.DUE # 26624015441657909
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: DUE_IN_HOURS
+      data-type: NUMBER
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Filter: P11_TYPE ====================================
+    id: 26627032031657912
+    identification: 
+      name: P11_TYPE
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: タイプ
+
+    layout: 
+      sequence: 30
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: TASK_DEF_NAME
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P11_PRIORITY ================================
+    id: 26627443300657917
+    identification: 
+      name: P11_PRIORITY
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: 優先度
+
+    layout: 
+      sequence: 40
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.PRIORITY # 26583546862534975
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: false
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: PRIORITY
+      data-type: NUMBER
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P11_STATE ===================================
+    id: 26627807504657917
+    identification: 
+      name: P11_STATE
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: 状態
+
+    layout: 
+      sequence: 50
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.STATE # 26627959805657917
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: false
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: STATE_CODE
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P11_OUTCOME =================================
+    id: 26628543241657918
+    identification: 
+      name: P11_OUTCOME
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: 結果
+
+    layout: 
+      sequence: 60
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: OUTCOME
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P11_APPLICATION =============================
+    id: 26628992853657918
+    identification: 
+      name: P11_APPLICATION
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: アプリケーション
+
+    layout: 
+      sequence: 70
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: DETAILS_APP_NAME
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P11_INITIATOR ===============================
+    id: 26629351327657919
+    identification: 
+      name: P11_INITIATOR
+      type: チェック・ボックス・グループ
+
+    label: 
+      label: イニシエータ
+
+    layout: 
+      sequence: 80
+
+    list-of-values: 
+      type: Distinct Values
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: INITIATOR_LOWER
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P11_INITIATED ===============================
+    id: 26629781170657919
+    identification: 
+      name: P11_INITIATED
+      type: 範囲
+
+    label: 
+      label: 開始済
+
+    settings: 
+      複数の選択: true
+      手動入力: false
+
+    layout: 
+      sequence: 90
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: UNIFIED_TASK_LIST.LOV.INITIATED # 26629828052657919
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: Dynamic
+      show-label: true
+
+    source: 
+      database-column: CREATED_AGO_HOURS
+      data-type: NUMBER
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+- # ====== Region: 管理タスク - レポート =======================
+  id: 26623102610657908
+  identification: 
+    title: 管理タスク - レポート
+    type: カード
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select *
+        from table (
+            apex_approval.get_tasks (
+                p_context            => 'ADMIN_TASKS',
+                p_show_expired_tasks => :P11_SHOW_EXPIRED ) )
+    page-items-to-submit: 
+    - P11_SHOW_EXPIRED
+    order-by-item: 
+      item-name: P11_SORT_BY
+      order-bys: 
+      - key: CREATED_ON
+        clause: created_on desc
+
+      - key: DUE_ON
+        clause: priority asc, due_on asc nulls last
+
+    optimizer-hint: APEX$USE_NO_GROUPING_SETS
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container # 52112480520222796
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 26632788143657922
+    appearance: 
+      layout: Horizontal (Row)
+
+    card: 
+      primary-key-column-1: TASK_ID
+
+    title: 
+      advanced-formatting: false
+      column: SUBJECT
+
+    subtitle: 
+      advanced-formatting: true
+      html-expression: |
+        <small role="group" aria-label="タスクの詳細">
+            <strong>&TASK_DEF_NAME!HTML.</strong>
+        {if INITIATOR/}
+            <span role="separator" aria-label="&middot;"> &middot; </span> 開始者&INITIATOR_LOWER!HTML. 
+        {endif/}
+        {if ACTUAL_OWNER/}
+            <span role="separator" aria-label="&middot;"> &middot; </span> 割当て先&ACTUAL_OWNER_LOWER!HTML.
+        {endif/}
+        {if !IS_COMPLETED/}
+            {case DUE_CODE/}
+                {when OVERDUE/}
+                    <span role="separator" aria-label="&middot;"> &middot; </span><strong class="u-danger-text">期日&DUE_IN.</strong>
+                {when NEXT_HOUR/}
+                    <span role="separator" aria-label="&middot;"> &middot; </span> <strong class="u-danger-text">期日&DUE_IN.</strong>
+                {when NEXT_24_HOURS/}
+                    <span role="separator" aria-label="&middot;"> &middot; </span> <span class="u-danger-text">期日&DUE_IN.</span>
+                {otherwise/}
+                    {if DUE_IN/}<span role="separator" aria-label="&middot;"> &middot; </span> <span>期日&DUE_IN.</span>{endif/}
+            {endcase/}
+        {endif/}
+        {if !IS_COMPLETED/}
+            {case PRIORITY/}
+                {when 1/}
+                    <span role="separator" aria-label="&middot;"> &middot; </span> <strong class="u-danger-text">緊急</strong>
+                {when 2/}
+                    <span role="separator" aria-label="&middot;"> &middot; </span> <span class="u-danger-text">高優先度</span>
+            {endcase/}
+        {endif/}
+        {if OUTCOME/}
+            <span role="separator" aria-label="&middot;"> &middot; </span> &OUTCOME.
+        {endif/}
+        </small>
+
+    body: 
+      advanced-formatting: false
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: No Icon
+      badge-column: BADGE_TEXT
+      badge-css-classes: 
+      - '&BADGE_CSS_CLASSES.'
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-row-count: false
+
+    messages: 
+      when-no-data-found: タスクなし
+      no-data-found-icon: fa-clipboard-check-alt fa-lg
+
+    actions: 
+    - # ====== Action: TITLE =======================================
+      id: 26633246688657923
+      identification: 
+        type: Title
+
+      layout: 
+        sequence: 10
+
+      link: 
+        type: Redirect to URL
+        target: '&DETAILS_LINK_TARGET.'
+
+page-items: 
+- # ====== Page Item: P11_TASK_ID ==============================
+  id: 26622659076657906
+  identification: 
+    name: P11_TASK_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_SORT_BY ==============================
+  id: 26633894155657924
+  identification: 
+    name: P11_SORT_BY
+    type: 選択リスト
+
+  label: 
+    label: ソート基準
+    alignment: Left
+
+  settings: 
+    選択時のページ・アクション: None
+    複数選択を許可: false
+
+  layout: 
+    sequence: 10
+    region: 管理タスク - レポート # 26623102610657908
+    position: ORDER_BY_ITEM
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden # 52241525581222863
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-sort-amount-desc
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC2:作成日;CREATED_ON,期日;DUE_ON'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    css-classes: 
+    - mnw160
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Static Value
+    static-value: DUE_ON
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per User (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_SHOW_EXPIRED =========================
+  id: 26634120226657925
+  identification: 
+    name: P11_SHOW_EXPIRED
+    type: チェックボックス
+
+  label: 
+    label: 期限切れのタスクの表示
+    alignment: Left
+
+  settings: 
+    デフォルトの使用: false
+    チェック済値: Y
+    未チェック値: N
+
+  layout: 
+    sequence: 20
+    region: 管理タスク - レポート # 26623102610657908
+    position: ORDER_BY_ITEM
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Optional # 52241550411222863
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-pullRight
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Static Value
+    static-value: N
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per User (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+dynamic-actions: 
+- # ====== Dynamic Action: 成功メッセージの表示 ================
+  id: 26634511514657926
+  identification: 
+    name: 成功メッセージの表示
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSECANCELDIALOG
+    selection-type: jQuery Selector
+    jquery-selector: body
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: JavaScriptコードの実行 ======================
+    id: 26634918649657927
+    identification: 
+      action: JavaScriptコードの実行
+
+    settings: 
+      コード: |
+        if ( this.data.successMessage ) {
+            apex.message.showPageSuccess(this.data.successMessage.text);
+        }
+
+    execution: 
+      sequence: 10
+      event: 成功メッセージの表示 # 26634511514657926
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: リフレッシュ - 管理タスク - レポート 
+  id: 26635418463657927
+  identification: 
+    name: リフレッシュ - 管理タスク - レポート
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSECANCELDIALOG
+    selection-type: Region
+    region: 管理タスク - レポート # 26623102610657908
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: リフレッシュ ================================
+    id: 26635850022657928
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: 管理タスク - レポート # 26623102610657908
+
+    execution: 
+      sequence: 10
+      event: リフレッシュ - 管理タスク - レポート # 26635418463657927
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: リフレッシュ ================================
+    id: 26636307202657928
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: 管理タスク - スマート・フィルタ # 26623001183657908
+
+    execution: 
+      sequence: 20
+      event: リフレッシュ - 管理タスク - レポート # 26635418463657927
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: リフレッシュ - 管理タスク - レポート 
+  id: 26636825403657929
+  identification: 
+    name: リフレッシュ - 管理タスク - レポート
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P11_SHOW_EXPIRED
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: リフレッシュ ================================
+    id: 26637273055657929
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: 管理タスク - レポート # 26623102610657908
+
+    execution: 
+      sequence: 10
+      event: リフレッシュ - 管理タスク - レポート # 26636825403657929
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: リフレッシュ ================================
+    id: 26637793210657929
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: 管理タスク - スマート・フィルタ # 26623001183657908
+
+    execution: 
+      sequence: 20
+      event: リフレッシュ - 管理タスク - レポート # 26636825403657929
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
