@@ -1,0 +1,69 @@
+---
+- # ====== Task Definition: 部門長による申請のレビュー =========
+  id: 26572058441515652
+  identification: 
+    name: 部門長による申請のレビュー
+
+  settings: 
+    subject: 経費精算申請 &PROCESS_ID. &SUBFLOW_ID. &STEP_KEY.
+    priority: 3-Medium
+
+  deadline: 
+    due-on-type: None
+
+  settings: 
+    details-page: 
+      url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.:RP,10:P10_TASK_ID:&TASK_ID.'
+      page: 10 # タスクの詳細
+      clear-cache: RP,10
+      values: 
+        p10_task_id: '&TASK_ID.'
+
+  source: 
+    table-owner: Parsing Schema
+
+  advanced: 
+    static-id: REVIEW_BY_VP
+
+  actions: 
+  - # ====== Action: F4A:申請のレビュー ==========================
+    id: 26621177601595782
+    identification: 
+      name: 'F4A:申請のレビュー'
+      type: Flows for APEX - Return to Flows for APEX
+
+    settings: 
+      parameter-name-containing-process-id: PROCESS_ID
+
+    execution: 
+      on-event: Complete
+      outcome: Approved
+
+    error-handling: 
+      log-message-type: None
+
+    execution: 
+      sequence: 10
+
+    error: 
+      stop-execution-on-error: true
+
+  participants: 
+  - # ====== Participant: POTENTIAL_OWNER ========================
+    id: 26572378745515653
+    identification: 
+      type: Potential Owner
+
+    value: 
+      type: Static Value
+      static-value: APEXDEV
+
+  - # ====== Participant: BUSINESS_ADMIN =========================
+    id: 26572720180515653
+    identification: 
+      type: Business Administrator
+
+    value: 
+      type: Static Value
+      static-value: APEXDEV
+
