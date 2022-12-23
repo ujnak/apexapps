@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:apex="https://flowsforapex.org" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1wzb475" targetNamespace="http://bpmn.io/schema/b" exporter="Flows for APEX" exporterVersion="22.2.0">
+  <bpmn:collaboration id="Collaboration_16r85wt">
+    <bpmn:participant id="COMPANY" name="会社" processRef="Process_7ed2qszm" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_7ed2qszm" isExecutable="false" apex:isCallable="false" apex:manualInput="false">
+    <bpmn:laneSet id="LaneSet_1xfscav">
+      <bpmn:lane id="EMPLOYEE" name="従業員">
+        <bpmn:flowNodeRef>outstanding_expense</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>submit_expense_claim</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>correct_expense_claim</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_07koou3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0u7nk3e</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_05wavo0</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="MANAGER" name="上司">
+        <bpmn:flowNodeRef>review_expense_mgr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0f5ktsq</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>inform_employee</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="VICE_PRESIDENT" name="部門長">
+        <bpmn:flowNodeRef>Gateway_1ycvc3b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>review_expense_vp</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_08rew3l</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="ACCOUNTANT" name="経理">
+        <bpmn:flowNodeRef>expense_repayed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>prepare_payment</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>execute_transaction</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="Flow_0pks3wk" sourceRef="outstanding_expense" targetRef="submit_expense_claim" />
+    <bpmn:sequenceFlow id="Flow_0afe16b" sourceRef="submit_expense_claim" targetRef="review_expense_mgr" />
+    <bpmn:sequenceFlow id="Flow_04dcyb3" sourceRef="review_expense_mgr" targetRef="Gateway_0f5ktsq" />
+    <bpmn:sequenceFlow id="Flow_1xlmsts" name="却下" sourceRef="Gateway_0f5ktsq" targetRef="inform_employee" apex:sequence="9999" />
+    <bpmn:sequenceFlow id="Flow_1fzeqrs" sourceRef="inform_employee" targetRef="correct_expense_claim" />
+    <bpmn:sequenceFlow id="Flow_1nwod5e" sourceRef="correct_expense_claim" targetRef="review_expense_mgr" />
+    <bpmn:sequenceFlow id="Flow_19kmc9j" name="承認" sourceRef="Gateway_0f5ktsq" targetRef="Gateway_1ycvc3b" apex:sequence="10">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" language="plsqlExpression" sequence="">:F4A$EXPE_STATUS = 'approved_by_mgr'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_049le7p" name="はい" sourceRef="Gateway_1ycvc3b" targetRef="review_expense_vp" apex:sequence="10">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" language="plsqlExpression">:F4A$EXPE_AMOUNT &gt; 100</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1yapyz8" name="いいえ" sourceRef="Gateway_1ycvc3b" targetRef="prepare_payment" apex:sequence="9999" />
+    <bpmn:sequenceFlow id="Flow_113n3yl" sourceRef="review_expense_vp" targetRef="Gateway_08rew3l" />
+    <bpmn:sequenceFlow id="Flow_0l2ds1j" name="却下" sourceRef="Gateway_08rew3l" targetRef="inform_employee" apex:sequence="9999" />
+    <bpmn:sequenceFlow id="Flow_0xr27b2" name="承認" sourceRef="Gateway_08rew3l" targetRef="prepare_payment" apex:sequence="10">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" language="plsqlExpression" sequence="10">:F4A$PAYMENT_REVIEW = 'APPROVED'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0olsh3j" sourceRef="prepare_payment" targetRef="execute_transaction" />
+    <bpmn:endEvent id="expense_repayed" name="支払いの完了">
+      <bpmn:incoming>Flow_0nd7scv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0nd7scv" sourceRef="execute_transaction" targetRef="expense_repayed" />
+    <bpmn:userTask id="prepare_payment" name="支払いの準備" apex:type="apexPage" apex:manualInput="true">
+      <bpmn:extensionElements>
+        <apex:apexPage>
+          <apex:applicationId></apex:applicationId>
+          <apex:pageId>prepare-payment</apex:pageId>
+          <apex:pageItems>
+            <apex:pageItem>
+              <apex:itemName>PROCESS_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$PROCESS_ID.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>SUBFLOW_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$SUBFLOW_ID.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>STEP_KEY</apex:itemName>
+              <apex:itemValue>&amp;F4A$STEP_KEY.</apex:itemValue>
+            </apex:pageItem>
+          </apex:pageItems>
+        </apex:apexPage>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1yapyz8</bpmn:incoming>
+      <bpmn:incoming>Flow_0xr27b2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0olsh3j</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:startEvent id="outstanding_expense" name="経費精算の開始">
+      <bpmn:outgoing>Flow_0pks3wk</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="submit_expense_claim" name="経費精算の申請" apex:type="apexPage" apex:manualInput="false">
+      <bpmn:incoming>Flow_0pks3wk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0afe16b</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="review_expense_mgr" name="申請のレビュー" apex:type="apexPage" apex:manualInput="true">
+      <bpmn:extensionElements>
+        <apex:apexPage>
+          <apex:applicationId></apex:applicationId>
+          <apex:pageId>review-mgr</apex:pageId>
+          <apex:pageItems>
+            <apex:pageItem>
+              <apex:itemName>PROCESS_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$PROCESS_ID.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>SUBFLOW_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$SUBFLOW_ID.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>STEP_KEY</apex:itemName>
+              <apex:itemValue>&amp;F4A$STEP_KEY.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>P5_EXPE_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$BUSINESS_REF.</apex:itemValue>
+            </apex:pageItem>
+          </apex:pageItems>
+        </apex:apexPage>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0afe16b</bpmn:incoming>
+      <bpmn:incoming>Flow_1nwod5e</bpmn:incoming>
+      <bpmn:outgoing>Flow_04dcyb3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="correct_expense_claim" name="申請の修正" apex:type="apexPage" apex:manualInput="false">
+      <bpmn:incoming>Flow_1fzeqrs</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nwod5e</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_0f5ktsq" name="レビュー結果？" default="Flow_1xlmsts">
+      <bpmn:incoming>Flow_04dcyb3</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xlmsts</bpmn:outgoing>
+      <bpmn:outgoing>Flow_19kmc9j</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_1ycvc3b" name="100米ドルより高額？" default="Flow_1yapyz8">
+      <bpmn:incoming>Flow_19kmc9j</bpmn:incoming>
+      <bpmn:outgoing>Flow_049le7p</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1yapyz8</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="review_expense_vp" name="申請のレビュー" apex:type="apexApproval" apex:manualInput="true">
+      <bpmn:extensionElements>
+        <apex:apexApproval>
+          <apex:applicationId>103</apex:applicationId>
+          <apex:taskStaticId>REVIEW_BY_VP</apex:taskStaticId>
+          <apex:businessRef>&amp;F4A$BUSINESS_REF.</apex:businessRef>
+          <apex:parameters>
+            <apex:parameter>
+              <apex:parStaticId>PROCESS_ID</apex:parStaticId>
+              <apex:parDataType>String</apex:parDataType>
+              <apex:parValue>&amp;F4A$PROCESS_ID.</apex:parValue>
+            </apex:parameter>
+          </apex:parameters>
+          <apex:resultVariable>PAYMENT_REVIEW</apex:resultVariable>
+          <apex:initiator>APEXDEV</apex:initiator>
+          <apex:priority></apex:priority>
+        </apex:apexApproval>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_049le7p</bpmn:incoming>
+      <bpmn:outgoing>Flow_113n3yl</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_08rew3l" name="レビュー結果？" default="Flow_0l2ds1j">
+      <bpmn:incoming>Flow_113n3yl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0l2ds1j</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0xr27b2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="inform_employee" name="従業員への通知" apex:type="executePlsql">
+      <bpmn:extensionElements>
+        <apex:executePlsql>
+          <apex:plsqlCode>null;</apex:plsqlCode>
+        </apex:executePlsql>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xlmsts</bpmn:incoming>
+      <bpmn:incoming>Flow_0l2ds1j</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fzeqrs</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_07koou3" name="再申請の待機" attachedToRef="correct_expense_claim">
+      <bpmn:outgoing>Flow_1an4o21</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1f86y16">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1an4o21" sourceRef="Event_07koou3" targetRef="Activity_0u7nk3e" />
+    <bpmn:scriptTask id="Activity_0u7nk3e" name="申請の破棄" apex:type="executePlsql">
+      <bpmn:extensionElements>
+        <apex:executePlsql>
+          <apex:plsqlCode>declare
+    l_prcs_id      flow_processes.prcs_id%type;
+    l_business_ref flow_process_variables.prov_var_vc2%type;
+    l_expe_id tuto_expenses.expe_id%type;
+begin 
+    -- retrieve process id 
+    l_prcs_id:= flow_plsql_runner_pkg.get_current_prcs_id;
+    -- retrieve business ref
+    l_business_ref:= flow_process_vars.get_business_ref(l_prcs_id);
+    l_expe_id := to_number(l_business_ref);
+         
+    -- set expense status 
+    update tuto_expenses expe 
+       set expe.expe_status = 'abandoned' 
+    where expe.expe_id = l_expe_id
+    ;
+end;</apex:plsqlCode>
+        </apex:executePlsql>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1an4o21</bpmn:incoming>
+      <bpmn:outgoing>Flow_0zacib9</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="Event_05wavo0" name="支払いせずに完了">
+      <bpmn:incoming>Flow_0zacib9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0zacib9" sourceRef="Activity_0u7nk3e" targetRef="Event_05wavo0" />
+    <bpmn:callActivity id="execute_transaction" name="経費の支払い" apex:manualInput="false" apex:calledDiagram="支払いプロセス" apex:calledDiagramVersionSelection="latestVersion">
+      <bpmn:extensionElements>
+        <apex:inVariables>
+          <apex:processVariable>
+            <apex:varSequence>0</apex:varSequence>
+            <apex:varName>PAYMENT_METHOD</apex:varName>
+            <apex:varDataType>VARCHAR2</apex:varDataType>
+            <apex:varExpressionType>static</apex:varExpressionType>
+            <apex:varExpression>BANK_TRANSFER</apex:varExpression>
+            <apex:varDescription>支払い方法</apex:varDescription>
+          </apex:processVariable>
+        </apex:inVariables>
+        <apex:outVariables />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0olsh3j</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nd7scv</bpmn:outgoing>
+    </bpmn:callActivity>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_16r85wt">
+      <bpmndi:BPMNShape id="Participant_09felnc_di" bpmnElement="COMPANY" isHorizontal="true">
+        <dc:Bounds x="130" y="30" width="1190" height="880" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1s5u8nb_di" bpmnElement="ACCOUNTANT" isHorizontal="true">
+        <dc:Bounds x="160" y="710" width="1160" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0e7azgn_di" bpmnElement="VICE_PRESIDENT" isHorizontal="true">
+        <dc:Bounds x="160" y="490" width="1160" height="220" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0df9qib_di" bpmnElement="MANAGER" isHorizontal="true">
+        <dc:Bounds x="160" y="267" width="1160" height="223" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0x7fu6t_di" bpmnElement="EMPLOYEE" isHorizontal="true">
+        <dc:Bounds x="160" y="30" width="1160" height="237" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0zacib9_di" bpmnElement="Flow_0zacib9">
+        <di:waypoint x="830" y="120" />
+        <di:waypoint x="922" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1an4o21_di" bpmnElement="Flow_1an4o21">
+        <di:waypoint x="620" y="142" />
+        <di:waypoint x="620" y="120" />
+        <di:waypoint x="730" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nd7scv_di" bpmnElement="Flow_0nd7scv">
+        <di:waypoint x="1180" y="820" />
+        <di:waypoint x="1222" y="820" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0olsh3j_di" bpmnElement="Flow_0olsh3j">
+        <di:waypoint x="1040" y="820" />
+        <di:waypoint x="1080" y="820" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xr27b2_di" bpmnElement="Flow_0xr27b2">
+        <di:waypoint x="890" y="635" />
+        <di:waypoint x="890" y="800" />
+        <di:waypoint x="940" y="800" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="894" y="643" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l2ds1j_di" bpmnElement="Flow_0l2ds1j">
+        <di:waypoint x="890" y="585" />
+        <di:waypoint x="890" y="410" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="894" y="567" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_113n3yl_di" bpmnElement="Flow_113n3yl">
+        <di:waypoint x="800" y="610" />
+        <di:waypoint x="865" y="610" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yapyz8_di" bpmnElement="Flow_1yapyz8">
+        <di:waypoint x="610" y="635" />
+        <di:waypoint x="610" y="820" />
+        <di:waypoint x="940" y="820" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="613" y="653" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_049le7p_di" bpmnElement="Flow_049le7p">
+        <di:waypoint x="635" y="610" />
+        <di:waypoint x="700" y="610" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="639" y="592" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19kmc9j_di" bpmnElement="Flow_19kmc9j">
+        <di:waypoint x="550" y="395" />
+        <di:waypoint x="550" y="610" />
+        <di:waypoint x="585" y="610" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="554" y="413" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nwod5e_di" bpmnElement="Flow_1nwod5e">
+        <di:waypoint x="570" y="200" />
+        <di:waypoint x="430" y="200" />
+        <di:waypoint x="430" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fzeqrs_di" bpmnElement="Flow_1fzeqrs">
+        <di:waypoint x="890" y="330" />
+        <di:waypoint x="890" y="200" />
+        <di:waypoint x="670" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xlmsts_di" bpmnElement="Flow_1xlmsts">
+        <di:waypoint x="575" y="370" />
+        <di:waypoint x="840" y="370" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="584" y="352" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04dcyb3_di" bpmnElement="Flow_04dcyb3">
+        <di:waypoint x="460" y="370" />
+        <di:waypoint x="525" y="370" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0afe16b_di" bpmnElement="Flow_0afe16b">
+        <di:waypoint x="410" y="160" />
+        <di:waypoint x="410" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pks3wk_di" bpmnElement="Flow_0pks3wk">
+        <di:waypoint x="278" y="120" />
+        <di:waypoint x="360" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0956ujt_di" bpmnElement="expense_repayed">
+        <dc:Bounds x="1222" y="802" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1207" y="845" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03r6hmh_di" bpmnElement="prepare_payment">
+        <dc:Bounds x="940" y="780" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1c76gt0_di" bpmnElement="outstanding_expense">
+        <dc:Bounds x="242" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="222" y="83" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1653w90_di" bpmnElement="submit_expense_claim">
+        <dc:Bounds x="360" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wf8oih_di" bpmnElement="review_expense_mgr">
+        <dc:Bounds x="360" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1s1oxyl_di" bpmnElement="correct_expense_claim">
+        <dc:Bounds x="570" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0f5ktsq_di" bpmnElement="Gateway_0f5ktsq" isMarkerVisible="true">
+        <dc:Bounds x="525" y="345" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="511" y="321" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1ycvc3b_di" bpmnElement="Gateway_1ycvc3b" isMarkerVisible="true">
+        <dc:Bounds x="585" y="585" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="574" y="548" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14rvcho_di" bpmnElement="review_expense_vp">
+        <dc:Bounds x="700" y="570" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_08rew3l_di" bpmnElement="Gateway_08rew3l" isMarkerVisible="true">
+        <dc:Bounds x="865" y="585" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="801" y="555" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1oe01go_di" bpmnElement="inform_employee">
+        <dc:Bounds x="840" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14vaj6o_di" bpmnElement="Activity_0u7nk3e">
+        <dc:Bounds x="730" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_05wavo0_di" bpmnElement="Event_05wavo0">
+        <dc:Bounds x="922" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="897" y="83" width="88" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f4vxrf_di" bpmnElement="execute_transaction">
+        <dc:Bounds x="1080" y="780" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1jy42b1_di" bpmnElement="Event_07koou3">
+        <dc:Bounds x="602" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="537" y="123" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
