@@ -1,0 +1,49 @@
+---
+- # ====== Breadcrumb: Breadcrumb ==============================
+  id: 30196296723253461
+  identification: 
+    name: Breadcrumb
+
+  entries: 
+  - # ====== Entry: XLIFF Files ==================================
+    id: 30196482107253461
+    identification: 
+      name: XLIFF Files
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # XLIFF Files
+
+  - # ====== Entry: Translate ====================================
+    id: 30438567358253750
+    identification: 
+      name: Translate
+      page-number: 3
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # Translate
+
+  - # ====== Entry: Messages =====================================
+    id: 30447225198253756
+    identification: 
+      name: Messages
+      page-number: 4
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:::'
+        page: 4 # Messages
+
