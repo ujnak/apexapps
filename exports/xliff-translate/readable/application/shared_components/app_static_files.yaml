@@ -1,0 +1,46 @@
+---
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 30398072046253568
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 30398376333253568
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 30398681976253569
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: translate-actions.js =======
+  id: 30517985714537064
+  identification: 
+    file-name: translate-actions.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: translate-actions.min.js ===
+  id: 30519724081538818
+  identification: 
+    file-name: translate-actions.min.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
