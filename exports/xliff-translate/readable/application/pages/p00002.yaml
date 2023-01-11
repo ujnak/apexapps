@@ -1,0 +1,965 @@
+---
+# ====== Page: Cwr Xliff File ================================
+id: 2
+identification: 
+  name: Cwr Xliff File
+  alias: CWR-XLIFF-FILE
+  title: Cwr Xliff File
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer # 30197015666253462
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+
+dialog: 
+  chained: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Cwr Xliff File ==============================
+  id: 30409477772253726
+  identification: 
+    title: Cwr Xliff File
+    type: フォーム
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: CWR_XLIFF_FILES
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 30232985110253483
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Buttons =====================================
+  id: 30418143372253732
+  identification: 
+    title: Buttons
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 30235725108253485
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: Text (escape special characters)
+      改行の表示: true
+
+page-items: 
+- # ====== Page Item: P2_ID ====================================
+  id: 30409728507253726
+  identification: 
+    name: P2_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: ID
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_NAME ==================================
+  id: 30410156923253727
+  identification: 
+    name: P2_NAME
+    type: テキスト領域
+
+  label: 
+    label: Name
+    alignment: Right
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 20
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 30369386435253551
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+    height: 4
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_XLIFF_RESULT ==========================
+  id: 30410524028253727
+  identification: 
+    name: P2_XLIFF_RESULT
+    type: ファイル参照...
+
+  label: 
+    label: Xliff Result
+    alignment: Left
+
+  settings: 
+    表示形式: Inline File Browse
+    記憶域タイプ: BLOB column specified in Item Source attribute
+    mimeタイプ列: XLIFF_RESULT_MIMETYPE
+    ファイル名列: XLIFF_RESULT_FILENAME
+    文字セット列: XLIFF_RESULT_CHARSET
+    blob最終更新列: XLIFF_RESULT_LASTUPD
+    ダウンロード・リンクの表示: true
+    コンテンツ配置: Attachment
+
+  layout: 
+    sequence: 30
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 30369386435253551
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_RESULT
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 30195697173253460
+
+- # ====== Page Item: P2_XLIFF_RESULT_FILENAME =================
+  id: 30410991843253727
+  identification: 
+    name: P2_XLIFF_RESULT_FILENAME
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 40
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_RESULT_FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 30195697173253460
+
+- # ====== Page Item: P2_XLIFF_RESULT_MIMETYPE =================
+  id: 30411322080253728
+  identification: 
+    name: P2_XLIFF_RESULT_MIMETYPE
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 50
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_RESULT_MIMETYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 30195697173253460
+
+- # ====== Page Item: P2_XLIFF_RESULT_CHARSET ==================
+  id: 30411779821253728
+  identification: 
+    name: P2_XLIFF_RESULT_CHARSET
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 60
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_RESULT_CHARSET
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 30195697173253460
+
+- # ====== Page Item: P2_XLIFF_RESULT_LASTUPD ==================
+  id: 30412119179253728
+  identification: 
+    name: P2_XLIFF_RESULT_LASTUPD
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 70
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_RESULT_LASTUPD
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 30195697173253460
+
+- # ====== Page Item: P2_XLIFF_SOURCE ==========================
+  id: 30412529324253728
+  identification: 
+    name: P2_XLIFF_SOURCE
+    type: ファイル参照...
+
+  label: 
+    label: Xliff Source
+    alignment: Left
+
+  settings: 
+    表示形式: Inline File Browse
+    記憶域タイプ: BLOB column specified in Item Source attribute
+    mimeタイプ列: XLIFF_SOURCE_MIMETYPE
+    ファイル名列: XLIFF_SOURCE_FILENAME
+    文字セット列: XLIFF_SOURCE_CHARSET
+    blob最終更新列: XLIFF_SOURCE_LASTUPD
+    ダウンロード・リンクの表示: true
+    コンテンツ配置: Attachment
+
+  layout: 
+    sequence: 80
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 30369386435253551
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_SOURCE
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_XLIFF_SOURCE_FILENAME =================
+  id: 30412937308253729
+  identification: 
+    name: P2_XLIFF_SOURCE_FILENAME
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 90
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_SOURCE_FILENAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_XLIFF_SOURCE_MIMETYPE =================
+  id: 30413397525253729
+  identification: 
+    name: P2_XLIFF_SOURCE_MIMETYPE
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 100
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_SOURCE_MIMETYPE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_XLIFF_SOURCE_CHARSET ==================
+  id: 30413766568253729
+  identification: 
+    name: P2_XLIFF_SOURCE_CHARSET
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 110
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_SOURCE_CHARSET
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_XLIFF_SOURCE_LASTUPD ==================
+  id: 30414187057253729
+  identification: 
+    name: P2_XLIFF_SOURCE_LASTUPD
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 120
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: XLIFF_SOURCE_LASTUPD
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_SOURCE_LANG ===========================
+  id: 30507141672471814
+  identification: 
+    name: P2_SOURCE_LANG
+    type: テキスト・フィールド
+
+  label: 
+    label: Source Lang
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 130
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 30369386435253551
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 50
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: SOURCE_LANG
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 30195697173253460
+
+- # ====== Page Item: P2_TARGET_LANG ===========================
+  id: 30507273398471815
+  identification: 
+    name: P2_TARGET_LANG
+    type: テキスト・フィールド
+
+  label: 
+    label: Target Lang
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 140
+    region: Cwr Xliff File # 30409477772253726
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 30369386435253551
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 50
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cwr Xliff File # 30409477772253726
+    column: TARGET_LANG
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 30195697173253460
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 30418512063253732
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Buttons # 30418143372253732
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 30371850763253552
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 30419910101253734
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 20
+    region: Buttons # 30418143372253732
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 30371850763253552
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--danger
+    - t-Button--simple
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P2_ID
+
+- # ====== Button: SAVE ========================================
+  id: 30420315861253734
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: Buttons # 30418143372253732
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 30371850763253552
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P2_ID
+
+- # ====== Button: CREATE ======================================
+  id: 30420724010253734
+  identification: 
+    button-name: CREATE
+    label: Create
+
+  layout: 
+    sequence: 40
+    region: Buttons # 30418143372253732
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 30371850763253552
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P2_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 30418634525253732
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 30418512063253732
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: ダイアログを取り消す ========================
+    id: 30419434778253733
+    identification: 
+      action: ダイアログを取り消す
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 30418634525253732
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Initialize form Cwr Xliff File =============
+  id: 30421105840253734
+  identification: 
+    name: Initialize form Cwr Xliff File
+    type: フォーム - 初期化
+    form-region: Cwr Xliff File # 30409477772253726
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Cwr Xliff File ================
+  id: 30421582646253735
+  identification: 
+    name: Process form Cwr Xliff File
+    type: フォーム - 行の自動処理(DML)
+    form-region: Cwr Xliff File # 30409477772253726
+
+  settings: 
+    ターゲット・タイプ: Region Source
+    失われた更新の防止: true
+    行のロック: Yes
+    挿入後に主キーを返す: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Close Dialog ===============================
+  id: 30421982061253735
+  identification: 
+    name: Close Dialog
+    type: ダイアログを閉じる
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
