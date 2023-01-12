@@ -291,13 +291,20 @@ regions:
     id: 31155130474093969
     identification: 
       column-name: ID
-      type: 非表示
+      type: 表示のみ
+
+    heading: 
+      heading: Id
+      alignment: start
 
     settings: 
-      保護された値: true
+      書式: Plain Text
+      基準: Item Value
 
     layout: 
       sequence: 40
+      column-alignment: start
+      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
@@ -312,11 +319,23 @@ regions:
     session-state: 
       data-type: VARCHAR2
 
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
     export-/-printing: 
       include-in-export-/-print: false
 
     enable-users-to: 
       sort: false
+      hide: true
 
   - # ====== Column: SOURCE_TEXT =================================
     id: 31156126154093970
