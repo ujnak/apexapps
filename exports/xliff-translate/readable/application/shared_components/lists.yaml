@@ -1,13 +1,13 @@
 ---
 - # ====== List: Navigation Menu ===============================
-  id: 30196704173253461
+  id: 30569701077542469
   identification: 
     name: Navigation Menu
     type: Static Values
 
   entries: 
   - # ====== Entry: XLIFF Files ==================================
-    id: 30408780068253579
+    id: 30782039784542599
     label: 
       label: XLIFF Files
 
@@ -32,7 +32,7 @@
       translatable: false
 
   - # ====== Entry: Translate ====================================
-    id: 30430289613253742
+    id: 30805747316542762
     label: 
       label: Translate
 
@@ -57,7 +57,7 @@
       translatable: false
 
   - # ====== Entry: Messages =====================================
-    id: 30438967635253750
+    id: 30814426531542771
     label: 
       label: Messages
 
@@ -82,14 +82,14 @@
       translatable: false
 
 - # ====== List: Navigation Bar ================================
-  id: 30397016367253566
+  id: 30770061060542574
   identification: 
     name: Navigation Bar
     type: Static Values
 
   entries: 
   - # ====== Entry: &APP_USER. ===================================
-    id: 30471345250253779
+    id: 30849291256542804
     label: 
       label: '&APP_USER.'
 
@@ -113,13 +113,13 @@
       2.: has-username
 
   - # ====== Entry: --- ==========================================
-    id: 30471893979253779
+    id: 30849755544542804
     label: 
       label: '---'
 
     layout: 
       sequence: 20
-      parent-entry: '&APP_USER.' # 30471345250253779
+      parent-entry: '&APP_USER.' # 30849291256542804
 
     is-current: 
       type: Target Page
@@ -134,7 +134,7 @@
       translatable: false
 
   - # ====== Entry: Sign Out =====================================
-    id: 30472252082253780
+    id: 30850159547542805
     label: 
       label: Sign Out
 
@@ -143,7 +143,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: '&APP_USER.' # 30471345250253779
+      parent-entry: '&APP_USER.' # 30849291256542804
 
     is-current: 
       type: Target Page
