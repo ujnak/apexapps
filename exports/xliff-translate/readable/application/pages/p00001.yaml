@@ -50,7 +50,7 @@ help:
 
 regions: 
 - # ====== Region: Cwr Xliff Files =============================
-  id: 30797201936542752
+  id: 31142181089093951
   identification: 
     title: Cwr Xliff Files
     type: 対話モード・レポート
@@ -83,7 +83,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 30797338237542752
+    id: 31142294620093951
     link: 
       link-column: Link to Custom Target
       target: 
@@ -153,14 +153,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: プライマリ・レポート ==================
-      id: 30823483952542779
+      id: 31168374842093983
       identification: 
         name: プライマリ・レポート
-        alias: 308235
+        alias: 311684
 
     columns: 
     - # ====== Column: ID ==========================================
-      id: 30797774853542753
+      id: 31142650362093953
       identification: 
         column-name: ID
         type: Hidden Column
@@ -175,7 +175,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NAME ========================================
-      id: 30798114799542753
+      id: 31143036612093954
       identification: 
         column-name: NAME
         type: Link
@@ -222,7 +222,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SOURCE_LANG =================================
-      id: 30798565419542754
+      id: 31143430732093954
       identification: 
         column-name: SOURCE_LANG
         type: Plain Text
@@ -260,7 +260,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TARGET_LANG =================================
-      id: 30798957810542754
+      id: 31143886727093955
       identification: 
         column-name: TARGET_LANG
         type: Plain Text
@@ -298,7 +298,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_RESULT ================================
-      id: 30799350609542754
+      id: 31144242965093955
       identification: 
         column-name: XLIFF_RESULT
         type: Download BLOB
@@ -346,7 +346,7 @@ regions:
         content-disposition: Attachment
 
     - # ====== Column: XLIFF_RESULT_FILENAME =======================
-      id: 30799727710542755
+      id: 31144600522093955
       identification: 
         column-name: XLIFF_RESULT_FILENAME
         type: Plain Text
@@ -384,7 +384,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_RESULT_MIMETYPE =======================
-      id: 30800195700542755
+      id: 31145057216093956
       identification: 
         column-name: XLIFF_RESULT_MIMETYPE
         type: Plain Text
@@ -422,7 +422,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_RESULT_CHARSET ========================
-      id: 30800523291542756
+      id: 31145479418093956
       identification: 
         column-name: XLIFF_RESULT_CHARSET
         type: Plain Text
@@ -460,7 +460,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_RESULT_LASTUPD ========================
-      id: 30800961856542756
+      id: 31145821253093956
       identification: 
         column-name: XLIFF_RESULT_LASTUPD
         type: Plain Text
@@ -499,7 +499,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_SOURCE ================================
-      id: 30801352516542756
+      id: 31146258141093957
       identification: 
         column-name: XLIFF_SOURCE
         type: Download BLOB
@@ -547,7 +547,7 @@ regions:
         content-disposition: Attachment
 
     - # ====== Column: XLIFF_SOURCE_FILENAME =======================
-      id: 30801706683542757
+      id: 31146675883093957
       identification: 
         column-name: XLIFF_SOURCE_FILENAME
         type: Plain Text
@@ -585,7 +585,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_SOURCE_MIMETYPE =======================
-      id: 30802191601542757
+      id: 31147086196093957
       identification: 
         column-name: XLIFF_SOURCE_MIMETYPE
         type: Plain Text
@@ -623,7 +623,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_SOURCE_CHARSET ========================
-      id: 30802513185542757
+      id: 31147433637093958
       identification: 
         column-name: XLIFF_SOURCE_CHARSET
         type: Plain Text
@@ -661,7 +661,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_SOURCE_LASTUPD ========================
-      id: 30802914806542758
+      id: 31147801539093958
       identification: 
         column-name: XLIFF_SOURCE_LASTUPD
         type: Plain Text
@@ -742,7 +742,7 @@ regions:
         alignment: center
 
 - # ====== Region: XLIFF Translate =============================
-  id: 30804885967542761
+  id: 31149778931093961
   identification: 
     title: XLIFF Translate
     type: 静的コンテンツ
@@ -758,7 +758,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 30638994006542507
+    template: Hero # 30965699327093668
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -787,14 +787,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 30803477691542758
+  id: 31148303956093959
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 10
-    region: Cwr Xliff Files # 30797201936542752
+    region: Cwr Xliff Files # 31142181089093951
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -803,7 +803,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -819,7 +819,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 30803732821542758
+  id: 31148654265093959
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -829,7 +829,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Region
-    region: Cwr Xliff Files # 30797201936542752
+    region: Cwr Xliff Files # 31142181089093951
 
   execution: 
     event-scope: Static
@@ -837,17 +837,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: リフレッシュ ================================
-    id: 30804264891542760
+    id: 31149145418093960
     identification: 
       action: リフレッシュ
 
     affected-elements: 
       selection-type: Region
-      region: Cwr Xliff Files # 30797201936542752
+      region: Cwr Xliff Files # 31142181089093951
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 30803732821542758
+      event: Edit Report - Dialog Closed # 31148654265093959
       fire-when-event-result-is: True
       fire-on-initialization: false
 
