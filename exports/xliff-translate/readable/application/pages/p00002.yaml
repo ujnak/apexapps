@@ -8,7 +8,7 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 30570038118542469
+  dialog-template: Drawer # 30914911227093643
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -42,7 +42,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Cwr Xliff File ==============================
-  id: 30782768916542741
+  id: 31127651812093938
   identification: 
     title: Cwr Xliff File
     type: フォーム
@@ -65,7 +65,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 30605976724542489
+    template: Blank with Attributes # 30950874067093662
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -94,7 +94,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 30792854640542748
+  id: 31137700217093947
   identification: 
     title: Buttons
     type: 静的コンテンツ
@@ -110,7 +110,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Buttons Container # 30608750720542491
+    template: Buttons Container # 30979086513093675
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -136,7 +136,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P2_ID ====================================
-  id: 30783067111542741
+  id: 31127932181093939
   identification: 
     name: P2_ID
     type: 非表示
@@ -146,14 +146,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: ID
     data-type: NUMBER
     query-only: true
@@ -169,7 +169,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P2_NAME ==================================
-  id: 30783485689542741
+  id: 31128395028093939
   identification: 
     name: P2_NAME
     type: テキスト領域
@@ -186,7 +186,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -197,7 +197,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Required - Floating # 30743623811542559
+    template: Required - Floating # 31088585778093730
     template-options: 
     - '#DEFAULT#'
     width: 60
@@ -211,7 +211,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: NAME
     data-type: VARCHAR2
     query-only: false
@@ -230,7 +230,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P2_SOURCE_LANG ===========================
-  id: 30783805808542742
+  id: 31128724220093940
   identification: 
     name: P2_SOURCE_LANG
     type: テキスト・フィールド
@@ -248,7 +248,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -259,7 +259,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
     width: 32
@@ -272,7 +272,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: SOURCE_LANG
     data-type: VARCHAR2
     query-only: false
@@ -290,10 +290,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: Commented Out # 30568602849542466
+    build-option: Commented Out # 30913573836093640
 
 - # ====== Page Item: P2_TARGET_LANG ===========================
-  id: 30784288423542742
+  id: 31129178325093940
   identification: 
     name: P2_TARGET_LANG
     type: テキスト・フィールド
@@ -311,7 +311,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -322,7 +322,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
     width: 32
@@ -335,7 +335,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: TARGET_LANG
     data-type: VARCHAR2
     query-only: false
@@ -353,10 +353,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: Commented Out # 30568602849542466
+    build-option: Commented Out # 30913573836093640
 
 - # ====== Page Item: P2_XLIFF_RESULT ==========================
-  id: 30784684421542742
+  id: 31129508251093940
   identification: 
     name: P2_XLIFF_RESULT
     type: ファイル参照...
@@ -373,7 +373,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -384,7 +384,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
     width: 60
@@ -397,7 +397,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_RESULT
     data-type: BLOB
     query-only: false
@@ -411,10 +411,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: Commented Out # 30568602849542466
+    build-option: Commented Out # 30913573836093640
 
 - # ====== Page Item: P2_XLIFF_RESULT_FILENAME =================
-  id: 30785018694542743
+  id: 31129915172093941
   identification: 
     name: P2_XLIFF_RESULT_FILENAME
     type: 非表示
@@ -424,14 +424,14 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_RESULT_FILENAME
     data-type: VARCHAR2
     query-only: false
@@ -447,10 +447,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: Commented Out # 30568602849542466
+    build-option: Commented Out # 30913573836093640
 
 - # ====== Page Item: P2_XLIFF_RESULT_MIMETYPE =================
-  id: 30785491938542743
+  id: 31130383877093941
   identification: 
     name: P2_XLIFF_RESULT_MIMETYPE
     type: 非表示
@@ -460,14 +460,14 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_RESULT_MIMETYPE
     data-type: VARCHAR2
     query-only: false
@@ -483,10 +483,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: Commented Out # 30568602849542466
+    build-option: Commented Out # 30913573836093640
 
 - # ====== Page Item: P2_XLIFF_RESULT_CHARSET ==================
-  id: 30785810209542743
+  id: 31130723606093941
   identification: 
     name: P2_XLIFF_RESULT_CHARSET
     type: 非表示
@@ -496,14 +496,14 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_RESULT_CHARSET
     data-type: VARCHAR2
     query-only: false
@@ -519,10 +519,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: Commented Out # 30568602849542466
+    build-option: Commented Out # 30913573836093640
 
 - # ====== Page Item: P2_XLIFF_RESULT_LASTUPD ==================
-  id: 30786276359542743
+  id: 31131188631093941
   identification: 
     name: P2_XLIFF_RESULT_LASTUPD
     type: 非表示
@@ -532,14 +532,14 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_RESULT_LASTUPD
     data-type: DATE
     query-only: false
@@ -555,10 +555,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: Commented Out # 30568602849542466
+    build-option: Commented Out # 30913573836093640
 
 - # ====== Page Item: P2_XLIFF_SOURCE ==========================
-  id: 30786688734542744
+  id: 31131540960093942
   identification: 
     name: P2_XLIFF_SOURCE
     type: ファイル参照...
@@ -579,7 +579,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -590,7 +590,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
     width: 60
@@ -603,7 +603,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_SOURCE
     data-type: BLOB
     query-only: false
@@ -617,7 +617,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P2_XLIFF_SOURCE_FILENAME =================
-  id: 30787006670542744
+  id: 31131991218093942
   identification: 
     name: P2_XLIFF_SOURCE_FILENAME
     type: 非表示
@@ -627,14 +627,14 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_SOURCE_FILENAME
     data-type: VARCHAR2
     query-only: false
@@ -650,7 +650,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P2_XLIFF_SOURCE_MIMETYPE =================
-  id: 30787477074542744
+  id: 31132301999093942
   identification: 
     name: P2_XLIFF_SOURCE_MIMETYPE
     type: 非表示
@@ -660,14 +660,14 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_SOURCE_MIMETYPE
     data-type: VARCHAR2
     query-only: false
@@ -683,7 +683,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P2_XLIFF_SOURCE_CHARSET ==================
-  id: 30787814297542745
+  id: 31132764152093943
   identification: 
     name: P2_XLIFF_SOURCE_CHARSET
     type: 非表示
@@ -693,14 +693,14 @@ page-items:
 
   layout: 
     sequence: 130
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_SOURCE_CHARSET
     data-type: VARCHAR2
     query-only: false
@@ -716,7 +716,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P2_XLIFF_SOURCE_LASTUPD ==================
-  id: 30788209173542745
+  id: 31133167530093943
   identification: 
     name: P2_XLIFF_SOURCE_LASTUPD
     type: 非表示
@@ -726,14 +726,14 @@ page-items:
 
   layout: 
     sequence: 140
-    region: Cwr Xliff File # 30782768916542741
+    region: Cwr Xliff File # 31127651812093938
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
     column: XLIFF_SOURCE_LASTUPD
     data-type: DATE
     query-only: false
@@ -750,14 +750,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 30793206218542748
+  id: 31138169160093948
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 30792854640542748
+    region: Buttons # 31137700217093947
     position: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -766,7 +766,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -776,14 +776,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 30794630050542750
+  id: 31139530287093949
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 30792854640542748
+    region: Buttons # 31137700217093947
     position: DELETE
     start-new-layout: false
     start-new-row: true
@@ -792,7 +792,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -814,14 +814,14 @@ buttons:
     item: P2_ID
 
 - # ====== Button: SAVE ========================================
-  id: 30795076957542750
+  id: 31139966422093949
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 30792854640542748
+    region: Buttons # 31137700217093947
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -830,7 +830,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -846,14 +846,14 @@ buttons:
     item: P2_ID
 
 - # ====== Button: CREATE ======================================
-  id: 30795412276542751
+  id: 31140332121093950
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 30792854640542748
+    region: Buttons # 31137700217093947
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -862,7 +862,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -879,7 +879,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 30793372613542748
+  id: 31138251543093948
   identification: 
     name: Cancel Dialog
 
@@ -889,7 +889,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 30793206218542748
+    button: CANCEL # 31138169160093948
 
   execution: 
     event-scope: Static
@@ -897,23 +897,23 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: ダイアログを取り消す ========================
-    id: 30794150946542749
+    id: 31139040449093949
     identification: 
       action: ダイアログを取り消す
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 30793372613542748
+      event: Cancel Dialog # 31138251543093948
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Cwr Xliff File =============
-  id: 30795870465542751
+  id: 31140770851093950
   identification: 
     name: Initialize form Cwr Xliff File
     type: フォーム - 初期化
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
 
   execution: 
     sequence: 10
@@ -921,11 +921,11 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Cwr Xliff File ================
-  id: 30796206492542751
+  id: 31141141704093950
   identification: 
     name: Process form Cwr Xliff File
     type: フォーム - 行の自動処理(DML)
-    form-region: Cwr Xliff File # 30782768916542741
+    form-region: Cwr Xliff File # 31127651812093938
 
   settings: 
     ターゲット・タイプ: Region Source
@@ -942,7 +942,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 30796645934542751
+  id: 31141520024093950
   identification: 
     name: Close Dialog
     type: ダイアログを閉じる
