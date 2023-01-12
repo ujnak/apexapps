@@ -50,7 +50,7 @@ help:
 
 regions: 
 - # ====== Region: Cwr Xliff Files =============================
-  id: 30422592758253735
+  id: 30797201936542752
   identification: 
     title: Cwr Xliff Files
     type: 対話モード・レポート
@@ -58,7 +58,7 @@ regions:
   source: 
     location: Local Database
     type: SQL Query
-    sql-query: select "ID","NAME",sys.dbms_lob.getlength("XLIFF_RESULT")"XLIFF_RESULT","XLIFF_RESULT_FILENAME","XLIFF_RESULT_MIMETYPE","XLIFF_RESULT_CHARSET","XLIFF_RESULT_LASTUPD",sys.dbms_lob.getlength("XLIFF_SOURCE")"XLIFF_SOURCE","XLIFF_SOURCE_FILENAME","XLIFF_SOURCE_MIMETYPE","XLIFF_SOURCE_CHARSET","XLIFF_SOURCE_LASTUPD","SOURCE_LANG","TARGET_LANG" from "CWR_XLIFF_FILES"
+    sql-query: select "ID","NAME","SOURCE_LANG","TARGET_LANG",sys.dbms_lob.getlength("XLIFF_RESULT")"XLIFF_RESULT","XLIFF_RESULT_FILENAME","XLIFF_RESULT_MIMETYPE","XLIFF_RESULT_CHARSET","XLIFF_RESULT_LASTUPD",sys.dbms_lob.getlength("XLIFF_SOURCE")"XLIFF_SOURCE","XLIFF_SOURCE_FILENAME","XLIFF_SOURCE_MIMETYPE","XLIFF_SOURCE_CHARSET","XLIFF_SOURCE_LASTUPD"from "CWR_XLIFF_FILES"
 
   layout: 
     sequence: 10
@@ -83,7 +83,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 30422657489253735
+    id: 30797338237542752
     link: 
       link-column: Link to Custom Target
       target: 
@@ -153,14 +153,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: プライマリ・レポート ==================
-      id: 30447944304253758
+      id: 30823483952542779
       identification: 
         name: プライマリ・レポート
-        alias: 304480
+        alias: 308235
 
     columns: 
     - # ====== Column: ID ==========================================
-      id: 30423034196253736
+      id: 30797774853542753
       identification: 
         column-name: ID
         type: Hidden Column
@@ -175,7 +175,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NAME ========================================
-      id: 30423480595253737
+      id: 30798114799542753
       identification: 
         column-name: NAME
         type: Link
@@ -221,14 +221,14 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: XLIFF_RESULT ================================
-      id: 30423859344253738
+    - # ====== Column: SOURCE_LANG =================================
+      id: 30798565419542754
       identification: 
-        column-name: XLIFF_RESULT
-        type: Download BLOB
+        column-name: SOURCE_LANG
+        type: Plain Text
 
       heading: 
-        heading: Xliff Result
+        heading: Source Lang
         alignment: start
 
       single-row-view: 
@@ -241,42 +241,32 @@ regions:
       accessibility: 
         value-identifies-row: false
 
-      blob-attributes: 
-        table-owner: Parsing Schema
-        table-name: CWR_XLIFF_FILES
-        blob-column: XLIFF_RESULT
-        primary-key-column-1: ID
-        mime-type-column: XLIFF_RESULT_MIMETYPE
-        filename-column: XLIFF_RESULT_FILENAME
-        last-updated-column: XLIFF_RESULT_LASTUPD
-        character-set-column: XLIFF_RESULT_LASTUPD
-
       column-filter: 
-        type: None
+        type: Default Based on Column Type
 
       enable-users-to: 
         hide: true
-        sort: false
-        filter: false
-        highlight: false
-        control-break: false
-        aggregate: false
-        compute: false
-        chart: false
-        group-by: false
-        pivot: false
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
 
-      appearance: 
-        content-disposition: Attachment
+      security: 
+        escape-special-characters: true
 
-    - # ====== Column: XLIFF_RESULT_FILENAME =======================
-      id: 30424278096253738
+    - # ====== Column: TARGET_LANG =================================
+      id: 30798957810542754
       identification: 
-        column-name: XLIFF_RESULT_FILENAME
+        column-name: TARGET_LANG
         type: Plain Text
 
       heading: 
-        heading: Xliff Result Filename
+        heading: Target Lang
         alignment: start
 
       single-row-view: 
@@ -307,14 +297,14 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: XLIFF_RESULT_MIMETYPE =======================
-      id: 30424640777253738
+    - # ====== Column: XLIFF_RESULT ================================
+      id: 30799350609542754
       identification: 
-        column-name: XLIFF_RESULT_MIMETYPE
-        type: Plain Text
+        column-name: XLIFF_RESULT
+        type: Download BLOB
 
       heading: 
-        heading: Xliff Result Mimetype
+        heading: Xliff Result
         alignment: start
 
       single-row-view: 
@@ -327,32 +317,42 @@ regions:
       accessibility: 
         value-identifies-row: false
 
+      blob-attributes: 
+        table-owner: Parsing Schema
+        table-name: CWR_XLIFF_FILES
+        blob-column: XLIFF_RESULT
+        primary-key-column-1: ID
+        mime-type-column: XLIFF_RESULT_MIMETYPE
+        filename-column: XLIFF_RESULT_FILENAME
+        last-updated-column: XLIFF_RESULT_LASTUPD
+        character-set-column: XLIFF_RESULT_CHARSET
+
       column-filter: 
-        type: Default Based on Column Type
+        type: None
 
       enable-users-to: 
         hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
+        sort: false
+        filter: false
+        highlight: false
+        control-break: false
+        aggregate: false
+        compute: false
+        chart: false
+        group-by: false
+        pivot: false
 
-      security: 
-        escape-special-characters: true
+      appearance: 
+        content-disposition: Attachment
 
-    - # ====== Column: XLIFF_RESULT_CHARSET ========================
-      id: 30425023711253739
+    - # ====== Column: XLIFF_RESULT_FILENAME =======================
+      id: 30799727710542755
       identification: 
-        column-name: XLIFF_RESULT_CHARSET
+        column-name: XLIFF_RESULT_FILENAME
         type: Plain Text
 
       heading: 
-        heading: Xliff Result Charset
+        heading: Xliff Result Filename
         alignment: start
 
       single-row-view: 
@@ -383,8 +383,84 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: XLIFF_RESULT_MIMETYPE =======================
+      id: 30800195700542755
+      identification: 
+        column-name: XLIFF_RESULT_MIMETYPE
+        type: Plain Text
+
+      heading: 
+        heading: Xliff Result Mimetype
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 7
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: XLIFF_RESULT_CHARSET ========================
+      id: 30800523291542756
+      identification: 
+        column-name: XLIFF_RESULT_CHARSET
+        type: Plain Text
+
+      heading: 
+        heading: Xliff Result Charset
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 8
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     - # ====== Column: XLIFF_RESULT_LASTUPD ========================
-      id: 30425483574253739
+      id: 30800961856542756
       identification: 
         column-name: XLIFF_RESULT_LASTUPD
         type: Plain Text
@@ -397,7 +473,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 7
+        sequence: 9
         column-alignment: center
 
       accessibility: 
@@ -423,7 +499,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: XLIFF_SOURCE ================================
-      id: 30425808617253739
+      id: 30801352516542756
       identification: 
         column-name: XLIFF_SOURCE
         type: Download BLOB
@@ -436,7 +512,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 8
+        sequence: 10
         column-alignment: start
 
       accessibility: 
@@ -471,89 +547,13 @@ regions:
         content-disposition: Attachment
 
     - # ====== Column: XLIFF_SOURCE_FILENAME =======================
-      id: 30426235456253739
+      id: 30801706683542757
       identification: 
         column-name: XLIFF_SOURCE_FILENAME
         type: Plain Text
 
       heading: 
         heading: Xliff Source Filename
-        alignment: start
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 9
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: XLIFF_SOURCE_MIMETYPE =======================
-      id: 30426625351253740
-      identification: 
-        column-name: XLIFF_SOURCE_MIMETYPE
-        type: Plain Text
-
-      heading: 
-        heading: Xliff Source Mimetype
-        alignment: start
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 10
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: XLIFF_SOURCE_CHARSET ========================
-      id: 30427005209253740
-      identification: 
-        column-name: XLIFF_SOURCE_CHARSET
-        type: Plain Text
-
-      heading: 
-        heading: Xliff Source Charset
         alignment: start
 
       single-row-view: 
@@ -584,8 +584,84 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: XLIFF_SOURCE_MIMETYPE =======================
+      id: 30802191601542757
+      identification: 
+        column-name: XLIFF_SOURCE_MIMETYPE
+        type: Plain Text
+
+      heading: 
+        heading: Xliff Source Mimetype
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 12
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: XLIFF_SOURCE_CHARSET ========================
+      id: 30802513185542757
+      identification: 
+        column-name: XLIFF_SOURCE_CHARSET
+        type: Plain Text
+
+      heading: 
+        heading: Xliff Source Charset
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 13
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     - # ====== Column: XLIFF_SOURCE_LASTUPD ========================
-      id: 30427430032253740
+      id: 30802914806542758
       identification: 
         column-name: XLIFF_SOURCE_LASTUPD
         type: Plain Text
@@ -598,7 +674,7 @@ regions:
         use-column-heading: true
 
       layout: 
-        sequence: 12
+        sequence: 14
         column-alignment: center
 
       accessibility: 
@@ -607,82 +683,6 @@ regions:
       column-filter: 
         type: Default Based on Column Type
         date-ranges: All
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: SOURCE_LANG =================================
-      id: 30507329089471816
-      identification: 
-        column-name: SOURCE_LANG
-        type: Plain Text
-
-      heading: 
-        heading: Source Lang
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 22
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: TARGET_LANG =================================
-      id: 30507498654471817
-      identification: 
-        column-name: TARGET_LANG
-        type: Plain Text
-
-      heading: 
-        heading: Target Lang
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 32
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
 
       enable-users-to: 
         hide: true
@@ -742,7 +742,7 @@ regions:
         alignment: center
 
 - # ====== Region: XLIFF Translate =============================
-  id: 30429346459253742
+  id: 30804885967542761
   identification: 
     title: XLIFF Translate
     type: 静的コンテンツ
@@ -758,7 +758,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 30265962008253499
+    template: Hero # 30638994006542507
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -787,14 +787,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 30427912615253741
+  id: 30803477691542758
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 10
-    region: Cwr Xliff Files # 30422592758253735
+    region: Cwr Xliff Files # 30797201936542752
     position: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -803,7 +803,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 30371850763253552
+    button-template: Text # 30744864369542560
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -819,7 +819,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 30428285592253741
+  id: 30803732821542758
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -829,7 +829,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Region
-    region: Cwr Xliff Files # 30422592758253735
+    region: Cwr Xliff Files # 30797201936542752
 
   execution: 
     event-scope: Static
@@ -837,17 +837,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: リフレッシュ ================================
-    id: 30428718845253741
+    id: 30804264891542760
     identification: 
       action: リフレッシュ
 
     affected-elements: 
       selection-type: Region
-      region: Cwr Xliff Files # 30422592758253735
+      region: Cwr Xliff Files # 30797201936542752
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 30428285592253741
+      event: Edit Report - Dialog Closed # 30803732821542758
       fire-when-event-result-is: True
       fire-on-initialization: false
 
