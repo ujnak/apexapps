@@ -8,7 +8,7 @@ identification:
 
 appearance: 
   page-mode: Normal
-  page-template: Login # 30207639273253468
+  page-template: Login # 30580603467542475
   template-options: 
   - '#DEFAULT#'
 
@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: XLIFF Translate =============================
-  id: 30402674227253574
+  id: 30775923275542590
   identification: 
     title: XLIFF Translate
     type: 静的コンテンツ
@@ -59,7 +59,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Login # 30293705388253513
+    template: Login # 30666776529542520
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -88,7 +88,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P9999_USERNAME ===========================
-  id: 30403113890253575
+  id: 30776402661542592
   identification: 
     name: P9999_USERNAME
     type: テキスト・フィールド
@@ -106,7 +106,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: XLIFF Translate # 30402674227253574
+    region: XLIFF Translate # 30775923275542590
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -117,7 +117,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Hidden # 30369031205253550
+    template: Hidden # 30742051556542558
     template-options: 
     - '#DEFAULT#'
     icon: fa-user
@@ -147,7 +147,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_PASSWORD ===========================
-  id: 30403595930253575
+  id: 30776815232542592
   identification: 
     name: P9999_PASSWORD
     type: パスワード
@@ -161,7 +161,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: XLIFF Translate # 30402674227253574
+    region: XLIFF Translate # 30775923275542590
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -172,7 +172,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Hidden # 30369031205253550
+    template: Hidden # 30742051556542558
     template-options: 
     - '#DEFAULT#'
     icon: fa-key
@@ -199,7 +199,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_REMEMBER ===========================
-  id: 30403967857253575
+  id: 30777237195542593
   identification: 
     name: P9999_REMEMBER
     type: チェックボックス
@@ -213,7 +213,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: XLIFF Translate # 30402674227253574
+    region: XLIFF Translate # 30775923275542590
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -224,7 +224,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Hidden # 30369031205253550
+    template: Hidden # 30742051556542558
     template-options: 
     - '#DEFAULT#'
 
@@ -253,14 +253,14 @@ page-items:
 
 buttons: 
 - # ====== Button: LOGIN =======================================
-  id: 30404389336253576
+  id: 30777645506542593
   identification: 
     button-name: LOGIN
     label: Sign In
 
   layout: 
     sequence: 40
-    region: XLIFF Translate # 30402674227253574
+    region: XLIFF Translate # 30775923275542590
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -269,7 +269,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 30371850763253552
+    button-template: Text # 30744864369542560
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -281,7 +281,7 @@ buttons:
 
 processes: 
 - # ====== Process: Login ======================================
-  id: 30404624253253576
+  id: 30777932017542594
   identification: 
     name: Login
     type: APIの呼出し
@@ -302,7 +302,7 @@ processes:
 
   parameters: 
   - # ====== Parameter: p_username ===============================
-    id: 30405124911253576
+    id: 30778453243542595
     identification: 
       name: p_username
 
@@ -319,7 +319,7 @@ processes:
       display-sequence: 1
 
   - # ====== Parameter: p_password ===============================
-    id: 30405640722253577
+    id: 30778921985542597
     identification: 
       name: p_password
 
@@ -336,7 +336,7 @@ processes:
       display-sequence: 2
 
   - # ====== Parameter: p_set_persistent_auth ====================
-    id: 30406166887253577
+    id: 30779447526542598
     identification: 
       name: p_set_persistent_auth
 
@@ -352,7 +352,7 @@ processes:
       display-sequence: 3
 
 - # ====== Process: Set Username Cookie ========================
-  id: 30406559603253577
+  id: 30779850558542598
   identification: 
     name: Set Username Cookie
     type: APIの呼出し
@@ -373,7 +373,7 @@ processes:
 
   parameters: 
   - # ====== Parameter: p_username ===============================
-    id: 30407082982253578
+    id: 30780381249542598
     identification: 
       name: p_username
 
@@ -391,7 +391,7 @@ processes:
       display-sequence: 1
 
   - # ====== Parameter: p_consent ================================
-    id: 30407586746253578
+    id: 30780895194542598
     identification: 
       name: p_consent
 
@@ -408,7 +408,7 @@ processes:
       display-sequence: 2
 
 - # ====== Process: Get Username Cookie ========================
-  id: 30408067103253578
+  id: 30781328484542599
   identification: 
     name: Get Username Cookie
     type: コードを実行
@@ -426,7 +426,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Clear Page(s) Cache ========================
-  id: 30408489530253578
+  id: 30781745849542599
   identification: 
     name: Clear Page(s) Cache
     type: セッション・ステートのクリア
