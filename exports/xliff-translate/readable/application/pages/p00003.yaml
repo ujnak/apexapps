@@ -62,7 +62,7 @@ help:
 
 regions: 
 - # ====== Region: DeepL Translate =============================
-  id: 30510072178471843
+  id: 30889190318567432
   identification: 
     title: DeepL Translate
     type: 静的コンテンツ
@@ -78,7 +78,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Inline Dialog # 30647528090542511
+    template: Inline Dialog # 30974459045093673
     template-options: 
     - '#DEFAULT#'
     - js-dialog-size600x400
@@ -105,7 +105,7 @@ regions:
       ショートカットを開く: false
 
 - # ====== Region: Translate ===================================
-  id: 30806402330542763
+  id: 31151351862093963
   identification: 
     title: Translate
     type: 対話グリッド
@@ -133,7 +133,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 30662180628542518
+    template: Interactive Report # 31007010195093687
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -154,7 +154,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 30806935782542763
+    id: 31151891015093964
     edit: 
       enabled: true
       allowed-operations: 
@@ -205,14 +205,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: プライマリ・レポート ==================
-      id: 30807301994542764
+      id: 31152228492093965
       identification: 
         name: プライマリ・レポート
-        alias: 308074
+        alias: 311523
 
   columns: 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 30807702406542765
+    id: 31152675743093966
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: 行セレクタ
@@ -226,10 +226,10 @@ regions:
       sequence: 10
 
     configuration: 
-      build-option: Commented Out # 30568602849542466
+      build-option: Commented Out # 30913573836093640
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 30808264391542765
+    id: 31153107272093966
     identification: 
       column-name: APEX$ROW_ACTION
       type: アクション・メニュー
@@ -238,10 +238,10 @@ regions:
       sequence: 20
 
     configuration: 
-      build-option: Commented Out # 30568602849542466
+      build-option: Commented Out # 30913573836093640
 
   - # ====== Column: SEQ_ID ======================================
-    id: 30809288803542767
+    id: 31154123324093968
     identification: 
       column-name: SEQ_ID
       type: リンク
@@ -288,7 +288,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ID ==========================================
-    id: 30810228886542767
+    id: 31155130474093969
     identification: 
       column-name: ID
       type: 非表示
@@ -319,7 +319,7 @@ regions:
       sort: false
 
   - # ====== Column: SOURCE_TEXT =================================
-    id: 30811282573542768
+    id: 31156126154093970
     identification: 
       column-name: SOURCE_TEXT
       type: 表示のみ
@@ -368,7 +368,7 @@ regions:
       hide: true
 
   - # ====== Column: TARGET_TEXT =================================
-    id: 30812275412542769
+    id: 31157164454093971
     identification: 
       column-name: TARGET_TEXT
       type: テキスト領域
@@ -465,13 +465,13 @@ regions:
       alignment: center
 
 - # ====== Region: Breadcrumb ==================================
-  id: 30813683727542770
+  id: 31158590295093973
   identification: 
     title: Breadcrumb
     type: ブレッドクラム
 
   source: 
-    breadcrumb: Breadcrumb # 30569276879542468
+    breadcrumb: Breadcrumb # 30914158039093642
 
   layout: 
     sequence: 20
@@ -484,7 +484,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Title Bar # 30684310296542528
+    template: Title Bar # 31029294266093698
     template-options: 
     - '#DEFAULT#'
     - t-BreadcrumbRegion--useBreadcrumbTitle
@@ -506,13 +506,13 @@ regions:
 
   attributes: 
     appearance: 
-      breadcrumb-template: Breadcrumb # 30746427451542560
+      breadcrumb-template: Breadcrumb # 31091385560093732
       template-options: 
       - '#DEFAULT#'
 
 page-items: 
 - # ====== Page Item: P3_ID ====================================
-  id: 30508059460471823
+  id: 30887117267567412
   identification: 
     name: P3_ID
     type: 選択リスト
@@ -538,7 +538,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -574,7 +574,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_SOURCE_LANG ===========================
-  id: 30508159262471824
+  id: 30887284495567413
   identification: 
     name: P3_SOURCE_LANG
     type: 表示のみ
@@ -602,7 +602,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
 
@@ -623,7 +623,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_TARGET_LANG ===========================
-  id: 30508247710471825
+  id: 30887365081567414
   identification: 
     name: P3_TARGET_LANG
     type: 表示のみ
@@ -651,7 +651,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
 
@@ -672,7 +672,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_GID ===================================
-  id: 30510139000471844
+  id: 30889238470567433
   identification: 
     name: P3_GID
     type: 非表示
@@ -682,7 +682,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: DeepL Translate # 30510072178471843
+    region: DeepL Translate # 30889190318567432
     position: BODY
 
   advanced: 
@@ -702,7 +702,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_SOURCE_TEXT ===========================
-  id: 30510261817471845
+  id: 30889365078567434
   identification: 
     name: P3_SOURCE_TEXT
     type: テキスト領域
@@ -719,7 +719,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: DeepL Translate # 30510072178471843
+    region: DeepL Translate # 30889190318567432
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -730,7 +730,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -759,7 +759,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P3_TARGET_TEXT ===========================
-  id: 30510383575471846
+  id: 30889424729567435
   identification: 
     name: P3_TARGET_TEXT
     type: テキスト領域
@@ -776,7 +776,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: DeepL Translate # 30510072178471843
+    region: DeepL Translate # 30889190318567432
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -787,7 +787,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 30742380125542558
+    template: Optional - Floating # 31087250422093730
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -817,7 +817,7 @@ page-items:
 
 buttons: 
 - # ====== Button: LOAD_FROM_SOURCE ============================
-  id: 30507676997471819
+  id: 30886754091567408
   identification: 
     button-name: LOAD_FROM_SOURCE
     label: Load From Source
@@ -834,7 +834,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -845,7 +845,7 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: STORE_AS_RESULT =============================
-  id: 30507719041471820
+  id: 30886845389567409
   identification: 
     button-name: STORE_AS_RESULT
     label: Store As Result
@@ -862,7 +862,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -873,7 +873,7 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: LOAD_FROM_RESULT ============================
-  id: 30507821510471821
+  id: 30886975122567410
   identification: 
     button-name: LOAD_FROM_RESULT
     label: Load From Result
@@ -890,7 +890,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -901,7 +901,7 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: BATCH_TRANSLATE =============================
-  id: 30507945343471822
+  id: 30887002968567411
   identification: 
     button-name: BATCH_TRANSLATE
     label: Batch Translate
@@ -918,7 +918,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -929,14 +929,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: TRANSLATE ===================================
-  id: 30510451899471847
+  id: 30889593196567436
   identification: 
     button-name: TRANSLATE
     label: Translate
 
   layout: 
     sequence: 40
-    region: DeepL Translate # 30510072178471843
+    region: DeepL Translate # 30889190318567432
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -946,7 +946,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -956,14 +956,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: APPLY =======================================
-  id: 30510509162471848
+  id: 30889697593567437
   identification: 
     button-name: APPLY
     label: Apply
 
   layout: 
     sequence: 50
-    region: DeepL Translate # 30510072178471843
+    region: DeepL Translate # 30889190318567432
     position: BODY
     start-new-layout: false
     start-new-row: false
@@ -973,7 +973,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -987,14 +987,14 @@ buttons:
     - data-action="#action$close-translate-dialog"
 
 - # ====== Button: CANCEL ======================================
-  id: 30510680570471849
+  id: 30889755395567438
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 60
-    region: DeepL Translate # 30510072178471843
+    region: DeepL Translate # 30889190318567432
     position: BODY
     start-new-layout: false
     start-new-row: false
@@ -1004,7 +1004,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 30744864369542560
+    button-template: Text # 31089706378093731
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1015,7 +1015,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: DeepL Translate =====================
-  id: 30886160952567402
+  id: 30889833155567439
   identification: 
     name: DeepL Translate
 
@@ -1025,7 +1025,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: TRANSLATE # 30510451899471847
+    button: TRANSLATE # 30889593196567436
 
   execution: 
     event-scope: Static
@@ -1033,7 +1033,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Call DeepL API ==============================
-    id: 30886245729567403
+    id: 30889968752567440
     identification: 
       name: Call DeepL API
       action: サーバー側のコードを実行
@@ -1081,14 +1081,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: DeepL Translate # 30886160952567402
+      event: DeepL Translate # 30889833155567439
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: Close Dialog as Cancel ==============
-  id: 30886341109567404
+  id: 30890003551567441
   identification: 
     name: Close Dialog as Cancel
 
@@ -1098,7 +1098,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CANCEL # 30510680570471849
+    button: CANCEL # 30889755395567438
 
   execution: 
     event-scope: Static
@@ -1106,24 +1106,24 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Close Dialog ================================
-    id: 30886447551567405
+    id: 30890143271567442
     identification: 
       name: Close Dialog
       action: リージョンを閉じる
 
     affected-elements: 
       selection-type: Region
-      region: DeepL Translate # 30510072178471843
+      region: DeepL Translate # 30889190318567432
 
     execution: 
       sequence: 10
-      event: Close Dialog as Cancel # 30886341109567404
+      event: Close Dialog as Cancel # 30890003551567441
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Load From Source ===========================
-  id: 30508328966471826
+  id: 30887466705567415
   identification: 
     name: Load From Source
     type: APIの呼出し
@@ -1143,11 +1143,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: LOAD_FROM_SOURCE # 30507676997471819
+    when-button-pressed: LOAD_FROM_SOURCE # 30886754091567408
 
   parameters: 
   - # ====== Parameter: p_id =====================================
-    id: 30508465113471827
+    id: 30887591990567416
     identification: 
       name: p_id
 
@@ -1164,7 +1164,7 @@ processes:
       display-sequence: 10
 
   - # ====== Parameter: p_source_lang ============================
-    id: 30508500303471828
+    id: 30887607840567417
     identification: 
       name: p_source_lang
 
@@ -1180,7 +1180,7 @@ processes:
       display-sequence: 20
 
   - # ====== Parameter: p_target_lang ============================
-    id: 30508656289471829
+    id: 30887717435567418
     identification: 
       name: p_target_lang
 
@@ -1196,7 +1196,7 @@ processes:
       display-sequence: 30
 
   - # ====== Parameter: p_collection_name ========================
-    id: 30508787949471830
+    id: 30887828413567419
     identification: 
       name: p_collection_name
 
@@ -1213,7 +1213,7 @@ processes:
       display-sequence: 40
 
 - # ====== Process: Store As Result ============================
-  id: 30508863048471831
+  id: 30887997097567420
   identification: 
     name: Store As Result
     type: APIの呼出し
@@ -1233,11 +1233,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: STORE_AS_RESULT # 30507719041471820
+    when-button-pressed: STORE_AS_RESULT # 30886845389567409
 
   parameters: 
   - # ====== Parameter: p_id =====================================
-    id: 30508902040471832
+    id: 30888040296567421
     identification: 
       name: p_id
 
@@ -1254,7 +1254,7 @@ processes:
       display-sequence: 10
 
   - # ====== Parameter: p_collection_name ========================
-    id: 30509063834471833
+    id: 30888134799567422
     identification: 
       name: p_collection_name
 
@@ -1271,7 +1271,7 @@ processes:
       display-sequence: 20
 
 - # ====== Process: Load From Result ===========================
-  id: 30509171920471834
+  id: 30888241543567423
   identification: 
     name: Load From Result
     type: APIの呼出し
@@ -1291,11 +1291,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: LOAD_FROM_RESULT # 30507821510471821
+    when-button-pressed: LOAD_FROM_RESULT # 30886975122567410
 
   parameters: 
   - # ====== Parameter: p_id =====================================
-    id: 30509212608471835
+    id: 30888352954567424
     identification: 
       name: p_id
 
@@ -1312,7 +1312,7 @@ processes:
       display-sequence: 10
 
   - # ====== Parameter: p_source_lang ============================
-    id: 30509394622471836
+    id: 30888482992567425
     identification: 
       name: p_source_lang
 
@@ -1328,7 +1328,7 @@ processes:
       display-sequence: 20
 
   - # ====== Parameter: p_target_lang ============================
-    id: 30509480901471837
+    id: 30888535457567426
     identification: 
       name: p_target_lang
 
@@ -1344,7 +1344,7 @@ processes:
       display-sequence: 30
 
   - # ====== Parameter: p_collection_name ========================
-    id: 30509529275471838
+    id: 30888680074567427
     identification: 
       name: p_collection_name
 
@@ -1361,7 +1361,7 @@ processes:
       display-sequence: 40
 
 - # ====== Process: Batch Translate ============================
-  id: 30509617699471839
+  id: 30888701669567428
   identification: 
     name: Batch Translate
     type: APIの呼出し
@@ -1381,11 +1381,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: BATCH_TRANSLATE # 30507945343471822
+    when-button-pressed: BATCH_TRANSLATE # 30887002968567411
 
   parameters: 
   - # ====== Parameter: p_source_lang ============================
-    id: 30509798374471840
+    id: 30888880682567429
     identification: 
       name: p_source_lang
 
@@ -1402,7 +1402,7 @@ processes:
       display-sequence: 10
 
   - # ====== Parameter: p_target_lang ============================
-    id: 30509811845471841
+    id: 30888910617567430
     identification: 
       name: p_target_lang
 
@@ -1419,7 +1419,7 @@ processes:
       display-sequence: 20
 
   - # ====== Parameter: p_collection_name ========================
-    id: 30509904612471842
+    id: 30889027785567431
     identification: 
       name: p_collection_name
 
@@ -1436,25 +1436,26 @@ processes:
       display-sequence: 30
 
 - # ====== Process: Translate - Save Interactive Grid Data =====
-  id: 30813259682542770
+  id: 31158140988093972
   identification: 
     name: Translate - Save Interactive Grid Data
     type: 対話グリッド - 行の自動処理(DML)
-    editable-region: Translate # 30806402330542763
+    editable-region: Translate # 31151351862093963
 
   settings: 
     ターゲット・タイプ: PL/SQL Code
     挿入/更新/削除するpl/sqlコード: |
-      begin
-          if :APEX$ROW_STATUS = 'U' then
+      -- begin
+      -- 対話グリッドで許可しているのは編集のみなのでROW_STATUSの確認は不要。
+      --    if :APEX$ROW_STATUS = 'U' then
               apex_collection.update_member_attribute(
                   p_collection_name => :G_TRANSLATE_COLLECTION
                   , p_seq => :SEQ_ID
                   , p_attr_number => 3
                   , p_attr_value => :TARGET_TEXT   
               );
-          end if;
-      end;
+      --    end if;
+      -- end;
     失われた更新の防止: false
     行のロック: No
 
@@ -1467,6 +1468,6 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: STORE_AS_RESULT # 30507719041471820
+    when-button-pressed: STORE_AS_RESULT # 30886845389567409
     execution-scope: For Created and Modified Rows
 
