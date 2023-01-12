@@ -28,7 +28,7 @@ advanced:
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: Oracle APEX Accounts # 30568925537542466
+  authentication-scheme: Oracle APEX Accounts # 30913835127093641
 
 authorization: 
   source-for-role-or-group-schemes: Access Control User Role Assignments
@@ -85,18 +85,18 @@ navigation:
     page: LOGIN
 
 navigation-menu: 
-  list-template: Side Navigation Menu # 30732660189542553
+  list-template: Side Navigation Menu # 31077503177093724
   template-options: 
   - '#DEFAULT#'
   - t-TreeNav--styleA
   - js-navCollapsed--hidden
   list-position: Side
-  list: Navigation Menu # 30569701077542469
+  list: Navigation Menu # 30914657682093643
 
 navigation-bar: 
   implementation: List
-  list: Navigation Bar # 30770061060542574
-  list-template: Navigation Bar # 30732289195542553
+  list: Navigation Bar # 31114992107093748
+  list-template: Navigation Bar # 31077154983093723
   template-options: 
   - '#DEFAULT#'
 
