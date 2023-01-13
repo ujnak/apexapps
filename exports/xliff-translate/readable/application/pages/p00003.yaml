@@ -22,7 +22,11 @@ navigation:
 javascript: 
   file-urls: 
   - '#APP_FILES#translate-actions#MIN#.js'
-  execute-when-page-loads: apex.actions.add(TRANSLATE_ACTIONS);
+  execute-when-page-loads: |
+    apex.actions.add([
+    OPEN_TRANSLATE_DIALOG
+    ,CLOSE_TRANSLATE_DIALOG
+    ]);
 
 security: 
   authentication: Page Requires Authentication
@@ -259,7 +263,7 @@ regions:
       value-identifies-row: false
 
     link: 
-      target: '#action$open-translate-dialog?id=&SEQ_ID.'
+      target: '#action$open-translate-dialog?id=&SEQ_ID.&id_item=P3_GID&source_item=P3_SOURCE_TEXT&target_item=P3_TARGET_TEXT'
       link-text: <span class="fa fa-edit" aria-hidden="true"></span>
 
     source: 
@@ -850,7 +854,7 @@ buttons:
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Left center
+    alignment: Right
 
   appearance: 
     button-template: Text # 31089706378093731
@@ -878,7 +882,7 @@ buttons:
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Left center
+    alignment: Right
 
   appearance: 
     button-template: Text # 31089706378093731
@@ -906,7 +910,7 @@ buttons:
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Left center
+    alignment: Right
 
   appearance: 
     button-template: Text # 31089706378093731
@@ -934,7 +938,7 @@ buttons:
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Left center
+    alignment: Right
 
   appearance: 
     button-template: Text # 31089706378093731
@@ -962,7 +966,7 @@ buttons:
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Left center
+    alignment: Right
 
   appearance: 
     button-template: Text # 31089706378093731
@@ -1003,7 +1007,7 @@ buttons:
 
   advanced: 
     custom-attributes: 
-    - data-action="#action$close-translate-dialog"
+    - data-action="#action$close-translate-dialog?id_item=P3_GID&target_item=P3_TARGET_TEXT"
 
 - # ====== Button: CANCEL ======================================
   id: 30889755395567438
@@ -1020,7 +1024,7 @@ buttons:
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Left center
+    alignment: Right
 
   appearance: 
     button-template: Text # 31089706378093731
