@@ -259,7 +259,7 @@ buttons:
     label: Sign In
 
   layout: 
-    sequence: 40
+    sequence: 30
     region: XLIFF Translate # 31120895474093767
     position: NEXT
     start-new-layout: false
