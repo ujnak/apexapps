@@ -1,0 +1,13 @@
+---
+- # ====== Authentication Server: login-microsoftonline-com ====
+  id: 32950416322761515
+  identification: 
+    name: login-microsoftonline-com
+
+  endpoint-url: 
+    url: 'https://login.microsoftonline.com/'
+
+  advanced: 
+    static-id: login_microsoftonline_com
+    prompt-on-install: false
+
