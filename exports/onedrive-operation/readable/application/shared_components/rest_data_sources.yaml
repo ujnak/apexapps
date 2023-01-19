@@ -15,7 +15,7 @@
   authentication: 
     credentials: MS Azure AD Cred for OneDrive # 33099546120120319
     authentication-server: login-microsoftonline-com # 32950416322761515
-    url-path-prefix: 3940511e-019e-4109-8377-01b080952758/oauth2/v2.0/token
+    url-path-prefix: common/oauth2/v2.0/token
 
   synchronization: 
     job-is-active: false
@@ -276,7 +276,7 @@
   authentication: 
     credentials: MS Azure AD Cred for OneDrive # 33099546120120319
     authentication-server: login-microsoftonline-com # 32950416322761515
-    url-path-prefix: 3940511e-019e-4109-8377-01b080952758/oauth2/v2.0/token
+    url-path-prefix: common/oauth2/v2.0/token
 
   synchronization: 
     job-is-active: false
@@ -1152,7 +1152,7 @@
   authentication: 
     credentials: MS Azure AD Cred for OneDrive # 33099546120120319
     authentication-server: login-microsoftonline-com # 32950416322761515
-    url-path-prefix: 3940511e-019e-4109-8377-01b080952758/oauth2/v2.0/token
+    url-path-prefix: common/oauth2/v2.0/token
 
   synchronization: 
     job-is-active: false
