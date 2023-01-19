@@ -1,0 +1,621 @@
+---
+# ====== Page: File ==========================================
+id: 4
+identification: 
+  name: File
+  alias: FILE
+  title: File
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer # 33105184527276535
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: File ========================================
+  id: 33748591220256300
+  identification: 
+    title: File
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33141052154276568
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: ボタン ======================================
+  id: 33751011512256305
+  identification: 
+    title: ボタン
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 33143853854276570
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: Text (escape special characters)
+      改行の表示: true
+
+page-items: 
+- # ====== Page Item: P4_ITEM_ID ===============================
+  id: 33748929279256301
+  identification: 
+    name: P4_ITEM_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: File # 33748591220256300
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P4_FOLDER_ID =============================
+  id: 33749354885256302
+  identification: 
+    name: P4_FOLDER_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 20
+    region: File # 33748591220256300
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P4_FILE ==================================
+  id: 33749722959256302
+  identification: 
+    name: P4_FILE
+    type: ファイル参照...
+
+  label: 
+    label: File
+    alignment: Left
+
+  settings: 
+    表示形式: Inline File Browse
+    記憶域タイプ: Table APEX_APPLICATION_TEMP_FILES
+    ファイルをパージするタイミング: End of Request
+    複数ファイルの許可: false
+
+  layout: 
+    sequence: 30
+    region: File # 33748591220256300
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 33277492800276650
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 33751446468256305
+  identification: 
+    button-name: CANCEL
+    label: 取消
+
+  layout: 
+    sequence: 10
+    region: ボタン # 33751011512256305
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 33279921186276653
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 33752850882256307
+  identification: 
+    button-name: DELETE
+    label: 削除
+
+  layout: 
+    sequence: 20
+    region: ボタン # 33751011512256305
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 33279921186276653
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P4_ITEM_ID
+
+- # ====== Button: SAVE ========================================
+  id: 33753246421256307
+  identification: 
+    button-name: SAVE
+    label: 変更の適用
+
+  layout: 
+    sequence: 30
+    region: ボタン # 33751011512256305
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 33279921186276653
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P4_ITEM_ID
+
+- # ====== Button: CREATE ======================================
+  id: 33753691244256307
+  identification: 
+    button-name: CREATE
+    label: 作成
+
+  layout: 
+    sequence: 40
+    region: ボタン # 33751011512256305
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 33279921186276653
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P4_ITEM_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 33751570178256305
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 33751446468256305
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: ダイアログを取り消す ========================
+    id: 33752352931256306
+    identification: 
+      action: ダイアログを取り消す
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 33751570178256305
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: ファイルの作成 =============================
+  id: 33725165574609811
+  identification: 
+    name: ファイルの作成
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Package
+    所有者: 解析対象スキーマ
+    パッケージ: MS365_ONEDRIVE
+    プロシージャまたはファンクション: CREATE_FILE
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: CREATE # 33753691244256307
+
+  parameters: 
+  - # ====== Parameter: p_file ===================================
+    id: 33725261940609812
+    identification: 
+      name: p_file
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P4_FILE
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_folder_id ==============================
+    id: 33725310869609813
+    identification: 
+      name: p_folder_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P4_FOLDER_ID
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_credential_static_id ===================
+    id: 33725470288609814
+    identification: 
+      name: p_credential_static_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL_NAME
+
+    advanced: 
+      display-sequence: 30
+
+- # ====== Process: ファイルの更新 =============================
+  id: 33725578259609815
+  identification: 
+    name: ファイルの更新
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Package
+    所有者: 解析対象スキーマ
+    パッケージ: MS365_ONEDRIVE
+    プロシージャまたはファンクション: UPDATE_FILE
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SAVE # 33753246421256307
+
+  parameters: 
+  - # ====== Parameter: p_file ===================================
+    id: 33725674650609816
+    identification: 
+      name: p_file
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P4_FILE
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_item_id ================================
+    id: 33725702987609817
+    identification: 
+      name: p_item_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P4_ITEM_ID
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_credential_static_id ===================
+    id: 33725817617609818
+    identification: 
+      name: p_credential_static_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL_NAME
+
+    advanced: 
+      display-sequence: 30
+
+- # ====== Process: ファイルの削除 =============================
+  id: 33725962061609819
+  identification: 
+    name: ファイルの削除
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Package
+    所有者: 解析対象スキーマ
+    パッケージ: MS365_ONEDRIVE
+    プロシージャまたはファンクション: DELETE_DRIVE_ITEM
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: DELETE # 33752850882256307
+
+  parameters: 
+  - # ====== Parameter: p_item_id ================================
+    id: 33726016689609820
+    identification: 
+      name: p_item_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P4_ITEM_ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_credential_static_id ===================
+    id: 33726180477609821
+    identification: 
+      name: p_credential_static_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL_NAME
+
+    advanced: 
+      display-sequence: 20
+
+- # ====== Process: ダイアログを閉じる =========================
+  id: 33754831710256308
+  identification: 
+    name: ダイアログを閉じる
+    type: ダイアログを閉じる
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
