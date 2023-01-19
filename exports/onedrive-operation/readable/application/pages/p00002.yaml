@@ -1379,7 +1379,7 @@ regions:
       id: 33049514155894445
       identification: 
         column-name: WEBURL
-        type: Plain Text
+        type: Link
 
       heading: 
         heading: Weburl
@@ -1394,6 +1394,10 @@ regions:
 
       accessibility: 
         value-identifies-row: false
+
+      link: 
+        target: '#WEBURL#'
+        link-text: '#WEBURL#'
 
       column-filter: 
         type: Default Based on Column Type
