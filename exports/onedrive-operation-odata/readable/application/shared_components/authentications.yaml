@@ -1,0 +1,42 @@
+---
+- # ====== Authentication: Oracle APEXアカウント ===============
+  id: 33104056028276527
+  identification: 
+    name: Oracle APEXアカウント
+
+  settings: 
+    type: Oracle APEXアカウント
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: MS Azure AD =========================
+  id: 33318478602360721
+  identification: 
+    name: MS Azure AD
+
+  settings: 
+    type: ソーシャル・サインイン
+    資格証明ストア: 33099546120120319
+    認証プロバイダ: OpenID Connect Provider
+    検出url: 'https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration'
+    有効範囲: User.Read,Files.ReadWrite,profile,offline_access,email
+    ユーザー名: email
+    ユーザー名の大文字への変換: true
+    属性の検証: true
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
