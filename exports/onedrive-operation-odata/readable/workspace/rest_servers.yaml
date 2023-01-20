@@ -1,0 +1,25 @@
+---
+- # ====== REST Data Source Server: graph-microsoft-com-v1-0-me 
+  id: 32930591610624372
+  identification: 
+    name: graph-microsoft-com-v1-0-me
+
+  endpoint-url: 
+    url: 'https://graph.microsoft.com/v1.0/me/'
+
+  advanced: 
+    static-id: graph_microsoft_com_v1_0_me
+    prompt-on-install: false
+
+- # ====== REST Data Source Server: graph-microsoft-com (2) ====
+  id: 33811458411815487
+  identification: 
+    name: graph-microsoft-com (2)
+
+  endpoint-url: 
+    url: 'https://graph.microsoft.com/'
+
+  advanced: 
+    static-id: graph_microsoft_com__2_
+    prompt-on-install: false
+
