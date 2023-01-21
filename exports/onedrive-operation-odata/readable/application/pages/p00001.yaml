@@ -19,6 +19,11 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
+javascript: 
+  file-urls: 
+  - '#APP_FILES#page-actions#MIN#.js'
+  execute-when-page-loads: apex.actions.add([COPY_BY_BUTTON]);
+
 security: 
   authentication: Page Requires Authentication
   deep-linking: Application Default
@@ -58,13 +63,13 @@ regions:
               );
               select json_serialize(l_response returning clob pretty) into l_response_pretty from dual;
           end if;
-          return '<pre><code>' || l_response_pretty || '</code></pre>';
+          return '<pre><code id="apiresult">' || l_response_pretty || '</code></pre>';
       end;
     page-items-to-submit: 
     - P1_MS_GRAPH_API
 
   layout: 
-    sequence: 30
+    sequence: 40
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -142,6 +147,48 @@ regions:
       出力形式: HTML
       ショートカットを開く: false
 
+- # ====== Region: Item Container ==============================
+  id: 33828663301940513
+  identification: 
+    title: Item Container
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Item Container # 33199301772276601
+    template-options: 
+    - '#DEFAULT#'
+    - t-ItemContainer--alignCenter
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
 page-items: 
 - # ====== Page Item: P1_MS_GRAPH_API ==========================
   id: 33045934562894409
@@ -161,8 +208,8 @@ page-items:
     無効: false
 
   layout: 
-    sequence: 10
-    region: No Parent
+    sequence: 20
+    region: Item Container # 33828663301940513
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -207,15 +254,14 @@ buttons:
     label: Submit
 
   layout: 
-    sequence: 20
-    region: No Parent
-    position: BODY
+    sequence: 30
+    region: Item Container # 33828663301940513
+    position: BUTTON_END
     start-new-layout: false
     start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
-    alignment: Right
 
   appearance: 
     button-template: Text # 33279921186276653
@@ -226,6 +272,36 @@ buttons:
   behavior: 
     action: Defined by Dynamic Action
     execute-validations: true
+
+- # ====== Button: COPY ========================================
+  id: 33828582215940512
+  identification: 
+    button-name: COPY
+    label: Copy
+
+  layout: 
+    sequence: 30
+    region: Graph API Response # 33046176876894411
+    position: COPY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 33279921186276653
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    custom-attributes: 
+    - data-action="#action$copy-by-button?id=apiresult"
 
 dynamic-actions: 
 - # ====== Dynamic Action: Click Submit ========================
