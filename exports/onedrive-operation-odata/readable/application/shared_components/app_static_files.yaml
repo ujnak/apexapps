@@ -26,3 +26,21 @@
     mime-type: image/png
     file-character-set: Unicode UTF-8
 
+- # ====== Static Application File: page-actions.js ============
+  id: 34070084925168231
+  identification: 
+    file-name: page-actions.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: page-actions.min.js ========
+  id: 34072120201223385
+  identification: 
+    file-name: page-actions.min.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
