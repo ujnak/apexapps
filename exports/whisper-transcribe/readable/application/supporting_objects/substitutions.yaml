@@ -1,0 +1,18 @@
+---
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: G_TRANSCRIBE_URL ======================
+  id: 2
+  identification: 
+    name: G_TRANSCRIBE_URL
+
+  installation: 
+    prompt-substitution: true
+    installation-prompt: Whisperを呼び出すAPIのエンドポイントURL
+
