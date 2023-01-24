@@ -124,5 +124,5 @@ substitutions:
     name: G_TRANSCRIBE_URL
 
   value: 
-    static-value: 'https://your_host/transcribe'
+    static-value: 'https://your_whisper_url/transcribe'
 
