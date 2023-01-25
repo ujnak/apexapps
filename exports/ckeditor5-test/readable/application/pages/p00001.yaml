@@ -1,0 +1,491 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: CKEditor5 Test
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: CKEditor5 Test ==============================
+  id: 35102586806035606
+  identification: 
+    title: CKEditor5 Test
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 34960541704035474
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_CKEDIT ================================
+  id: 33831521115940542
+  identification: 
+    name: P1_CKEDIT
+    type: リッチ・テキスト・エディタ
+
+  label: 
+    label: 'Page Item: P1_CKEDIT (Source: P1_SOURCE)'
+    alignment: Left
+
+  settings: 
+    書式: HTML
+    ツールバー: Full
+    ツールバー・スタイル: Overflow Menu
+    最小高: 90
+    カスタムhtmlの許可: false
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 35063931904035529
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P1_SOURCE
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_SOURCE ================================
+  id: 33832063253940547
+  identification: 
+    name: P1_SOURCE
+    type: テキスト領域
+
+  label: 
+    label: 'Page Item: P1_SOURCE'
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 70
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 35063931904035529
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_CKEDIT2 ===============================
+  id: 35109466195093010
+  identification: 
+    name: P1_CKEDIT2
+    type: リッチ・テキスト・エディタ
+
+  label: 
+    label: 'Page Item: P1_CKEDIT2 (Source: P1_SOURCE) with Allow Custom HTML'
+    alignment: Left
+
+  settings: 
+    書式: HTML
+    ツールバー: Full
+    ツールバー・スタイル: Overflow Menu
+    最小高: 90
+    カスタムhtmlの許可: true
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 35063931904035529
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P1_SOURCE
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: SAVE_SOURCE =================================
+  id: 33832191918940548
+  identification: 
+    button-name: SAVE_SOURCE
+    label: Save P1_SOURCE
+
+  layout: 
+    sequence: 80
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 35066489098035532
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: SAVE_CKEDITOR ===============================
+  id: 35108607700093002
+  identification: 
+    button-name: SAVE_CKEDITOR
+    label: Save P1_CKEDIT as P1_SOURCE
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 35066489098035532
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: SAVE_CKEDITOR2 ==============================
+  id: 35109538337093011
+  identification: 
+    button-name: SAVE_CKEDITOR2
+    label: Save P1_CKEDIT2 as P1_SOURCE
+
+  layout: 
+    sequence: 60
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 35066489098035532
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: onClick SAVE_SOURCE =================
+  id: 33832290680940549
+  identification: 
+    name: onClick SAVE_SOURCE
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SAVE_SOURCE # 33832191918940548
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: サーバー側のコードを実行 ====================
+    id: 33832345669940550
+    identification: 
+      action: サーバー側のコードを実行
+
+    settings: 
+      言語: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sqlコード: null;
+      送信するアイテム: 
+      - P1_SOURCE
+
+    execution: 
+      sequence: 10
+      event: onClick SAVE_SOURCE # 33832290680940549
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: JavaScriptコードの実行 ======================
+    id: 35109154114093007
+    identification: 
+      action: JavaScriptコードの実行
+
+    settings: 
+      コード: location.reload();
+
+    execution: 
+      sequence: 20
+      event: onClick SAVE_SOURCE # 33832290680940549
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick SAVE_CKEDITOR ===============
+  id: 35108701771093003
+  identification: 
+    name: onClick SAVE_CKEDITOR
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SAVE_CKEDITOR # 35108607700093002
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: サーバー側のコードを実行 ====================
+    id: 35108863753093004
+    identification: 
+      action: サーバー側のコードを実行
+
+    settings: 
+      言語: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sqlコード: |
+        begin
+            apex_util.set_session_state('P1_SOURCE',:P1_CKEDIT,true);
+        end;
+      送信するアイテム: 
+      - P1_CKEDIT
+
+    execution: 
+      sequence: 10
+      event: onClick SAVE_CKEDITOR # 35108701771093003
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: JavaScriptコードの実行 ======================
+    id: 35109267094093008
+    identification: 
+      action: JavaScriptコードの実行
+
+    settings: 
+      コード: location.reload();
+
+    execution: 
+      sequence: 20
+      event: onClick SAVE_CKEDITOR # 35108701771093003
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick SAVE_CKEDITOR2 ==============
+  id: 35109601106093012
+  identification: 
+    name: onClick SAVE_CKEDITOR2
+
+  execution: 
+    sequence: 40
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SAVE_CKEDITOR2 # 35109538337093011
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: サーバー側のコードを実行 ====================
+    id: 35109788564093013
+    identification: 
+      action: サーバー側のコードを実行
+
+    settings: 
+      言語: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sqlコード: |
+        begin
+            apex_util.set_session_state('P1_SOURCE',:P1_CKEDIT2,true);
+        end;
+      送信するアイテム: 
+      - P1_CKEDIT2
+
+    execution: 
+      sequence: 10
+      event: onClick SAVE_CKEDITOR2 # 35109601106093012
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: JavaScriptコードの実行 ======================
+    id: 35109806952093014
+    identification: 
+      action: JavaScriptコードの実行
+
+    settings: 
+      コード: location.reload();
+
+    execution: 
+      sequence: 20
+      event: onClick SAVE_CKEDITOR2 # 35109601106093012
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
