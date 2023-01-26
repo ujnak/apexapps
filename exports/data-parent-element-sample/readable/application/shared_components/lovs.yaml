@@ -1,0 +1,17 @@
+---
+- # ====== List of Values: LIST_OF_JOBS ========================
+  id: 36481573940010985
+  identification: 
+    name: LIST_OF_JOBS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: select distinct job from emp
+
+  column-mapping: 
+    return: JOB
+    display: JOB
+    default-sort: JOB
+    sort-direction: Ascending (Nulls Last)
+
