@@ -1,0 +1,683 @@
+---
+# ====== Page: Cust Customer =================================
+id: 2
+identification: 
+  name: Cust Customer
+  alias: CUST-CUSTOMER
+  title: Cust Customer
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer # 37210306970977920
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+
+dialog: 
+  chained: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Cust Customer ===============================
+  id: 37421604438978184
+  identification: 
+    title: Cust Customer
+    type: フォーム
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: CUST_CUSTOMERS
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 37246211467977937
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: ボタン ======================================
+  id: 37426134875978187
+  identification: 
+    title: ボタン
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container # 37249048132977939
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: Text (escape special characters)
+      改行の表示: true
+
+page-items: 
+- # ====== Page Item: P2_ID ====================================
+  id: 37421990674978184
+  identification: 
+    name: P2_ID
+    type: 非表示
+
+  settings: 
+    保護された値: true
+
+  layout: 
+    sequence: 10
+    region: Cust Customer # 37421604438978184
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cust Customer # 37421604438978184
+    column: ID
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_NAME ==================================
+  id: 37422336550978185
+  identification: 
+    name: P2_NAME
+    type: テキスト領域
+
+  label: 
+    label: Name
+    alignment: Right
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 20
+    region: Cust Customer # 37421604438978184
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 37382628361978008
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+    height: 4
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cust Customer # 37421604438978184
+    column: NAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_EMAIL =================================
+  id: 37422717262978185
+  identification: 
+    name: P2_EMAIL
+    type: テキスト領域
+
+  label: 
+    label: Email
+    alignment: Right
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 30
+    region: Cust Customer # 37421604438978184
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 37382628361978008
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+    height: 4
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cust Customer # 37421604438978184
+    column: EMAIL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_GENDER ================================
+  id: 37423103525978185
+  identification: 
+    name: P2_GENDER
+    type: テキスト・フィールド
+
+  label: 
+    label: Gender
+    alignment: Right
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: None
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 40
+    region: Cust Customer # 37421604438978184
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 37382628361978008
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 2
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cust Customer # 37421604438978184
+    column: GENDER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_MARITAL_STATUS ========================
+  id: 37423559732978186
+  identification: 
+    name: P2_MARITAL_STATUS
+    type: テキスト・フィールド
+
+  label: 
+    label: Marital Status
+    alignment: Right
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: None
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 50
+    region: Cust Customer # 37421604438978184
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 37382628361978008
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 2
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cust Customer # 37421604438978184
+    column: MARITAL_STATUS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_COUNTRY ===============================
+  id: 37423961212978186
+  identification: 
+    name: P2_COUNTRY
+    type: テキスト・フィールド
+
+  label: 
+    label: Country
+    alignment: Right
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: None
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 60
+    region: Cust Customer # 37421604438978184
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 37382628361978008
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 2
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cust Customer # 37421604438978184
+    column: COUNTRY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 37426510880978188
+  identification: 
+    button-name: CANCEL
+    label: 取消
+
+  layout: 
+    sequence: 10
+    region: ボタン # 37426134875978187
+    position: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 37385147329978009
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 37427999467978189
+  identification: 
+    button-name: DELETE
+    label: 削除
+
+  layout: 
+    sequence: 20
+    region: ボタン # 37426134875978187
+    position: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 37385147329978009
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--danger
+    - t-Button--simple
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P2_ID
+
+- # ====== Button: SAVE ========================================
+  id: 37428360931978189
+  identification: 
+    button-name: SAVE
+    label: 変更の適用
+
+  layout: 
+    sequence: 30
+    region: ボタン # 37426134875978187
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 37385147329978009
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P2_ID
+
+- # ====== Button: CREATE ======================================
+  id: 37428726557978189
+  identification: 
+    button-name: CREATE
+    label: 作成
+
+  layout: 
+    sequence: 40
+    region: ボタン # 37426134875978187
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 37385147329978009
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P2_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 37426618795978188
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CANCEL # 37426510880978188
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: ダイアログを取り消す ========================
+    id: 37427480398978188
+    identification: 
+      action: ダイアログを取り消す
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 37426618795978188
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: 初期化フォームCust Customer ================
+  id: 37429143481978190
+  identification: 
+    name: 初期化フォームCust Customer
+    type: フォーム - 初期化
+    form-region: Cust Customer # 37421604438978184
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: プロセス・フォームCust Customer ============
+  id: 37429570260978190
+  identification: 
+    name: プロセス・フォームCust Customer
+    type: フォーム - 行の自動処理(DML)
+    form-region: Cust Customer # 37421604438978184
+
+  settings: 
+    ターゲット・タイプ: Region Source
+    失われた更新の防止: true
+    行のロック: Yes
+    挿入後に主キーを返す: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: ダイアログを閉じる =========================
+  id: 37429978145978190
+  identification: 
+    name: ダイアログを閉じる
+    type: ダイアログを閉じる
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+
