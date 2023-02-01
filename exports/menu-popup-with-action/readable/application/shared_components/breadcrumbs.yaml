@@ -1,0 +1,21 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 40333833077604515
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: EMP ==========================================
+    id: 40334083016604516
+    identification: 
+      name: EMP
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # EMP
+
