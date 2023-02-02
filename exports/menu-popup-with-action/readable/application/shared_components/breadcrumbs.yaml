@@ -19,3 +19,17 @@
         url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
         page: 1 # EMP
 
+  - # ====== Entry: メニュー・ウィジェット =======================
+    id: 41424683712071155
+    identification: 
+      name: メニュー・ウィジェット
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # メニュー・ウィジェット
+
