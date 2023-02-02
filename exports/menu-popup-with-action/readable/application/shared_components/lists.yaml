@@ -55,6 +55,30 @@
     user-defined-attributes: 
       translatable: false
 
+  - # ====== Entry: メニュー・ウィジェット２ =====================
+    id: 41431360430804331
+    label: 
+      label: メニュー・ウィジェット２
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 3
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # メニュー・ウィジェット２
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
 - # ====== List: ナビゲーション・バー ==========================
   id: 40534663524604648
   identification: 
