@@ -1,0 +1,25 @@
+---
+- # ====== Search Configuration: Google Custom Search ==========
+  id: 42441944346549740
+  identification: 
+    name: Google Custom Search
+
+  source: 
+    search-type: Simple (APEX Data Source)
+    location: REST Source
+    rest-source: Google Custom Search # 42433168366220638
+
+  column-mapping: 
+    primary-key-1-column-name: LINK
+    title-column-name: TITLE
+    description-column-name: SNIPPET
+
+  icon-and-badge: 
+    icon-source: Icon Class
+
+  performance: 
+    maximum-rows-to-process: 100
+
+  advanced: 
+    static-id: google_custom_search
+
