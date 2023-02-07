@@ -1,0 +1,201 @@
+---
+# ====== Page: Google検索 ====================================
+id: 2
+identification: 
+  name: Google検索
+  alias: GOOGLE検索
+  title: Google検索
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: ブレッドクラム ==============================
+  id: 42443586849620325
+  identification: 
+    title: ブレッドクラム
+    type: ブレッドクラム
+
+  source: 
+    breadcrumb: ブレッドクラム # 42214800081077291
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 42296202869077354
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 42392097063077411
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: 検索結果 ====================================
+  id: 42444178377620326
+  identification: 
+    title: 検索結果
+    type: 検索
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Search Results Container # 42281125823077343
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      検索ページ・アイテム: P2_SEARCH
+      入力時に検索: false
+      遅延ロード: true
+      ページ区切りの使用: true
+      1ページ当たりの結果数: 15
+      結果数の表示: No
+      カスタム・レイアウト: false
+
+  search-sources: 
+  - # ====== Search Source: Google Custom Search =================
+    id: 42444695925620327
+    identification: 
+      name: Google Custom Search
+      search-configuration: Google Custom Search # 42441944346549740
+      use-as-initial-result: false
+
+    layout: 
+      sequence: 10
+
+page-items: 
+- # ====== Page Item: P2_SEARCH ================================
+  id: 42445164667620329
+  identification: 
+    name: P2_SEARCH
+    type: テキスト・フィールド
+
+  label: 
+    label: 検索
+    alignment: Left
+
+  settings: 
+    サブタイプ: Search
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 10
+    region: ブレッドクラム # 42443586849620325
+    position: SMART_FILTERS
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden # 42387664680077406
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
+    - t-Form-fieldContainer--large
+    icon: fa-search
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
