@@ -1,0 +1,41 @@
+---
+- # ====== Authentication: Oracle APEXアカウント ===============
+  id: 43048708974740278
+  identification: 
+    name: Oracle APEXアカウント
+
+  settings: 
+    type: Oracle APEXアカウント
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: Google Account ======================
+  id: 43263529374802095
+  identification: 
+    name: Google Account
+
+  settings: 
+    type: ソーシャル・サインイン
+    資格証明ストア: 43043559311545225
+    認証プロバイダ: Google
+    有効範囲: 'profile,email,https://www.googleapis.com/auth/drive'
+    ユーザー名: email
+    ユーザー名の大文字への変換: true
+    属性の検証: true
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
