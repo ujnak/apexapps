@@ -1,0 +1,204 @@
+---
+- # ====== Plugin: Format Date Picker Days =====================
+  id: 1419037555467985630
+  identification: 
+    name: Format Date Picker Days
+
+  source: 
+    pl/sql-code: |
+      function f_ajax (
+          p_dynamic_action in apex_plugin.t_dynamic_action,
+          p_plugin         in apex_plugin.t_plugin
+      ) return apex_plugin.t_dynamic_action_ajax_result is
+          c_source_type          constant varchar2(32767) := p_dynamic_action.attribute_01;
+          c_ics_uri              constant varchar2(32767) := apex_plugin_util.replace_substitutions(p_dynamic_action.attribute_02, false);
+          c_ics_class            constant varchar2(32767) := p_dynamic_action.attribute_10;
+          c_start_column_name    constant varchar2(32767) := upper(p_dynamic_action.attribute_04);
+          c_end_column_name      constant varchar2(32767) := upper(p_dynamic_action.attribute_05);
+          c_tooltip_column_name  constant varchar2(32767) := upper(p_dynamic_action.attribute_06);
+          c_class_column_name    constant varchar2(32767) := upper(p_dynamic_action.attribute_07);
+          c_disabled_column_name constant varchar2(32767) := upper(p_dynamic_action.attribute_08);
+          c_web_credential_id    constant varchar2(32767) := p_dynamic_action.attribute_12;
+          c_server_cache         constant boolean         := case when p_dynamic_action.attribute_11 = 'server' then true else false end;
+          c_cache_id             constant varchar2(32767) := to_char(p_dynamic_action.id);
+          c_sql_query            constant varchar2(32767) := p_dynamic_action.attribute_03;
+          c_iso_short_data       constant varchar2(10)    := 'YYYY-MM-DD';
+          l_context              apex_exec.t_context;
+          l_idx_start            pls_integer;
+          l_idx_end              pls_integer;
+          l_idx_tooltip          pls_integer;
+          l_idx_class            pls_integer;
+          l_idx_disabled         pls_integer;
+          l_result               apex_plugin.t_dynamic_action_ajax_result;
+          l_rest_result          blob;
+          l_collection_exists    boolean;
+      
+          procedure write_row(
+              p_start    in varchar2,
+              p_end      in varchar2,
+              p_tooltip  in varchar2,
+              p_class    in varchar2,
+              p_disabled in number default null ) is
+          begin
+              apex_json.open_object; -- open json object - { 
+              apex_json.write('start', p_start);
+              apex_json.write('end', p_end);
+              apex_json.write('tooltip', p_tooltip);
+              apex_json.write('class', p_class);
+              if p_disabled is not null then
+                  apex_json.write('disabled', p_disabled);
+              end if;
+              apex_json.close_object; -- Close json object - }
+          end write_row;
+      begin
+          apex_json.initialize_output;
+          apex_json.open_object; -- open json object - {
+          apex_json.open_array('rows'); -- open json array - [
+      
+          l_collection_exists := apex_collection.collection_exists(c_cache_id);
+          -- when data is cached then loop over collection
+          if c_server_cache and l_collection_exists then
+              for rec in (
+                  select
+                      c001 as date_start,
+                      c002 as date_end,
+                      c003 as tooltip
+                  from
+                      apex_collections
+                  where collection_name = c_cache_id
+              ) loop
+                  write_row(
+                      p_start   => rec.date_start,
+                      p_end     => rec.date_end,
+                      p_tooltip => rec.tooltip,
+                      p_class   => c_ics_class );
+              end loop;
+          -- else load data from db or rest
+          else
+              if c_server_cache then
+                  apex_collection.create_or_truncate_collection(c_cache_id); -- create collection to create cache
+              elsif l_collection_exists then
+                  apex_collection.delete_collection(c_cache_id);
+              end if;
+              if c_source_type = 'sql' then
+                  l_context := apex_exec.open_query_context( -- open context
+                                   p_location => apex_exec.c_location_local_db,
+                                   p_sql_query => c_sql_query
+                               );
+                  -- get positions of columns
+                  l_idx_start := apex_exec.get_column_position(
+                                     p_context => l_context,
+                                     p_column_name => c_start_column_name
+                                 );
+                  l_idx_end := apex_exec.get_column_position(
+                                   p_context => l_context,
+                                   p_column_name => c_end_column_name
+                               );
+                  l_idx_tooltip := apex_exec.get_column_position(
+                                       p_context => l_context,
+                                       p_column_name => c_tooltip_column_name
+                                   );
+                  l_idx_class := apex_exec.get_column_position(
+                                     p_context => l_context,
+                                     p_column_name => c_class_column_name
+                                 );
+                  l_idx_disabled := apex_exec.get_column_position(
+                                        p_context => l_context,
+                                        p_column_name => c_disabled_column_name
+                                    );
+                  -- loop over context and create json objects for array
+                  while apex_exec.next_row(p_context => l_context) loop -- loop through conext array 
+                      if c_server_cache then -- if cache is activated then write data into collection
+                          apex_collection.add_member(
+                              p_collection_name => c_cache_id,
+                              p_c001 => to_char(apex_exec.get_date(l_context,l_idx_start), c_iso_short_data),
+                              p_c002 => to_char(apex_exec.get_date(l_context,l_idx_end), c_iso_short_data),
+                              p_c003 => case when l_idx_tooltip is not null then apex_exec.get_varchar2(l_context,l_idx_tooltip) end
+                          );
+                      end if;
+                      write_row(
+                          p_start    => to_char(apex_exec.get_date(l_context,l_idx_start), c_iso_short_data),
+                          p_end      => to_char(apex_exec.get_date(l_context,l_idx_end), c_iso_short_data),
+                          p_tooltip  => case when l_idx_tooltip is not null then apex_exec.get_varchar2(l_context,l_idx_tooltip) end,
+                          p_class    => case when l_idx_class is not null then apex_exec.get_varchar2(l_context,l_idx_class) end,
+                          p_disabled => case when l_idx_disabled is not null then apex_exec.get_number(l_context,l_idx_disabled) end);
+                  end loop;
+              else
+                  begin
+                      l_rest_result := apex_web_service.make_rest_request_b(
+                                          p_url => c_ics_uri, 
+                                          p_http_method => 'GET',
+                                          p_credential_static_id => c_web_credential_id );
+                  exception when others then
+                      apex_debug.error(p_dynamic_action.action || ' raised an error while try to load ics file over rest please check ACLs and Wallet with certificates.');
+                      raise;
+                  end;
+                  -- when rest call return a file
+                  if l_rest_result is not null then
+                      for rec in (
+                          select 
+                              col002 as tooltip,
+                              to_date(col005, 'YYYY-MM-DD HH24:MI:SS') as date_start,
+                              to_date(col006, 'YYYY-MM-DD HH24:MI:SS') - 1/86400 as date_end -- decrease the end time by 1 second to prevent that e.g. single days are displayed twice
+                          from table(
+                                  apex_data_parser.parse(
+                                      p_content => l_rest_result,
+                                      p_file_name => 'basic.ics'
+                                  )
+                          )
+                      ) loop
+                          if c_server_cache then -- if cache is activated then write data into collection
+                              apex_collection.add_member(
+                                  p_collection_name => c_cache_id,
+                                  p_c001 => to_char(rec.date_start, c_iso_short_data),
+                                  p_c002 => to_char(rec.date_end, c_iso_short_data),
+                                  p_c003 => rec.tooltip
+                              );
+                          end if;
+                          write_row(
+                              p_start   => to_char(rec.date_start, c_iso_short_data),
+                              p_end     => to_char(rec.date_end, c_iso_short_data),
+                              p_tooltip => rec.tooltip,
+                              p_class   => c_ics_class );
+                      end loop;
+                  else
+                      apex_debug.error(p_dynamic_action.action || ' raised an error: ICS file not available or empty.'); -- log only the problem bug don't raise an error;
+                  end if;
+              end if;
+          end if;
+      
+          apex_exec.close(l_context); -- don't forget to cleanup
+          apex_json.close_array; -- open json array - ]
+          apex_json.close_object; -- Close json object - }
+      
+          return l_result;
+      exception
+          when others then
+              apex_debug.error(p_dynamic_action.action || ' raised an error while loading data.');
+              apex_exec.close(l_context);
+              apex_json.close_all;
+              raise;
+      end;
+      
+      function f_render (
+          p_dynamic_action   in apex_plugin.t_dynamic_action,
+          p_plugin           in apex_plugin.t_plugin
+      ) return apex_plugin.t_dynamic_action_render_result as
+          l_result         apex_plugin.t_dynamic_action_render_result;
+          c_items2submit constant varchar2(32767) := apex_plugin_util.page_item_names_to_jquery(p_dynamic_action.attribute_09);
+          c_client_cache constant boolean         := case when p_dynamic_action.attribute_11 = 'client' then true else false end;
+          c_cache_id     constant varchar2(32767) := to_char(p_dynamic_action.id);
+      begin
+      
+          l_result.javascript_function   := '
+          function () { 
+                 apexDatePickerDayFormatter.initialize(this, ' ||
+                         apex_javascript.add_value( apex_plugin.get_ajax_identifier, true ) ||
+                         apex_javascript.add_value( c_items2submit, true ) ||
+                         apex_javascript.add_value( c_client_cache, true ) ||
+                         apex_javascript.add_value( c_cache_id, false ) ||
+          '); }';
+      
+          return l_result;
+      end;
+
