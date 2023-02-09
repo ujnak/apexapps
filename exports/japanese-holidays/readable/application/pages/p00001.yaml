@@ -1,0 +1,383 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: 日本の休日
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  execute-when-page-loads: |
+    let result = apex.server.process("GET_HOLIDAYS");
+    
+    result.done( (data) => {
+        window.holidays = data;
+        console.log("holidays loaded.");
+        //
+        apex.item("P1_DATE3").dayFormatter = (pDate) => {
+            const d = window.holidays.find(e => e.day == pDate);
+            if (d != null) {
+                return {
+                    disabled: false, // またはtrue
+                    class: "u-danger-text",
+                    tooltip: d.name
+                };
+            }
+        }
+        apex.item("P1_DATE3").refresh();
+    });
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: 日本の休日 ==================================
+  id: 43840666622121134
+  identification: 
+    title: 日本の休日
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 43698754234121050
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_DATE ==================================
+  id: 43035334019984814
+  identification: 
+    name: P1_DATE
+    type: 日付ピッカー
+
+  label: 
+    label: 日本の休日
+    alignment: Left
+
+  settings: 
+    時間の表示: false
+    表示形式: Popup
+    最小日付: None
+    最大日付: None
+    複数月: No
+    デフォルトの使用: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 43802176591121101
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_DATE2 =================================
+  id: 43035675231984817
+  identification: 
+    name: P1_DATE2
+    type: 日付ピッカー
+
+  label: 
+    label: 日本の休日
+    alignment: Left
+
+  settings: 
+    時間の表示: false
+    表示形式: Popup
+    最小日付: None
+    最大日付: None
+    複数月: No
+    デフォルトの使用: true
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 43802176591121101
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_DATE3 =================================
+  id: 43036085355984821
+  identification: 
+    name: P1_DATE3
+    type: 日付ピッカー
+
+  label: 
+    label: 日本の休日
+    alignment: Left
+
+  settings: 
+    時間の表示: false
+    表示形式: Popup
+    最小日付: None
+    最大日付: None
+    複数月: No
+    デフォルトの使用: true
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 43802176591121101
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+dynamic-actions: 
+- # ====== Dynamic Action: 日付ピッカーの初期化 ================
+  id: 43035490844984815
+  identification: 
+    name: 日付ピッカーの初期化
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Format Date Picker Days =====================
+    id: 43035530116984816
+    identification: 
+      action: Format Date Picker Days
+
+    settings: 
+      load-from: ICS File
+      url-for-ics-file: 'https://calendar.google.com/calendar/ical/ja.japanese%23holiday@group.v.calendar.google.com/public/basic.ics'
+      cache-for-current-session: Server
+      css-class: u-danger-text
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P1_DATE
+
+    execution: 
+      sequence: 10
+      event: 日付ピッカーの初期化 # 43035490844984815
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Format Date Picker Days =====================
+    id: 43035795895984818
+    identification: 
+      action: Format Date Picker Days
+
+    settings: 
+      load-from: SQL Query
+      sql-source: |
+        select
+            trunc("国民の祝日_休日月日") as start_date,
+            trunc("国民の祝日_休日月日") as end_date,
+            'u-danger-text'           as css_class,
+            "国民の祝日_休日名称"        as tooltip,
+            -- 0 = 選択可能, 1 = 選択不可
+            0                         as is_disabled
+        from
+            syukujitsu
+      start-date-column-(date): START_DATE
+      end-date-column-(date): END_DATE
+      tooltip-column-(varchar2): TOOLTIP
+      css-class-column-(varchar2): CSS_CLASS
+      is-disabled-column-(number): IS_DISABLED
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P1_DATE2
+
+    execution: 
+      sequence: 20
+      event: 日付ピッカーの初期化 # 43035490844984815
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+processes: 
+- # ====== Process: GET_HOLIDAYS ===============================
+  id: 43035803706984819
+  identification: 
+    name: GET_HOLIDAYS
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_clob clob;
+      begin
+          select 
+      --        json_object('holidays' value
+                  json_arrayagg(
+                      json_object('day' value to_char("国民の祝日_休日月日",'YYYY-MM-DD'), 'name' value "国民の祝日_休日名称")
+                  )
+      --        )
+          into l_clob
+          from syukujitsu where "国民の祝日_休日月日" >= (sysdate - 365);
+          -- データが多すぎるとエラーになるので、１年前の休日に限定。
+          htp.p(l_clob);
+      end;
+
+  execution: 
+    sequence: 10
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
+
