@@ -1,0 +1,290 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: OpenLayers
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  file-urls: 
+  - 'https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js'
+  function-and-global-variable-declaration: |
+    /*
+     * This code is based on the article wrtten by Lech Cieślik, Pretius.
+     * Drawing objects on maps in Oracle APEX - MapLibre vs OpenLayers
+     * https://pretius.com/blog/maplibre-vs-openlayers/
+     */
+    
+    //Create Raster Source
+    const sourceRaster = new ol.source.OSM();
+    //Create new layer - Open Street Maps
+    const raster = new ol.layer.Tile({
+      source: sourceRaster
+    });
+    //Create Vector Source
+    const source = new ol.source.Vector({wrapX: false});
+    //Create new layer - Vector Source
+    const vector = new ol.layer.Vector ({
+      source: source,
+    });
+    
+    /*
+     * マップに書き込まれた図形のジオメトリを取得する。
+     */
+    const GET_FEATURES = {
+        name: "get-features",
+        action: (event, element, args) => {
+            let geojson = new ol.format.GeoJSON().writeFeatures(vector.getSource().getFeatures(), { 
+                dataProjection: 'EPSG:4326',
+                featureProjection: 'EPSG:3857'
+            });
+            apex.items.P1_COORDINATE.setValue(geojson);
+        }
+    };
+    
+    /*
+     * ページの準備ができてから実行する。
+     */
+    apex.jQuery(window).on('theme42ready', () => {
+        // apex.actionsにアクションを登録する。
+        apex.actions.add([GET_FEATURES]);
+        
+        //Create map
+        const map = new ol.Map({
+            //set layer(s)
+            layers: [raster, vector],
+            //set container
+            target: "map",
+            //set view
+            view: new ol.View({
+                center: ol.proj.fromLonLat([12.48, 41.85]),
+                zoom: 8 
+            })
+        });
+    
+        //Add Interaction (Draw object functionality)
+        var draw = new ol.interaction.Draw({
+            source: source,
+            type: "Polygon", //you can use 'Point' or 'LineString'
+        });
+        map.addInteraction(draw);
+    });
+
+css: 
+  file-urls: 
+  - 'https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css'
+  - null
+  - null
+  inline: '#map {height: 500px; width: 100%;}'
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Map =========================================
+  id: 43038909517984850
+  identification: 
+    title: Map
+    type: 静的コンテンツ
+
+  source: 
+    html-code: <div id="map"></div>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 46570791168443181
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+- # ====== Region: OpenLayers ==================================
+  id: 46679732607443269
+  identification: 
+    title: OpenLayers
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 46537767167443166
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_COORDINATE ============================
+  id: 46683651927464605
+  identification: 
+    name: P1_COORDINATE
+    type: テキスト領域
+
+  label: 
+    label: Coordinate
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 46641125041443220
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: GET_FEATURES ================================
+  id: 46683750382464606
+  identification: 
+    button-name: GET_FEATURES
+    label: Get Features
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 46643644962443222
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    custom-attributes: 
+    - data-action="#action$get-features"
+
