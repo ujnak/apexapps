@@ -1,0 +1,18 @@
+---
+- # ====== Authentication: Oracle APEXアカウント ===============
+  id: 46467775085443121
+  identification: 
+    name: Oracle APEXアカウント
+
+  settings: 
+    type: Oracle APEXアカウント
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
