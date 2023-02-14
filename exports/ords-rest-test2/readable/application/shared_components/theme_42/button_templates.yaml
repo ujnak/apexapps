@@ -1,0 +1,16 @@
+---
+- # ====== Button Template: Icon ===============================
+  id: 94500477252510600
+  identification: 
+    name: Icon
+
+- # ====== Button Template: Text ===============================
+  id: 94501206350510603
+  identification: 
+    name: Text
+
+- # ====== Button Template: Text with Icon =====================
+  id: 94501265197510605
+  identification: 
+    name: Text with Icon
+
