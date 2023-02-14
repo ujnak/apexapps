@@ -1,0 +1,49 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 94325544483510464
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: ホーム =======================================
+    id: 94325825371510465
+    identification: 
+      name: ホーム
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # ホーム
+
+  - # ====== Entry: EMP ==========================================
+    id: 94545719057684829
+    identification: 
+      name: EMP
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # EMP
+
+  - # ====== Entry: Remote EMP ===================================
+    id: 94577224313441848
+    identification: 
+      name: Remote EMP
+      page-number: 3
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # Remote EMP
+
