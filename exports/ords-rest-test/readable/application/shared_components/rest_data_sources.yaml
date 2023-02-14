@@ -1,0 +1,240 @@
+---
+- # ====== REST Data Source: Remote EMP Table ==================
+  id: 94521495353073423
+  identification: 
+    name: Remote EMP Table
+    type: ORDS
+
+  source: 
+    remote-server: bp9ncf74sqibu4p-apexdev-adb-us-ashburn-1-oraclecloudapps-com-ords-apexrest # 94518217571073409
+    url-path-prefix: /hr/employees/
+
+  settings: 
+    レガシーords-jsonを返す: false
+
+  authentication: 
+    credentials: HR Example Cred # 94298417389918726
+    authentication-server: bp9ncf74sqibu4p-apexdev-adb-us-ashburn-1-oraclecloudapps-com-ords-apexrest (2) # 94518340779073410
+    url-path-prefix: /oauth/token
+
+  synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: Remote_EMP_Table
+    pass-ecid: true
+
+  data-profiles: 
+    id: 94518572448073412
+    identification: 
+      name: Remote EMP Table
+
+    data-profile: 
+      format: JSON
+      row-selector: items
+      contains-single-row: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: RN ==========================================
+      id: 94518830265073417
+      identification: 
+        column-name: RN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: rn
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: JOB =========================================
+      id: 94519068845073418
+      identification: 
+        column-name: JOB
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 32767
+        primary-key: false
+
+      parsing: 
+        path-expression: job
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: MGR =========================================
+      id: 94519408009073418
+      identification: 
+        column-name: MGR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: mgr
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+    - # ====== Column: SAL =========================================
+      id: 94519633057073419
+      identification: 
+        column-name: SAL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: sal
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 4
+        hidden: false
+
+    - # ====== Column: COMM ========================================
+      id: 94519985816073419
+      identification: 
+        column-name: COMM
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: comm
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 5
+        hidden: false
+
+    - # ====== Column: EMPNO =======================================
+      id: 94520252896073419
+      identification: 
+        column-name: EMPNO
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: empno
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 6
+        hidden: false
+
+    - # ====== Column: ENAME =======================================
+      id: 94520598282073419
+      identification: 
+        column-name: ENAME
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 32767
+        primary-key: false
+
+      parsing: 
+        path-expression: ename
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 7
+        hidden: false
+
+    - # ====== Column: DEPTNO ======================================
+      id: 94520878304073419
+      identification: 
+        column-name: DEPTNO
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: deptno
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 8
+        hidden: false
+
+    - # ====== Column: HIREDATE ====================================
+      id: 94521206411073420
+      identification: 
+        column-name: HIREDATE
+
+      source: 
+        type: Data
+        data-type: TIMESTAMP WITH TIME ZONE
+        primary-key: false
+
+      parsing: 
+        path-expression: hiredate
+        format-mask: 'YYYY"-"MM"-"DD"T"HH24":"MI:SS.FF9TZR'
+        has-time-zone: true
+
+      remote-rest-data-source-server: 
+        filterable: true
+
+      advanced: 
+        sequence: 9
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 94521723195073425
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
