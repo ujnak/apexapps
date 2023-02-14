@@ -1,0 +1,13 @@
+---
+- # ====== REST Data Source Server: bp9ncf74sqibu4p-apexdev-adb-
+  id: 94518217571073409
+  identification: 
+    name: bp9ncf74sqibu4p-apexdev-adb-us-ashburn-1-oraclecloudapps-com-ords-apexrest
+
+  endpoint-url: 
+    url: 'https://bp9ncf74sqibu4p-apexdev.adb.us-ashburn-1.oraclecloudapps.com/ords/apexrest/'
+
+  advanced: 
+    static-id: bp9ncf74sqibu4p_apexdev_adb_us_ashburn_1_oraclecloudapps_com_ords_apexrest
+    prompt-on-install: false
+
