@@ -1,0 +1,61 @@
+---
+- # ====== Classic Report Template: Alerts =====================
+  id: 94425481773937213
+  identification: 
+    name: Alerts
+
+- # ====== Classic Report Template: Badge List =================
+  id: 94425668233937214
+  identification: 
+    name: Badge List
+
+- # ====== Classic Report Template: Cards ======================
+  id: 94429636486937216
+  identification: 
+    name: Cards
+
+- # ====== Classic Report Template: Value Attribute Pairs - Colu
+  id: 94435111965937219
+  identification: 
+    name: Value Attribute Pairs - Column
+
+- # ====== Classic Report Template: Search Results =============
+  id: 94437043679937220
+  identification: 
+    name: Search Results
+
+- # ====== Classic Report Template: Comments ===================
+  id: 94437318549937220
+  identification: 
+    name: Comments
+
+- # ====== Classic Report Template: Contextual Info ============
+  id: 94438435469937221
+  identification: 
+    name: Contextual Info
+
+- # ====== Classic Report Template: Standard ===================
+  id: 94439491787937222
+  identification: 
+    name: Standard
+
+- # ====== Classic Report Template: Content Row ================
+  id: 94442127950937224
+  identification: 
+    name: Content Row
+
+- # ====== Classic Report Template: Timeline ===================
+  id: 94445324922937225
+  identification: 
+    name: Timeline
+
+- # ====== Classic Report Template: Media List =================
+  id: 94445708433937226
+  identification: 
+    name: Media List
+
+- # ====== Classic Report Template: Value Attribute Pairs - Row 
+  id: 94448672606937227
+  identification: 
+    name: Value Attribute Pairs - Row
+
