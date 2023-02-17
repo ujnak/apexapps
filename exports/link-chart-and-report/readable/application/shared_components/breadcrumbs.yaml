@@ -1,0 +1,21 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 51030802255763079
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: 国一覧 =======================================
+    id: 51031055096763079
+    identification: 
+      name: 国一覧
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # 国一覧
+
