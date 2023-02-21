@@ -1,0 +1,51 @@
+---
+- # ====== Authentication: Oracle APEXアカウント ===============
+  id: 53851090712314148
+  identification: 
+    name: Oracle APEXアカウント
+
+  settings: 
+    type: Oracle APEXアカウント
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: LINE Account ========================
+  id: 54065516416345164
+  identification: 
+    name: LINE Account
+
+  settings: 
+    type: ソーシャル・サインイン
+    資格証明ストア: 53627860517233642
+    認証プロバイダ: OpenID Connect Provider
+    検出url: 'https://access.line.me/.well-known/openid-configuration'
+    有効範囲: profile
+    ユーザー名: '#sub# (#APEX_AUTH_NAME#)'
+    ユーザー名の大文字への変換: false
+    追加ユーザー属性: name
+    属性の検証: true
+
+  source: 
+    pl/sql-code: |
+      procedure post_auth is
+      begin
+        :G_DISPLAY_NAME := apex_json.get_varchar2('name');
+      end post_auth;
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    post-authentication-procedure-name: post_auth
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
