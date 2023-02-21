@@ -1,0 +1,11 @@
+---
+- # ====== Build Option: コメント・アウト ======================
+  id: 53850781738314148
+  identification: 
+    name: コメント・アウト
+
+  status: 
+    status: Exclude
+    default-on-export: Same as Current Status
+    on-upgrade-keep-status: false
+
