@@ -1,0 +1,21 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 52888566621793694
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: Message ======================================
+    id: 52888713233793694
+    identification: 
+      name: Message
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Message
+
