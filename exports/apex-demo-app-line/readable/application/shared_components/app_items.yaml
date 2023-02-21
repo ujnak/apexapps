@@ -1,0 +1,11 @@
+---
+- # ====== Application Item: G_DISPLAY_NAME ====================
+  id: 54077863360490209
+  identification: 
+    name: G_DISPLAY_NAME
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
