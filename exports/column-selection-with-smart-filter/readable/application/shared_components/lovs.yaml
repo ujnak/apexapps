@@ -1,0 +1,35 @@
+---
+- # ====== List of Values: DEPT.DNAME ==========================
+  id: 54883502904416388
+  identification: 
+    name: DEPT.DNAME
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: DEPT
+
+  column-mapping: 
+    return: DEPTNO
+    display: DNAME
+    default-sort: DNAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: EMP.ENAME ===========================
+  id: 54884210286416389
+  identification: 
+    name: EMP.ENAME
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: EMP
+
+  column-mapping: 
+    return: EMPNO
+    display: ENAME
+    default-sort: ENAME
+    sort-direction: Ascending (Nulls Last)
+
