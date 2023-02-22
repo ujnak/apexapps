@@ -1,0 +1,120 @@
+---
+# ====== Application: スマート・フィルタと列選択 =============
+id: 167
+identification: 
+  name: スマート・フィルタと列選択
+  alias: COLUMN-SELECTION-WITH-SMART-FILTER
+  version: リリース1.0
+
+row-search: 
+  tokenize: true
+
+availability: 
+  status: Available with Developer Toolbar
+  build-status: Run and Build Application
+
+error-handling: 
+  default-display-location: Inline with Field and in Notification
+
+report-printing: 
+  type: Native Printing
+
+advanced: 
+  friendly-urls: true
+  allow-feedback: true
+  logging: true
+  debugging: true
+  compatibility-mode: 21.2 / 22.1 / 22.2
+
+authentication: 
+  public-user: APEX_PUBLIC_USER
+  authentication-scheme: Oracle APEXアカウント # 54669266246416250
+
+authorization: 
+  source-for-role-or-group-schemes: Access Control User Role Assignments
+
+session-management: 
+  rejoin-sessions: Disabled
+
+session-state-protection: 
+  enabled: true
+
+security: 
+  deep-linking: Disabled
+  browser-cache: Disabled
+  embed-in-frames: Deny
+  referrer-policy: strict-origin
+  html-escaping-mode: Extended
+
+database-session: 
+  parsing-schema: WKSP_APEXDEV
+
+globalization: 
+  primary-language: Japanese (ja)
+  document-direction: Left-To-Right
+  language-derived-from: Application Primary Language
+  automatic-time-zone: false
+  automatic-csv-encoding: true
+
+application-format-masks: 
+  date: DS
+  timestamp: DS
+  timestamp-time-zone: DS
+
+character-value-comparison: 
+  behavior: Database session NLS setting (default)
+
+logo: 
+  type: Text
+  text: スマート・フィルタと列選択
+
+progressive-web-app: 
+  enable: true
+  installable: false
+  display: Standalone
+  screen-orientation: Any
+  ios-status-bar-style: Black Text and White Background
+
+navigation: 
+  home-url: 
+    url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+    page: 1 # EMP
+
+  login-url: 
+    url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
+    page: LOGIN
+
+navigation-menu: 
+  list-template: Side Navigation Menu # 54832986779416342
+  template-options: 
+  - '#DEFAULT#'
+  - t-TreeNav--styleA
+  - js-navCollapsed--hidden
+  list-position: Side
+  list: ナビゲーション・メニュー # 54670078474416251
+
+navigation-bar: 
+  implementation: List
+  list: ナビゲーション・バー # 54870368372416368
+  list-template: Navigation Bar # 54832558140416342
+  template-options: 
+  - '#DEFAULT#'
+
+javascript: 
+  include-jquery-migrate: false
+
+attributes: 
+  theme: Universal Theme # 42
+  global-page: 0
+  enable-end-users-to-choose-theme-style: false
+  add-"built-with-apex"-to-footer: false
+
+substitutions: 
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  value: 
+    static-value: スマート・フィルタと列選択
+
