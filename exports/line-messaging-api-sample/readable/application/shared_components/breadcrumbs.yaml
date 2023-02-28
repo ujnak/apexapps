@@ -1,0 +1,35 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 56523771550107513
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: ホーム =======================================
+    id: 56523989378107513
+    identification: 
+      name: ホーム
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # ホーム
+
+  - # ====== Entry: LINEメッセージ ===============================
+    id: 56789679217367251
+    identification: 
+      name: LINEメッセージ
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # LINEメッセージ
+
