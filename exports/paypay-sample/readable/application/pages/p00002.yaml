@@ -1,0 +1,342 @@
+---
+# ====== Page: Checkout ======================================
+id: 2
+identification: 
+  name: Checkout
+  alias: CHECKOUT
+  title: Checkout
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: ブレッドクラム ==============================
+  id: 57739973980572633
+  identification: 
+    title: ブレッドクラム
+    type: ブレッドクラム
+
+  source: 
+    breadcrumb: ブレッドクラム # 57524282114533991
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 57639386892534083
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 57701432181534122
+      template-options: 
+      - '#DEFAULT#'
+
+page-items: 
+- # ====== Page Item: P2_AMOUNT ================================
+  id: 54894154586513335
+  identification: 
+    name: P2_AMOUNT
+    type: 数値フィールド
+
+  label: 
+    label: Amount
+    alignment: Left
+
+  settings: 
+    最小値: 100
+    最大値: 10000
+    数字の位置合せ: Start
+    仮想キーボード: Decimal
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 57697385575534119
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P2_ORDER_DESCRIPTION =====================
+  id: 54894254903513336
+  identification: 
+    name: P2_ORDER_DESCRIPTION
+    type: テキスト・フィールド
+
+  label: 
+    label: Order Description
+    alignment: Left
+
+  settings: 
+    サブタイプ: Text
+    空白の切捨て: Leading and Trailing
+    テキストの大/小文字: 変更なし
+    [enter]を押すと送信: false
+    無効: false
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 57697385575534119
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CHECKOUT ====================================
+  id: 54894349385513337
+  identification: 
+    button-name: CHECKOUT
+    label: Checkout
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 57699801355534121
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: PayPay Checkout ============================
+  id: 54894431021513338
+  identification: 
+    name: PayPay Checkout
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_request json_object_t;
+          l_request_string varchar2(32767); 
+          l_apikey        varchar2(64);
+          l_apikey_secret varchar2(128);
+          l_content_type  varchar2(20)  := 'application/json';
+          l_merchant_payment_id varchar2(64);
+          -- Sandbox Server
+          l_server varchar2(64) := 'https://stg-api.sandbox.paypay.ne.jp';
+          l_request_url varchar2(32) := '/v2/codes';
+          l_header varchar2(200);
+          l_amount json_object_t;
+          l_redirect_url varchar2(400);
+          l_user_agent   varchar2(400);
+          --
+          l_response_clob clob;
+          l_response json_object_t;
+          l_data     json_object_t;
+          l_paypay_url varchar2(400);
+      begin
+          /* APIキーとAPIキー・シークレットを取得する。 */
+          l_apikey := v('G_PAYPAY_APIKEY');
+          l_apikey_secret := v('G_PAYPAY_APIKEY_SECRET');
+          /*
+           * PayPayに送信するリクエストを作成する。
+           */
+          l_request := json_object_t();
+          /* merchantPaymentId - 加盟店から提供された一意の支払い取引ID */
+          l_merchant_payment_id := sys_guid();
+          l_request.put('merchantPaymentId', l_merchant_payment_id);
+          /* amount - 支払金額 */
+          l_amount := json_object_t();
+          l_amount.put('amount', to_number(:P2_AMOUNT));
+          l_amount.put('currency','JPY');
+          l_request.put('amount',l_amount);
+          /* orderDescription - 注文内容の説明。 */
+          l_request.put('orderDescription', :P2_ORDER_DESCRIPTION);
+          /* codeType - 常にORDER_QR */
+          l_request.put('codeType','ORDER_QR');
+          /* redirectUrl - 支払い完了後に開くページ/アプリのURL */
+          l_redirect_url := apex_util.host_url || apex_page.get_url(
+              p_page => 1
+          );
+          l_request.put('redirectUrl', l_redirect_url);
+          /* redirectType - つねにWEB_LINK */
+          l_request.put('redirectType','WEB_LINK');
+          /* userAgent  - トランザクションの発生元であるWebブラウザーのUser Agent */
+          l_user_agent := owa_util.get_cgi_env('HTTP_USER_AGENT');
+          l_request.put('userAgent', l_user_agent);
+          l_request_string := l_request.to_string();
+          -- apex_debug.info(l_request_string);
+      
+          /*
+           * Create QR CodeのREST APIを発行する。
+           *
+           * 参照: https://www.paypay.ne.jp/opa/doc/jp/v1.0/webcashier#tag/%E6%B1%BA%E6%B8%88/operation/createQRCode
+           */
+          l_header := util_paypay_api.generate_hmac_auth_header(
+              p_request_body => l_request_string
+              ,p_content_type => l_content_type
+              ,p_request_url => l_request_url
+              ,p_http_method => 'POST'
+              ,p_apikey      => l_apikey
+              ,p_apikey_secret => l_apikey_secret
+          );
+          apex_web_service.set_request_headers(
+              p_name_01 => 'Content-Type'
+              ,p_value_01 => l_content_type
+              ,p_name_02 => 'Authorization'
+              ,p_value_02 => l_header
+          );
+          l_response_clob := apex_web_service.make_rest_request(
+              p_url => l_server || l_request_url
+              ,p_http_method => 'POST'
+              ,p_body => l_request_string
+              ,p_credential_static_id => 'PAYPAY_MERCHANT_ID'
+          );
+          -- apex_debug.info(l_response_clob);
+          if apex_web_service.g_status_code <> 201 then
+              raise_application_error(-20001, 'ORDER_QR Error = ' || apex_web_service.g_status_code);
+          end if;
+      
+          /*
+           * レスポンスからurlを取り出し、PayPayの決済画面に遷移する。
+           */
+          l_response := json_object_t(l_response_clob);
+          l_data := treat(l_response.get('data') as json_object_t);
+          l_paypay_url := l_data.get_string('url');
+          apex_util.redirect_url(
+              p_url => l_paypay_url
+          );
+      end;
+      
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: CHECKOUT # 54894349385513337
+
