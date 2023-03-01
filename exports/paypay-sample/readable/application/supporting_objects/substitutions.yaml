@@ -1,0 +1,25 @@
+---
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: G_PAYPAY_APIKEY =======================
+  id: 2
+  identification: 
+    name: G_PAYPAY_APIKEY
+
+  installation: 
+    prompt-substitution: true
+
+- # ====== Substitution: G_PAYPAY_APIKEY_SECRET ================
+  id: 3
+  identification: 
+    name: G_PAYPAY_APIKEY_SECRET
+
+  installation: 
+    prompt-substitution: true
+
