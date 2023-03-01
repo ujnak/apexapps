@@ -1,13 +1,13 @@
 ---
 - # ====== List: ナビゲーション・メニュー ======================
-  id: 57524785558533992
+  id: 57980019056137181
   identification: 
     name: ナビゲーション・メニュー
     type: Static Values
 
   entries: 
   - # ====== Entry: ホーム =======================================
-    id: 57735069539534181
+    id: 58190260684137309
     label: 
       label: ホーム
 
@@ -32,7 +32,7 @@
       translatable: false
 
   - # ====== Entry: Checkout =====================================
-    id: 57739414382572631
+    id: 58194718344451265
     label: 
       label: Checkout
 
@@ -59,14 +59,14 @@
       translatable: false
 
 - # ====== List: ナビゲーション・バー ==========================
-  id: 57725070416534144
+  id: 58180369596137294
   identification: 
     name: ナビゲーション・バー
     type: Static Values
 
   entries: 
   - # ====== Entry: &APP_USER. ===================================
-    id: 57736520970534187
+    id: 58191778283137312
     label: 
       label: '&APP_USER.'
 
@@ -90,13 +90,13 @@
       2.: has-username
 
   - # ====== Entry: --- ==========================================
-    id: 57737081124534188
+    id: 58192264365137313
     label: 
       label: '---'
 
     layout: 
       sequence: 20
-      parent-entry: '&APP_USER.' # 57736520970534187
+      parent-entry: '&APP_USER.' # 58191778283137312
 
     is-current: 
       type: Target Page
@@ -111,7 +111,7 @@
       translatable: false
 
   - # ====== Entry: サインアウト =================================
-    id: 57737490623534188
+    id: 58192600830137313
     label: 
       label: サインアウト
 
@@ -120,7 +120,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: '&APP_USER.' # 57736520970534187
+      parent-entry: '&APP_USER.' # 58191778283137312
 
     is-current: 
       type: Target Page
