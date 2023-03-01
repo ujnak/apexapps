@@ -38,13 +38,13 @@ server-cache:
 
 regions: 
 - # ====== Region: ブレッドクラム ==============================
-  id: 57739973980572633
+  id: 58195248779451267
   identification: 
     title: ブレッドクラム
     type: ブレッドクラム
 
   source: 
-    breadcrumb: ブレッドクラム # 57524282114533991
+    breadcrumb: ブレッドクラム # 57979568892137180
 
   layout: 
     sequence: 10
@@ -57,7 +57,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Title Bar # 57639386892534083
+    template: Title Bar # 58094617204137243
     template-options: 
     - '#DEFAULT#'
     - t-BreadcrumbRegion--useBreadcrumbTitle
@@ -79,13 +79,13 @@ regions:
 
   attributes: 
     appearance: 
-      breadcrumb-template: Breadcrumb # 57701432181534122
+      breadcrumb-template: Breadcrumb # 58156744515137280
       template-options: 
       - '#DEFAULT#'
 
 page-items: 
 - # ====== Page Item: P2_AMOUNT ================================
-  id: 54894154586513335
+  id: 54895189415513345
   identification: 
     name: P2_AMOUNT
     type: 数値フィールド
@@ -113,7 +113,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 57697385575534119
+    template: Optional - Floating # 58152610534137278
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -140,7 +140,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P2_ORDER_DESCRIPTION =====================
-  id: 54894254903513336
+  id: 54895280512513346
   identification: 
     name: P2_ORDER_DESCRIPTION
     type: テキスト・フィールド
@@ -169,7 +169,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 57697385575534119
+    template: Optional - Floating # 58152610534137278
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -197,7 +197,7 @@ page-items:
 
 buttons: 
 - # ====== Button: CHECKOUT ====================================
-  id: 54894349385513337
+  id: 54895355290513347
   identification: 
     button-name: CHECKOUT
     label: Checkout
@@ -214,7 +214,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 57699801355534121
+    button-template: Text # 58155181827137279
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -225,10 +225,10 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 processes: 
-- # ====== Process: PayPay Checkout ============================
-  id: 54894431021513338
+- # ====== Process: Checkout ===================================
+  id: 54895444909513348
   identification: 
-    name: PayPay Checkout
+    name: Checkout
     type: コードを実行
 
   source: 
@@ -277,6 +277,8 @@ processes:
           /* redirectUrl - 支払い完了後に開くページ/アプリのURL */
           l_redirect_url := apex_util.host_url || apex_page.get_url(
               p_page => 1
+              ,p_items => 'P1_MERCHANT_PAYMENT_ID'
+              ,p_values => l_merchant_payment_id
           );
           l_request.put('redirectUrl', l_redirect_url);
           /* redirectType - つねにWEB_LINK */
@@ -300,12 +302,9 @@ processes:
               ,p_apikey      => l_apikey
               ,p_apikey_secret => l_apikey_secret
           );
-          apex_web_service.set_request_headers(
-              p_name_01 => 'Content-Type'
-              ,p_value_01 => l_content_type
-              ,p_name_02 => 'Authorization'
-              ,p_value_02 => l_header
-          );
+          apex_web_service.clear_request_headers;
+          apex_web_service.set_request_headers('Content-Type', l_content_type, p_reset => false);
+          apex_web_service.set_request_headers('Authorization', l_header, p_reset => false);
           l_response_clob := apex_web_service.make_rest_request(
               p_url => l_server || l_request_url
               ,p_http_method => 'POST'
@@ -327,7 +326,6 @@ processes:
               p_url => l_paypay_url
           );
       end;
-      
 
   execution: 
     sequence: 10
@@ -338,5 +336,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: CHECKOUT # 54894349385513337
+    when-button-pressed: CHECKOUT # 54895355290513347
 
