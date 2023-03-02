@@ -262,18 +262,17 @@ page-items:
   id: 58616274838087824
   identification: 
     name: P1_SYSTEM_MESSAGE
-    type: テキスト・フィールド
+    type: テキスト領域
 
   label: 
     label: System Message
     alignment: Left
 
   settings: 
-    サブタイプ: Text
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
     空白の切捨て: Leading and Trailing
-    テキストの大/小文字: 変更なし
-    [enter]を押すと送信: false
-    無効: false
 
   layout: 
     sequence: 10
@@ -292,6 +291,7 @@ page-items:
     template-options: 
     - '#DEFAULT#'
     width: 30
+    height: 5
 
   validation: 
     value-required: false
@@ -308,6 +308,7 @@ page-items:
     static-value: You are a helpful assistant.
 
   session-state: 
+    data-type: VARCHAR2
     storage: Per Session (Persistent)
 
   quick-picks: 
@@ -674,11 +675,11 @@ dynamic-actions:
             /* ドキュメントに記載されているレスポンスで処理を継続する。 */
             l_response := json_object_t(l_response_clob);
             l_choices := l_response.get_array('choices');
-            l_message := treat(treat(l_choices.get(0) as json_object_t).get('message') as json_object_t);
+            l_message := treat(l_choices.get(0) as json_object_t).get_object('message');
             l_role    := l_message.get_string('role');
             l_content := l_message.get_clob('content');
             /* usageも取り出す。 */
-            l_usage := treat(l_response.get('usage') as json_object_t);
+            l_usage := l_response.get_object('usage');
             /*
              * ChatGPTからの応答をAPEXコレクションに追記する。
              */
