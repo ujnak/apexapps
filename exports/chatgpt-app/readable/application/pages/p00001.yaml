@@ -664,15 +664,13 @@ dynamic-actions:
              * API Ref: https://platform.openai.com/docs/api-reference/chat
             */
             apex_web_service.clear_request_headers;
-            apex_web_service.set_request_headers('Content-Type','application/json',p_reset => false);
-            /*
+            apex_web_service.set_request_headers('Content-Type','application/json',p_reset => false);  
             l_response_clob := apex_web_service.make_rest_request(
                 p_url => 'https://api.openai.com/v1/chat/completions'
                 ,p_http_method => 'POST'
                 ,p_body => l_request_clob
                 ,p_credential_static_id => 'OPENAI_API_KEY'
             );
-            */
             /* ドキュメントに記載されているレスポンスで処理を継続する。 */
             l_response := json_object_t(l_response_clob);
             l_choices := l_response.get_array('choices');
