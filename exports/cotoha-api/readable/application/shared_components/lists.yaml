@@ -1,0 +1,352 @@
+---
+- # ====== List: ナビゲーション・メニュー ======================
+  id: 60601165306307651
+  identification: 
+    name: ナビゲーション・メニュー
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: ホーム =======================================
+    id: 60811497555307830
+    label: 
+      label: ホーム
+
+    icon: 
+      image/icon-css-classes: fa-home
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # ホーム
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 構文解析 =====================================
+    id: 60814620771322855
+    label: 
+      label: 構文解析
+
+    icon: 
+      image/icon-css-classes: fa-file-o
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 2
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # 構文解析
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 固有表現抽出 =================================
+    id: 60837491851046848
+    label: 
+      label: 固有表現抽出
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 3
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # 固有表現抽出
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 照応解析 =====================================
+    id: 60841266442063870
+    label: 
+      label: 照応解析
+
+    layout: 
+      sequence: 40
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 4
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:::'
+        page: 4 # 照応解析
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: キーワード抽出 ===============================
+    id: 60846952218098203
+    label: 
+      label: キーワード抽出
+
+    layout: 
+      sequence: 50
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 5
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:::'
+        page: 5 # キーワード抽出
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 類似度算出 ===================================
+    id: 60851906676118065
+    label: 
+      label: 類似度算出
+
+    layout: 
+      sequence: 60
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 6
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:6:&APP_SESSION.::&DEBUG.:::'
+        page: 6 # 類似度算出
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 文タイプ判定 =================================
+    id: 60857158815136474
+    label: 
+      label: 文タイプ判定
+
+    layout: 
+      sequence: 70
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 7
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:7:&APP_SESSION.::&DEBUG.:::'
+        page: 7 # 文タイプ判定
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: ユーザ属性推定(β) ============================
+    id: 60861894734150322
+    label: 
+      label: ユーザ属性推定(β)
+
+    layout: 
+      sequence: 80
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 8
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:8:&APP_SESSION.::&DEBUG.:::'
+        page: 8 # ユーザ属性推定(β)
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 言い淀み除去(β) ==============================
+    id: 60866986753174351
+    label: 
+      label: 言い淀み除去(β)
+
+    layout: 
+      sequence: 90
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 9
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:9:&APP_SESSION.::&DEBUG.:::'
+        page: 9 # 言い淀み除去(β)
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 音声認識誤り検知(β) ==========================
+    id: 60872125940194238
+    label: 
+      label: 音声認識誤り検知(β)
+
+    layout: 
+      sequence: 100
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:::'
+        page: 10 # 音声認識誤り検知(β)
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: 感情分析 =====================================
+    id: 60876264323207812
+    label: 
+      label: 感情分析
+
+    layout: 
+      sequence: 110
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 11
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:11:&APP_SESSION.::&DEBUG.:::'
+        page: 11 # 感情分析
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: ナビゲーション・バー ==========================
+  id: 60801411400307788
+  identification: 
+    name: ナビゲーション・バー
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: &APP_USER. ===================================
+    id: 60812944325307844
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 60813477015307844
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 20
+      parent-entry: '&APP_USER.' # 60812944325307844
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: サインアウト =================================
+    id: 60813872639307844
+    label: 
+      label: サインアウト
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 60812944325307844
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
