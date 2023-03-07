@@ -1,0 +1,381 @@
+---
+# ====== Page: 言い淀み除去(β) ===============================
+id: 9
+identification: 
+  name: 言い淀み除去(β)
+  alias: REMOVE_FILLER
+  title: 言い淀み除去(β)
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: ブレッドクラム ==============================
+  id: 182522743823561074
+  identification: 
+    title: ブレッドクラム
+    type: ブレッドクラム
+
+  source: 
+    breadcrumb: ブレッドクラム # 60600638149307649
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar # 60715734848307722
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb # 60777895412307769
+      template-options: 
+      - '#DEFAULT#'
+
+page-items: 
+- # ====== Page Item: P9_TEXT ==================================
+  id: 60868730170174353
+  identification: 
+    name: P9_TEXT
+    type: テキスト領域
+
+  label: 
+    label: 解析対象テキスト
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 60773765429307765
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: CLOB
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9_DO_SEGMENT ============================
+  id: 60869193793174354
+  identification: 
+    name: P9_DO_SEGMENT
+    type: 切替え
+
+  label: 
+    label: 文区切りの実施
+    alignment: Left
+
+  settings: 
+    デフォルトの使用: true
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 60773765429307765
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: N
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9_RESULT ================================
+  id: 60869519821174354
+  identification: 
+    name: P9_RESULT
+    type: テキスト領域
+
+  label: 
+    label: 結果
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 50
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 60773765429307765
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: CLOB
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: SUBMIT ======================================
+  id: 60867950574174352
+  identification: 
+    button-name: SUBMIT
+    label: 送信
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 60776211591307768
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: 言い淀み除去(β) ============================
+  id: 60869944483174354
+  identification: 
+    name: 言い淀み除去(β)
+    type: APIの呼出し
+
+  settings: 
+    タイプ: PL/SQL Procedure or Function
+    所有者: 解析対象スキーマ
+    プロシージャまたはファンクション: CALL_COTOHA_API
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SUBMIT # 60867950574174352
+
+  parameters: 
+  - # ====== Parameter: ファンクションの結果 =====================
+    id: 60890038191522126
+    identification: 
+      name: ファンクションの結果
+
+    parameter: 
+      direction: Out
+      data-type: CLOB
+      ignore-output: false
+
+    value: 
+      item: P9_RESULT
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: p_api ====================================
+    id: 60890198174522127
+    identification: 
+      name: p_api
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Static Value
+      static-value: /nlp/beta/remove_filler
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: p_request ================================
+    id: 60890233429522128
+    identification: 
+      name: p_request
+
+    parameter: 
+      direction: In
+      data-type: Custom
+      data-type-name: json_object_t
+      has-default: false
+
+    value: 
+      type: PL/SQL Function Body
+      pl/sql-function-body: |
+        declare
+            l_request json_object_t;
+        begin
+            l_request := json_object_t();
+            l_request.put('text', :P9_TEXT);
+            l_request.put('do_segment', (:P9_DO_SEGMENT = 'Y'));
+            return l_request;
+        end;
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: p_credential_static_id ===================
+    id: 60890377882522129
+    identification: 
+      name: p_credential_static_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: G_CREDENTIAL_STATIC_ID
+
+    advanced: 
+      display-sequence: 40
+
