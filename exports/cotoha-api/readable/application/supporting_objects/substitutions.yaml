@@ -1,0 +1,33 @@
+---
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: G_CLIENT_ID ===========================
+  id: 2
+  identification: 
+    name: G_CLIENT_ID
+
+  installation: 
+    prompt-substitution: true
+
+- # ====== Substitution: G_CLIENT_SECRET =======================
+  id: 3
+  identification: 
+    name: G_CLIENT_SECRET
+
+  installation: 
+    prompt-substitution: true
+
+- # ====== Substitution: G_CREDENTIAL_STATIC_ID ================
+  id: 4
+  identification: 
+    name: G_CREDENTIAL_STATIC_ID
+
+  installation: 
+    prompt-substitution: true
+
