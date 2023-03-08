@@ -21,7 +21,7 @@ navigation:
 
 javascript: 
   file-urls: 
-  - 'https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Cesium.js'
+  - 'https://cesium.com/downloads/cesiumjs/releases/1.103/Build/Cesium/Cesium.js'
   execute-when-page-loads: |
     // Cesium Ionの読み込み指定
     Cesium.Ion.defaultAccessToken = "&G_TOKEN.";
@@ -57,7 +57,7 @@ javascript:
 
 css: 
   file-urls: 
-  - 'https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Widgets/widgets.css'
+  - 'https://cesium.com/downloads/cesiumjs/releases/1.103/Build/Cesium/Widgets/widgets.css'
   inline: |
     #cesiumContainer {
         position: absolute;
