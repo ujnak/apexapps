@@ -1,0 +1,17 @@
+---
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: G_CLIENT_ID ===========================
+  id: 2
+  identification: 
+    name: G_CLIENT_ID
+
+  installation: 
+    prompt-substitution: true
+
