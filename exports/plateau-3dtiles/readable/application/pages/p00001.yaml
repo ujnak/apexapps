@@ -1,0 +1,298 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: PLATEAU 3DTiles
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  file-urls: 
+  - 'https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Cesium.js'
+  execute-when-page-loads: |
+    // Cesium Ionの読み込み指定
+    Cesium.Ion.defaultAccessToken = "&G_TOKEN.";
+    // Terrainの指定（EGM96、国土数値情報5m標高から生成した全国の地形モデル、5m標高データが無い場所は10m標高で補完している）
+    var viewer = new Cesium.Viewer("cesiumContainer", {
+        terrainProvider: new Cesium.CesiumTerrainProvider({
+            url: Cesium.IonResource.fromAssetId(&G_ASSET_ID.)
+        })
+    });
+    
+    /*
+     * デフォルトとして千代田区を選択する。
+     */
+    if (!apex.items.P1_3DTILES.getValue()) {
+        const defaultUrl = "https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13101_chiyoda-ku/notexture/tileset.json";
+        apex.items.P1_3DTILES.setValue(defaultUrl, defaultUrl, false);
+        apex.items.P1_LAT.setValue(35.6872261, null, true);
+        apex.items.P1_LON.setValue(139.75657399, null, true);
+    }
+    
+    // 建物データ（3D Tiles）
+    var your_3d_tiles = viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
+        url : apex.items.P1_3DTILES.getValue()
+    }));
+    
+    // カメラの初期位置の指定
+    viewer.camera.setView({
+        destination : Cesium.Cartesian3.fromDegrees(
+            apex.items.P1_LON.getValue(),
+            apex.items.P1_LAT.getValue(),
+            5000.0)
+    });
+
+css: 
+  file-urls: 
+  - 'https://cesium.com/downloads/cesiumjs/releases/1.90/Build/Cesium/Widgets/widgets.css'
+  inline: |
+    #cesiumContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: 3D Tiles ====================================
+  id: 60892210908522148
+  identification: 
+    title: 3D Tiles
+    type: 静的コンテンツ
+
+  source: 
+    html-code: <div id="cesiumContainer"></div>
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 61254302298774530
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - i-h640
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noUI
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_3DTILES ===============================
+  id: 60892369998522149
+  identification: 
+    name: P1_3DTILES
+    type: ポップアップLOV
+
+  label: 
+    label: 3D Tiles
+    alignment: Left
+
+  settings: 
+    表示形式: Inline Popup
+    初期フェッチ: Automatic
+    複数の値: false
+    手動入力: false
+    入力時に検索: false
+    追加出力: 'LAT:P1_LAT,LON:P1_LON'
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 61358478810774606
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: PLATEAU_3DTILES # 61405210813144895
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_LAT ===================================
+  id: 60892455089522150
+  identification: 
+    name: P1_LAT
+    type: 非表示
+
+  settings: 
+    保護された値: false
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_LON ===================================
+  id: 61407890362313101
+  identification: 
+    name: P1_LON
+    type: 非表示
+
+  settings: 
+    保護された値: false
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+dynamic-actions: 
+- # ====== Dynamic Action: 建物データの変更 ====================
+  id: 61407928912313102
+  identification: 
+    name: 建物データの変更
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P1_3DTILES
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: ページの送信 ================================
+    id: 61408097791313103
+    identification: 
+      action: ページの送信
+
+    settings: 
+      処理中を表示: true
+
+    execution: 
+      sequence: 10
+      event: 建物データの変更 # 61407928912313102
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
