@@ -1,0 +1,276 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: Chat Client
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Chat Client =================================
+  id: 62410402905412832
+  identification: 
+    title: Chat Client
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 62268474170412724
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_QUERY =================================
+  id: 61409359008313116
+  identification: 
+    name: P1_QUERY
+    type: テキスト領域
+
+  label: 
+    label: Query
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 62371830197412782
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_ANSWER ================================
+  id: 61409509082313118
+  identification: 
+    name: P1_ANSWER
+    type: テキスト領域
+
+  label: 
+    label: Answer
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 62371830197412782
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: SUBMIT ======================================
+  id: 61409446101313117
+  identification: 
+    button-name: SUBMIT
+    label: Submit
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 62374318514412783
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: Query on Chat Server =======================
+  id: 61409651440313119
+  identification: 
+    name: Query on Chat Server
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_query json_object_t;
+          l_query_clob clob;
+          l_answer_clob clob;
+          l_answer json_object_t;
+      begin
+          l_query := json_object_t();
+          l_query.put('query', :P1_QUERY);
+          l_query_clob := l_query.to_clob();
+          apex_web_service.clear_request_headers;
+          apex_web_service.set_request_headers('Content-Type', 'application/json', p_reset => false);
+          l_answer_clob := apex_web_service.make_rest_request(
+              p_url => :G_ENDPOINT
+              ,p_http_method => 'POST'
+              ,p_body => l_query_clob
+          );
+          if apex_web_service.g_status_code <> 200 then
+              apex_debug.info('Chat Server Error %s, %s',
+                  apex_web_service.g_status_code
+                  ,l_answer_clob);
+              raise_application_error(-20001, 'Chat Server Error = ' 
+                  || apex_web_service.g_status_code);
+          end if;
+          l_answer := json_object_t(l_answer_clob);
+          :P1_ANSWER := l_answer.get_string('answer');
+      end;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SUBMIT # 61409446101313117
+
