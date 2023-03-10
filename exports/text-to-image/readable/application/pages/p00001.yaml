@@ -1,0 +1,361 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: Text to Image
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Text to Image ===============================
+  id: 63025465977083747
+  identification: 
+    title: Text to Image
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 62882366567083655
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_TEXT ==================================
+  id: 61409762567313120
+  identification: 
+    name: P1_TEXT
+    type: テキスト領域
+
+  label: 
+    label: テキスト
+    alignment: Left
+
+  settings: 
+    サイズ変更可能: true
+    高さ自動調整機能: false
+    文字カウント機能: false
+    空白の切捨て: Leading and Trailing
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 62985716935083710
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_SCALE =================================
+  id: 61409845525313121
+  identification: 
+    name: P1_SCALE
+    type: 数値フィールド
+
+  label: 
+    label: scale
+    alignment: Left
+
+  settings: 
+    最小値: 0
+    最大値: 20
+    数字の位置合せ: Start
+    仮想キーボード: Decimal
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 62985716935083710
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 7.5
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P1_IMAGE =================================
+  id: 61410084799313123
+  identification: 
+    name: P1_IMAGE
+    type: イメージの表示
+
+  label: 
+    label: 画像
+    alignment: Left
+
+  settings: 
+    基準: Image URL stored in Page Item Value
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 62985716935083710
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: TEXT_TO_IMAGE ===============================
+  id: 61409997306313122
+  identification: 
+    button-name: TEXT_TO_IMAGE
+    label: Text To Image
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 62988203450083712
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: Text to Image ==============================
+  id: 61410129034313124
+  identification: 
+    name: Text to Image
+    type: コードを実行
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_request json_object_t;
+          l_request_clob clob;
+          l_response json_object_t;
+          l_response_clob clob;
+          l_id rinna_text_to_images.id%type;
+          l_image clob;
+          l_image_blob blob;
+          l_nsfwContentDetected rinna_text_to_images.nsfwContentDetected%type;
+          l_type rinna_text_to_images.type%type;
+      begin
+          /*
+           * Text To Image V2のリクエストを作成する。
+           *
+           * 参照: https://developers.rinna.co.jp/api-details#api=z05-text2image-jsd
+           */
+          l_request := json_object_t();
+          l_request.put('prompts',   :P1_TEXT);
+          l_request.put('scale', to_number(:P1_SCALE));
+          l_request_clob := l_request.to_clob();
+          -- apex_debug.info(l_request_clob);
+          /*
+           * Text To Image の呼び出し。
+           */
+          apex_web_service.clear_request_headers;
+          apex_web_service.set_request_headers('Content-Type','application/json', p_reset => false);
+          apex_web_service.set_request_headers('Cache-Control','no-cache', p_reset => false);
+          l_response_clob := apex_web_service.make_rest_request(
+              p_url => 'https://api.rinna.co.jp/models/tti/v2'
+              ,p_http_method => 'POST'
+              ,p_body => l_request_clob
+              ,p_credential_static_id => 'RINNA_DEVELOPER_KEY'
+          );
+          if apex_web_service.g_status_code <> 200 then
+              apex_debug.info('REST API Failed, %s, %s', apex_web_service.g_status_code, l_response_clob);
+              raise_application_error(-20001, 'Text To Image = ' || apex_web_service.g_status_code);
+          end if;
+          /*
+           * レスポンスから生成された画像を取得する。
+           */
+          l_response := json_object_t(l_response_clob);
+          l_image := l_response.get_clob('image');
+          l_image_blob := null;
+          if instr(l_image, 'data:image/png;base64,') <> 1 then
+              -- image/pngではない？ 記録して無視する。
+              apex_debug.info(l_response_clob);
+          else
+              /* APIが生成する画像はimage/pngであることを常に期待している。 */
+              l_image := substr(l_image, length('data:image/png;base64,')+1);
+              l_image_blob := apex_web_service.clobbase642blob(l_image);
+          end if;
+          l_nsfwContentDetected := 'N';
+          if l_response.get_boolean('nsfwContentDetected') then
+              l_nsfwContentDetected := 'Y';
+          end if;
+          l_type := l_response.get_string('type');
+          /*
+           * テキストと画像の両方を保存する。
+           */
+          insert into rinna_text_to_images(text, scale, image, content_type, nsfwContentDetected, type) 
+          values(:P1_TEXT, :P1_SCALE, l_image_blob, 'image/png', l_nsfwContentDetected, l_type)
+          returning id into l_id;
+          /* ワークスペース名はapexdevであると仮定。違う場合は変更する。 */
+          :P1_IMAGE := apex_util.host_url() || '/ords/apexdev/rinna/image?id=' || l_id;
+      end;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: TEXT_TO_IMAGE # 61409997306313122
+
