@@ -1,0 +1,147 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: APEX_UTIL.HOST_URL
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: APEX_UTIL.HOST_URLの結果を確認 ==============
+  id: 61410308421313126
+  identification: 
+    title: APEX_UTIL.HOST_URLの結果を確認
+    type: 動的コンテンツ
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: |
+      declare
+          l_clob clob;
+          l_result varchar2(4000);
+          procedure append(
+              p_clob    in out clob
+              ,p_string in varchar2
+              ,p_bold   in boolean default false)
+          as
+          begin
+              if p_bold then
+                  p_clob := p_clob || '<p><b>' || p_string || '</b></p>';
+              else
+                  p_clob := p_clob || '<p>' || p_string || '</p>';
+              end if;
+          end append;        
+      begin
+          l_clob := '<p><b>APEXの場合はapex_page.get_urlがあるため、apex_util.host_urlが必要なケースは少ない。</b></p>';
+          l_result := apex_util.host_url();
+          append(l_clob, q'~apex_util.host_url()~', true);
+          append(l_clob, l_result);
+          l_result := apex_util.host_url('SCRIPT');
+          append(l_clob, q'~apex_util.host_url('SCRIPT')~', true);
+          append(l_clob, l_result);
+          l_result := apex_util.host_url('APEX_PATH');
+          append(l_clob, q'~apex_util.host_url('APEX_PATH')~', true);
+          append(l_clob, l_result);
+          l_result := apex_util.host_url('IMGPRE');
+          append(l_clob, q'~apex_util.host_url('IMGPRE')~', true);
+          append(l_clob, l_result);
+          /* ワークスペース名 */
+          select workspace into l_result from apex_workspaces where workspace_id = :WORKSPACE_ID;
+          append(l_clob, q'~ワークスペース名~', true);
+          append(l_clob, q'~select workspace into l_result from apex_workspaces where workspace_id = :WORKSPACE_ID~', true);
+          append(l_clob, l_result);
+          /* ORDS別名 */
+          select pattern into l_result from user_ords_schemas where parsing_schema = sys_context('USERENV','CURRENT_USER');
+          append(l_clob, q'~ORDS別名~', true);
+          append(l_clob, q'~select pattern into l_result from user_ords_schemas where parsing_schema = sys_context('USERENV','CURRENT_USER')~', true);
+          append(l_clob, l_result);
+          /* アプリケーション別名  */
+          l_result := utl_url.escape(lower(:APP_ALIAS), false, 'AL32UTF8');
+          append(l_clob, q'~アプリケーション別名 - ただし日本語などを設定しなければ lower(:APP_ALIAS)で十分~', true);
+          append(l_clob, q'~utl_url.escape(lower(:APP_ALIAS), false, 'AL32UTF8')~', true);
+          append(l_clob, l_result);
+          /* それ以外の確認方法 */
+          l_result := owa_util.get_cgi_env('X-APEX-BASE');
+          append(l_clob, q'~owa_util.get_cgi_env('X-APEX-BASE')~', true);
+          append(l_clob, l_result);
+          l_result := owa_util.get_cgi_env('SCRIPT_NAME');
+          append(l_clob, q'~owa_util.get_cgi_env('SCRIPT_NAME')~', true);
+          append(l_clob, l_result);
+          l_result := owa_util.get_cgi_env('SCRIPT_PREFIX');
+          append(l_clob, q'~owa_util.get_cgi_env('SCRIPT_PREFIX')~', true);
+          append(l_clob, l_result);
+          l_result := owa_util.get_cgi_env('PATH_INFO');
+          append(l_clob, q'~owa_util.get_cgi_env('PATH_INFO')~', true);
+          append(l_clob, l_result);
+          l_result := owa_util.get_cgi_env('PATH_PREFIX');
+          append(l_clob, q'~owa_util.get_cgi_env('PATH_PREFIX')~', true);
+          append(l_clob, l_result);
+          return l_clob;
+      end;
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 63377299034102345
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
