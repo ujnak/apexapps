@@ -1,0 +1,529 @@
+---
+# ====== Page: Documents =====================================
+id: 1
+identification: 
+  name: Documents
+  alias: HOME
+  title: Peppol
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+help: 
+  help-text: |
+    <p>データを見つけるには、検索ダイアログに検索文字列を入力するか、列ヘッダーをクリックして戻されるレコードを制限します。</p>
+    
+    <p><strong>「アクション」</strong>ボタンをクリックすると、多くの機能を実行できます。これには、表示列または非表示列の選択とその表示順序に加え、多くのデータおよび書式設定機能が含まれます。チャート、グループ化およびピボット・オプションを使用して、データの追加ビューを定義することもできます。</p>
+    
+    <p>独自のカスタマイズ内容を保存する場合、レポートを選択するか、「ダウンロード」をクリックしてデータをアンロードします。定期的にデータを送信するサブスクリプションで電子メール・アドレスと時間枠を入力します。<p>
+    
+    <p>追加情報を入手するには、「アクション」メニューの一番下の「ヘルプ」をクリックします。</p>
+    
+    <p><strong>「リセット」</strong>ボタンをクリックすると、対話モード・レポートをデフォルト設定に戻すことができます。</p>
+
+regions: 
+- # ====== Region: Peppol Documents ============================
+  id: 65797922261065402
+  identification: 
+    title: Peppol Documents
+    type: 対話モード・レポート
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: select "ID",sys.dbms_lob.getlength("CONTENT")"CONTENT","CONTENT_FILENAME","CONTENT_MIMETYPE","CONTENT_CHARSET","CONTENT_LASTUPD","INVOICE"from "PEPPOL_DOCUMENTS"
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    render-components: Above Content
+
+  advanced: 
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 65798075927065402
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:RP:P2_ID:\#ID#\'
+        page: 2 # Peppol Document
+        clear-cache: RP
+        values: 
+          p2_id: '#ID#'
+
+      link-icon: <span aria-label="&#x7DE8;&#x96C6;"><span class="fa fa-edit" aria-hidden="true" title="&#x7DE8;&#x96C6;"></span></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+
+    messages: 
+      when-no-data-found: データが見つかりません。
+      when-more-data-found: このレポートの最大行数は#MAX_ROW_COUNT#行です。フィルタを適用して、問合せのレコード数を削減してください。
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: プライマリ・レポート ==================
+      id: 65803415574065424
+      identification: 
+        name: プライマリ・レポート
+        alias: 658035
+
+    columns: 
+    - # ====== Column: ID ==========================================
+      id: 65798455740065405
+      identification: 
+        column-name: ID
+        type: Hidden Column
+
+      heading: 
+        heading: ID
+
+      layout: 
+        sequence: 0
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CONTENT =====================================
+      id: 65798849825065407
+      identification: 
+        column-name: CONTENT
+        type: Download BLOB
+
+      heading: 
+        heading: Content
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 2
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      blob-attributes: 
+        table-owner: Parsing Schema
+        table-name: PEPPOL_DOCUMENTS
+        blob-column: CONTENT
+        primary-key-column-1: ID
+        mime-type-column: CONTENT_MIMETYPE
+        filename-column: CONTENT_FILENAME
+        last-updated-column: CONTENT_LASTUPD
+        character-set-column: CONTENT_CHARSET
+
+      column-filter: 
+        type: None
+
+      enable-users-to: 
+        hide: true
+        sort: false
+        filter: false
+        highlight: false
+        control-break: false
+        aggregate: false
+        compute: false
+        chart: false
+        group-by: false
+        pivot: false
+
+      appearance: 
+        content-disposition: Attachment
+
+    - # ====== Column: CONTENT_FILENAME ============================
+      id: 65799250006065407
+      identification: 
+        column-name: CONTENT_FILENAME
+        type: Plain Text
+
+      heading: 
+        heading: Content Filename
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 3
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CONTENT_MIMETYPE ============================
+      id: 65799601574065407
+      identification: 
+        column-name: CONTENT_MIMETYPE
+        type: Plain Text
+
+      heading: 
+        heading: Content Mimetype
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 4
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CONTENT_CHARSET =============================
+      id: 65800099557065408
+      identification: 
+        column-name: CONTENT_CHARSET
+        type: Plain Text
+
+      heading: 
+        heading: Content Charset
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 5
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CONTENT_LASTUPD =============================
+      id: 65800451752065408
+      identification: 
+        column-name: CONTENT_LASTUPD
+        type: Plain Text
+
+      heading: 
+        heading: Content Lastupd
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 6
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        view-file-as: Attachment
+
+      page: 
+        size: Letter
+        orientation: Landscape
+        units: Inches
+        width: 11
+        height: 8.5
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Documents
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Peppol ======================================
+  id: 65802316454065411
+  identification: 
+    title: Peppol
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 65685649833065127
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+buttons: 
+- # ====== Button: CREATE ======================================
+  id: 65800981484065409
+  identification: 
+    button-name: CREATE
+    label: 作成
+
+  layout: 
+    sequence: 10
+    region: Peppol Documents # 65797922261065402
+    position: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 65752400084065173
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:2::'
+      page: 2 # Peppol Document
+      clear-cache: 2
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: レポートの編集 - ダイアログのクローズ
+  id: 65801230420065409
+  identification: 
+    name: レポートの編集 - ダイアログのクローズ
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: Region
+    region: Peppol Documents # 65797922261065402
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: リフレッシュ ================================
+    id: 65801705879065410
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: Peppol Documents # 65797922261065402
+
+    execution: 
+      sequence: 10
+      event: レポートの編集 - ダイアログのクローズ # 65801230420065409
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
