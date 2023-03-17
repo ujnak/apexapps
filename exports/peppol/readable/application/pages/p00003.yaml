@@ -1403,6 +1403,310 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: LegalMonetaryTotal_LineExtensionAmount_@curre
+      id: 65910948401460542
+      identification: 
+        column-name: LegalMonetaryTotal_LineExtensionAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Lineextensionamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 340
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LegalMonetaryTotal_TaxExclusiveAmount_@curren
+      id: 65911074546460543
+      identification: 
+        column-name: LegalMonetaryTotal_TaxExclusiveAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Taxexclusiveamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 350
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LegalMonetaryTotal_TaxInclusiveAmount_@curren
+      id: 65911190628460544
+      identification: 
+        column-name: LegalMonetaryTotal_TaxInclusiveAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Taxinclusiveamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 360
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LegalMonetaryTotal_AllowanceTotalAmount_@curr
+      id: 65911235640460545
+      identification: 
+        column-name: LegalMonetaryTotal_AllowanceTotalAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Allowancetotalamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 370
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LegalMonetaryTotal_ChargeTotalAmount_@currenc
+      id: 65911340179460546
+      identification: 
+        column-name: LegalMonetaryTotal_ChargeTotalAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Chargetotalamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 380
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LegalMonetaryTotal_PrepaidAmount_@currencyID 
+      id: 65911487920460547
+      identification: 
+        column-name: LegalMonetaryTotal_PrepaidAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Prepaidamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 390
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LegalMonetaryTotal_PayableRoundingAmount_@cur
+      id: 65911580416460548
+      identification: 
+        column-name: LegalMonetaryTotal_PayableRoundingAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Payableroundingamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 400
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LegalMonetaryTotal_PayableAmount_@currencyID 
+      id: 65911688995460549
+      identification: 
+        column-name: LegalMonetaryTotal_PayableAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Legalmonetarytotal Payableamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 410
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -1641,44 +1945,6 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: ROW_ID ======================================
-      id: 65824232219340743
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: InvoiceDocumentReference_ID =================
       id: 65824328124340744
       identification: 
@@ -1733,6 +1999,44 @@ regions:
       layout: 
         sequence: 40
         column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 65911793184460550
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: end
 
       accessibility: 
         value-identifies-row: false
@@ -1947,44 +2251,6 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: ROW_ID ======================================
-      id: 65824808806340749
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: ID ==========================================
       id: 65837761028406402
       identification: 
@@ -2114,6 +2380,196 @@ regions:
 
       layout: 
         sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66179237002489601
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_@schemeID ================================
+      id: 66179348379489602
+      identification: 
+        column-name: ID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Id @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DocumentTypeCode ============================
+      id: 66179429028489603
+      identification: 
+        column-name: DocumentTypeCode
+        type: Plain Text
+
+      heading: 
+        heading: Documenttypecode
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Attachment_EmbeddedDocumentBinaryObject_@mime
+      id: 66179547661489604
+      identification: 
+        column-name: Attachment_EmbeddedDocumentBinaryObject_@mimeCode
+        type: Plain Text
+
+      heading: 
+        heading: Attachment Embeddeddocumentbinaryobject @mimecode
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Attachment_EmbeddedDocumentBinaryObject_@file
+      id: 66179671334489605
+      identification: 
+        column-name: Attachment_EmbeddedDocumentBinaryObject_@filename
+        type: Plain Text
+
+      heading: 
+        heading: Attachment Embeddeddocumentbinaryobject @filename
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
         column-alignment: start
 
       accessibility: 
@@ -3013,6 +3469,120 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: Party_EndpointID_@schemeID ==================
+      id: 66179785343489606
+      identification: 
+        column-name: Party_EndpointID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Party Endpointid @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 200
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Party_PartyIdentification_ID_@schemeID ======
+      id: 66179817949489607
+      identification: 
+        column-name: Party_PartyIdentification_ID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Party Partyidentification Id @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 210
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Party_PartyLegalEntity_CompanyID_@schemeID ==
+      id: 66179906053489608
+      identification: 
+        column-name: Party_PartyLegalEntity_CompanyID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Party Partylegalentity Companyid @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 220
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -3889,6 +4459,120 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: Party_EndpointID_@schemeID ==================
+      id: 66180069773489609
+      identification: 
+        column-name: Party_EndpointID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Party Endpointid @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 200
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Party_PartyIdentification_ID_@schemeID ======
+      id: 66180157945489610
+      identification: 
+        column-name: Party_PartyIdentification_ID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Party Partyidentification Id @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 210
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Party_PartyLegalEntity_CompanyID_@schemeID ==
+      id: 66180264418489611
+      identification: 
+        column-name: Party_PartyLegalEntity_CompanyID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Party Partylegalentity Companyid @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 220
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -4172,6 +4856,82 @@ regions:
 
       layout: 
         sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PartyIdentification_ID_@schemeID ============
+      id: 66180371742489612
+      identification: 
+        column-name: PartyIdentification_ID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Partyidentification Id @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PartyLegalEntity_CompanyID_@schemeID ========
+      id: 66180444207489613
+      identification: 
+        column-name: PartyLegalEntity_CompanyID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Partylegalentity Companyid @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
         column-alignment: start
 
       accessibility: 
@@ -5339,6 +6099,44 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: DeliveryLocation_ID_@schemeID ===============
+      id: 66180536881489614
+      identification: 
+        column-name: DeliveryLocation_ID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Deliverylocation Id @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -5508,44 +6306,6 @@ regions:
 
       layout: 
         sequence: 10
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: ROW_ID ======================================
-      id: 65871032283429428
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
         column-alignment: end
 
       accessibility: 
@@ -6253,6 +7013,82 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: SEQ_ID ======================================
+      id: 66180685954489615
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 210
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PaymentMeansCode_@name ======================
+      id: 66180799702489616
+      identification: 
+        column-name: PaymentMeansCode_@name
+        type: Plain Text
+
+      heading: 
+        heading: Paymentmeanscode @name
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 220
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -6445,44 +7281,6 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: ROW_ID ======================================
-      id: 65873223217429450
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: PaymentMeansID ==============================
       id: 65885350445436419
       identification: 
@@ -6613,6 +7411,44 @@ regions:
       layout: 
         sequence: 60
         column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66180830558489617
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: end
 
       accessibility: 
         value-identifies-row: false
@@ -6827,44 +7663,6 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: ROW_ID ======================================
-      id: 65886063555436426
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: ID ==========================================
       id: 65886518181436431
       identification: 
@@ -6995,6 +7793,44 @@ regions:
       layout: 
         sequence: 60
         column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66180987453489618
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: end
 
       accessibility: 
         value-identifies-row: false
@@ -7186,44 +8022,6 @@ regions:
 
       layout: 
         sequence: 10
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: ROW_ID ======================================
-      id: 65887227562436438
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
         column-alignment: end
 
       accessibility: 
@@ -7589,6 +8387,120 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: SEQ_ID ======================================
+      id: 66181071084489619
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Amount_@currencyID ==========================
+      id: 66181192874489620
+      identification: 
+        column-name: Amount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Amount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: BaseAmount_@currencyID ======================
+      id: 66181274003489621
+      identification: 
+        column-name: BaseAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Baseamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 140
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -7781,44 +8693,6 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: ROW_ID ======================================
-      id: 65893517245445305
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: TaxTotal ====================================
       id: 65894560203445315
       identification: 
@@ -7911,6 +8785,44 @@ regions:
       layout: 
         sequence: 50
         column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66181369267489622
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: end
 
       accessibility: 
         value-identifies-row: false
@@ -8102,44 +9014,6 @@ regions:
 
       layout: 
         sequence: 10
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: ROW_ID ======================================
-      id: 65895106240445321
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
         column-alignment: end
 
       accessibility: 
@@ -8391,6 +9265,120 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: SEQ_ID ======================================
+      id: 66181426102489623
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TaxableAmount_@currencyID ===================
+      id: 66181522688489624
+      identification: 
+        column-name: TaxableAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Taxableamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TaxAmount_@currencyID =======================
+      id: 66181618120489625
+      identification: 
+        column-name: TaxAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Taxamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -8583,44 +9571,6 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: ROW_ID ======================================
-      id: 65896201552445332
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: InvoiceLine =================================
       id: 65896921543445339
       identification: 
@@ -8731,82 +9681,6 @@ regions:
         chart: false
         group-by: false
         pivot: false
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: InvoicedQuantity ============================
-      id: 65897269945445342
-      identification: 
-        column-name: InvoicedQuantity
-        type: Plain Text
-
-      heading: 
-        heading: Invoicedquantity
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 60
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: LineExtensionAmount =========================
-      id: 65897369602445343
-      identification: 
-        column-name: LineExtensionAmount
-        type: Plain Text
-
-      heading: 
-        heading: Lineextensionamount
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 70
-        column-alignment: start
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
 
       security: 
         escape-special-characters: true
@@ -9267,6 +10141,614 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: SEQ_ID ======================================
+      id: 66181740114489626
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 200
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: InvoicedQuantity ============================
+      id: 66181822225489627
+      identification: 
+        column-name: InvoicedQuantity
+        type: Plain Text
+
+      heading: 
+        heading: Invoicedquantity
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 210
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: InvoicedQuantity_@unitCode ==================
+      id: 66181912261489628
+      identification: 
+        column-name: InvoicedQuantity_@unitCode
+        type: Plain Text
+
+      heading: 
+        heading: Invoicedquantity @unitcode
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 220
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LineExtensionAmount =========================
+      id: 66182024707489629
+      identification: 
+        column-name: LineExtensionAmount
+        type: Plain Text
+
+      heading: 
+        heading: Lineextensionamount
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 230
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: LineExtensionAmount_@currencyID =============
+      id: 66182111891489630
+      identification: 
+        column-name: LineExtensionAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Lineextensionamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 240
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Item_Description ============================
+      id: 66182279283489631
+      identification: 
+        column-name: Item_Description
+        type: Plain Text
+
+      heading: 
+        heading: Item Description
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 250
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Item_Name ===================================
+      id: 66182385575489632
+      identification: 
+        column-name: Item_Name
+        type: Plain Text
+
+      heading: 
+        heading: Item Name
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 260
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Item_BuyersItemIdentification_ID ============
+      id: 66182452391489633
+      identification: 
+        column-name: Item_BuyersItemIdentification_ID
+        type: Plain Text
+
+      heading: 
+        heading: Item Buyersitemidentification Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 270
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Item_SellersItemIdentification_ID ===========
+      id: 66182592279489634
+      identification: 
+        column-name: Item_SellersItemIdentification_ID
+        type: Plain Text
+
+      heading: 
+        heading: Item Sellersitemidentification Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 280
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Item_StandardItemIdentification_ID ==========
+      id: 66182678253489635
+      identification: 
+        column-name: Item_StandardItemIdentification_ID
+        type: Plain Text
+
+      heading: 
+        heading: Item Standarditemidentification Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 290
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Item_StandardItemIdentification_ID_@schemeID 
+      id: 66182785559489636
+      identification: 
+        column-name: Item_StandardItemIdentification_ID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Item Standarditemidentification Id @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 300
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Item_OriginCountry_IdentificationCode =======
+      id: 66182834166489637
+      identification: 
+        column-name: Item_OriginCountry_IdentificationCode
+        type: Plain Text
+
+      heading: 
+        heading: Item Origincountry Identificationcode
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 310
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Price_PriceAmount_@currencyID ===============
+      id: 66182929368489638
+      identification: 
+        column-name: Price_PriceAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Price Priceamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 320
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Price_BaseQuantity_@unitCode ================
+      id: 66183088380489639
+      identification: 
+        column-name: Price_BaseQuantity_@unitCode
+        type: Plain Text
+
+      heading: 
+        heading: Price Basequantity @unitcode
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 330
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Price_AllowanceCharge_Amount_@currencyID ====
+      id: 66183175879489640
+      identification: 
+        column-name: Price_AllowanceCharge_Amount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Price Allowancecharge Amount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 340
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Price_AllowanceCharge_BaseAmount_@currencyID 
+      id: 66183216516489641
+      identification: 
+        column-name: Price_AllowanceCharge_BaseAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Price Allowancecharge Baseamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 350
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -9459,44 +10941,6 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: ROW_ID ======================================
-      id: 65907602722460509
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: ID ==========================================
       id: 65907868486460511
       identification: 
@@ -9588,6 +11032,82 @@ regions:
 
       layout: 
         sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66183389739489642
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_@schemeID ================================
+      id: 66183435684489643
+      identification: 
+        column-name: ID_@schemeID
+        type: Plain Text
+
+      heading: 
+        heading: Id @schemeid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
         column-alignment: start
 
       accessibility: 
@@ -9780,44 +11300,6 @@ regions:
 
       layout: 
         sequence: 10
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
-    - # ====== Column: ROW_ID ======================================
-      id: 65909937570460532
-      identification: 
-        column-name: ROW_ID
-        type: Plain Text
-
-      heading: 
-        heading: Row Id
-        alignment: center
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 20
         column-alignment: end
 
       accessibility: 
@@ -10107,6 +11589,120 @@ regions:
       security: 
         escape-special-characters: true
 
+    - # ====== Column: SEQ_ID ======================================
+      id: 66183553314489644
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Amount_@currencyID ==========================
+      id: 66183633933489645
+      identification: 
+        column-name: Amount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Amount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: BaseAmount_@currencyID ======================
+      id: 66183782125489646
+      identification: 
+        column-name: BaseAmount_@currencyID
+        type: Plain Text
+
+      heading: 
+        heading: Baseamount @currencyid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
     printing: 
       output: 
         view-file-as: Attachment
@@ -10127,6 +11723,1152 @@ regions:
         font-color: '#000000'
         alignment: center
         page-header-text: Invoice Line / Allowance Charge
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Invoice Line / Item / Additional Item Propert
+  id: 66183832771489647
+  identification: 
+    title: Invoice Line / Item / Additional Item Property
+    type: 対話モード・レポート
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: PEPPOL_INVOICE_INVOICE_LINE_ITEM_ADDITIONAL_ITEM_PROPERTY_V
+    include-rowid-column: false
+    where-clause: ':P3_INVOICE_ID is null or invoice_id = :P3_INVOICE_ID'
+
+  layout: 
+    sequence: 190
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 65645847210065108
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 66183946318489648
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: プライマリ・レポート ==================
+      id: 66232091552522505
+      identification: 
+        name: プライマリ・レポート
+        alias: 662321
+
+    columns: 
+    - # ====== Column: INVOICE_ID ==================================
+      id: 66184049919489649
+      identification: 
+        column-name: INVOICE_ID
+        type: Plain Text
+
+      heading: 
+        heading: Invoice Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: InvoiceLine_ID ==============================
+      id: 66184199685489650
+      identification: 
+        column-name: InvoiceLine_ID
+        type: Plain Text
+
+      heading: 
+        heading: Invoiceline Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66184857745497907
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Name ========================================
+      id: 66185195471497910
+      identification: 
+        column-name: Name
+        type: Plain Text
+
+      heading: 
+        heading: Name
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Value =======================================
+      id: 66185240627497911
+      identification: 
+        column-name: Value
+        type: Plain Text
+
+      heading: 
+        heading: Value
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Invoice Line / Item / Additional Item Property
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Invoice Line / Item / Classified Tax Category
+  id: 66185366481497912
+  identification: 
+    title: Invoice Line / Item / Classified Tax Category
+    type: 対話モード・レポート
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: PEPPOL_INVOICE_INVOICE_LINE_ITEM_CLASSIFIED_TAX_CATEGORY_V
+    include-rowid-column: false
+    where-clause: ':P3_INVOICE_ID is null or invoice_id = :P3_INVOICE_ID'
+
+  layout: 
+    sequence: 200
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 65645847210065108
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 66185443582497913
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: プライマリ・レポート ==================
+      id: 66232693134522541
+      identification: 
+        name: プライマリ・レポート
+        alias: 662327
+
+    columns: 
+    - # ====== Column: INVOICE_ID ==================================
+      id: 66185548481497914
+      identification: 
+        column-name: INVOICE_ID
+        type: Plain Text
+
+      heading: 
+        heading: Invoice Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: InvoiceLine_ID ==============================
+      id: 66185655058497915
+      identification: 
+        column-name: InvoiceLine_ID
+        type: Plain Text
+
+      heading: 
+        heading: Invoiceline Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66185756244497916
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID ==========================================
+      id: 66186049683497919
+      identification: 
+        column-name: ID
+        type: Plain Text
+
+      heading: 
+        heading: Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Percent =====================================
+      id: 66186199895497920
+      identification: 
+        column-name: Percent
+        type: Plain Text
+
+      heading: 
+        heading: Percent
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PerUnitAmount ===============================
+      id: 66186275868497921
+      identification: 
+        column-name: PerUnitAmount
+        type: Plain Text
+
+      heading: 
+        heading: Perunitamount
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TaxScheme_ID ================================
+      id: 66186365358497922
+      identification: 
+        column-name: TaxScheme_ID
+        type: Plain Text
+
+      heading: 
+        heading: Taxscheme Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Invoice Line / Item / Classified Tax Category
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Invoice Line / Item / Classified Tax Category
+  id: 66186479027497923
+  identification: 
+    title: Invoice Line / Item / Classified Tax Category
+    type: 対話モード・レポート
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: PEPPOL_INVOICE_INVOICE_LINE_ITEM_COMMODITY_CLASSIFICATION_V
+    include-rowid-column: false
+    where-clause: ':P3_INVOICE_ID is null or invoice_id = :P3_INVOICE_ID'
+
+  layout: 
+    sequence: 210
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 65645847210065108
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 66186544945497924
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: プライマリ・レポート ==================
+      id: 66233245571522571
+      identification: 
+        name: プライマリ・レポート
+        alias: 662333
+
+    columns: 
+    - # ====== Column: INVOICE_ID ==================================
+      id: 66186688635497925
+      identification: 
+        column-name: INVOICE_ID
+        type: Plain Text
+
+      heading: 
+        heading: Invoice Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: InvoiceLine_ID ==============================
+      id: 66186763201497926
+      identification: 
+        column-name: InvoiceLine_ID
+        type: Plain Text
+
+      heading: 
+        heading: Invoiceline Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SEQ_ID ======================================
+      id: 66186814536497927
+      identification: 
+        column-name: SEQ_ID
+        type: Plain Text
+
+      heading: 
+        heading: Seq Id
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ItemClassificationCode ======================
+      id: 66187341362497932
+      identification: 
+        column-name: ItemClassificationCode
+        type: Plain Text
+
+      heading: 
+        heading: Itemclassificationcode
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ItemClassificationCode_@listID ==============
+      id: 66187498575497933
+      identification: 
+        column-name: ItemClassificationCode_@listID
+        type: Plain Text
+
+      heading: 
+        heading: Itemclassificationcode @listid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ItemClassificationCode_@listVersionID =======
+      id: 66187501347497934
+      identification: 
+        column-name: ItemClassificationCode_@listVersionID
+        type: Plain Text
+
+      heading: 
+        heading: Itemclassificationcode @listversionid
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+        page-header-text: Invoice Line / Item / Classified Tax Category
 
       column-headings: 
         font: Helvetica
