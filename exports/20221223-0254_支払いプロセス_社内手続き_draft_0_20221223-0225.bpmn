@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:apex="https://flowsforapex.org" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1wzb475" targetNamespace="http://bpmn.io/schema/b" exporter="Flows for APEX" exporterVersion="22.2.0">
+  <bpmn:process id="Process_lu70yk8n" isExecutable="false" apex:isCallable="true" apex:manualInput="false">
+    <bpmn:extensionElements>
+      <apex:inVariables>
+        <apex:processVariable>
+          <apex:varName>PAYMENT_METHOD</apex:varName>
+          <apex:varDataType>VARCHAR2</apex:varDataType>
+          <apex:varDescription>支払い方法</apex:varDescription>
+        </apex:processVariable>
+      </apex:inVariables>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="Event_0jdg5k4" name="支払いプロセスの開始">
+      <bpmn:outgoing>Flow_01l1j3n</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1vmzfq6" name="支払いプロセスの完了">
+      <bpmn:incoming>Flow_1ovcniu</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_1ovg4ax" name="支払い方法の選択">
+      <bpmn:incoming>Flow_01l1j3n</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ax960s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0t6p3sn</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0lx9tnh">
+      <bpmn:incoming>Flow_0d5c2m2</bpmn:incoming>
+      <bpmn:incoming>Flow_0sf9v8f</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ovcniu</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_01l1j3n" sourceRef="Event_0jdg5k4" targetRef="Gateway_1ovg4ax" />
+    <bpmn:sequenceFlow id="Flow_0ax960s" name="銀行振込" sourceRef="Gateway_1ovg4ax" targetRef="Activity_1tzu06k" apex:sequence="10">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" language="plsqlExpression">:F4A$PAYMENT_METHOD = 'BANK_TRANSFER'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0d5c2m2" sourceRef="Activity_1tzu06k" targetRef="Gateway_0lx9tnh" />
+    <bpmn:sequenceFlow id="Flow_0t6p3sn" name="クレジットカード" sourceRef="Gateway_1ovg4ax" targetRef="Activity_07zalop" apex:sequence="20">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" language="plsqlExpression">:F4A$PAYMENT_METHOD = 'CREDIT_CARD'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0sf9v8f" sourceRef="Activity_07zalop" targetRef="Gateway_0lx9tnh" />
+    <bpmn:sequenceFlow id="Flow_1ovcniu" sourceRef="Gateway_0lx9tnh" targetRef="Event_1vmzfq6" apex:sequence="10" />
+    <bpmn:scriptTask id="Activity_1tzu06k" name="銀行振込による支払い" apex:type="executePlsql">
+      <bpmn:extensionElements>
+        <apex:executePlsql>
+          <apex:plsqlCode>declare
+    l_business_ref flow_process_variables.prov_var_vc2%type;
+    l_prcs_id      flow_processes.prcs_id%type;
+begin 
+    -- retrieve process id 
+    l_prcs_id:= flow_plsql_runner_pkg.get_current_prcs_id;
+    -- retrieve business ref
+    l_business_ref:= flow_process_vars.get_business_ref(l_prcs_id);
+    -- set expense status 
+    update tuto_expenses expe set expe.expe_status = 'paid-by-bk' 
+    where expe.expe_id = to_number(l_business_ref);
+end;</apex:plsqlCode>
+        </apex:executePlsql>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ax960s</bpmn:incoming>
+      <bpmn:outgoing>Flow_0d5c2m2</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="Activity_07zalop" name="クレジットカードによる支払い" apex:type="executePlsql">
+      <bpmn:extensionElements>
+        <apex:executePlsql>
+          <apex:plsqlCode>declare
+    l_business_ref flow_process_variables.prov_var_vc2%type;
+    l_prcs_id      flow_processes.prcs_id%type;
+begin 
+    -- retrieve process id 
+    l_prcs_id:= flow_plsql_runner_pkg.get_current_prcs_id;
+    -- retrieve business ref
+    l_business_ref:= flow_process_vars.get_business_ref(l_prcs_id);
+    -- set expense status 
+    update tuto_expenses expe set expe.expe_status = 'paid-by-cc' 
+    where expe.expe_id = to_number(l_business_ref);
+end;</apex:plsqlCode>
+        </apex:executePlsql>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0t6p3sn</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sf9v8f</bpmn:outgoing>
+    </bpmn:scriptTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_lu70yk8n">
+      <bpmndi:BPMNEdge id="Flow_01l1j3n_di" bpmnElement="Flow_01l1j3n">
+        <di:waypoint x="198" y="230" />
+        <di:waypoint x="285" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ax960s_di" bpmnElement="Flow_0ax960s">
+        <di:waypoint x="310" y="205" />
+        <di:waypoint x="310" y="110" />
+        <di:waypoint x="410" y="110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="248" y="155" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d5c2m2_di" bpmnElement="Flow_0d5c2m2">
+        <di:waypoint x="510" y="110" />
+        <di:waypoint x="610" y="110" />
+        <di:waypoint x="610" y="205" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t6p3sn_di" bpmnElement="Flow_0t6p3sn">
+        <di:waypoint x="310" y="255" />
+        <di:waypoint x="310" y="360" />
+        <di:waypoint x="410" y="360" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="216" y="305" width="88" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sf9v8f_di" bpmnElement="Flow_0sf9v8f">
+        <di:waypoint x="510" y="360" />
+        <di:waypoint x="610" y="360" />
+        <di:waypoint x="610" y="255" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ovcniu_di" bpmnElement="Flow_1ovcniu">
+        <di:waypoint x="635" y="230" />
+        <di:waypoint x="742" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0jdg5k4_di" bpmnElement="Event_0jdg5k4">
+        <dc:Bounds x="162" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="142" y="255" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1vmzfq6_di" bpmnElement="Event_1vmzfq6">
+        <dc:Bounds x="742" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="723" y="255" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1ovg4ax_di" bpmnElement="Gateway_1ovg4ax" isMarkerVisible="true">
+        <dc:Bounds x="285" y="205" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="345" y="223" width="88" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0lx9tnh_di" bpmnElement="Gateway_0lx9tnh" isMarkerVisible="true">
+        <dc:Bounds x="585" y="205" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ayspul_di" bpmnElement="Activity_1tzu06k">
+        <dc:Bounds x="410" y="70" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19jv7v9_di" bpmnElement="Activity_07zalop">
+        <dc:Bounds x="410" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
