@@ -348,14 +348,10 @@ dynamic-actions:
     type: Immediate
 
   actions: 
-  - # ====== Action: 値の設定 ====================================
+  - # ====== Action: クリア ======================================
     id: 78592647683088487
     identification: 
-      action: 値の設定
-
-    settings: 
-      タイプの設定: Static Assignment
-      変更イベントの禁止: false
+      action: クリア
 
     affected-elements: 
       selection-type: Item(s)
@@ -367,6 +363,4 @@ dynamic-actions:
       event: Mouse Leave # 78592101353088487
       fire-when-event-result-is: True
       fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
 
