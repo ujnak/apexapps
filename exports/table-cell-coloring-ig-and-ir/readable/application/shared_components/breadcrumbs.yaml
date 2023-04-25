@@ -1,0 +1,21 @@
+---
+- # ====== Breadcrumb: ブレッドクラム ==========================
+  id: 78830789882973907
+  identification: 
+    name: ブレッドクラム
+
+  entries: 
+  - # ====== Entry: セルの色付け =================================
+    id: 78830917662973908
+    identification: 
+      name: セルの色付け
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # セルの色付け
+
