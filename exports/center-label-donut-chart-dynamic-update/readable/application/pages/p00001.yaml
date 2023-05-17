@@ -1,0 +1,319 @@
+---
+# ====== Page: ホーム ========================================
+id: 1
+identification: 
+  name: ホーム
+  alias: HOME
+  title: ドーナツチャートの真ん中のラベル
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: donut =======================================
+  id: 79066514805976343
+  identification: 
+    title: donut
+    type: チャート
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 85014952166828822
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: donut
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 79066672464976344
+    chart: 
+      type: Donut
+
+    layout: 
+      height: 400
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    settings: 
+      pie-selection-effect: Highlight
+
+    value: 
+      pie-chart-other-threshold: 0
+      format: Decimal
+      decimal-places: 0
+      format-scaling: None
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-value: true
+
+    legend: 
+      show: false
+
+    advanced: 
+      initialization-javascript-function: |
+        function(options) {
+            options.pieCenter = {
+                label: apex.items.P1_DEPTNO.displayValueFor(
+                    apex.items.P1_DEPTNO.value
+                )
+            };
+            return options;
+        }
+
+    series: 
+    - # ====== Series: sal =========================================
+      id: 79066737518976345
+      identification: 
+        name: sal
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: Table / View
+        table-owner: Parsing Schema
+        table-name: EMP
+        include-rowid-column: false
+        where-clause: 'deptno = :P1_DEPTNO'
+        page-items-to-submit: 
+        - P1_DEPTNO
+
+      order-by: 
+        type: None
+
+      column-mapping: 
+        label: ENAME
+        value-aggregation: No Aggregation
+        value: SAL
+
+      label: 
+        show: true
+        position: Automatic
+        display-as: Label
+
+- # ====== Region: ドーナツチャートの真ん中のラベル ============
+  id: 85123804045828897
+  identification: 
+    title: ドーナツチャートの真ん中のラベル
+    type: 静的コンテンツ
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 84981997277828804
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      出力形式: HTML
+      ショートカットを開く: false
+
+page-items: 
+- # ====== Page Item: P1_DEPTNO ================================
+  id: 79066461028976342
+  identification: 
+    name: P1_DEPTNO
+    type: 選択リスト
+
+  label: 
+    label: DEPT
+    alignment: Left
+
+  settings: 
+    選択時のページ・アクション: None
+    複数選択を許可: false
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 85085365522828864
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: select dname d, deptno from dept
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+dynamic-actions: 
+- # ====== Dynamic Action: onChange ============================
+  id: 79067079058976348
+  identification: 
+    name: onChange
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P1_DEPTNO
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: リフレッシュ ================================
+    id: 79067132340976349
+    identification: 
+      action: リフレッシュ
+
+    affected-elements: 
+      selection-type: Region
+      region: donut # 79066514805976343
+
+    execution: 
+      sequence: 20
+      event: onChange # 79067079058976348
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: JavaScriptコードの実行 ======================
+    id: 79067263767976350
+    identification: 
+      action: JavaScriptコードの実行
+
+    settings: 
+      コード: |
+        apex.region("donut").widget().ojChart(
+            {
+                pieCenter: {
+                    label: apex.items.P1_DEPTNO.displayValueFor(
+                        apex.items.P1_DEPTNO.value
+                    )
+                }
+            }
+        );
+
+    execution: 
+      sequence: 10
+      event: onChange # 79067079058976348
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
