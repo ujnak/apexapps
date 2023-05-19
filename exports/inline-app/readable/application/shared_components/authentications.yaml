@@ -13,10 +13,6 @@
   login-processing: 
     switch-in-session: false
 
-  session-sharing: 
-    cookie-name: MY_CUST_SESSION
-    secure: true
-
   real-application-security: 
     ras-mode: Disabled
 
