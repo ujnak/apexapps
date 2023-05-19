@@ -1,0 +1,11 @@
+---
+- # ====== Application Item: G_APEX_PATH =======================
+  id: 89493694979615070
+  identification: 
+    name: G_APEX_PATH
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
