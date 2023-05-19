@@ -77,7 +77,7 @@ regions:
 
   attributes: 
     settings: 
-      url: '&G_APEX_PATH.r/apexdev/source-app/home?session=&APP_SESSION.'
+      url: 'https://bp9ncf74sqibu4p-apexdev.adb.us-ashburn-1.oraclecloudapps.com/ords/r/apexdev/source-app/home'
       組入れモード: Inline (no escaping)
       html破棄の終了: '<!-- start:report-dept -->'
       html破棄の開始: '<!-- end:report-dept -->'
@@ -122,7 +122,7 @@ regions:
 
   attributes: 
     settings: 
-      url: '&G_APEX_PATH.r/apexdev/source-app/home?session=&APP_SESSION.'
+      url: 'https://bp9ncf74sqibu4p-apexdev.adb.us-ashburn-1.oraclecloudapps.com/ords/r/apexdev/source-app/home'
       組入れモード: Inline (no escaping)
       html破棄の終了: '<!-- start:report-emp -->'
       html破棄の開始: '<!-- end:report-emp -->'
@@ -144,7 +144,7 @@ regions:
           C_END   constant varchar2(40) := '<!-- end:report-dept -->';
       begin
           l_response := apex_web_service.make_rest_request(
-              p_url => :G_APEX_PATH || 'r/apexdev/source-app/home?session=' || :APP_SESSION
+              p_url => :G_APEX_PATH || 'r/apexdev/source-app/home'
               ,p_http_method => 'GET'
           );
           l_begin := instr(l_response, C_START) + length(C_START);
