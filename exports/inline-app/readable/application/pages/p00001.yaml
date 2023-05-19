@@ -77,7 +77,7 @@ regions:
 
   attributes: 
     settings: 
-      url: 'https://bp9ncf74sqibu4p-apexdev.adb.us-ashburn-1.oraclecloudapps.com/ords/r/apexdev/source-app/home?session=&APP_SESSION.'
+      url: '&G_APEX_PATH.r/apexdev/source-app/home?session=&APP_SESSION.'
       組入れモード: Inline (no escaping)
       html破棄の終了: '<!-- start:report-dept -->'
       html破棄の開始: '<!-- end:report-dept -->'
@@ -122,10 +122,76 @@ regions:
 
   attributes: 
     settings: 
-      url: 'https://bp9ncf74sqibu4p-apexdev.adb.us-ashburn-1.oraclecloudapps.com/ords/r/apexdev/source-app/home?session=&APP_SESSION.'
+      url: '&G_APEX_PATH.r/apexdev/source-app/home?session=&APP_SESSION.'
       組入れモード: Inline (no escaping)
       html破棄の終了: '<!-- start:report-emp -->'
       html破棄の開始: '<!-- end:report-emp -->'
+
+- # ====== Region: Dynamic Inline DEPT =========================
+  id: 88791996364095144
+  identification: 
+    title: Dynamic Inline DEPT
+    type: 動的コンテンツ
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: |
+      declare
+          l_response clob;
+          l_begin pls_integer;
+          l_end   pls_integer;
+          C_START constant varchar2(40) := '<!-- start:report-dept -->';
+          C_END   constant varchar2(40) := '<!-- end:report-dept -->';
+      begin
+          l_response := apex_web_service.make_rest_request(
+              p_url => :G_APEX_PATH || 'r/apexdev/source-app/home?session=' || :APP_SESSION
+              ,p_http_method => 'GET'
+          );
+          l_begin := instr(l_response, C_START) + length(C_START);
+          l_response := substr(l_response,l_begin);
+          l_end   := instr(l_response, C_END) - 1;
+          l_response := substr(l_response, 1, l_end);
+          -- return apex_escape.html(l_response); -- エスケープあり
+          return l_response; -- エスケープなし
+      end;
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 89371332970468666
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  configuration: 
+    build-option: コメント・アウト # 89268013782468579
+
+  attributes: 
+    performance: 
+      lazy-loading: false
 
 - # ====== Region: Inline App ==================================
   id: 89480292295468749
