@@ -1,9 +1,0 @@
----
-- # ====== Install Script: img_tables ==========================
-  id: 43080091469568236
-  identification: 
-    name: img_tables
-
-  execution: 
-    sequence: 10
-
