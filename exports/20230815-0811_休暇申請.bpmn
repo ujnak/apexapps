@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:apex="https://flowsforapex.org" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1wzb475" targetNamespace="http://bpmn.io/schema/b" exporter="Flows for APEX" exporterVersion="23.1.0">
+  <bpmn:process id="Process_eqfkkzaz" isExecutable="false" apex:manualInput="false">
+    <bpmn:startEvent id="Event_16bcocr">
+      <bpmn:outgoing>Flow_0tm2r64</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_17cgrds" name="休暇申請の承認" apex:type="apexPage" apex:manualInput="true">
+      <bpmn:extensionElements>
+        <apex:apexPage>
+          <apex:applicationId>HOLIDAYREQ</apex:applicationId>
+          <apex:pageId>request</apex:pageId>
+          <apex:pageItems>
+            <apex:pageItem>
+              <apex:itemName>PROCESS_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$PROCESS_ID.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>SUBFLOW_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$SUBFLOW_ID.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>STEP_KEY</apex:itemName>
+              <apex:itemValue>&amp;F4A$STEP_KEY.</apex:itemValue>
+            </apex:pageItem>
+            <apex:pageItem>
+              <apex:itemName>P2_ID</apex:itemName>
+              <apex:itemValue>&amp;F4A$BUSINESS_REF.</apex:itemValue>
+            </apex:pageItem>
+          </apex:pageItems>
+        </apex:apexPage>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tm2r64</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ast9pq</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_05a79gf" name="承認？" default="Flow_1gvsb9t">
+      <bpmn:incoming>Flow_0ast9pq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a6wdpv</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1gvsb9t</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Event_1jupnmw" name="休暇承認">
+      <bpmn:incoming>Flow_0a6wdpv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="Event_1jk81mp" name="休暇却下">
+      <bpmn:incoming>Flow_1gvsb9t</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0tm2r64" sourceRef="Event_16bcocr" targetRef="Activity_17cgrds" apex:sequence="10" />
+    <bpmn:sequenceFlow id="Flow_0ast9pq" sourceRef="Activity_17cgrds" targetRef="Gateway_05a79gf" apex:sequence="10" />
+    <bpmn:sequenceFlow id="Flow_0a6wdpv" name="はい" sourceRef="Gateway_05a79gf" targetRef="Event_1jupnmw" apex:sequence="10">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" language="plsqlExpression">:F4A$IS_APPROVED = 'Y'</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1gvsb9t" name="いいえ" sourceRef="Gateway_05a79gf" targetRef="Event_1jk81mp" apex:sequence="20" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_eqfkkzaz">
+      <bpmndi:BPMNShape id="Event_16bcocr_di" bpmnElement="Event_16bcocr">
+        <dc:Bounds x="202" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mpzk4i_di" bpmnElement="Activity_17cgrds">
+        <dc:Bounds x="390" y="150" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_05a79gf_di" bpmnElement="Gateway_05a79gf" isMarkerVisible="true">
+        <dc:Bounds x="615" y="165" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="623" y="141" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1jupnmw_di" bpmnElement="Event_1jupnmw">
+        <dc:Bounds x="812" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="809" y="215" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1jk81mp_di" bpmnElement="Event_1jk81mp">
+        <dc:Bounds x="812" y="402" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="810" y="445" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0tm2r64_di" bpmnElement="Flow_0tm2r64">
+        <di:waypoint x="238" y="190" />
+        <di:waypoint x="390" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ast9pq_di" bpmnElement="Flow_0ast9pq">
+        <di:waypoint x="490" y="190" />
+        <di:waypoint x="615" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a6wdpv_di" bpmnElement="Flow_0a6wdpv">
+        <di:waypoint x="665" y="190" />
+        <di:waypoint x="812" y="190" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="728" y="172" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gvsb9t_di" bpmnElement="Flow_1gvsb9t">
+        <di:waypoint x="640" y="215" />
+        <di:waypoint x="640" y="420" />
+        <di:waypoint x="812" y="420" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="639" y="315" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
