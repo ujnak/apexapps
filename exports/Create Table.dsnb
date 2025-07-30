@@ -1,0 +1,100 @@
+[
+  {
+    "name" : "Create Table",
+    "description" : null,
+    "tags" : null,
+    "version" : "7",
+    "layout" : "zeppelin",
+    "type" : "low",
+    "snapshot" : false,
+    "isEditable" : true,
+    "isRunnable" : true,
+    "template" : "dsrgmn3y",
+    "templateConfig" : "{\"visualization\":{\"filters\":[{\"_id\":1583324064459,\"type\":\"styling\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[{\"property\":\"hiddenConnection\",\"operator\":\"*\",\"value\":\"\"}]},\"component\":\"edge\",\"target\":\"edge\",\"properties\":{\"colors\":[\"rgba(0, 0, 0, 0.1)\"],\"style\":[\"dashed\"],\"legendTitle\":[\"Hidden Connection\"]}},{\"_id\":1590499315755,\"type\":\"aggregation\",\"enabled\":true,\"conditions\":{\"operator\":\"and\",\"conditions\":[]},\"component\":\"vertex\",\"target\":\"vertex\",\"properties\":{},\"aggregation\":[{\"source\":\"\",\"type\":\"average\"}]}],\"version\":4}}",
+    "paragraphs" : [
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "drop table if exists BREAST_CANCER "
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%python",
+          "import oml",
+          "import pandas as pd",
+          "import numpy as np",
+          "from sklearn import datasets",
+          "",
+          "# Load the breast cancer dataset into the database",
+          "bc = datasets.load_breast_cancer()",
+          "bc_data = bc.data.astype(float)",
+          "X = pd.DataFrame(bc_data, columns = bc.feature_names)",
+          "y = pd.DataFrame(bc.target, columns = ['TARGET'])",
+          "row_id = pd.DataFrame(np.arange(bc_data.shape[0]), columns = ['CASE_ID'])",
+          "df = oml.create(pd.concat([row_id, X, y], axis=1), table = 'BREAST_CANCER')"
+        ],
+        "selectedVisualization" : "html",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      },
+      {
+        "row" : 0,
+        "col" : 0,
+        "sizeX" : 0,
+        "width" : 0,
+        "title" : null,
+        "hasTitle" : false,
+        "message" : [
+          "%sql",
+          "select * from breast_cancer"
+        ],
+        "selectedVisualization" : "table",
+        "visualizationConfig" : null,
+        "hideCode" : false,
+        "hideResult" : false,
+        "hideGutter" : true,
+        "hideVizConfig" : false,
+        "hideInIFrame" : false,
+        "enabled" : true,
+        "forms" : "[]",
+        "result" : null,
+        "relations" : [ ],
+        "dynamicFormParams" : null
+      }
+    ]
+  }
+]
